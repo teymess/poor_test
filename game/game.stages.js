@@ -41,15 +41,16 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
 
     .stage('Part3_Treatment')
     .step('Instructions_Part_3')
-    .step('commitment')
+    .step('Part3_Commitment')
+    .step('Part3_T_Income_Low')
     .step('Part3_Impact')
+    .step('Part3_Sentiment')
 
     //
     .step('Part3_The_fight_against_air_pollution')
     .step('Part3_Time_to_act!')
     .step('Part3_Policies_to_reduce_pollution')
     .step('Part3_Protection_measures')
-    .step('Part3_About_yourself')
     .step('Part3_Income')
 
 

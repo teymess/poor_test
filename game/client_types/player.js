@@ -894,13 +894,16 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
     //////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////
 
+    // Instructions Part 3
     stager.extendStep('Instructions_Part_3', {
         name: 'Part 3: Instructions',
         frame: 'instructions_part3.htm'
     });
 
 
-    stager.extendStep('commitment', {
+
+    // Commitment of full attention
+    stager.extendStep('Part3_Commitment', {
         name: 'Part 3: Full Attention',
         widget: {
             name: 'ChoiceTable',
@@ -939,6 +942,68 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
         }
     });
 
+
+    ////////////////////////////////////////////////////
+    // TREATMENT: Income low
+    //////////////////////////////////////
+    stager.extendStep('Part3_T_Income_Low', {
+        name: "Part 3: Your opinion",
+        cb: function() {
+            W.cssRule('table.choicetable td { text-align: center !important; ' +
+            'font-weight: normal; padding-left: 10px; }');
+        },
+        widget: {
+            name: 'ChoiceManager',
+            id: 'P3_q1',
+            options: {
+                simplify: true,
+                mainText: '<span style=\'font-size:18px;font-weight:normal;\'>Assume the entire ' +
+                          'population living in <b>your district</b> is divided into 5 income groups, '+
+                          'each with the same number of households. The figure below illustrates ' +
+                          'the 5 groups, ordered from left to right from the poorest 20% '+
+                          'to the richest 20%.' +
+                '</span><br><br><img src="https://i.ibb.co/sbMXxDd/District-groups.png" alt="Indian-groups" border="0" width="800px"></a><br><br>',
+                forms: [
+                    {
+                        id: 'P3_q1_1',
+                        orientation: 'H',
+                        mainText: '<span style="font-weight: normal;color:gray;">Q1</span> Think of a household living' +
+                                  'in the same district as you and earning a total annual income of XXX INR.<br><br>'+
+                                  'In your opinion, which income group is this household part of?',
+                        choices: [
+                            ['Group 1', '<span style=\'font-size:14px;font-weight:normal;\'>Group 1</span>'],
+                            ['Group 2', '<span style=\'font-size:14px;font-weight:normal;\'>Group 2</span>'],
+                            ['Group 3', '<span style=\'font-size:14px;font-weight:normal;\'>Group 3</span>'],
+                            ['Group 4', '<span style=\'font-size:14px;font-weight:normal;\'>Group 4</span>'],
+                            ['Group 5', '<span style=\'font-size:14px;font-weight:normal;\'>Group 5</span>'],
+                            ],
+                        shuffleChoices: false,
+                        requiredChoice: true
+                    },
+                    {
+                        id: 'P3_q1_2',
+                        orientation: 'H',
+                        mainText: '<span style="font-weight: normal;color:gray;">Q2</span> Think of YOUR household now.' +
+                                  'In your opinion, which income group is YOUR household part of?',
+                        choices: [
+                            ['Group 1', '<span style=\'font-size:14px;font-weight:normal;\'>Group 1</span>'],
+                            ['Group 2', '<span style=\'font-size:14px;font-weight:normal;\'>Group 2</span>'],
+                            ['Group 3', '<span style=\'font-size:14px;font-weight:normal;\'>Group 3</span>'],
+                            ['Group 4', '<span style=\'font-size:14px;font-weight:normal;\'>Group 4</span>'],
+                            ['Group 5', '<span style=\'font-size:14px;font-weight:normal;\'>Group 5</span>'],
+                            ],
+                        shuffleChoices: false,
+                        requiredChoice: true
+                    }
+                ]
+            }
+        }
+    });
+
+
+
+
+    /////// Income
     stager.extendStep('Part3_Impact', {
         name: 'Part 3: Your opinion',
         frame: 'Impact_on_you.htm',
@@ -1135,6 +1200,39 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             return w.getValues();
         }
     });
+
+    ///////////////////////////////////////////////////////////////////////////////
+    /// SENTIMENT
+    stager.extendStep('Part3_Sentiment', {
+        name: "Part 3: Your opinion",
+        widget: {
+            name: 'ChoiceManager',
+            id: 'Part3_q',
+            options: {
+                simplify: true,
+                mainText: '',
+                forms: [
+                    {
+                        id: 'Part3_q3',
+                        orientation: 'H',
+                        mainText: '<span style="font-weight: normal;color:gray;">Q8</span> How happy are you in general?',
+                        choices: ['Very happy','Rather happy','Neutral','Not very happy','Not at all happy'],
+                        shuffleChoices: false,
+                        requiredChoice: true
+                    },
+                    {
+                        id: 'Part3_q4',
+                        orientation: 'H',
+                        mainText: '<span style="font-weight: normal;color:gray;">Q9</span> How healthy do you feel these days?',
+                        choices: ['Very healthy','Healthy','Neutral','A bit unhealthy','Very unhealthy'],
+                        shuffleChoices: false,
+                        requiredChoice: true
+                    }
+                ]
+            }
+        }
+    });
+
 
 
 
@@ -1450,83 +1548,12 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                         mainText: 'What caste do you belong to?',
                         choices: [ 'Upper caste', 'Lower caste (Scheduled caste / Scheduled tribe)', 'No caste / other'],
                         requiredChoice: true
-                    },
-                    {
-                        id: 'Part3_q3',
-                        orientation: 'H',
-                        mainText: '<span style="font-weight: normal;color:gray;">Q8</span> How happy are you in general?',
-                        choices: ['Very happy','Rather happy','Neutral','Not very happy','Not at all happy'],
-                        shuffleChoices: false,
-                        requiredChoice: true
-                    },
-                    {
-                        id: 'Part3_q4',
-                        orientation: 'H',
-                        mainText: '<span style="font-weight: normal;color:gray;">Q9</span> How healthy do you feel these days?',
-                        choices: ['Very healthy','Healthy','Neutral','A bit unhealthy','Very unhealthy'],
-                        shuffleChoices: false,
-                        requiredChoice: true
                     }
                 ]
             }
         }
     });
 
-    //////////////////////////////////////
-    stager.extendStep('Part3_Income', {
-        name: "Part 3: Your opinion",
-        cb: function() {
-            W.cssRule('table.choicetable td { text-align: center !important; ' +
-            'font-weight: normal; padding-left: 10px; }');
-        },
-        widget: {
-            name: 'ChoiceManager',
-            id: 'P4_lq',
-            options: {
-                simplify: true,
-                mainText: '',
-                forms: [
-                    {
-                        id: 'income_control',
-                        orientation: 'H',
-                        mainText: '<span style="font-weight: normal;color:gray;">Q10</span> In 2020, what was the annual income of your household?<br>',
-                        hint: 'Please refer to the <strong>total income</strong> of ALL members living in your household in 2020. The household annual income includes total sum of income earned in your household in 2020, before any taxes or deductions. This includes wages and salaries from all jobs (incl. in-kind payments valued at retail price), the revenue from self-employment, and all income from casual labour.',
-                        choices: ['Less than 2,00,000 INR',
-                                  '2,00,000 INR – 5,00,000 INR',
-                                  '5,00,000 INR – 10,00,000 INR',
-                                  '10,00,000 INR – 20,00,000 INR',
-                                  '20,00,000 INR or more'],
-                        shuffleChoices: false,
-                        requiredChoice: true
-                    },
-                    {
-                        id: 'income_group',
-                        orientation: 'H',
-                        mainText: '<span style="font-weight: normal;color:gray;">Q11</span> What is your income group?<br><br>'+
-                        '<span style=\'font-size:18px;font-weight:normal;\'>Assume the entire population living in <b>your district</b> is divided into 10 income groups,'+
-                        ' each with the same number of households. The figure below illustrates the 10 groups, ordered from left to right from the poorest 10%'+
-                        ' to the richest 10%.' +
-                        '</span><br><br><img src="https://i.ibb.co/sbMXxDd/District-groups.png" alt="Indian-groups" border="0" width="800px"></a><br><br>' +
-                        'In your opinion, which income group is your household part of?',
-                        choices: [
-                            ['Group 1', '<span style=\'font-size:14px;font-weight:normal;\'>Group 1</span>'],
-                            ['Group 2', '<span style=\'font-size:14px;font-weight:normal;\'>Group 2</span>'],
-                            ['Group 3', '<span style=\'font-size:14px;font-weight:normal;\'>Group 3</span>'],
-                            ['Group 4', '<span style=\'font-size:14px;font-weight:normal;\'>Group 4</span>'],
-                            ['Group 5', '<span style=\'font-size:14px;font-weight:normal;\'>Group 5</span>'],
-                            ['Group 6', '<span style=\'font-size:14px;font-weight:normal;\'>Group 6</span>'],
-                            ['Group 7', '<span style=\'font-size:14px;font-weight:normal;\'>Group 7</span>'],
-                            ['Group 8', '<span style=\'font-size:14px;font-weight:normal;\'>Group 8</span>'],
-                            ['Group 9', '<span style=\'font-size:14px;font-weight:normal;\'>Group 9</span>'],
-                            ['Group 10', '<span style=\'font-size:14px;font-weight:normal;\'>Group 10</span>'],
-                            ],
-                        shuffleChoices: false,
-                        requiredChoice: true
-                    }
-                ]
-            }
-        }
-    });
 
 
     ////////////////////////////////////////////////////////////////////////////
