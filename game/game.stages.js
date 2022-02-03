@@ -51,7 +51,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
     .step('Part3_Time_to_act!')
     .step('Part3_Policies_to_reduce_pollution')
     .step('Part3_Protection_measures')
-    .step('Part3_Income')
+    .step('Part3_About_yourself')
 
 
     stager
