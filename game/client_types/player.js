@@ -117,8 +117,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                     {
                         id: 'q1_1',
                         orientation: 'H',
-                        mainText: '<span style="font-weight: normal;color:gray;">Q1</span> Which language(s) do you feel most comfortable to use on mTurk?<br>',
-                        hint: '(Select 1 or 2 languages)',
+                        mainText: '<span style="font-weight: normal;color:gray;">Q1</span> What language do you speak at home?',
                         choices: ['English', 'Assamese','Bengali','Bodo','Dogri',
                         'Gujarati','Hindi','Kannada','Kashmiri','Konkani',
                         'Maithili','Malayalam','Marathi','Mora','Meitei','Nepali',
@@ -126,7 +125,6 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                         'Telugu','Urdu','Other'],
                         shuffleChoices: false,
                         requiredChoice: true,
-                        selectMultiple: 2,
                         // Number of choices per row/column.
                         choicesSetSize: 6,
                         onclick: function(value, removed) {
@@ -135,10 +133,6 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                             len = forms.q1_1.choices.length - 1;
                             w = forms.q1_2;
                             if (this.isChoiceCurrent(len)) w.show();
-                            else w.hide();
-
-                            w = forms.q1_4;
-                            if (this.currentChoice.length === 2) w.show();
                             else w.hide();
 
                             W.adjustFrameHeight();
@@ -155,17 +149,8 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                     {
                         name: 'CustomInput',
                         id: 'q1_3',
-                        mainText: '<span style="font-weight: normal;color:gray;">Q2</span> What is your favorite color?<br>',
-                        hint: '(Write the answer in the language you selected above.)',
+                        mainText: '<span style="font-weight: normal;color:gray;">Q2</span> What is your favorite color?',
                         width: '95%',
-                        requiredChoice: true,
-                    },
-                    {
-                        name: 'CustomInput',
-                        id: 'q1_4',
-                        mainText: '<span style="font-weight: normal;color:gray;">Q2.b</span> You selected two languages. What is the name of your favorite color in the second language you selected above?',
-                        width: '95%',
-                        hidden: true,
                         requiredChoice: true,
                     }
                 ]
@@ -265,15 +250,6 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                         choices: [ 'Village', 'Town/city'],
                         shuffleChoices: true,
                         requiredChoice: true
-                    },
-                    {
-                        name: 'CustomInput',
-                        id: 'q3_4',
-                        // orientation: 'V',
-                        mainText: '<span style="font-weight: normal;color:gray;">Q9</span> What is the name of your village/town/city?',
-                        width: '95%',
-                        type: 'text',
-                        requiredChoice: true
                     }
                 ]
             }
@@ -299,7 +275,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                     {
                         name: 'CustomInput',
                         id: 'q4_1',
-                        mainText: '<span style="font-weight: normal;color:gray;">Q10</span> How many people live in your household?<br>',
+                        mainText: '<span style="font-weight: normal;color:gray;">Q9</span> How many people live in your household?<br>',
                         hint: '(Think about everyone that lives at least eight months per year in your house. Answer should include yourself in the count.)',
                         width: '95%',
                         type: 'int',
@@ -309,10 +285,27 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                     {
                         id: 'q4_2',
                         orientation: 'H',
-                        mainText: '<span style="font-weight: normal;color:gray;">Q11</span> What is the highest educational level that you have completed?',
+                        mainText: '<span style="font-weight: normal;color:gray;">Q10</span> What is the highest educational level that you have completed?',
                         choices: ['No formal education','Primary school','Secondary school','Vocational training','Bachelor degree','Masters degree or higher'],
                         shuffleChoices: false,
                         requiredChoice: true
+                    },
+                    { // THIS NEEDS TO BE MADE CONDITIONAL ON DISTRICT
+                        id: 'q4_3',
+                        orientation: 'H',
+                        mainText: '<span style="font-weight: normal;color:gray;">Q11</span> In 2020, what was the total annual income of your household?<br>' +
+                        '<span style="font-weight: normal;"> Please refer to the <strong>total income</strong> of ALL members living in your household in 2020.' +
+                        ' The household annual income includes total sum of income earned in your household in 2020, ' +
+                        'before any taxes or deductions. This includes wages and salaries from all jobs ' +
+                        '(incl. in-kind payments valued at retail price), the revenue from self-employment, and all income from casual labour.</span>',
+                        choices: ['Less than 2,00,000 INR',
+                                  '2,00,000 INR – 5,00,000 INR',
+                                  '5,00,000 INR – 10,00,000 INR',
+                                  '10,00,000 INR – 20,00,000 INR',
+                                  '20,00,000 INR or more'],
+                        shuffleChoices: false,
+                        requiredChoice: true,
+                        choicesSetSize: 2
                     }
                 ]
             }
