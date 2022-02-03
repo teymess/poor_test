@@ -668,88 +668,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
         }
     });
 
-    // //////////////////////////////////////
-    // stager.extendStep('Part_1_q9_C', {
-    //     name: "Part 1: Survey",
-    //     cb: function() {
-    //         W.cssRule('table.choicetable td { text-align: center !important; ' +
-    //         'font-weight: normal; padding-left: 10px; }');
-    //     },
-    //     widget: {
-    //         name: 'ChoiceManager',
-    //         id: 'P4_lq',
-    //         options: {
-    //             simplify: true,
-    //             mainText: '',
-    //             forms: [
-    //                 {
-    //                     id: 'income_control',
-    //                     orientation: 'H',
-    //                     mainText: '<span style="font-weight: normal;color:gray;">Q26</span> In 2020, what was the annual income of your household?<br>',
-    //                     hint: 'Please refer to the <strong>total income</strong> of ALL members living in your household in 2020. The household annual income includes total sum of income earned in your household in 2020, before any taxes or deductions. This includes wages and salaries from all jobs (incl. in-kind payments valued at retail price), the revenue from self-employment, and all income from casual labour.',
-    //                     choices: ['Less than 2,00,000 INR',
-    //                               '2,00,000 INR – 5,00,000 INR',
-    //                               '5,00,000 INR – 10,00,000 INR',
-    //                               '10,00,000 INR – 20,00,000 INR',
-    //                               '20,00,000 INR or more'],
-    //                     shuffleChoices: false,
-    //                     requiredChoice: true
-    //                 },
-    //                 {
-    //                     id: 'income_group',
-    //                     orientation: 'H',
-    //                     mainText: '<span style="font-weight: normal;color:gray;">Q27</span> What is your income group?<br><br>'+
-    //                     '<span style=\'font-size:18px;font-weight:normal;\'>Assume the entire population living in <b>your district</b> is divided into 10 income groups,'+
-    //                     ' each with the same number of households. The figure below illustrates the 10 groups, ordered from left to right from the poorest 10%'+
-    //                     ' to the richest 10%.' +
-    //                     '</span><br><br><img src="https://i.ibb.co/sbMXxDd/District-groups.png" alt="Indian-groups" border="0" width="800px"></a><br><br>' +
-    //                     'In your opinion, which income group is your household part of?',
-    //                     choices: [
-    //                         ['Group 1', '<span style=\'font-size:14px;font-weight:normal;\'>Group 1</span>'],
-    //                         ['Group 2', '<span style=\'font-size:14px;font-weight:normal;\'>Group 2</span>'],
-    //                         ['Group 3', '<span style=\'font-size:14px;font-weight:normal;\'>Group 3</span>'],
-    //                         ['Group 4', '<span style=\'font-size:14px;font-weight:normal;\'>Group 4</span>'],
-    //                         ['Group 5', '<span style=\'font-size:14px;font-weight:normal;\'>Group 5</span>'],
-    //                         ['Group 6', '<span style=\'font-size:14px;font-weight:normal;\'>Group 6</span>'],
-    //                         ['Group 7', '<span style=\'font-size:14px;font-weight:normal;\'>Group 7</span>'],
-    //                         ['Group 8', '<span style=\'font-size:14px;font-weight:normal;\'>Group 8</span>'],
-    //                         ['Group 9', '<span style=\'font-size:14px;font-weight:normal;\'>Group 9</span>'],
-    //                         ['Group 10', '<span style=\'font-size:14px;font-weight:normal;\'>Group 10</span>'],
-    //                         ],
-    //                     shuffleChoices: false,
-    //                     requiredChoice: true
-    //                 },
-    //                 // {
-    //                 //     id: 'lq4',
-    //                 //     name: 'Slider',
-    //                 //     type: 'flat',
-    //                 //     hidden: false,
-    //                 //     min: 0,
-    //                 //     max: 400,
-    //                 //     initialValue: 1,
-    //                 //     requiredChoice: true,
-    //                 //     displayNoChange: false,
-    //                 //     mainText: '<span style=\'font-size:18px;font-weight:normal;\'>Assume the total Indian population is divided into 10 income groups,'+
-    //                 //     ' each with the same number of households.'+
-    //                 //     '</span><br><br><a href="https://ibb.co/mJn5Ksm"><img src="https://i.ibb.co/K6txgZY/Indian-population.png" alt="Indian-population" border="0" width="750px"></a><br><br>' +
-    //                 //     'In your opinion, what annual income is required to be in the top 10% of all Indian households?',
-    //                 //     texts: {
-    //                 //         currentValue: function(widget, value) {
-    //                 //             let inrAmount = String(value);
-    //                 //             if (value > 99) {
-    //                 //                 var output = [inrAmount.slice(0,2),",", inrAmount.slice(2)].join('');
-    //                 //                 return '<span style=\'font-size:20px;\'>You think an income of</span><span style=\';font-size:25px;\'> ' + output + '0,000 INR</span><span style=\'font-size:20px;\'> is required to be in the top 10% of all Indian households.</span>';
-    //                 //             }
-    //                 //             else {
-    //                 //                 return '<span style=\'font-size:20px;\'>You think an income of</span><span style=\';font-size:25px;\'> ' + inrAmount + '0,000 INR</span><span style=\'font-size:20px;\'> is required to be in the top 10% of all Indian households.</span>';
-    //                 //             }
-    //                 //         }
-    //                 //     }
-    //                 // }
-    //             ]
-    //         }
-    //     }
-    // });
+
 
     ////////////////////////////////////////////////////////////////
     // TREATMENT LOW
@@ -1109,212 +1028,6 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
         frame: 'instructions_part3.htm'
     });
 
-    //////////////////////////////////////////////////////////////////////////
-    // // POOR -- How are you impacted?
-    // stager.extendStep('Part3_Impact_Poor', {
-    //     name: 'Part 3: Your opinion',
-    //     frame: 'Impact_on_you_poor.htm',
-    //     donebutton: false,
-    //     cb: function() {
-    //         node.get('districtData', function(data) {
-    //
-    //             console.log(data);
-    //             W.setInnerHTML('state', data.state);
-    //             W.setInnerHTML('district', data.district);
-    //             W.setInnerHTML('districtAgain', data.district);
-    //             W.setInnerHTML('districtQ', data.district);
-    //             W.setInnerHTML('districtAgainAgain', data.district);
-    //             W.setInnerHTML('pm25', data.pm25.toFixed(2));
-    //             W.setInnerHTML('higher', (data.pm25 / 5).toFixed(0));
-    //             W.setInnerHTML('years', data.life_lost.toFixed(1));
-    //
-    //         node.game.Q_poor = node.widgets.append('ChoiceManager', "T_impact_poor", {
-    //                 id: 'T_impact_poor_q',
-    //                 mainText: '',
-    //                 simplify: true,
-    //                 forms: [
-    //                     {
-    //                         id: 'T_impact_poor_q1',
-    //                         orientation: 'H',
-    //                         mainText: '<span style="font-weight: normal;color:gray;">Q1</span> In your opinion, how many years' +
-    //                         ' of life does a household living in ' + data.district + ' and' +
-    //                         ' earning a total income of <b>less than 40,000 INR annually</b>' +
-    //                         ' lose because of air pollution?',
-    //                         choices: [
-    //                           'Less than ' + (data.life_lost * 0.5).toFixed(0) + ' years',
-    //                           (data.life_lost * 0.5).toFixed(0) + ' - ' + data.life_lost.toFixed(0) + ' years',
-    //                           data.life_lost.toFixed(0) + ' - ' + (data.life_lost * 1.5).toFixed(0) + ' years',
-    //                           (data.life_lost * 1.5).toFixed(0) + ' - ' + (data.life_lost * 2).toFixed(0) + ' years',
-    //                           'more than ' + (data.life_lost * 2).toFixed(0) + ' years'
-    //                         ],
-    //                         requiredChoice: true,
-    //                     },
-    //                     {
-    //                         id: 'T_impact_poor_q2',
-    //                         orientation: 'H',
-    //                         mainText: '<span style="font-weight: normal;color:gray;">Q2</span> According to your best guess,' +
-    //                         ' how many years of life are <b><span style="color:#ff0000">YOU</span></b> likely to lose because of air pollution?',
-    //                         choices: [
-    //                           'Less than ' + (data.life_lost * 0.5).toFixed(0) + ' years',
-    //                           (data.life_lost * 0.5).toFixed(0) + ' - ' + data.life_lost.toFixed(0) + ' years',
-    //                           data.life_lost.toFixed(0) + ' - ' + (data.life_lost * 1.5).toFixed(0) + ' years',
-    //                           (data.life_lost * 1.5).toFixed(0) + ' - ' + (data.life_lost * 2).toFixed(0) + ' years',
-    //                           'more than ' + (data.life_lost * 2).toFixed(0) + ' years'
-    //                         ],
-    //                         requiredChoice: true,
-    //                     }
-    //                 ]
-    //             });
-    //
-    //             W.show('data', 'flex');
-    //             node.game.doneButton.enable();
-    //         });
-    //     },
-    //     done: function() {
-    //         return node.game.Q_poor.getValues();
-    //     }
-    // });
-    //
-    // //////////////////////////////////////////////////////////////////////////
-    // // RICH -- How are you impacted?
-    // stager.extendStep('Part3_Impact_Rich', {
-    //     name: 'Part 3: Your opinion',
-    //     frame: 'Impact_on_you_rich.htm',
-    //     donebutton: false,
-    //     cb: function() {
-    //         node.get('districtData', function(data) {
-    //
-    //             console.log(data);
-    //             W.setInnerHTML('state', data.state);
-    //             W.setInnerHTML('district', data.district);
-    //             W.setInnerHTML('districtQ', data.district);
-    //             W.setInnerHTML('districtAgain', data.district);
-    //             W.setInnerHTML('districtAgainAgain', data.district);
-    //             W.setInnerHTML('pm25', data.pm25.toFixed(2));
-    //             W.setInnerHTML('higher', (data.pm25 / 5).toFixed(0));
-    //             W.setInnerHTML('years', data.life_lost.toFixed(1));
-    //
-    //         node.game.Q_rich = node.widgets.append('ChoiceManager', "T_impact_rich", {
-    //                 id: 'T_impact_rich_q',
-    //                 // ref: 'controlQuestions',
-    //                 mainText: '',
-    //                 simplify: true,
-    //                 forms: [
-    //                     {
-    //                         id: 'T_impact_rich_q1',
-    //                         orientation: 'H',
-    //                         mainText: '<span style="font-weight: normal;color:gray;">Q1</span> In your opinion, how many years' +
-    //                         ' of life does a household living in ' + data.district + ' and' +
-    //                         ' earning a total income of more than 40,000,000 INR annually</b>' +
-    //                         ' lose because of air pollution?',
-    //                         choices: [
-    //                           'Less than ' + (data.life_lost * 0.5).toFixed(0) + ' years',
-    //                           (data.life_lost * 0.5).toFixed(0) + ' - ' + data.life_lost.toFixed(0) + ' years',
-    //                           data.life_lost.toFixed(0) + ' - ' + (data.life_lost * 1.5).toFixed(0) + ' years',
-    //                           (data.life_lost * 1.5).toFixed(0) + ' - ' + (data.life_lost * 2).toFixed(0) + ' years',
-    //                           'more than ' + (data.life_lost * 2).toFixed(0) + ' years'
-    //                         ],
-    //                         requiredChoice: true,
-    //                     },
-    //                     {
-    //                         id: 'T_impact_rich_q2',
-    //                         orientation: 'H',
-    //                         mainText: '<span style="font-weight: normal;color:gray;">Q2</span> According to your best guess,' +
-    //                         ' how many years of life are <b><span style="color:#ff0000">YOU</span></b> likely to lose because of air pollution?',
-    //                         choices: [
-    //                           'Less than ' + (data.life_lost * 0.5).toFixed(0) + ' years',
-    //                           (data.life_lost * 0.5).toFixed(0) + ' - ' + data.life_lost.toFixed(0) + ' years',
-    //                           data.life_lost.toFixed(0) + ' - ' + (data.life_lost * 1.5).toFixed(0) + ' years',
-    //                           (data.life_lost * 1.5).toFixed(0) + ' - ' + (data.life_lost * 2).toFixed(0) + ' years',
-    //                           'more than ' + (data.life_lost * 2).toFixed(0) + ' years'
-    //                         ],
-    //                         requiredChoice: true
-    //                     }
-    //                 ]
-    //             });
-    //
-    //             W.show('data', 'flex');
-    //             node.game.doneButton.enable();
-    //         });
-    //     },
-    //     done: function() {
-    //         return node.game.Q_rich.getValues();
-    //     }
-    // });
-    //
-    // //////////////////////////////////////////////////////////////////////////
-    // // MIDDLE -- How are you impacted?
-    // stager.extendStep('Part3_Impact_Middle', {
-    //     name: 'Part 3: Your opinion',
-    //     frame: 'Impact_on_you_middle.htm',
-    //     donebutton: false,
-    //     cb: function() {
-    //         node.get('districtData', function(data) {
-    //
-    //             console.log(data);
-    //             W.setInnerHTML('state', data.state);
-    //             W.setInnerHTML('district', data.district);
-    //             W.setInnerHTML('districtQ', data.district);
-    //             W.setInnerHTML('districtAgain', data.district);
-    //             W.setInnerHTML('districtAgainAgain', data.district);
-    //             W.setInnerHTML('pm25', data.pm25.toFixed(2));
-    //             W.setInnerHTML('higher', (data.pm25 / 5).toFixed(0));
-    //             W.setInnerHTML('years', data.life_lost.toFixed(1));
-    //
-    //         node.game.Q_middle = node.widgets.append('ChoiceManager', "T_impact_middle", {
-    //                 id: 'T_impact_middle_q',
-    //                 // ref: 'controlQuestions',
-    //                 mainText: '',
-    //                 simplify: true,
-    //                 forms: [
-    //                     {
-    //                         id: 'T_impact_middle_q1',
-    //                         orientation: 'H',
-    //                         mainText: '<span style="font-weight: normal;color:gray;">Q1</span> ' +
-    //                         'Think about a housold living in ' + data.district +
-    //                         'with a total annual income around 10,000,000 INR annually. <br><br>' +
-    //                         'How many years of life do you think they lose because of air pollution?<br>',
-    //                         choices: [
-    //                           'Less than ' + (data.life_lost * 0.5).toFixed(0) + ' years',
-    //                           (data.life_lost * 0.5).toFixed(0) + ' - ' + data.life_lost.toFixed(0) + ' years',
-    //                           data.life_lost.toFixed(0) + ' - ' + (data.life_lost * 1.5).toFixed(0) + ' years',
-    //                           (data.life_lost * 1.5).toFixed(0) + ' - ' + (data.life_lost * 2).toFixed(0) + ' years',
-    //                           'more than ' + (data.life_lost * 2).toFixed(0) + ' years'
-    //                         ],
-    //                         requiredChoice: true
-    //                     },
-    //                     {
-    //                         id: 'T_impact_middle_q2',
-    //                         orientation: 'H',
-    //                         mainText: '<span style="font-weight: normal;color:gray;">Q2</span> According to your best guess,' +
-    //                         ' how many years of life are <b><span style="color:#ff0000">YOU</span></b> likely to lose because of air pollution?',
-    //                         choices: [
-    //                           'Less than ' + (data.life_lost * 0.5).toFixed(0) + ' years',
-    //                           (data.life_lost * 0.5).toFixed(0) + ' - ' + data.life_lost.toFixed(0) + ' years',
-    //                           data.life_lost.toFixed(0) + ' - ' + (data.life_lost * 1.5).toFixed(0) + ' years',
-    //                           (data.life_lost * 1.5).toFixed(0) + ' - ' + (data.life_lost * 2).toFixed(0) + ' years',
-    //                           'more than ' + (data.life_lost * 2).toFixed(0) + ' years'
-    //                         ],
-    //                         requiredChoice: true,
-    //                         hidden: true
-    //                     }
-    //                 ]
-    //             });
-    //
-    //             W.show('data', 'flex');
-    //             node.game.doneButton.enable();
-    //         });
-    //     },
-    //     done: function() {
-    //
-    //
-    //         return node.game.Q_middle.getValues();
-    //     }
-    // });
-    //
-    //
-    // //////////////////////////////////////////////////////////////////////////
-
 
     stager.extendStep('commitment', {
         name: 'Part 3: Full Attention',
@@ -1378,34 +1091,12 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                 W.setInnerHTML('higher', (data.pm25 / 5).toFixed(0));
                 W.setInnerHTML('years', lifeLost);
 
-                // ChoiceTable.
-              //   var choices = [
-              //     'Less than ' + (lifeLost * 0.5).toFixed(0) + ' years',
-              //     (lifeLost * 0.5).toFixed(0) + ' - ' + lifeLost.toFixed(0) + ' years',
-              //     lifeLost.toFixed(0) + ' - ' + (lifeLost * 1.5).toFixed(0) + ' years',
-              //     (lifeLost * 1.5).toFixed(0) + ' - ' + (lifeLost * 2).toFixed(0) + ' years',
-              //     'more than ' + (lifeLost * 2).toFixed(0) + ' years'
-              // ];
 
               var choicesMoreOrLess = node.game.choicesMoreOrLess = [
               [ 'less', 'Less than ' + lifeLost  + ' years' ],
               [ 'same', 'About ' + lifeLost  + ' years' ],
               [ 'more', 'More than ' + lifeLost  + ' years' ]
           ];
-
-              // Slider.
-              // var upperLimit = lifeLost * 2;
-              // var texts = {
-              //     currentValue: function(widget, value) {
-              //         var y = ((value / 100) * upperLimit).toFixed(2);
-              //         // Remove unused trailing zeros.
-              //         if (y.charAt(y.length-1 === '0')) y.substr(0, y.length - 2);
-              //         if (y.charAt(y.length-1 === '0')) y.substr(0, y.length - 3);
-              //         y += ' <span style="font-size: smaller">Year' +
-              //              (y === '1' ? '' : 's') + ' of life lost.</span>';
-              //         return y;
-              //     }
-              // };
 
 
             node.game.Q_impact = node.widgets.append('ChoiceManager', "T_impact", {
@@ -1414,25 +1105,6 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                     simplify: true,
                     panel: false,
                     forms: [
-                        // {
-                        //     id: 'T_impact_q1',
-                        //     orientation: 'H',
-                        //     mainText: '<span style="font-weight: normal;color:gray;">Q1</span> ' +
-                        //     'Think about a household living in ' + data.district +
-                        //     ' with a total annual income ' + node.game.settings.money + '. <br><br>' +
-                        //     'How many years of life do you think they lose because of air pollution?<br>',
-                        //     choices: choices,
-                        //     requiredChoice: true
-                        // },
-                        // {
-                        //     id: 'T_impact_q2',
-                        //     orientation: 'H',
-                        //     mainText: '<span style="font-weight: normal;color:gray;">Q2</span> According to your best guess,' +
-                        //     ' how many years of life are <b><span style="color:#ff0000">YOU</span></b> likely to lose because of air pollution?',
-                        //     choices: choices,
-                        //     requiredChoice: true,
-                        //     hidden: true
-                        // }
                         {
                             id: 'T_impact_more_or_less',
                             orientation: 'H',
@@ -1440,87 +1112,10 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                                       'Think about a household living in ' + data.district +
                                       ' with a total annual income of ' + node.game.settings.money + '. <br><br>' +
                                       'Is this household losing more or less years of life than the average?',
-                            // mainText: '<span style="font-weight: normal;color:gray;">Q1</span> ' +
-                            // 'A household in ' + data.district +
-                            // ' with a total annual income ' + node.game.settings.money +
-                            // ' would lose more or less years of life than the average?',
                             choices: choicesMoreOrLess,
                             requiredChoice: true,
                             hidden: true
                         },
-
-                        // {
-                        //     id: 'T_impact_q1',
-                        //     mainText: '<span style="font-weight: normal;color:gray;">Q1</span> ' +
-                        //     'Please type how many years of life they would lose.',
-                        //     name: 'CustomInput',
-                        //     hidden: true,
-                        //     requiredChoice: true,
-                        //     min: 0,
-                        //     width: '25%',
-                        //     hint: 'You can use fractions of numbers',
-                        //     // preprocess: function(input) {
-                        //     //     var value;
-                        //     //     value = input.value;
-                        //     //     value = value.replace(/\D/g, '');
-                        //     //     input.value = value += " YEARS";
-                        //     // },
-                        //     // validation: function(value) {
-                        //     //     var out;
-                        //     //     value = value.replace("YEARS", '');
-                        //     //     out = { value: value };
-                        //     //     if (false === J.isNumber(value) || value < 0) {
-                        //     //         out.err = 'Must be >= 0';
-                        //     //     }
-                        //     //     return out;
-                        //     // },
-                        //     placeholder: 'YEARS'
-                        // },
-
-
-                        // With sliders.
-                        // {
-                        //     id: 'T_impact_q1',
-                        //     // mainText: '<span style="font-weight: normal;color:gray;">Q1</span> ' +
-                        //     // 'A household living in ' + data.district +
-                        //     // ' with a total annual income ' + node.game.settings.money + '. <br><br>' +
-                        //     // 'How many years of life do you think people in this houseld lose because of air pollution?<br>',
-                        //     mainText: 'Please specify how many years of life they would lose.' +
-                        //     ' <span style="font-size: smaller; font-weight: normal">Movement required.</span><br><br>',
-                        //     hint: false,
-                        //     name: 'Slider',
-                        //     hidden: true,
-                        //     requiredChoice: true,
-                        //     // initialValue: Math.round((lifeLost / upperLimit) * 100),
-                        //     initialValue: 0,
-                        //     min: 0,
-                        //     max: 100,
-                        //     left: 0,
-                        //     right: upperLimit,
-                        //     displayNoChange: false,
-                        //     type: 'flat',
-                        //     panel: false,
-                        //     texts: texts
-                        // },
-
-                        // {
-                        //     id: 'T_impact_q2',
-                        //     mainText: '<span style="font-weight: normal;color:gray;">Q2</span> Think about <span style="color:#ff0000">YOURSELF</span> now.<br><br>' +
-                        //     'How many years of life do you think you lose because of air pollution?',
-                        //     name: 'Slider',
-                        //     hidden: true,
-                        //     requiredChoice: true,
-                        //     // initialValue: Math.round((lifeLost / upperLimit) * 100),
-                        //     initialValue: 0,
-                        //     min: 0,
-                        //     max: 100,
-                        //     left: 0,
-                        //     right: upperLimit,
-                        //     displayNoChange: false,
-                        //     type: 'flat',
-                        //     panel: false,
-                        //     texts: texts
-                        // }
                     ]
                 });
 
@@ -1589,10 +1184,6 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
 
                 node.widgets.last.addForm({
                     id: 'T_impact_family',
-                    // mainText: '<span style="font-weight: normal;color:gray;">Q1</span> ' +
-                    // 'A household living in ' + data.district +
-                    // ' with a total annual income ' + node.game.settings.money + '. <br><br>' +
-                    // 'How many years of life do you think people in this houseld lose because of air pollution?<br>',
                     mainText: 'Please specify how many years of life you think they are losing.' +
                     ' <span style="font-size: small; font-weight: normal">(Movement required.)</span><br><br>',
                     hint: false,
@@ -1623,10 +1214,6 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                     orientation: 'H',
                     mainText: '<span style="font-weight: normal;color:gray;">Q2</span> Think about <span style="color:#ff0000">YOURSELF</span> now.<br><br>' +
                               'Are you losing more or less years of life than the average?',
-                    // mainText: '<span style="font-weight: normal;color:gray;">Q1</span> ' +
-                    // 'A household in ' + data.district +
-                    // ' with a total annual income ' + node.game.settings.money +
-                    // ' would lose more or less years of life than the average?',
                     choices: node.game.choicesMoreOrLess,
                     requiredChoice: true
                 });
@@ -1654,10 +1241,6 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
 
                 node.widgets.last.addForm({
                     id: 'T_impact_you',
-                    // mainText: '<span style="font-weight: normal;color:gray;">Q1</span> ' +
-                    // 'A household living in ' + data.district +
-                    // ' with a total annual income ' + node.game.settings.money + '. <br><br>' +
-                    // 'How many years of life do you think people in this houseld lose because of air pollution?<br>',
                     mainText: 'Please specify how many years of life you think YOU are losing.' +
                     ' <span style="font-size: small; font-weight: normal">(Movement required.)</span><br><br>',
                     hint: false,
@@ -1775,17 +1358,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                                     '$1.20', '$1.21', '$1.22', '$1.23', '$1.24', '$1.25', '$1.26', '$1.27', '$1.28', '$1.29',
                                     '$1.30', '$1.31', '$1.32', '$1.33', '$1.34', '$1.35', '$1.36', '$1.37', '$1.38', '$1.39',
                                     '$1.40', '$1.41', '$1.42', '$1.43', '$1.44', '$1.45', '$1.46', '$1.47', '$1.48', '$1.49',
-                                    '$1.50' //, '$1.51', '$1.52', '$1.53', '$1.54', '$1.55', '$1.56', '$1.57', '$1.58', '$1.59',
-                                    //'$1.60', '$1.61', '$1.62', '$1.63', '$1.64', '$1.65', '$1.66', '$1.67', '$1.68', '$1.69',
-                                    //'$1.70', '$1.71', '$1.72', '$1.73', '$1.74', '$1.75', '$1.76', '$1.77', '$1.78', '$1.79',
-                                    //'$1.80', '$1.81', '$1.82', '$1.83', '$1.84', '$1.85', '$1.86', '$1.87', '$1.88', '$1.89',
-                                    //'$1.90', '$1.91', '$1.92', '$1.93', '$1.94', '$1.95', '$1.96', '$1.97', '$1.98', '$1.99',
-                                    //'$2.00', '$2.01', '$2.02', '$2.03', '$2.04', '$2.05', '$2.06', '$2.07', '$2.08', '$2.09',
-                                    //'$2.10', '$2.11', '$2.12', '$2.13', '$2.14', '$2.15', '$2.16', '$2.17', '$2.18', '$2.19',
-                                    //'$2.20', '$2.21', '$2.22', '$2.23', '$2.24', '$2.25', '$2.26', '$2.27', '$2.28', '$2.29',
-                                    //'$2.30', '$2.31', '$2.32', '$2.33', '$2.34', '$2.35', '$2.36', '$2.37', '$2.38', '$2.39',
-                                    //'$2.40', '$2.41', '$2.42', '$2.43', '$2.44', '$2.45', '$2.46', '$2.47', '$2.48', '$2.49',
-                                    //'$2.50'
+                                    '$1.50'
                                 ];
                                 node.game.contributionAmount = contribution[(value)];
                                 return '<span style=\'color:green;font-size:20px;\'>Your contribution to fighting air pollution: ' + contribution[(value)] + '</span>';
@@ -1796,17 +1369,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                         id: 'info_cc',
                         name: 'ContentBox',
                         hidden: true,
-                        mainText: '' ,// '<div style="font-weight: normal; margin-left: 0">' +
-                            // 'Please confirm your contribution decision.' +
-                            // 'On the previous page, you indicated that you would like to use part of your bonus to support' +
-                            // ' an organization fighting air pollution.<br><br>',
-                            // ' Below, we ask you to confirm your choice. ' +
-                            // ' By clicking the "Yes, I confirm my contribution of<span id="amount4"></span>to the<span id="org2" style="display: contents"></span>." button below, you' +
-                            // ' authorize Dr. Tillmann Eymess (Heidelberg University, tillmann.eymess@awi.uni-heidelberg.de) to transfer the specified amount to the selected organization.<br><br>' +
-                            // ' After the study concludes, all contribution receipts will be' +
-                            // " available on our research group's webpage at" +
-                            // ' <a target="_blank" href="https://www.uni-heidelberg.de/fakultaeten/wiso/awi/professuren/umwelt/breathing.html">Heidelberg University</a>.<br>' +
-                            // ' If you click "No, I do not consent.", we will not be able to make the transfer in your name.'
+                        mainText: '' ,
                     },
                     {
                         id: 'CC2',
@@ -1889,14 +1452,6 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
 
         }
     });
-
-
-    // //////////////////////////////////////////////////////////////////////////
-    // // Introduction to donation
-    // stager.extendStep('Part3_Intro_stated_pref', {
-    //     name: "Part 3: What can you do?",
-    //     frame: 'Stated_preferences_intro.htm'
-    // });
 
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1995,14 +1550,6 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             }
         }
     });
-
-    // ///////////////////////////////////////////////////////////////////////////////
-    // /// Instructions FINAL QUESTIONS
-    // stager.extendStep('Instructions_Part_4', {
-    //     name: "Part 4: Instructions",
-    //     frame: 'Instructions_part4.htm'
-    // });
-
 
 
     ///////////////////////////////////////////////////////////////////////////////
@@ -2104,18 +1651,6 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                             ],
                         shuffleChoices: false,
                         requiredChoice: true
-                    },
-                    {
-                        id: 'income_top10',
-                        name: 'CustomInput',
-                        hidden: false,
-                        min: 0,
-                        type: 'int',
-                        requiredChoice: true,
-                        width: '95%',
-                        mainText: '<span style="font-weight: normal;color:gray;">Q12</span> In your opinion,' +
-                        ' what annual income is required to be in Group 10 (the richest 10%)?<br>',
-                        hint: '(Please indicate your answer in INR.)'
                     }
                 ]
             }

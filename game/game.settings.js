@@ -1,6 +1,6 @@
 /**
  * # Game settings definition file
- * Copyright(c) 2022 Anca Balietti <anca.balietti@gmail.com>
+ * Copyright(c) 2021 Anca Balietti <anca.balietti@gmail.com>
  * MIT Licensed
  *
  * The variables in this file will be sent to each client and saved under:
@@ -29,19 +29,48 @@ module.exports = {
      * used to initialize the game timer for the step.
      */
     TIMER: {
-        guess: 10000
+
+        'task_2_-_Counting': 120000,
+
+        'task_1_-_Slider': 120000
     },
 
     // # Game specific properties
 
-    // Number of game rounds to repeat.
-    ROUNDS: 4,
+    BASE_PAY: 1,
 
-    // Number of coins available each round.
-    COINS: 1,
+    BONUS_PAY: 1.5,
 
     // Exchange rate coins to dollars.
     EXCHANGE_RATE: 1,
+
+
+treatments: {
+
+    control: {
+        description: "Main control",
+        money: 'about 1,00,00,000 INR'
+    },
+
+    income_poor: {
+        description: "Manipulation to feel relatively rich",
+        money: 'less than 40,000 INR'
+    },
+
+
+    income_rich: {
+        description: "Manipulation to feel relatively poor",
+        money: 'more than 4,00,00,000 INR'
+    },
+
+    income_super_rich: {
+        description: "Manipulation to feel even more relatively poor",
+        money: 'more than 10,00,00,000 INR'
+    }
+
+
+}
+
 
     // # Treatments definition.
 
@@ -51,16 +80,16 @@ module.exports = {
     // If the `treatments` object is missing a treatment named _standard_
     // will be created automatically, and will contain all variables.
 
-    treatments: {
-
-        standard: {
-            description: "Longer time"
-        },
-
-        pressure: {
-            description: "Short times to take decisions",
-            guess: 5000
-        }
-
-    }
+    // treatments: {
+    //
+    //     standard: {
+    //         description: "Longer time"
+    //     },
+    //
+    //     pressure: {
+    //         description: "Short times to take decisions",
+    //         guess: 5000
+    //     }
+    //
+    // }
 };

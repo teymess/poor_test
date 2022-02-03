@@ -1,6 +1,6 @@
 /**
  * # Game setup
- * Copyright(c) 2022 Anca Balietti <anca.balietti@gmail.com>
+ * Copyright(c) 2021 Anca Balietti <anca.balietti@gmail.com>
  * MIT Licensed
  *
  * This file includes settings that are shared amongst all client types
@@ -12,7 +12,6 @@
  * ---
  */
 
- // Some imports, often used in setup.
  const path = require('path');
  const NDDB = require('NDDB');
  const J = require('JSUS').JSUS;
@@ -21,41 +20,43 @@
 
     let setup = {};
 
-    // ## verbosity
-    // Changes the quantity of output to console in the browser and Node.JS
-    // setup.verbosity = 1;
-
-    // ## debug
-    // Changes the behavior of nodeGame in relation to errors in the browser
-    // and Node.JS. If TRUE, errors are thrown and displayed.
     setup.debug = true;
 
-    // ## window
-    // Changes the appereance and some of the features in the browser.
-    setup.window = {
+    // setup.verbosity = 1;
 
-        // ### promptOnleave
-        // If TRUE, a popup window will ask users whether they want to
-        // leave the page.
+    setup.window = {
         promptOnleave: !setup.debug
     };
 
-    // Metadata.
-    // By default are as in package.json, but can be overwritten.
-    //
-    // setup.metadata = {
-    //    name: 'another name',
-    //    version: 'another version',
-    //    description: 'another descr'
-    // };
+    // Create DB.
 
-    // Environment variables. Can be retrieved via `node.env('foo')`,
-    // or be used to conditionally execute a function:
-    // `node.env('foo', function(foo) { ... })`.
-    //
-    // setup.env = {
-    //    foo: false
-    // };
+    let pollutionDb = NDDB.db();
+
+    // Create a map of state/district for convenience.
+    setup.districts = {};
+    pollutionDb.on('insert', item => {
+        let d = setup.districts;
+        if (!d[item.state]) d[item.state] = [];
+        d[item.state].push(item.district);
+    });
+
+    // Creates a list of states for convenience.
+    setup.states = [];
+    pollutionDb.on('insert', item => {
+        let s = setup.states;
+        if (!J.inArray(item.state, s)) s.push(item.state);
+    });
+
+    // Index every district for faster retrieval.
+    pollutionDb.index('district');
+
+    pollutionDb.loadSync(path.join(dir, 'private', 'combined_pollution_data.csv'), {
+        lineBreak: '\r\n'
+    });
+    console.log("Loaded csv file into database");
+
+    // Store db in setup.
+    setup.pollutionDb = pollutionDb;
 
     return setup;
 };

@@ -1,6 +1,6 @@
 /**
  * # Waiting Room settings
- * Copyright(c) 2022 Anca Balietti <anca.balietti@gmail.com>
+ * Copyright(c) 2021 Anca Balietti <anca.balietti@gmail.com>
  * MIT Licensed
  *
  * Waiting Room settings.
@@ -96,22 +96,24 @@ module.exports = {
      *           return treatments[dispatchCounter % treatments.length];
      *       }
      */
-    CHOSEN_TREATMENT: function(treatments, roomCounter,
-                               groupIdx, dispatchCounter) {
+     CHOSEN_TREATMENT: "treatment_latin_square",
 
-        // - treatments: array of available treatments.
-        // - roomCounter: total number of room created (it is initialized to
-        //                the last created room as loaded in the data folder).
-        // - groupIdx: zero-based group index within same dispatch
-        //             (when POOL_SIZE > GROUP_SIZE).
-        // - dispatchCounter: total number of dispatch calls (a dispatch can
-        //                    send players to an existing room, so it may
-        //                    differ from roomCounter).
-
-        // console.log(roomCounter, batchCounter, dispatchCounter);
-
-        return treatments[roomCounter % treatments.length];
-    },
+    // CHOSEN_TREATMENT: function(treatments, roomCounter,
+    //                            groupIdx, dispatchCounter) {
+    //
+    //     // - treatments: array of available treatments.
+    //     // - roomCounter: total number of room created (it is initialized to
+    //     //                the last created room as loaded in the data folder).
+    //     // - groupIdx: zero-based group index within same dispatch
+    //     //             (when POOL_SIZE > GROUP_SIZE).
+    //     // - dispatchCounter: total number of dispatch calls (a dispatch can
+    //     //                    send players to an existing room, so it may
+    //     //                    differ from roomCounter).
+    //
+    //     // console.log(roomCounter, batchCounter, dispatchCounter);
+    //
+    //     return treatments[roomCounter % treatments.length];
+    // },
 
     /**
     * ## ROTATION_OFFSET (integer > 0) Optional
@@ -470,7 +472,7 @@ module.exports = {
          * If TRUE, plays default sound, if string plays the file sound
          * located at the specified uri.
          */
-        // dispatch: false
+        dispatch: false
     },
 
     /** ### ALLOW_PLAY_WITH_BOTS
