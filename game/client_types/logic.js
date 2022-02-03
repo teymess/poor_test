@@ -1,6 +1,6 @@
 /**
  * # Logic type implementation of the game stages
- * Copyright(c) 2022 Anca Balietti <anca.balietti@gmail.com>
+ * Copyright(c) 2021 Anca Balietti <anca.balietti@gmail.com>
  * MIT Licensed
  *
  * http://www.nodegame.org
@@ -25,70 +25,107 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
 
     stager.setOnInit(function() {
 
+        memory.stream();
+
         // Feedback.
         memory.view('feedback').stream({
-            header: [ 'time', 'timestamp', 'player', 'feedback' ],
-            format: 'csv'
+            format: 'csv',
+            header: [ 'time', 'timestamp', 'player', 'feedback' ]
         });
 
         // Email.
         memory.view('email').stream({
-            header: [ 'timestamp', 'player', 'email' ],
-            format: 'csv'
+            format: 'csv',
+            header: [ 'timestamp', 'player', 'email' ]
         });
 
-        // Win.
-        memory.view('win').stream({
-            header: [
-                'session', 'player', 'round', 'greater', 'number', 'win'
-            ],
-            adapter: { number: 'randomnumber' },
-            format: 'csv'
-        });
+        memory.index('district_player', item => {
+            if (item.stepId === 'Part_1_q3') return item.player;
+        })
 
-        // Update player's guess with information if he or she won.
-        memory.on('insert', (item) => {
-            if (node.game.isStep('guess', item.stage)) {
-                // Determine if player's guess is correct.
-                let greater = item.greater;
-                let r = J.randomInt(0, 10);
-                let win = (r > 5 && greater) || (r <= 5 && !greater);
-                item.randomnumber = r;
-                item.win = win;
-                // Update earnings if player won.
-                if (win) gameRoom.updateWin(item.player, settings.COINS);
+        node.on.data('done', function(msg) {
+
+            let id = msg.from;
+            let step = node.game.getStepId(msg.stage);
+
+
+            // if (step === 'task_1_-_Slider') {
+            //     let bonus = msg.data.effort_slider * settings.TASK_1_BONUS;
+            //     gameRoom.updateWin(id, bonus);
+            // }
+            // else if (step === 'task_2_-_Counting') {
+            //     let bonus = msg.data.effort_count * settings.TASK_2_BONUS;
+            //     gameRoom.updateWin(id, bonus);
+            // }
+
+            if (step === 'Part3_Time_to_act!') {
+                console.log(msg.data);
+                let bonus = 1.5*(msg.data.D_f_c2.value / 100);
+                if (msg.data.CC1.value==='confirm') {
+                    gameRoom.updateWin(id, (1.5 - bonus));
+                }
+                else {
+                    //node.game.contributionAmount = bonus;
+                    gameRoom.updateWin(id, 1.5);
+                }
+            }
+
+            else if (step === 'feedback') {
+
+                // Saves bonus file, and notifies player.
+                //gameRoom.updateWin(id,settings.WIN);
+
+                let db = memory.player[id];
+
+                // Select all 'done' items and save its time.
+                db.save('times.csv', {
+                    header: [
+                        'session', 'player', 'stage', 'step', 'round',
+                        'time', 'timeup'
+                    ],
+                    append: true
+                });
+
+                db.save('survey.csv', {
+                    header: 'all',
+                    append: true,
+                    flatten: true,
+                    objectLevel: 3
+                });
             }
         });
 
-        node.on('get.result', function(msg) {
-            let item = memory.player[msg.from].last();
-            return {
-                greater: item.greater,
-                randomnumber: item.randomnumber,
-                win: item.win
-            };
-        });
-
-        node.on.data('WIN', function(msg) {
-
-            let id = msg.from;
-
-            // Saves bonus file, and notifies player.
+        node.on.data('end',function(message) {
+            let id = message.from;
             gameRoom.computeBonus({
                 append: true,
-                clients: [ id ]
-            });
-
-            let db = memory.player[id];
-            // Select all 'done' items and save its time.
-            db.select('done').save('times.csv', {
-                header: [
-                    'session', 'player', 'stage', 'step', 'round',
-                    'time', 'timeup'
-                ],
-                append: true
+                clients: [ id ],
+                amt: true
             });
         });
+
+        node.on('get.districts', function(msg) {
+            let state = msg.data;
+            return setup.districts[state];
+        });
+
+        node.on('get.districtData', function(msg) {
+            // Get item from database.
+
+            // FOR EXPERIMENT.
+            let district = memory.district_player.get(msg.from);
+            // Actual district.
+              console.log(district);
+              district = district.forms.district.value;
+            // END FOR EXPERIMENT.
+
+            // FOR QUICK TESTING.
+            // let district = 'Nicobar Islands'
+            // END FOR QUICK TESTING.
+
+            return setup.pollutionDb.district.get(district);
+        });
+
     });
 
     stager.setOnGameOver(function() {
