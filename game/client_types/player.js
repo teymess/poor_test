@@ -655,10 +655,11 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
 
     //////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////
-    //////////////////////////////////////////////////////////////////////////
+    // PART II
     //////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////
 
+    // Instructions Part II
     stager.extendStep('Instructions_Part_2', {
         name: 'Part 2: Instructions',
         frame: 'instructions_part2.htm'
@@ -880,7 +881,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
 
     //////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////
-    //////////////////////////////////////////////////////////////////////////
+    // PART III
     //////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////
 
@@ -912,12 +913,12 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                 'responses since you did not devote your full attention ' +
                 'to the questions so far?</p><br/>',
             choices: [
-                'Yes, I have devoted full attention to the questions so ' +
+                ['Yes', 'Yes, I have devoted full attention to the questions so ' +
                     'far and I think you should use my responses for ' +
-                    'your study',
-                'No, I have not devoted full attention to the questions ' +
+                    'your study'],
+                ['No', 'No, I have not devoted full attention to the questions ' +
                     'so far and I think you should not use my ' +
-                    'responses for your study'
+                    'responses for your study']
             ],
             orientation: 'V',
             requiredChoice: true,
@@ -958,7 +959,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                         id: 'P3_q1_1',
                         orientation: 'H',
                         mainText: '<span style="font-weight: normal;color:gray;">Q1</span> Think of a household living ' +
-                                  'in the same district as you and earning a total annual income of XXX INR.<br><br>'+
+                                  'in the same district as you and earning a total annual income of XXX_LOW INR.<br><br>'+
                                   'In your opinion, which income group is this household part of?',
                         choices: [
                             ['Group 1', '<span style=\'font-size:14px;font-weight:normal;\'>Group 1</span>'],
@@ -991,6 +992,144 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
     });
 
 
+    ////////////////////////////////////////////////////
+    // TREATMENT: Income HIGH
+    //////////////////////////////////////
+    stager.extendStep('Part3_T_Income_High', {
+        name: "Part 3: Your opinion",
+        cb: function() {
+            W.cssRule('table.choicetable td { text-align: center !important; ' +
+            'font-weight: normal; padding-left: 10px; }');
+        },
+        widget: {
+            name: 'ChoiceManager',
+            id: 'P3_q1',
+            options: {
+                simplify: true,
+                mainText: '<span style=\'font-size:18px;font-weight:normal;\'>Assume the entire ' +
+                          'population living in <b>your district</b> is divided into 5 income groups, '+
+                          'each with the same number of households. The figure below illustrates ' +
+                          'the 5 groups, ordered from left to right from the poorest 20% '+
+                          'to the richest 20%.' +
+                '</span><br><br><img src="https://i.ibb.co/09Y0hw2/5-groups.png" alt="Indian-groups" border="0" width="800px"></a><br><br>',
+                forms: [
+                    {
+                        id: 'P3_q1_1',
+                        orientation: 'H',
+                        mainText: '<span style="font-weight: normal;color:gray;">Q1</span> Think of a household living ' +
+                                  'in the same district as you and earning a total annual income of XXX_HIGH INR.<br><br>'+
+                                  'In your opinion, which income group is this household part of?',
+                        choices: [
+                            ['Group 1', '<span style=\'font-size:14px;font-weight:normal;\'>Group 1</span>'],
+                            ['Group 2', '<span style=\'font-size:14px;font-weight:normal;\'>Group 2</span>'],
+                            ['Group 3', '<span style=\'font-size:14px;font-weight:normal;\'>Group 3</span>'],
+                            ['Group 4', '<span style=\'font-size:14px;font-weight:normal;\'>Group 4</span>'],
+                            ['Group 5', '<span style=\'font-size:14px;font-weight:normal;\'>Group 5</span>'],
+                            ],
+                        shuffleChoices: false,
+                        requiredChoice: true
+                    },
+                    {
+                        id: 'P3_q1_2',
+                        orientation: 'H',
+                        mainText: '<span style="font-weight: normal;color:gray;">Q2</span> Think of YOUR household now. ' +
+                                  'In your opinion, which income group is YOUR household part of?',
+                        choices: [
+                            ['Group 1', '<span style=\'font-size:14px;font-weight:normal;\'>Group 1</span>'],
+                            ['Group 2', '<span style=\'font-size:14px;font-weight:normal;\'>Group 2</span>'],
+                            ['Group 3', '<span style=\'font-size:14px;font-weight:normal;\'>Group 3</span>'],
+                            ['Group 4', '<span style=\'font-size:14px;font-weight:normal;\'>Group 4</span>'],
+                            ['Group 5', '<span style=\'font-size:14px;font-weight:normal;\'>Group 5</span>'],
+                            ],
+                        shuffleChoices: false,
+                        requiredChoice: true
+                    }
+                ]
+            }
+        }
+    });
+
+    ////////////////////////////////////////////////////
+    // TREATMENT: Control Income
+    //////////////////////////////////////
+    stager.extendStep('Part3_T_Income_Control', {
+        name: "Part 3: Your opinion",
+        cb: function() {
+            W.cssRule('table.choicetable td { text-align: center !important; ' +
+            'font-weight: normal; padding-left: 10px; }');
+        },
+        widget: {
+            name: 'ChoiceManager',
+            id: 'P3_q1',
+            options: {
+                simplify: true,
+                mainText: '<span style=\'font-size:18px;font-weight:normal;\'>Assume the entire ' +
+                          'population living in <b>your district</b> is divided into 5 income groups, '+
+                          'each with the same number of households. The figure below illustrates ' +
+                          'the 5 groups, ordered from left to right from the poorest 20% '+
+                          'to the richest 20%.' +
+                '</span><br><br><img src="https://i.ibb.co/09Y0hw2/5-groups.png" alt="Indian-groups" border="0" width="800px"></a><br><br>',
+                forms: [
+                    {
+                        id: 'P3_q1_2',
+                        orientation: 'H',
+                        mainText: '<span style="font-weight: normal;color:gray;">Q2</span> Think of YOUR household. ' +
+                                  'In your opinion, which income group is YOUR household part of?',
+                        choices: [
+                            ['Group 1', '<span style=\'font-size:14px;font-weight:normal;\'>Group 1</span>'],
+                            ['Group 2', '<span style=\'font-size:14px;font-weight:normal;\'>Group 2</span>'],
+                            ['Group 3', '<span style=\'font-size:14px;font-weight:normal;\'>Group 3</span>'],
+                            ['Group 4', '<span style=\'font-size:14px;font-weight:normal;\'>Group 4</span>'],
+                            ['Group 5', '<span style=\'font-size:14px;font-weight:normal;\'>Group 5</span>'],
+                            ],
+                        shuffleChoices: false,
+                        requiredChoice: true
+                    }
+                ]
+            }
+        }
+    });
+
+    ////////////////////////////////////////////////////
+    // TREATMENT: Control Corrected Income
+    //////////////////////////////////////
+    stager.extendStep('Part3_T_Income_Corr_Control', {
+        name: "Part 3: Your opinion",
+        cb: function() {
+            W.cssRule('table.choicetable td { text-align: center !important; ' +
+            'font-weight: normal; padding-left: 10px; }');
+        },
+        widget: {
+            name: 'ChoiceManager',
+            id: 'P3_q1',
+            options: {
+                simplify: true,
+                mainText: '<span style=\'font-size:18px;font-weight:normal;\'>Assume the entire ' +
+                          'population living in <b>your district</b> is divided into 5 income groups, '+
+                          'each with the same number of households. The figure below illustrates ' +
+                          'the 5 groups, ordered from left to right from the poorest 20% '+
+                          'to the richest 20%.' +
+                '</span><br><br><img src="https://i.ibb.co/09Y0hw2/5-groups.png" alt="Indian-groups" border="0" width="800px"></a><br><br>',
+                forms: [
+                    {
+                        id: 'P3_q1_2',
+                        orientation: 'H',
+                        mainText: '<span style="font-weight: normal;color:gray;">Q2</span> Think of YOUR household. ' +
+                                  'In your opinion, which income group is YOUR household part of?',
+                        choices: [
+                            ['Group 1', '<span style=\'font-size:14px;font-weight:normal;\'>Group 1</span>'],
+                            ['Group 2', '<span style=\'font-size:14px;font-weight:normal;\'>Group 2</span>'],
+                            ['Group 3', '<span style=\'font-size:14px;font-weight:normal;\'>Group 3</span>'],
+                            ['Group 4', '<span style=\'font-size:14px;font-weight:normal;\'>Group 4</span>'],
+                            ['Group 5', '<span style=\'font-size:14px;font-weight:normal;\'>Group 5</span>'],
+                            ],
+                        shuffleChoices: false,
+                        requiredChoice: true
+                    }
+                ]
+            }
+        }
+    });
 
 
     /////// Income
