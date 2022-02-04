@@ -283,10 +283,11 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                         id: 'q4_3',
                         orientation: 'H',
                         mainText: '<span style="font-weight: normal;color:gray;">Q11</span> In 2020, what was the total annual income of your household?<br>' +
-                        '<span style="font-weight: normal;"> Please refer to the <strong>total income</strong> of ALL members living in your household in 2020.' +
-                        ' The household annual income includes total sum of income earned in your household in 2020, ' +
-                        'before any taxes or deductions. This includes wages and salaries from all jobs ' +
-                        '(incl. in-kind payments valued at retail price), the revenue from self-employment, and all income from casual labour.</span>',
+                        '<span style="font-weight: normal;"> Please refer to the total income of ALL members living in your household in 2020, ' +
+                        'before any taxes or deductions. This includes:<br> '+
+                        '- wages and salaries from all jobs <br>' +
+                        '- the revenue from self-employment <br>' +
+                        '- all income from casual labour.</span>',
                         choices: ['Less than 2,00,000 INR',
                                   '2,00,000 INR – 5,00,000 INR',
                                   '5,00,000 INR – 10,00,000 INR',
@@ -951,12 +952,12 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                           'each with the same number of households. The figure below illustrates ' +
                           'the 5 groups, ordered from left to right from the poorest 20% '+
                           'to the richest 20%.' +
-                '</span><br><br><img src="https://i.ibb.co/sbMXxDd/District-groups.png" alt="Indian-groups" border="0" width="800px"></a><br><br>',
+                '</span><br><br><img src="https://i.ibb.co/09Y0hw2/5-groups.png" alt="Indian-groups" border="0" width="800px"></a><br><br>',
                 forms: [
                     {
                         id: 'P3_q1_1',
                         orientation: 'H',
-                        mainText: '<span style="font-weight: normal;color:gray;">Q1</span> Think of a household living' +
+                        mainText: '<span style="font-weight: normal;color:gray;">Q1</span> Think of a household living ' +
                                   'in the same district as you and earning a total annual income of XXX INR.<br><br>'+
                                   'In your opinion, which income group is this household part of?',
                         choices: [
@@ -972,7 +973,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                     {
                         id: 'P3_q1_2',
                         orientation: 'H',
-                        mainText: '<span style="font-weight: normal;color:gray;">Q2</span> Think of YOUR household now.' +
+                        mainText: '<span style="font-weight: normal;color:gray;">Q2</span> Think of YOUR household now. ' +
                                   'In your opinion, which income group is YOUR household part of?',
                         choices: [
                             ['Group 1', '<span style=\'font-size:14px;font-weight:normal;\'>Group 1</span>'],
@@ -1044,8 +1045,8 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             //         ]
             //     });
 
-                W.show('data', 'flex');
-                node.game.doneButton.enable();
+                // W.show('data', 'flex');
+                // node.game.doneButton.enable();
             });
         },
         done: function() {
