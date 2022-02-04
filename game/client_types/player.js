@@ -89,10 +89,6 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
     //////////////////////////////////////////////////////////////////////////
     // START OF THE SURVEY
     //////////////////////////////////////////////////////////////////////////
-    //
-    // stager.extendStage('Part1_Survey', {
-    //     frame: 'survey.htm'
-    // });
 
     //////////////////////////////////////////////////////////////////////////
     // Page 1. Language
@@ -144,13 +140,6 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                         mainText: '<span style="font-weight: normal;color:gray;">Q1b</span> Please specify your language.',
                         width: '95%',
                         hidden: true,
-                        requiredChoice: true,
-                    },
-                    {
-                        name: 'CustomInput',
-                        id: 'q1_3',
-                        mainText: '<span style="font-weight: normal;color:gray;">Q2</span> What is your favorite color?',
-                        width: '95%',
                         requiredChoice: true,
                     }
                 ]
