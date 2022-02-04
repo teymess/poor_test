@@ -21,7 +21,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
 
     stager
     .stage('Part_1_Survey')
-    .step('Part_1_q1')
+    // .step('Part_1_q1')
     .step('Part_1_q2')
     .step('Part_1_q3')
     .step('Part_1_q4')

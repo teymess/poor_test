@@ -90,62 +90,62 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
     // START OF THE SURVEY
     //////////////////////////////////////////////////////////////////////////
 
-    //////////////////////////////////////////////////////////////////////////
-    // Page 1. Language
-    stager.extendStep('Part_1_q1', {
-        name: "Part 1: Survey",
-        cb: function() {
-            // Modify CSS rules on the fly.
-            W.cssRule('.choicetable-left, .choicetable-right ' +
-            '{ width: 200px !important; }');
-
-            W.cssRule('table.choicetable td { text-align: left !important; ' +
-            'font-weight: normal; padding-left: 10px; }');
-        },
-        // Make a widget step.
-        widget: {
-            name: 'ChoiceManager',
-            id: 'q1',
-            options: {
-                simplify: true,
-                mainText: '',
-                forms: [
-                    {
-                        id: 'q1_1',
-                        orientation: 'H',
-                        mainText: '<span style="font-weight: normal;color:gray;">Q1</span> What language do you speak at home?',
-                        choices: ['English', 'Assamese','Bengali','Bodo','Dogri',
-                        'Gujarati','Hindi','Kannada','Kashmiri','Konkani',
-                        'Maithili','Malayalam','Marathi','Mora','Meitei','Nepali',
-                        'Odia','Punjabi','Sanskrit','Santali','Sindhi','Tamil',
-                        'Telugu','Urdu','Other'],
-                        shuffleChoices: false,
-                        requiredChoice: true,
-                        // Number of choices per row/column.
-                        choicesSetSize: 6,
-                        onclick: function(value, removed) {
-                            var w, forms, len;
-                            forms = node.widgets.lastAppended.formsById
-                            len = forms.q1_1.choices.length - 1;
-                            w = forms.q1_2;
-                            if (this.isChoiceCurrent(len)) w.show();
-                            else w.hide();
-
-                            W.adjustFrameHeight();
-                        }
-                    },
-                    {
-                        name: 'CustomInput',
-                        id: 'q1_2',
-                        mainText: '<span style="font-weight: normal;color:gray;">Q1b</span> Please specify your language.',
-                        width: '95%',
-                        hidden: true,
-                        requiredChoice: true,
-                    }
-                ]
-            }
-        }
-    });
+    // //////////////////////////////////////////////////////////////////////////
+    // // Page 1. Language
+    // stager.extendStep('Part_1_q1', {
+    //     name: "Part 1: Survey",
+    //     cb: function() {
+    //         // Modify CSS rules on the fly.
+    //         W.cssRule('.choicetable-left, .choicetable-right ' +
+    //         '{ width: 200px !important; }');
+    //
+    //         W.cssRule('table.choicetable td { text-align: left !important; ' +
+    //         'font-weight: normal; padding-left: 10px; }');
+    //     },
+    //     // Make a widget step.
+    //     widget: {
+    //         name: 'ChoiceManager',
+    //         id: 'q1',
+    //         options: {
+    //             simplify: true,
+    //             mainText: '',
+    //             forms: [
+    //                 {
+    //                     id: 'q1_1',
+    //                     orientation: 'H',
+    //                     mainText: '<span style="font-weight: normal;color:gray;">Q1</span> What language do you speak at home?',
+    //                     choices: ['English', 'Assamese','Bengali','Bodo','Dogri',
+    //                     'Gujarati','Hindi','Kannada','Kashmiri','Konkani',
+    //                     'Maithili','Malayalam','Marathi','Mora','Meitei','Nepali',
+    //                     'Odia','Punjabi','Sanskrit','Santali','Sindhi','Tamil',
+    //                     'Telugu','Urdu','Other'],
+    //                     shuffleChoices: false,
+    //                     requiredChoice: true,
+    //                     // Number of choices per row/column.
+    //                     choicesSetSize: 6,
+    //                     onclick: function(value, removed) {
+    //                         var w, forms, len;
+    //                         forms = node.widgets.lastAppended.formsById
+    //                         len = forms.q1_1.choices.length - 1;
+    //                         w = forms.q1_2;
+    //                         if (this.isChoiceCurrent(len)) w.show();
+    //                         else w.hide();
+    //
+    //                         W.adjustFrameHeight();
+    //                     }
+    //                 },
+    //                 {
+    //                     name: 'CustomInput',
+    //                     id: 'q1_2',
+    //                     mainText: '<span style="font-weight: normal;color:gray;">Q1b</span> Please specify your language.',
+    //                     width: '95%',
+    //                     hidden: true,
+    //                     requiredChoice: true,
+    //                 }
+    //             ]
+    //         }
+    //     }
+    // });
 
     //////////////////////////////////////////////////////////////////////////
     // Page 2. Year of birth
@@ -1131,8 +1131,8 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
         }
     });
 
-
-    /////// Income
+    ////////////////////////////////////////////////////////////////////////////
+    /////// LYL OWN
     stager.extendStep('Part3_Impact', {
         name: 'Part 3: Your opinion',
         frame: 'Impact_on_you.htm',
@@ -1164,28 +1164,28 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
               ];
 
 
-            // node.game.Q_impact = node.widgets.append('ChoiceManager', "T_impact", {
-            //         id: 'T_impact_q',
-            //         // ref: 'controlQuestions',
-            //         simplify: true,
-            //         panel: false,
-            //         forms: [
-            //             {
-            //                 id: 'T_impact_more_or_less',
-            //                 orientation: 'H',
-            //                 mainText: '<span style="font-weight: normal;color:gray;">Q1</span> ' +
-            //                           'Think about a household living in ' + data.district +
-            //                           ' with a total annual income of ' + node.game.settings.money + '. <br><br>' +
-            //                           'Is this household losing more or less years of life than the average?',
-            //                 choices: choicesMoreOrLess,
-            //                 requiredChoice: true,
-            //                 hidden: true
-            //             },
-            //         ]
-            //     });
+            node.game.Q_impact = node.widgets.append('ChoiceManager', "T_impact", {
+                    id: 'T_impact_q',
+                    // ref: 'controlQuestions',
+                    simplify: true,
+                    panel: false,
+                    forms: [
+                        {
+                            id: 'T_impact_more_or_less',
+                            orientation: 'H',
+                            mainText: '<span style="font-weight: normal;color:gray;">Q1</span> ' +
+                                      'Think about a household living in ' + data.district +
+                                      ' with a total annual income of ' + node.game.settings.money + '. <br><br>' +
+                                      'Is this household losing more or less years of life than the average?',
+                            choices: choicesMoreOrLess,
+                            requiredChoice: true,
+                            hidden: true
+                        },
+                    ]
+                });
 
-                // W.show('data', 'flex');
-                // node.game.doneButton.enable();
+                W.show('data', 'flex');
+                node.game.doneButton.enable();
             });
         },
         done: function() {
@@ -1203,13 +1203,13 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                 return false;
             }
 
-            // // DISPLAY 2.
-            // q0 = w.formsById.T_impact_more_or_less;
-            // if (q0.isHidden()) {
-            //     q0.reset(); // removes error.
-            //     q0.show();
-            //     return false;
-            // }
+            // DISPLAY 2.
+            q0 = w.formsById.T_impact_more_or_less;
+            if (q0.isHidden()) {
+                q0.reset(); // removes error.
+                q0.show();
+                return false;
+            }
 
             // Define the slider update function.
 
@@ -1230,45 +1230,45 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             avg2 = '<span style="font-size: small; font-style: italic">(2x average)</span>';
 
             // DISPLAY 3.
-            // q1 = w.formsById.T_impact_family;
-            // v = q0.getValues({ markAttempt: false }).value;
-            // q0.disable();
-            // if (v !== 'same' && !q1) {
-            //
-            //     if (v === 'less') {
-            //         left = Math.max(0, (lifeLost - 2*lifeLost));
-            //         if (left !== 0) left = left.toFixed(2);
-            //         right = avg + ' ' + lifeLost;
-            //         initialValue = 100;
-            //     }
-            //     else {
-            //         left = lifeLost + ' ' + avg;
-            //         right = avg2 + ' ' + 2*lifeLost;
-            //         initialValue = 0;
-            //     }
-            //
-            //     node.widgets.last.addForm({
-            //         id: 'T_impact_family',
-            //         mainText: 'Please specify how many years of life you think they are losing.' +
-            //         ' <span style="font-size: small; font-weight: normal">(Movement required.)</span><br><br>',
-            //         hint: false,
-            //         name: 'Slider',
-            //         requiredChoice: true,
-            //         // initialValue: Math.round((lifeLost / upperLimit) * 100),
-            //         initialValue: initialValue,
-            //         min: 0,
-            //         max: 100,
-            //         left: left,
-            //         right: right,
-            //         displayNoChange: false,
-            //         type: 'flat',
-            //         panel: false,
-            //         texts: { currentValue: text }
-            //     });
-            //
-            //     return false;
-            //
-            // }
+            q1 = w.formsById.T_impact_family;
+            v = q0.getValues({ markAttempt: false }).value;
+            q0.disable();
+            if (v !== 'same' && !q1) {
+
+                if (v === 'less') {
+                    left = Math.max(0, (lifeLost - 2*lifeLost));
+                    if (left !== 0) left = left.toFixed(2);
+                    right = avg + ' ' + lifeLost;
+                    initialValue = 100;
+                }
+                else {
+                    left = lifeLost + ' ' + avg;
+                    right = avg2 + ' ' + 2*lifeLost;
+                    initialValue = 0;
+                }
+
+                node.widgets.last.addForm({
+                    id: 'T_impact_family',
+                    mainText: 'Please specify how many years of life you think they are losing.' +
+                    ' <span style="font-size: small; font-weight: normal">(Movement required.)</span><br><br>',
+                    hint: false,
+                    name: 'Slider',
+                    requiredChoice: true,
+                    // initialValue: Math.round((lifeLost / upperLimit) * 100),
+                    initialValue: initialValue,
+                    min: 0,
+                    max: 100,
+                    left: left,
+                    right: right,
+                    displayNoChange: false,
+                    type: 'flat',
+                    panel: false,
+                    texts: { currentValue: text }
+                });
+
+                return false;
+
+            }
 
             // DISPLAY 4.
             q2 = w.formsById.T_impact_more_or_less_you;
@@ -1329,6 +1329,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             return w.getValues();
         }
     });
+
 
     ///////////////////////////////////////////////////////////////////////////////
     /// SENTIMENT
