@@ -1137,6 +1137,20 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
         name: 'Part 3: Your opinion',
         frame: 'Impact_on_you.htm',
         donebutton: false,
+        widget: {
+            name: 'ChoiceManager',
+            panel: false,
+            forms: [
+                // Just to create the choice manager
+                // without an empty forms array.
+                {
+                    id: 'T_dummy',
+                    hidden: true,
+                    mainText: 'Nothing',
+                    choices: [0, 1]
+                }
+            ]
+        },
         cb: function() {
             node.get('districtData', function(data) {
 
@@ -1157,7 +1171,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                 W.setInnerHTML('years', lifeLost);
 
 
-              var choicesMoreOrLess = node.game.choicesMoreOrLess = [
+              node.game.choicesMoreOrLess = [
                   [ 'less', 'Less than ' + lifeLost  + ' years' ],
                   [ 'same', 'About ' + lifeLost  + ' years' ],
                   [ 'more', 'More than ' + lifeLost  + ' years' ]
@@ -1190,11 +1204,10 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
         },
         done: function() {
             var q2, q3, v, intro, left, right, text, initialValue;
-            var lifeLost, avg, avg2;
+            var lifeLost, avg, avg2, w;
 
             lifeLost = node.game.lifeLost;
 
-            // w = node.game.Q_impact;
 
             // DISPLAY 1.
             intro = W.gid('intro');
@@ -1269,10 +1282,13 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             //
             // }
 
+
+            w = node.widgets.last;
+
             // DISPLAY 4.
             q2 = w.formsById.T_impact_more_or_less_you;
             if (!q2) {
-                if (q1) q1.disable();
+                // if (q1) q1.disable();
                 node.widgets.last.addForm({
                     id: 'T_impact_more_or_less_you',
                     orientation: 'H',
