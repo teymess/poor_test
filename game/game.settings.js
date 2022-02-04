@@ -45,31 +45,31 @@ module.exports = {
     EXCHANGE_RATE: 1,
 
 
-treatments: {
-
-    control: {
-        description: "Main control",
-        money: 'about 1,00,00,000 INR'
-    },
-
-    income_poor: {
-        description: "Manipulation to feel relatively rich",
-        money: 'less than 40,000 INR'
-    },
-
-
-    income_rich: {
-        description: "Manipulation to feel relatively poor",
-        money: 'more than 4,00,00,000 INR'
-    },
-
-    income_super_rich: {
-        description: "Manipulation to feel even more relatively poor",
-        money: 'more than 10,00,00,000 INR'
-    }
-
-
-}
+// treatments: {
+//
+//     control: {
+//         description: "Main control",
+//         money: 'about 1,00,00,000 INR'
+//     },
+//
+//     income_poor: {
+//         description: "Manipulation to feel relatively rich",
+//         money: 'less than 40,000 INR'
+//     },
+//
+//
+//     income_rich: {
+//         description: "Manipulation to feel relatively poor",
+//         money: 'more than 4,00,00,000 INR'
+//     },
+//
+//     income_super_rich: {
+//         description: "Manipulation to feel even more relatively poor",
+//         money: 'more than 10,00,00,000 INR'
+//     }
+//
+//
+// }
 
 
     // # Treatments definition.
