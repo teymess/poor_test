@@ -1346,6 +1346,16 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                         choices: ['Very healthy','Healthy','Neutral','A bit unhealthy','Very unhealthy'],
                         shuffleChoices: false,
                         requiredChoice: true
+                    },
+                    {
+                        id: 'Part3_q5',
+                        orientation: 'H',
+                        mainText: '<span style="font-weight: normal;color:gray;">Q7</span> All things considered,' + 'how satisfied are you with your life as a whole these ' + 'days? <br>' +
+                        'Using a scale on which 1 means you are “completely dissatisfied” and 10 means you are “completely satisfied” where would you put your
+                        satisfaction with your life as a whole?',
+                        choices: ['1','2','3','4','5','6','7','8','9','10'],
+                        shuffleChoices: false,
+                        requiredChoice: true
                     }
                 ]
             }
