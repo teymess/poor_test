@@ -1652,30 +1652,28 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
 
     ///////////////////////////////////////////////////////////////////////////////
     /// FINAL QUESTIONS
-    stager.extendStep('Part3_About_yourself', {
+    stager.extendStep('Part3_Redistribution', {
         name: "Part 3: Your opinion",
         widget: {
             name: 'ChoiceManager',
             id: 'Part3_q',
             options: {
                 simplify: true,
-                mainText: '',
+                mainText: 'Now I would like you to tell me your views on ' + 'various issues. How would you place your views on this scale? <br>' + '1 means you agree completely with the statement on' +  'the left; 10 means you agree completely with the statement on' + 'the right; and if your views fall somewhere in between, you can choose any number in between.',
                 forms: [
                     {
-                        name: 'CustomInput',
                         id: 'Part3_q1',
-                        mainText: '<span style="font-weight: normal;color:gray;">Q7</span> How old are you?',
-                        width: '95%',
-                        type: 'int',
-                        min: 0,
-                        max: 100,
+                        mainText: '<span style="font-weight: normal;color:gray;">Q7</span> Incomes should be made ' +
+                        'more equal versus There should be greater incentives ' + 'for individual effort',
+                        choices: [ '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
                         requiredChoice: true,
                     },
                     {
                         id: 'Part3_q2',
                         orientation: 'V',
-                        mainText: 'What caste do you belong to?',
-                        choices: [ 'Upper caste', 'Lower caste (Scheduled caste / Scheduled tribe)', 'No caste / other'],
+                        mainText: '<span style="font-weight: normal;color:gray;">Q7</span> Government should ' +
+                        'take more responsibility to ensure that everyone ' +  'is provided for versus People should take more ' + 'responsibility to provide for themselves',
+                        choices: [ '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
                         requiredChoice: true
                     }
                 ]
@@ -1683,6 +1681,36 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
         }
     });
 
+    stager.extendStep('Part3_About_yourself', {
+        name: "Part 3: Your opinion",
+        widget: {
+            name: 'ChoiceManager',
+            id: 'Part3_qtest',
+            options: {
+                simplify: true,
+                mainText: '',
+                forms: [
+                    {
+                        name: 'CustomInput',
+                        id: 'Part3_q3',
+                        mainText: '<span style="font-weight: normal;color:gray;">Q9</span> How old are you?',
+                        width: '95%',
+                        type: 'int',
+                        min: 0,
+                        max: 100,
+                        requiredChoice: true,
+                    },
+                    {
+                        id: 'Part3_q4',
+                        orientation: 'V',
+                        mainText: '<span style="font-weight: normal;color:gray;">Q10</span> What caste do you belong to?',
+                        choices: [ 'Upper caste', 'Lower caste (Scheduled caste / Scheduled tribe)', 'No caste / other'],
+                        requiredChoice: true
+                    }
+                ]
+            }
+        }
+    });
 
 
     ////////////////////////////////////////////////////////////////////////////
