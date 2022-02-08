@@ -1675,12 +1675,54 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                         'take more responsibility to ensure that everyone ' +  'is provided for versus People should take more ' + 'responsibility to provide for themselves',
                         choices: [ '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
                         requiredChoice: true
+                    },
+                    {
+                        id: 'Part3_q3',
+                        orientation: 'V',
+                        mainText: '<span style="font-weight: normal;color:gray;">Q8</span> In the long run, hard work usually brings a better life ' +
+                        'versus ' +
+                        'Hard work doesn’t generally ' +
+                        'bring success —- it’s more a matter ' +
+                        'of luck and connections.',
+                        choices: [ '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
+                        requiredChoice: true
                     }
                 ]
             }
         }
     });
 
+    ///////////////////////////////////////////////////////////////////////////////
+    /// FINAL QUESTIONS
+    stager.extendStep('Part3_EnvJustice', {
+        name: "Part 3: Your opinion",
+        widget: {
+            name: 'ChoiceManager',
+            id: 'Part3_q',
+            options: {
+                simplify: true,
+                mainText: '',
+                forms: [
+                    {
+                        id: 'Part3_q4',
+                        mainText: '<span style="font-weight: normal;color:gray;">Q10</span> On a scale from 1 to 7 where 1 is “Completely fair”, 4 is “Neither fair nor unfair” and 7 is “Completely unfair”, indicate to what extent you think that it is fair or unfair that there are differences in exposure to air pollution among people living in India?',
+                        choices: [ '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
+                        requiredChoice: true,
+                    },
+                    {
+                        id: 'Part3_q5',
+                        orientation: 'V',
+                        mainText: '<span style="font-weight: normal;color:gray;">Q11</span> On a scale from 1 to 7 where 1 is “Completely fair”, 4 is “Neither fair nor unfair” and 7 is “Completely unfair”, indicate to what extent you think that it is fair or unfair that poor people are often more exposed to air pollution than rich people?',
+                        choices: [ '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
+                        requiredChoice: true
+                    }
+                ]
+            }
+        }
+    });
+
+
+    // Age and caste
     stager.extendStep('Part3_About_yourself', {
         name: "Part 3: Your opinion",
         widget: {
@@ -1692,7 +1734,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                 forms: [
                     {
                         name: 'CustomInput',
-                        id: 'Part3_q3',
+                        id: 'Part3_q6',
                         mainText: '<span style="font-weight: normal;color:gray;">Q9</span> How old are you?',
                         width: '95%',
                         type: 'int',
@@ -1701,7 +1743,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                         requiredChoice: true,
                     },
                     {
-                        id: 'Part3_q4',
+                        id: 'Part3_q7',
                         orientation: 'V',
                         mainText: '<span style="font-weight: normal;color:gray;">Q10</span> What caste do you belong to?',
                         choices: [ 'Upper caste', 'Lower caste (Scheduled caste / Scheduled tribe)', 'No caste / other'],
