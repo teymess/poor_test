@@ -1350,10 +1350,10 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                     {
                         id: 'Part3_q5',
                         orientation: 'H',
-                        mainText: '<span style="font-weight: normal;color:gray;">Q7</span> All things considered,' + 'how satisfied are you with your life as a whole these ' + 'days? <br>' +
-                        'Using a scale on which 1 means you are completely dissatisfied and 10 means you are completely satisfied where would you put your ' +
-                        'satisfaction with your life as a whole?',
-                        choices: ['1','2','3','4','5','6','7','8','9','10'],
+                        mainText: '<span style="font-weight: normal;color:gray;">Q7</span> All things considered, ' + 'how satisfied are you with your life as a whole these ' + 'days? <br>' +
+                        '<span style="font-weight: normal; font-size: 16px;"> Using a scale on which 1 means you are <em>completely dissatisfied</em> and 10 means you are <em>completely satisfied</em> where would you put your ' +
+                        'satisfaction with your life as a whole?</span>',
+                        choices: ['1 = Completely dissatisfied','2','3','4','5','6','7','8','9','10 = Completely satisfied'],
                         shuffleChoices: false,
                         requiredChoice: true
                     }
@@ -1654,37 +1654,44 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
     /// FINAL QUESTIONS
     stager.extendStep('Part3_Redistribution', {
         name: "Part 3: Your opinion",
+        cb: function() {
+            W.cssRule('button { width: 4%; height: 5%;}');
+        },
         widget: {
             name: 'ChoiceManager',
             id: 'Part3_q',
             options: {
                 simplify: true,
-                mainText: 'Now I would like you to tell me your views on ' + 'various issues. How would you place your views on this scale? <br>' + '1 means you agree completely with the statement on' +  'the left; 10 means you agree completely with the statement on' + 'the right; and if your views fall somewhere in between, you can choose any number in between.',
+                mainText: 'Now I would like you to tell me your views on ' + 'various issues. How would you place your views on a 7-point scale? <br>' +
+                '<span style="font-weight: normal; font-size: 15px;"> -  <strong>"1"</strong> means you agree completely with the statement on the left;<br> - <strong>"7"</strong> means you agree completely with the statement on the right;<br> - If your views fall somewhere in between, you can choose any number in between.</span>',
                 forms: [
                     {
                         id: 'Part3_q1',
-                        mainText: '<span style="font-weight: normal;color:gray;">Q7</span> Incomes should be made ' +
-                        'more equal versus There should be greater incentives ' + 'for individual effort',
-                        choices: [ '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
+                        mainText: '<span style="font-weight: normal;color:gray;">Q6</span> ',
+                        left: '<span style="font-size: smaller">"Incomes should be made more equal."</span>',
+                        right: '<span style="font-size: smaller">"There should be greater incentives for individual effort."</span>',
+                        // header: ['Incomes should'],
+                        choices: [ '1', '2', '3', '4', '5', '6', '7'],
                         requiredChoice: true,
                     },
                     {
                         id: 'Part3_q2',
-                        orientation: 'V',
-                        mainText: '<span style="font-weight: normal;color:gray;">Q7</span> Government should ' +
-                        'take more responsibility to ensure that everyone ' +  'is provided for versus People should take more ' + 'responsibility to provide for themselves',
-                        choices: [ '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
+                        orientation: 'H',
+                        mainText: '<span style="font-weight: normal;color:gray;">Q7</span>  ',
+                        left: '<span style="font-size: smaller">"Government should take more responsibility to ensure that everyone is provided for."</span>',
+                        right: '<span style="font-size: smaller">"People should take more responsibility to provide for themselves."</span>',
+                        choices: [ '1', '2', '3', '4', '5', '6', '7'],
                         requiredChoice: true
                     },
                     {
                         id: 'Part3_q3',
-                        orientation: 'V',
-                        mainText: '<span style="font-weight: normal;color:gray;">Q8</span> In the long run, hard work usually brings a better life ' +
-                        'versus ' +
-                        'Hard work doesn’t generally ' +
-                        'bring success —- it’s more a matter ' +
-                        'of luck and connections.',
-                        choices: [ '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
+                        orientation: 'H',
+                        mainText: '<span style="font-weight: normal;color:gray;">Q8</span> ',
+                        left: '<span style="font-size: smaller">"In the long run, hard work usually brings a better life."</span>',
+                        right: '<span style="font-size: smaller">"Hard work doesn’t generally ' +
+                        'bring success — it’s more a matter ' +
+                        'of luck and connections."</span>',
+                        choices: [ '1', '2', '3', '4', '5', '6', '7'],
                         requiredChoice: true
                     }
                 ]
@@ -1705,15 +1712,23 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                 forms: [
                     {
                         id: 'Part3_q4',
-                        mainText: '<span style="font-weight: normal;color:gray;">Q10</span> On a scale from 1 to 7 where 1 is Completely fair, 4 is Neither fair nor unfair and 7 is Completely unfair, indicate to what extent you think that it is fair or unfair that there are differences in exposure to air pollution among people living in India?',
-                        choices: [ '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
+                        mainText: '<span style="font-weight: normal;color:gray;">Q10</span> In your opinion, how fair or unfair is it that some people are exposed to higher levels of air pollution than others? <br>' +
+                        '<span style="font-weight: normal; font-size: 15px;"> To indicate your opinion, use a 10-point scale where "1" means <em>"Completely unfair"</em> and "10" means <em>"Completely fair"</em>.</span>',
+                        left: '<span style="font-size: smaller">Completely<br>unfair</span>',
+                        right: '<span style="font-size: smaller">Completely<br>fair</span>',
+                        // header: [ 'Unfair', '', '', '', '', '', '', '', '', 'Fair' ],
+                        choices: [ '&nbsp;1', '&nbsp;2', '&nbsp;3', '&nbsp;4', '&nbsp;5', '&nbsp;6', '&nbsp;7', '&nbsp;8', '&nbsp;9', '10'],
                         requiredChoice: true,
                     },
                     {
                         id: 'Part3_q5',
-                        orientation: 'V',
-                        mainText: '<span style="font-weight: normal;color:gray;">Q11</span> On a scale from 1 to 7 where 1 is Completely fair, 4 is Neither fair nor unfair and 7 is Completely unfair, indicate to what extent you think that it is fair or unfair that poor people are often more exposed to air pollution than rich people?',
-                        choices: [ '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
+                        orientation: 'H',
+                        mainText: '<span style="font-weight: normal;color:gray;">Q11</span> In your opinion, how fair or unfair is it that poor people are often more exposed to air pollution than rich people? <br>' +
+                        '<span style="font-weight: normal; font-size: 15px;"> To indicate your opinion, use a 10-point scale where "1" means <em>"Completely unfair"</em> and "10" means <em>"Completely fair"</em>.</span>',
+                        left: '<span style="font-size: smaller">Completely<br>unfair</span>',
+                        right: '<span style="font-size: smaller">Completely<br>fair</span>',
+                        // header: [ 'Unfair', '', '', '', '', '', '', '', '', 'Fair' ],
+                        choices: [ '&nbsp;1', '&nbsp;2', '&nbsp;3', '&nbsp;4', '&nbsp;5', '&nbsp;6', '&nbsp;7', '&nbsp;8', '&nbsp;9', '10'],
                         requiredChoice: true
                     }
                 ]
