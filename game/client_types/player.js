@@ -1351,8 +1351,8 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                         id: 'Part3_q5',
                         orientation: 'H',
                         mainText: '<span style="font-weight: normal;color:gray;">Q7</span> All things considered,' + 'how satisfied are you with your life as a whole these ' + 'days? <br>' +
-                        'Using a scale on which 1 means you are “completely dissatisfied” and 10 means you are “completely satisfied” where would you put your
-                        satisfaction with your life as a whole?',
+                        'Using a scale on which 1 means you are completely dissatisfied and 10 means you are completely satisfied where would you put your ' +
+                        'satisfaction with your life as a whole?',
                         choices: ['1','2','3','4','5','6','7','8','9','10'],
                         shuffleChoices: false,
                         requiredChoice: true
@@ -1705,14 +1705,14 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                 forms: [
                     {
                         id: 'Part3_q4',
-                        mainText: '<span style="font-weight: normal;color:gray;">Q10</span> On a scale from 1 to 7 where 1 is “Completely fair”, 4 is “Neither fair nor unfair” and 7 is “Completely unfair”, indicate to what extent you think that it is fair or unfair that there are differences in exposure to air pollution among people living in India?',
+                        mainText: '<span style="font-weight: normal;color:gray;">Q10</span> On a scale from 1 to 7 where 1 is Completely fair, 4 is Neither fair nor unfair and 7 is Completely unfair, indicate to what extent you think that it is fair or unfair that there are differences in exposure to air pollution among people living in India?',
                         choices: [ '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
                         requiredChoice: true,
                     },
                     {
                         id: 'Part3_q5',
                         orientation: 'V',
-                        mainText: '<span style="font-weight: normal;color:gray;">Q11</span> On a scale from 1 to 7 where 1 is “Completely fair”, 4 is “Neither fair nor unfair” and 7 is “Completely unfair”, indicate to what extent you think that it is fair or unfair that poor people are often more exposed to air pollution than rich people?',
+                        mainText: '<span style="font-weight: normal;color:gray;">Q11</span> On a scale from 1 to 7 where 1 is Completely fair, 4 is Neither fair nor unfair and 7 is Completely unfair, indicate to what extent you think that it is fair or unfair that poor people are often more exposed to air pollution than rich people?',
                         choices: [ '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
                         requiredChoice: true
                     }
