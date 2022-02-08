@@ -90,62 +90,6 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
     // START OF THE SURVEY
     //////////////////////////////////////////////////////////////////////////
 
-    // //////////////////////////////////////////////////////////////////////////
-    // // Page 1. Language
-    // stager.extendStep('Part_1_q1', {
-    //     name: "Part 1: Survey",
-    //     cb: function() {
-    //         // Modify CSS rules on the fly.
-    //         W.cssRule('.choicetable-left, .choicetable-right ' +
-    //         '{ width: 200px !important; }');
-    //
-    //         W.cssRule('table.choicetable td { text-align: left !important; ' +
-    //         'font-weight: normal; padding-left: 10px; }');
-    //     },
-    //     // Make a widget step.
-    //     widget: {
-    //         name: 'ChoiceManager',
-    //         id: 'q1',
-    //         options: {
-    //             simplify: true,
-    //             mainText: '',
-    //             forms: [
-    //                 {
-    //                     id: 'q1_1',
-    //                     orientation: 'H',
-    //                     mainText: '<span style="font-weight: normal;color:gray;">Q1</span> What language do you speak at home?',
-    //                     choices: ['English', 'Assamese','Bengali','Bodo','Dogri',
-    //                     'Gujarati','Hindi','Kannada','Kashmiri','Konkani',
-    //                     'Maithili','Malayalam','Marathi','Mora','Meitei','Nepali',
-    //                     'Odia','Punjabi','Sanskrit','Santali','Sindhi','Tamil',
-    //                     'Telugu','Urdu','Other'],
-    //                     shuffleChoices: false,
-    //                     requiredChoice: true,
-    //                     // Number of choices per row/column.
-    //                     choicesSetSize: 6,
-    //                     onclick: function(value, removed) {
-    //                         var w, forms, len;
-    //                         forms = node.widgets.lastAppended.formsById
-    //                         len = forms.q1_1.choices.length - 1;
-    //                         w = forms.q1_2;
-    //                         if (this.isChoiceCurrent(len)) w.show();
-    //                         else w.hide();
-    //
-    //                         W.adjustFrameHeight();
-    //                     }
-    //                 },
-    //                 {
-    //                     name: 'CustomInput',
-    //                     id: 'q1_2',
-    //                     mainText: '<span style="font-weight: normal;color:gray;">Q1b</span> Please specify your language.',
-    //                     width: '95%',
-    //                     hidden: true,
-    //                     requiredChoice: true,
-    //                 }
-    //             ]
-    //         }
-    //     }
-    // });
 
     //////////////////////////////////////////////////////////////////////////
     // Page 2. Year of birth
@@ -949,11 +893,11 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             options: {
                 simplify: true,
                 mainText: '<span style=\'font-size:18px;font-weight:normal;\'>Assume the entire ' +
-                          'population living in <b>your district</b> is divided into 5 income groups, '+
+                          'population living in <b>your district</b> is divided into 10 income groups, '+
                           'each with the same number of households. The figure below illustrates ' +
-                          'the 5 groups, ordered from left to right from the poorest 20% '+
-                          'to the richest 20%.' +
-                '</span><br><br><img src="https://i.ibb.co/09Y0hw2/5-groups.png" alt="Indian-groups" border="0" width="800px"></a><br><br>',
+                          'the 10 groups, ordered from left to right from the poorest 10% '+
+                          'to the richest 10%.' +
+                '</span><br><br><img src="https://i.ibb.co/sbMXxDd/District-groups.png" alt="Indian-groups" border="0" width="800px"></a><br><br>',
                 forms: [
                     {
                         id: 'P3_q1_1',
@@ -967,6 +911,11 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                             ['Group 3', '<span style=\'font-size:14px;font-weight:normal;\'>Group 3</span>'],
                             ['Group 4', '<span style=\'font-size:14px;font-weight:normal;\'>Group 4</span>'],
                             ['Group 5', '<span style=\'font-size:14px;font-weight:normal;\'>Group 5</span>'],
+                            ['Group 6', '<span style=\'font-size:14px;font-weight:normal;\'>Group 6</span>'],
+                            ['Group 7', '<span style=\'font-size:14px;font-weight:normal;\'>Group 7</span>'],
+                            ['Group 8', '<span style=\'font-size:14px;font-weight:normal;\'>Group 8</span>'],
+                            ['Group 9', '<span style=\'font-size:14px;font-weight:normal;\'>Group 9</span>'],
+                            ['Group 10', '<span style=\'font-size:14px;font-weight:normal;\'>Group 10</span>'],
                             ],
                         shuffleChoices: false,
                         requiredChoice: true
@@ -982,6 +931,11 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                             ['Group 3', '<span style=\'font-size:14px;font-weight:normal;\'>Group 3</span>'],
                             ['Group 4', '<span style=\'font-size:14px;font-weight:normal;\'>Group 4</span>'],
                             ['Group 5', '<span style=\'font-size:14px;font-weight:normal;\'>Group 5</span>'],
+                            ['Group 6', '<span style=\'font-size:14px;font-weight:normal;\'>Group 6</span>'],
+                            ['Group 7', '<span style=\'font-size:14px;font-weight:normal;\'>Group 7</span>'],
+                            ['Group 8', '<span style=\'font-size:14px;font-weight:normal;\'>Group 8</span>'],
+                            ['Group 9', '<span style=\'font-size:14px;font-weight:normal;\'>Group 9</span>'],
+                            ['Group 10', '<span style=\'font-size:14px;font-weight:normal;\'>Group 10</span>'],
                             ],
                         shuffleChoices: false,
                         requiredChoice: true
@@ -1007,11 +961,11 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             options: {
                 simplify: true,
                 mainText: '<span style=\'font-size:18px;font-weight:normal;\'>Assume the entire ' +
-                          'population living in <b>your district</b> is divided into 5 income groups, '+
+                          'population living in <b>your district</b> is divided into 10 income groups, '+
                           'each with the same number of households. The figure below illustrates ' +
-                          'the 5 groups, ordered from left to right from the poorest 20% '+
-                          'to the richest 20%.' +
-                '</span><br><br><img src="https://i.ibb.co/09Y0hw2/5-groups.png" alt="Indian-groups" border="0" width="800px"></a><br><br>',
+                          'the 10 groups, ordered from left to right from the poorest 10% '+
+                          'to the richest 10%.' +
+                '</span><br><br><img src="https://i.ibb.co/sbMXxDd/District-groups.png" alt="Indian-groups" border="0" width="800px"></a><br><br>',
                 forms: [
                     {
                         id: 'P3_q1_1',
@@ -1025,6 +979,11 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                             ['Group 3', '<span style=\'font-size:14px;font-weight:normal;\'>Group 3</span>'],
                             ['Group 4', '<span style=\'font-size:14px;font-weight:normal;\'>Group 4</span>'],
                             ['Group 5', '<span style=\'font-size:14px;font-weight:normal;\'>Group 5</span>'],
+                            ['Group 6', '<span style=\'font-size:14px;font-weight:normal;\'>Group 6</span>'],
+                            ['Group 7', '<span style=\'font-size:14px;font-weight:normal;\'>Group 7</span>'],
+                            ['Group 8', '<span style=\'font-size:14px;font-weight:normal;\'>Group 8</span>'],
+                            ['Group 9', '<span style=\'font-size:14px;font-weight:normal;\'>Group 9</span>'],
+                            ['Group 10', '<span style=\'font-size:14px;font-weight:normal;\'>Group 10</span>'],
                             ],
                         shuffleChoices: false,
                         requiredChoice: true
@@ -1040,6 +999,11 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                             ['Group 3', '<span style=\'font-size:14px;font-weight:normal;\'>Group 3</span>'],
                             ['Group 4', '<span style=\'font-size:14px;font-weight:normal;\'>Group 4</span>'],
                             ['Group 5', '<span style=\'font-size:14px;font-weight:normal;\'>Group 5</span>'],
+                            ['Group 6', '<span style=\'font-size:14px;font-weight:normal;\'>Group 6</span>'],
+                            ['Group 7', '<span style=\'font-size:14px;font-weight:normal;\'>Group 7</span>'],
+                            ['Group 8', '<span style=\'font-size:14px;font-weight:normal;\'>Group 8</span>'],
+                            ['Group 9', '<span style=\'font-size:14px;font-weight:normal;\'>Group 9</span>'],
+                            ['Group 10', '<span style=\'font-size:14px;font-weight:normal;\'>Group 10</span>'],
                             ],
                         shuffleChoices: false,
                         requiredChoice: true
@@ -1064,11 +1028,11 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             options: {
                 simplify: true,
                 mainText: '<span style=\'font-size:18px;font-weight:normal;\'>Assume the entire ' +
-                          'population living in <b>your district</b> is divided into 5 income groups, '+
+                          'population living in <b>your district</b> is divided into 10 income groups, '+
                           'each with the same number of households. The figure below illustrates ' +
-                          'the 5 groups, ordered from left to right from the poorest 20% '+
-                          'to the richest 20%.' +
-                '</span><br><br><img src="https://i.ibb.co/09Y0hw2/5-groups.png" alt="Indian-groups" border="0" width="800px"></a><br><br>',
+                          'the 10 groups, ordered from left to right from the poorest 10% '+
+                          'to the richest 10%.' +
+                '</span><br><br><img src="https://i.ibb.co/sbMXxDd/District-groups.png" alt="Indian-groups" border="0" width="800px"></a><br><br>',
                 forms: [
                     {
                         id: 'P3_q1_2',
@@ -1081,6 +1045,11 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                             ['Group 3', '<span style=\'font-size:14px;font-weight:normal;\'>Group 3</span>'],
                             ['Group 4', '<span style=\'font-size:14px;font-weight:normal;\'>Group 4</span>'],
                             ['Group 5', '<span style=\'font-size:14px;font-weight:normal;\'>Group 5</span>'],
+                            ['Group 6', '<span style=\'font-size:14px;font-weight:normal;\'>Group 6</span>'],
+                            ['Group 7', '<span style=\'font-size:14px;font-weight:normal;\'>Group 7</span>'],
+                            ['Group 8', '<span style=\'font-size:14px;font-weight:normal;\'>Group 8</span>'],
+                            ['Group 9', '<span style=\'font-size:14px;font-weight:normal;\'>Group 9</span>'],
+                            ['Group 10', '<span style=\'font-size:14px;font-weight:normal;\'>Group 10</span>'],
                             ],
                         shuffleChoices: false,
                         requiredChoice: true
@@ -1105,11 +1074,11 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             options: {
                 simplify: true,
                 mainText: '<span style=\'font-size:18px;font-weight:normal;\'>Assume the entire ' +
-                          'population living in <b>your district</b> is divided into 5 income groups, '+
+                          'population living in <b>your district</b> is divided into 10 income groups, '+
                           'each with the same number of households. The figure below illustrates ' +
-                          'the 5 groups, ordered from left to right from the poorest 20% '+
-                          'to the richest 20%.' +
-                '</span><br><br><img src="https://i.ibb.co/09Y0hw2/5-groups.png" alt="Indian-groups" border="0" width="800px"></a><br><br>',
+                          'the 10 groups, ordered from left to right from the poorest 10% '+
+                          'to the richest 10%.' +
+                '</span><br><br><img src="https://i.ibb.co/sbMXxDd/District-groups.png" alt="Indian-groups" border="0" width="800px"></a><br><br>',
                 forms: [
                     {
                         id: 'P3_q1_2',
@@ -1122,6 +1091,11 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                             ['Group 3', '<span style=\'font-size:14px;font-weight:normal;\'>Group 3</span>'],
                             ['Group 4', '<span style=\'font-size:14px;font-weight:normal;\'>Group 4</span>'],
                             ['Group 5', '<span style=\'font-size:14px;font-weight:normal;\'>Group 5</span>'],
+                            ['Group 6', '<span style=\'font-size:14px;font-weight:normal;\'>Group 6</span>'],
+                            ['Group 7', '<span style=\'font-size:14px;font-weight:normal;\'>Group 7</span>'],
+                            ['Group 8', '<span style=\'font-size:14px;font-weight:normal;\'>Group 8</span>'],
+                            ['Group 9', '<span style=\'font-size:14px;font-weight:normal;\'>Group 9</span>'],
+                            ['Group 10', '<span style=\'font-size:14px;font-weight:normal;\'>Group 10</span>'],
                             ],
                         shuffleChoices: false,
                         requiredChoice: true
