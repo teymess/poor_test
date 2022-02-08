@@ -553,7 +553,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                         hidden: true,
                         type:'int',
                         min: 1900,
-                        max: 2021,
+                        max: 2022,
                         requiredChoice: true,
                     },
                     {
@@ -1233,7 +1233,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                 // Remove unused trailing zeros.
                 if (y.charAt(y.length-1 === '0')) y.substr(0, y.length - 2);
                 if (y.charAt(y.length-1 === '0')) y.substr(0, y.length - 3);
-                y += ' <span style="font-size: x-large !important">Year' +
+                y += ' <span style="font-size: x-large !important">year' +
                      (y === '1' ? '' : 's') + ' of life lost because of air pollution.</span>';
                 return y;
             };
