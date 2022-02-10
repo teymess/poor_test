@@ -203,7 +203,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
 
         // Make a widget step.
 
-        node.game.IncomeQuestions = node.widgets.append('ChoiceManager', "IncomeQuestion", {
+        node.game.IncomeQuestions = node.widgets.append('ChoiceManager', W.getScreen(), {
                 id: 'q4',
                 // ref: 'controlQuestions',
                 mainText: '',
