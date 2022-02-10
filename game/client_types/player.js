@@ -1819,7 +1819,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                     {
                         id: 'Part3_q4',
                         mainText: '<span style="font-weight: normal;color:gray;">Q10</span>',
-                        left: '<span style="font-size: smaller">"Everyone should be impacted the same by air pollution."</span>',
+                        left: '<span style="font-size: smaller">"Everyone should have equal access to protection measures against air pollution."</span>',
                         right: '<span style="font-size: smaller">"How much one is impacted by air pollution should depend mostly on how much effort she or he puts into reducing the impacts for themselves."</span>',
                         choices: [ '1', '2', '3', '4', '5', '6', '7'],
                         requiredChoice: true,
@@ -1830,7 +1830,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                         mainText: '<span style="font-weight: normal;color:gray;">Q11</span>',
                         left: '<span style="font-size: smaller">"All people should put the same effort into reducing air pollution in their district."</span>',
                         right: '<span style="font-size: smaller">"People that are more wealthy should contribute more to reducing air pollution in their district."</span>',
-                        choices: [ '&nbsp;1', '&nbsp;2', '&nbsp;3', '&nbsp;4', '&nbsp;5', '&nbsp;6', '&nbsp;7', '&nbsp;8', '&nbsp;9', '10'],
+                        choices: [ '1', '2', '3', '4', '5', '6', '7'],
                         requiredChoice: true
                     }
                 ]
