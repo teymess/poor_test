@@ -193,17 +193,32 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
     // Page 4. Nr household members + HH INCOME
     stager.extendStep('Part_1_q4', {
         name: "Part 1: Survey",
+        donebutton: false,
         cb: function() {
-            W.cssRule('table.choicetable td { text-align: center !important; ' +
-            'font-weight: normal; padding-left: 10px; }');
-        },
+            node.get('districtData', function(data) {
+
+
+                // console.log(data);
+                W.setInnerHTML('state', data.state);
+                W.setInnerHTML('district', data.district);
+                W.setInnerHTML('districtQ', data.district);
+                W.setInnerHTML('districtAgain', data.district);
+                W.setInnerHTML('districtAgainAgain', data.district);
+                W.setInnerHTML('district4', data.district);
+                W.setInnerHTML('district5', data.district);
+                W.setInnerHTML('pm25', data.pm25.toFixed(2));
+                W.setInnerHTML('higher', (data.pm25 / 5).toFixed(0));
+        //cb: function() {
+        //    W.cssRule('table.choicetable td { text-align: center !important; ' +
+        //    'font-weight: normal; padding-left: 10px; }');
+
         // Make a widget step.
-        widget: {
-            name: 'ChoiceManager',
-            id: 'q4',
-            options: {
-                simplify: true,
+
+        node.game.IncomeQuestions = node.widgets.append('ChoiceManager', "IncomeQuestion", {
+                id: 'q4',
+                // ref: 'controlQuestions',
                 mainText: '',
+                simplify: true,
                 forms: [
                     {
                         name: 'CustomInput',
@@ -226,25 +241,97 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                     { // THIS NEEDS TO BE MADE CONDITIONAL ON DISTRICT
                         id: 'q4_3',
                         orientation: 'H',
-                        mainText: '<span style="font-weight: normal;color:gray;">Q8</span> In 2020, what was the total annual income of your household?<br>' +
-                        '<span style="font-weight: normal;"> Please refer to the total income of ALL members living in your household in 2020, ' +
+                        mainText: '<span style="font-weight: normal;color:gray;">Q8</span> In 2021, what was the total annual income of your household?<br>' +
+                        '<span style="font-weight: normal;"> Please refer to the total income of ALL members living in your household in 2021, ' +
                         'before any taxes or deductions. This includes:<br> '+
                         '- wages and salaries from all jobs <br>' +
                         '- the revenue from self-employment <br>' +
                         '- all income from casual labour.</span>',
-                        choices: ['Less than 2,00,000 INR',
-                                  '2,00,000 INR – 5,00,000 INR',
-                                  '5,00,000 INR – 10,00,000 INR',
-                                  '10,00,000 INR – 20,00,000 INR',
-                                  '20,00,000 INR or more'],
+                        choices: function() {
+                            if (data.decile_number === 10) return [
+                                'Less than ' + (data.pct10) + ' INR',
+                                'Between ' + (data.pct10) + ' INR and ' + (data.pct20) + ' INR',
+                                'Between ' + (data.pct20) + ' INR and ' + (data.pct30) + ' INR',
+                                'Between ' + (data.pct30) + ' INR and ' + (data.pct40) + ' INR',
+                                'Between ' + (data.pct40) + ' INR and ' + (data.pct50) + ' INR',
+                                'Between ' + (data.pct50) + ' INR and ' + (data.pct60) + ' INR',
+                                'Between ' + (data.pct60) + ' INR and ' + (data.pct70) + ' INR',
+                                'Between ' + (data.pct70) + ' INR and ' + (data.pct80) + ' INR',
+                                'Between ' + (data.pct80) + ' INR and ' + (data.pct90) + ' INR',
+                                'More than ' + (data.pct90) + ' INR'
+                            ]
+                            else if  (data.decile_number === 9) return [
+                                'Less than ' + (data.pct20) + ' INR',
+                                'Between ' + (data.pct20) + ' INR and ' + (data.pct30) + ' INR',
+                                'Between ' + (data.pct30) + ' INR and ' + (data.pct40) + ' INR',
+                                'Between ' + (data.pct40) + ' INR and ' + (data.pct50) + ' INR',
+                                'Between ' + (data.pct50) + ' INR and ' + (data.pct60) + ' INR',
+                                'Between ' + (data.pct60) + ' INR and ' + (data.pct70) + ' INR',
+                                'Between ' + (data.pct70) + ' INR and ' + (data.pct80) + ' INR',
+                                'Between ' + (data.pct80) + ' INR and ' + (data.pct90) + ' INR',
+                                'More than ' + (data.pct90) + ' INR'
+                            ]
+                            else if (data.decile_number === 8) return [
+                                'Less than ' + (data.pct30) + ' INR',
+                                'Between ' + (data.pct30) + ' INR and ' + (data.pct40) + ' INR',
+                                'Between ' + (data.pct40) + ' INR and ' + (data.pct50) + ' INR',
+                                'Between ' + (data.pct50) + ' INR and ' + (data.pct60) + ' INR',
+                                'Between ' + (data.pct60) + ' INR and ' + (data.pct70) + ' INR',
+                                'Between ' + (data.pct70) + ' INR and ' + (data.pct80) + ' INR',
+                                'Between ' + (data.pct80) + ' INR and ' + (data.pct90) + ' INR',
+                                'More than ' + (data.pct90) + ' INR'
+                            ]
+                            else if (data.decile_number === 7) return [
+                                'Less than ' + (data.pct40) + ' INR',
+                                'Between ' + (data.pct40) + ' INR and ' + (data.pct50) + ' INR',
+                                'Between ' + (data.pct50) + ' INR and ' + (data.pct60) + ' INR',
+                                'Between ' + (data.pct60) + ' INR and ' + (data.pct70) + ' INR',
+                                'Between ' + (data.pct70) + ' INR and ' + (data.pct80) + ' INR',
+                                'Between ' + (data.pct80) + ' INR and ' + (data.pct90) + ' INR',
+                                'More than ' + (data.pct90) + ' INR'
+                            ]
+                            else if (data.decile_number === 6) return [
+                                'Less than ' + (data.pct50) + ' INR',
+                                'Between ' + (data.pct50) + ' INR and ' + (data.pct60) + ' INR',
+                                'Between ' + (data.pct60) + ' INR and ' + (data.pct70) + ' INR',
+                                'Between ' + (data.pct70) + ' INR and ' + (data.pct80) + ' INR',
+                                'Between ' + (data.pct80) + ' INR and ' + (data.pct90) + ' INR',
+                                'More than ' + (data.pct90) + ' INR'
+                            ]
+                            else if (data.decile_number === 5) return [
+                                'Less than ' + (data.pct60) + ' INR',
+                                'Between ' + (data.pct60) + ' INR and ' + (data.pct70) + ' INR',
+                                'Between ' + (data.pct70) + ' INR and ' + (data.pct80) + ' INR',
+                                'Between ' + (data.pct80) + ' INR and ' + (data.pct90) + ' INR',
+                                'More than ' + (data.pct90) + ' INR'
+                            ]
+                            else if (data.decile_number === 4) return [
+                                'Less than ' + (data.pct70) + ' INR',
+                                'Between ' + (data.pct70) + ' INR and ' + (data.pct80) + ' INR',
+                                'Between ' + (data.pct80) + ' INR and ' + (data.pct90) + ' INR',
+                                'More than ' + (data.pct90) + ' INR'
+                            ]
+                            else if (data.decile_number === 3) return [
+                                'Less than ' + (data.pct80) + ' INR',
+                                'Between ' + (data.pct80) + ' INR and ' + (data.pct90) + ' INR',
+                                'More than ' + (data.pct90) + ' INR'
+                            ]
+                        },
                         shuffleChoices: false,
                         requiredChoice: true,
-                        choicesSetSize: 2
+                        //choicesSetSize: 2
                     }
                 ]
-            }
-        }
-    });
+            });
+
+            W.show('data', 'flex');
+            node.game.doneButton.enable();
+        });
+    },
+    done: function() {
+        return node.game.IncomeQuestions.getValues();
+    }
+});
 
 
     //////////////////////////////////////////////////////////////////////////
