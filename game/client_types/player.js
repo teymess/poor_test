@@ -197,17 +197,6 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
         cb: function() {
             node.get('districtData', function(data) {
 
-
-                // console.log(data);
-                W.setInnerHTML('state', data.state);
-                W.setInnerHTML('district', data.district);
-                W.setInnerHTML('districtQ', data.district);
-                W.setInnerHTML('districtAgain', data.district);
-                W.setInnerHTML('districtAgainAgain', data.district);
-                W.setInnerHTML('district4', data.district);
-                W.setInnerHTML('district5', data.district);
-                W.setInnerHTML('pm25', data.pm25.toFixed(2));
-                W.setInnerHTML('higher', (data.pm25 / 5).toFixed(0));
         //cb: function() {
         //    W.cssRule('table.choicetable td { text-align: center !important; ' +
         //    'font-weight: normal; padding-left: 10px; }');
