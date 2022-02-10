@@ -1662,8 +1662,10 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             id: 'Part3_q',
             options: {
                 simplify: true,
-                mainText: 'Now I would like you to tell me your views on ' + 'various issues. How would you place your views on a 7-point scale? <br>' +
-                '<span style="font-weight: normal; font-size: 15px;"> -  <strong>"1"</strong> means you agree completely with the statement on the left;<br> - <strong>"7"</strong> means you agree completely with the statement on the right;<br> - If your views fall somewhere in between, you can choose any number in between.</span>',
+                mainText: 'For each pair of statementments below, tell us how much you agree with one <em>or</em> the other statement, using a 7-point scale.<br>' +
+                '<span style="font-weight: normal; font-size: 15px;"> -  <strong>"1"</strong> means you fully agree with the statement on the left;<br>' +
+                '- <strong>"7"</strong> means you agree completely with the statement on the right;<br>' +
+                '- If your opinion is somewhere in between, choose a number in between to reflect that.</span>',
                 forms: [
                     {
                         id: 'Part3_q1',
@@ -1708,10 +1710,10 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             id: 'Part3_q',
             options: {
                 simplify: true,
-                mainText: 'Tell us how much you agree with the following statements, using a 7-point scale. '+
-                '- "1" means you completely agree with the sentence on the left;<br>' +
-                '- "7" means you fully agree with the sentence on the right;<br>' +
-                '- If your opinion is somewhere in between, choose a number in between to reflect that.',
+                mainText: 'For each pair of statementments below, tell us how much you agree with one <em>or</em> the other statement, using a 7-point scale.<br>'+
+                '<span style="font-weight: normal; font-size: 15px;"> - <strong>"1"</strong> means you completely agree with the sentence on the left;<br>' +
+                '- <strong>"7"</strong> means you fully agree with the sentence on the right;<br>' +
+                '- If your opinion is somewhere in between, choose a number in between to reflect that.</span>',
                 forms: [
                     {
                         id: 'Part3_q4',
@@ -1725,7 +1727,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                         id: 'Part3_q5',
                         orientation: 'H',
                         mainText: '<span style="font-weight: normal;color:gray;">Q11</span>',
-                        left: '<span style="font-size: smaller">"All people should put the same effort to reduce air pollution in their district."</span>',
+                        left: '<span style="font-size: smaller">"All people should put the same effort into reducing air pollution in their district."</span>',
                         right: '<span style="font-size: smaller">"People that are more wealthy should contribute more to reducing air pollution in their district."</span>',
                         choices: [ '&nbsp;1', '&nbsp;2', '&nbsp;3', '&nbsp;4', '&nbsp;5', '&nbsp;6', '&nbsp;7', '&nbsp;8', '&nbsp;9', '10'],
                         requiredChoice: true
