@@ -1177,7 +1177,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             });
         },
         done: function() {
-            var q2, q3, v, intro, left, right, text, initialValue;
+            var q2, q3, q4, v, intro, left, right, text, initialValue;
             var lifeLost, avg, avg2, w;
 
             lifeLost = node.game.lifeLost;
@@ -1315,6 +1315,29 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                 return false;
             }
 
+            // DISPLAY 6 -- How confident?
+            q4 = w.formsById.T_confident;
+            // v = q2.getValues({ markAttempt: false }).value;
+            // q2.disable();
+            if (!q4) {
+                node.widgets.last.addForm({
+                    id: 'T_confident',
+                    orientation: 'H',
+                    mainText: '<span style="font-weight: normal;color:gray;">Q5</span> How confident are you about your answer above?</span>',
+                    hint: false,
+                    choices: [
+                      ['1', 'Not confident at all'],
+                      ['2', 'Slightly confident'],
+                      ['3', 'Somewhat confident'],
+                      ['4', 'Fairly confident'],
+                      ['5', 'Completely confident']
+                    ],
+                    shuffleChoices: false
+                });
+
+                return false;
+            }
+
             return w.getValues();
         }
     });
@@ -1351,9 +1374,11 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                         id: 'Part3_q5',
                         orientation: 'H',
                         mainText: '<span style="font-weight: normal;color:gray;">Q7</span> All things considered, ' + 'how satisfied are you with your life as a whole these ' + 'days? <br>' +
-                        '<span style="font-weight: normal; font-size: 16px;"> Using a scale on which 1 means you are <em>completely dissatisfied</em> and 10 means you are <em>completely satisfied</em> where would you put your ' +
+                        '<span style="font-weight: normal; font-size: 16px;"> Using a scale on which "1" means you are <em>"completely dissatisfied"</em> and "10" means you are <em>"completely satisfied"</em> where would you put your ' +
                         'satisfaction with your life as a whole?</span>',
-                        choices: ['1 = Completely dissatisfied','2','3','4','5','6','7','8','9','10 = Completely satisfied'],
+                        left: 'Completely dissatisfied',
+                        right: 'Completely satisfied',
+                        choices: ['1','2','3','4','5','6','7','8','9','10'],
                         shuffleChoices: false,
                         requiredChoice: true
                     }
