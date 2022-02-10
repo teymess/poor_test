@@ -195,6 +195,9 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
         name: "Part 1: Survey",
         donebutton: false,
         cb: function() {
+            W.cssRule('table.choicetable td { text-align: center !important; ' +
+            'font-weight: normal; padding-left: 10px; }');
+
             node.get('districtData', function(data) {
 
         //cb: function() {
@@ -308,7 +311,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                         },
                         shuffleChoices: false,
                         requiredChoice: true,
-                        //choicesSetSize: 2
+                        choicesSetSize: 2
                     }
                 ]
             });
