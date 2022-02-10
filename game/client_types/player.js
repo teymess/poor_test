@@ -1708,26 +1708,25 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             id: 'Part3_q',
             options: {
                 simplify: true,
-                mainText: '',
+                mainText: 'Tell us how much you agree with the following statements, using a 7-point scale. '+
+                '- "1" means you completely agree with the sentence on the left;<br>' +
+                '- "7" means you fully agree with the sentence on the right;<br>' +
+                '- If your opinion is somewhere in between, choose a number in between to reflect that.',
                 forms: [
                     {
                         id: 'Part3_q4',
-                        mainText: '<span style="font-weight: normal;color:gray;">Q10</span> In your opinion, how fair or unfair is it that some people are exposed to higher levels of air pollution than others? <br>' +
-                        '<span style="font-weight: normal; font-size: 15px;"> To indicate your opinion, use a 10-point scale where "1" means <em>"Completely unfair"</em> and "10" means <em>"Completely fair"</em>.</span>',
-                        left: '<span style="font-size: smaller">Completely<br>unfair</span>',
-                        right: '<span style="font-size: smaller">Completely<br>fair</span>',
-                        // header: [ 'Unfair', '', '', '', '', '', '', '', '', 'Fair' ],
-                        choices: [ '&nbsp;1', '&nbsp;2', '&nbsp;3', '&nbsp;4', '&nbsp;5', '&nbsp;6', '&nbsp;7', '&nbsp;8', '&nbsp;9', '10'],
+                        mainText: '<span style="font-weight: normal;color:gray;">Q10</span>',
+                        left: '<span style="font-size: smaller">"Everyone should be impacted the same by air pollution."</span>',
+                        right: '<span style="font-size: smaller">"How much one is impacted by air pollution should depend mostly on how much effort she or he puts into reducing the impacts for themselves."</span>',
+                        choices: [ '1', '2', '3', '4', '5', '6', '7'],
                         requiredChoice: true,
                     },
                     {
                         id: 'Part3_q5',
                         orientation: 'H',
-                        mainText: '<span style="font-weight: normal;color:gray;">Q11</span> In your opinion, how fair or unfair is it that poor people are often more exposed to air pollution than rich people? <br>' +
-                        '<span style="font-weight: normal; font-size: 15px;"> To indicate your opinion, use a 10-point scale where "1" means <em>"Completely unfair"</em> and "10" means <em>"Completely fair"</em>.</span>',
-                        left: '<span style="font-size: smaller">Completely<br>unfair</span>',
-                        right: '<span style="font-size: smaller">Completely<br>fair</span>',
-                        // header: [ 'Unfair', '', '', '', '', '', '', '', '', 'Fair' ],
+                        mainText: '<span style="font-weight: normal;color:gray;">Q11</span>',
+                        left: '<span style="font-size: smaller">"All people should put the same effort to reduce air pollution in their district."</span>',
+                        right: '<span style="font-size: smaller">"People that are more wealthy should contribute more to reducing air pollution in their district."</span>',
                         choices: [ '&nbsp;1', '&nbsp;2', '&nbsp;3', '&nbsp;4', '&nbsp;5', '&nbsp;6', '&nbsp;7', '&nbsp;8', '&nbsp;9', '10'],
                         requiredChoice: true
                     }
