@@ -43,6 +43,10 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             if (item.stepId === 'Part_1_q3') return item.player;
         })
 
+        memory.index('income_decile', item => {
+            if (item.stepId === 'Part_1_q4') return item.player;
+        })
+
         node.on.data('done', function(msg) {
 
             let id = msg.from;
@@ -126,6 +130,16 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             return setup.pollutionDb.district.get(district);
         });
 
+        node.on('get.incomeDecile', function(msg) {
+            let trueDecile = memory.income_decile.get(msg.from);
+            console.log(trueDecile);
+            console.log('Executed decile step');
+
+            trueDecile = trueDecile.forms.q4_3.value;
+
+            console.log(trueDecile);
+            return trueDecile;
+        });
     });
 
     stager.setOnGameOver(function() {
