@@ -193,8 +193,8 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
     // Page 4. Nr household members + HH INCOME
     stager.extendStep('Part_1_q4', {
         name: "Part 1: Survey",
-        //donebutton: false,
-        cb: function(choice) {
+        donebutton: false,
+        cb: function() {
 
             node.get('districtData', function(data) {
 
@@ -310,14 +310,12 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                         },
                         shuffleChoices: false,
                         requiredChoice: true,
-                        choicesSetSize: 2,
-                        onclick: function() {
-                            node.game.doneButton.enable();
-                        }
+                        choicesSetSize: 2
                     }
                 ]
             });
-        }, 'SERVER', { data: choice });
+            node.game.doneButton.enable();
+        });
     },
     done: function() {
         return node.game.IncomeQuestions.getValues();

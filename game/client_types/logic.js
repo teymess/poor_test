@@ -132,12 +132,8 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
 
         node.on('get.incomeDecile', function(msg) {
             let trueDecile = memory.income_decile.get(msg.from);
-            console.log(trueDecile);
-            console.log('Executed decile step');
-
             trueDecile = trueDecile.forms.q4_3.value;
 
-            console.log(trueDecile);
             return trueDecile;
         });
     });
