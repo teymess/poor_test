@@ -981,7 +981,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                         id: 'P3_q1_1',
                         orientation: 'H',
                         mainText: '<span style="font-weight: normal;color:gray;">Q1</span> Think of a household living ' +
-                                  'in the same district as you and earning a total annual income of XXX_LOW INR.<br><br>'+
+                                  'in the same district as you and earning a total annual income of 40,000 INR.<br><br>'+
                                   'In your opinion, which income group is this household part of?',
                         choices: [
                             ['Group 1', '<span style=\'font-size:14px;font-weight:normal;\'>Group 1</span>'],
@@ -1049,7 +1049,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                         id: 'P3_q1_1',
                         orientation: 'H',
                         mainText: '<span style="font-weight: normal;color:gray;">Q1</span> Think of a household living ' +
-                                  'in the same district as you and earning a total annual income of XXX_HIGH INR.<br><br>'+
+                                  'in the same district as you and earning a total annual income of 1,00,00,000 INR.<br><br>'+
                                   'In your opinion, which income group is this household part of?',
                         choices: [
                             ['Group 1', '<span style=\'font-size:14px;font-weight:normal;\'>Group 1</span>'],
