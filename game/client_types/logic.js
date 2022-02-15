@@ -41,11 +41,11 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
 
         memory.index('district_player', item => {
             if (item.stepId === 'Part_1_q3') return item.player;
-        })
+        });
 
         memory.index('income_decile', item => {
             if (item.stepId === 'Part_1_q4') return item.player;
-        })
+        });
 
         node.on.data('done', function(msg) {
 
@@ -135,10 +135,11 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             console.log(income);
             income = income.forms.income.value;
 
-             let district = memory.district_player.get(msg.from);
-             console.log(district);
-             district = district.forms.district.value;
-             return setup.pollutionDb.district.get(district);
+
+            let district = memory.district_player.get(msg.from);
+            console.log(district);
+            district = district.forms.district.value;
+            //return setup.pollutionDb.district.get(district);
         });
     });
 
