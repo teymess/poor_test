@@ -1182,6 +1182,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
         },
         done: function(value) {
             node.get('incomeDecile', function(data) {
+                console.log(data);
 
                 var income = data.income;
                 var decile_number = data.decile_number;
