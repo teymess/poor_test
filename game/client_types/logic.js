@@ -119,8 +119,8 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             // FOR EXPERIMENT.
             let district = memory.district_player.get(msg.from);
             // Actual district.
-              console.log(district);
-              district = district.forms.district.value;
+            console.log(district);
+            district = district.forms.district.value;
             // END FOR EXPERIMENT.
 
             // FOR QUICK TESTING.
@@ -131,10 +131,14 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
         });
 
         node.on('get.incomeDecile', function(msg) {
-            let trueDecile = memory.income_decile.get(msg.from);
-            trueDecile = trueDecile.forms.q4_3.value;
+            let income = memory.income_decile.get(msg.from);
+            console.log(income);
+            income = income.forms.income.value;
 
-            return trueDecile;
+             let district = memory.district_player.get(msg.from);
+             console.log(district);
+             district = district.forms.district.value;
+             return setup.pollutionDb.district.get(district);
         });
     });
 

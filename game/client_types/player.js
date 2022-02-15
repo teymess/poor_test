@@ -193,18 +193,13 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
     // Page 4. Nr household members + HH INCOME
     stager.extendStep('Part_1_q4', {
         name: "Part 1: Survey",
+        frame: 'income_page.htm',
         donebutton: false,
         cb: function() {
 
             node.get('districtData', function(data) {
 
-        //cb: function() {
-        //    W.cssRule('table.choicetable td { text-align: center !important; ' +
-        //    'font-weight: normal; padding-left: 10px; }');
-
-        // Make a widget step.
-
-        node.game.IncomeQuestions = node.widgets.append('ChoiceManager', "container", {
+        node.game.IncomeQuestions = node.widgets.append('ChoiceManager', "incomePage", {
                 id: 'q4',
                 className: 'centered',
                 // ref: 'controlQuestions',
@@ -229,8 +224,8 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                         shuffleChoices: false,
                         requiredChoice: true
                     },
-                    { // THIS NEEDS TO BE MADE CONDITIONAL ON DISTRICT
-                        id: 'q4_3',
+                    {
+                        id: 'income',
                         orientation: 'H',
                         mainText: '<span style="font-weight: normal;color:gray;">Q8</span> In 2021, what was the total annual income of your household?<br>' +
                         '<span style="font-weight: normal;"> Please refer to the total income of ALL members living in your household in 2021, ' +
@@ -240,72 +235,72 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                         '- all income from casual labour.</span>',
                         choices: function() {
                             if (data.decile_number === 10) return [
-                                ['10', 'Less than ' + (data.pct10) + ' INR'],
-                                ['20', 'Between ' + (data.pct10) + ' INR and ' + (data.pct20) + ' INR'],
-                                ['30', 'Between ' + (data.pct20) + ' INR and ' + (data.pct30) + ' INR'],
-                                ['40', 'Between ' + (data.pct30) + ' INR and ' + (data.pct40) + ' INR'],
-                                ['50', 'Between ' + (data.pct40) + ' INR and ' + (data.pct50) + ' INR'],
-                                ['60', 'Between ' + (data.pct50) + ' INR and ' + (data.pct60) + ' INR'],
-                                ['70', 'Between ' + (data.pct60) + ' INR and ' + (data.pct70) + ' INR'],
-                                ['80', 'Between ' + (data.pct70) + ' INR and ' + (data.pct80) + ' INR'],
-                                ['90', 'Between ' + (data.pct80) + ' INR and ' + (data.pct90) + ' INR'],
-                                ['100', 'More than ' + (data.pct90) + ' INR']
+                                ['Group 1', 'Less than ' + (data.pct10) + ' INR'],
+                                ['Group 2', 'Between ' + (data.pct10) + ' INR and ' + (data.pct20) + ' INR'],
+                                ['Group 3', 'Between ' + (data.pct20) + ' INR and ' + (data.pct30) + ' INR'],
+                                ['Group 4', 'Between ' + (data.pct30) + ' INR and ' + (data.pct40) + ' INR'],
+                                ['Group 5', 'Between ' + (data.pct40) + ' INR and ' + (data.pct50) + ' INR'],
+                                ['Group 6', 'Between ' + (data.pct50) + ' INR and ' + (data.pct60) + ' INR'],
+                                ['Group 7', 'Between ' + (data.pct60) + ' INR and ' + (data.pct70) + ' INR'],
+                                ['Group 8', 'Between ' + (data.pct70) + ' INR and ' + (data.pct80) + ' INR'],
+                                ['Group 9', 'Between ' + (data.pct80) + ' INR and ' + (data.pct90) + ' INR'],
+                                ['Group 10', 'More than ' + (data.pct90) + ' INR']
                             ]
                             else if  (data.decile_number === 9) return [
-                                ['20', 'Less than ' + (data.pct20) + ' INR'],
-                                ['30', 'Between ' + (data.pct20) + ' INR and ' + (data.pct30) + ' INR'],
-                                ['40', 'Between ' + (data.pct30) + ' INR and ' + (data.pct40) + ' INR'],
-                                ['50', 'Between ' + (data.pct40) + ' INR and ' + (data.pct50) + ' INR'],
-                                ['60', 'Between ' + (data.pct50) + ' INR and ' + (data.pct60) + ' INR'],
-                                ['70', 'Between ' + (data.pct60) + ' INR and ' + (data.pct70) + ' INR'],
-                                ['80', 'Between ' + (data.pct70) + ' INR and ' + (data.pct80) + ' INR'],
-                                ['90', 'Between ' + (data.pct80) + ' INR and ' + (data.pct90) + ' INR'],
-                                ['100', 'More than ' + (data.pct90) + ' INR']
+                                ['Group 2', 'Less than ' + (data.pct20) + ' INR'],
+                                ['Group 3', 'Between ' + (data.pct20) + ' INR and ' + (data.pct30) + ' INR'],
+                                ['Group 4', 'Between ' + (data.pct30) + ' INR and ' + (data.pct40) + ' INR'],
+                                ['Group 5', 'Between ' + (data.pct40) + ' INR and ' + (data.pct50) + ' INR'],
+                                ['Group 6', 'Between ' + (data.pct50) + ' INR and ' + (data.pct60) + ' INR'],
+                                ['Group 7', 'Between ' + (data.pct60) + ' INR and ' + (data.pct70) + ' INR'],
+                                ['Group 8', 'Between ' + (data.pct70) + ' INR and ' + (data.pct80) + ' INR'],
+                                ['Group 9', 'Between ' + (data.pct80) + ' INR and ' + (data.pct90) + ' INR'],
+                                ['Group 10', 'More than ' + (data.pct90) + ' INR']
                             ]
                             else if (data.decile_number === 8) return [
-                                ['30', 'Less than ' + (data.pct30) + ' INR'],
-                                ['40', 'Between ' + (data.pct30) + ' INR and ' + (data.pct40) + ' INR'],
-                                ['50', 'Between ' + (data.pct40) + ' INR and ' + (data.pct50) + ' INR'],
-                                ['60', 'Between ' + (data.pct50) + ' INR and ' + (data.pct60) + ' INR'],
-                                ['70', 'Between ' + (data.pct60) + ' INR and ' + (data.pct70) + ' INR'],
-                                ['80', 'Between ' + (data.pct70) + ' INR and ' + (data.pct80) + ' INR'],
-                                ['90', 'Between ' + (data.pct80) + ' INR and ' + (data.pct90) + ' INR'],
-                                ['100', 'More than ' + (data.pct90) + ' INR']
+                                ['Group 3', 'Less than ' + (data.pct30) + ' INR'],
+                                ['Group 4', 'Between ' + (data.pct30) + ' INR and ' + (data.pct40) + ' INR'],
+                                ['Group 5', 'Between ' + (data.pct40) + ' INR and ' + (data.pct50) + ' INR'],
+                                ['Group 6', 'Between ' + (data.pct50) + ' INR and ' + (data.pct60) + ' INR'],
+                                ['Group 7', 'Between ' + (data.pct60) + ' INR and ' + (data.pct70) + ' INR'],
+                                ['Group 8', 'Between ' + (data.pct70) + ' INR and ' + (data.pct80) + ' INR'],
+                                ['Group 9', 'Between ' + (data.pct80) + ' INR and ' + (data.pct90) + ' INR'],
+                                ['Group 10', 'More than ' + (data.pct90) + ' INR']
                             ]
                             else if (data.decile_number === 7) return [
-                                ['40', 'Less than ' + (data.pct40) + ' INR'],
-                                ['50', 'Between ' + (data.pct40) + ' INR and ' + (data.pct50) + ' INR'],
-                                ['60', 'Between ' + (data.pct50) + ' INR and ' + (data.pct60) + ' INR'],
-                                ['70', 'Between ' + (data.pct60) + ' INR and ' + (data.pct70) + ' INR'],
-                                ['80', 'Between ' + (data.pct70) + ' INR and ' + (data.pct80) + ' INR'],
-                                ['90', 'Between ' + (data.pct80) + ' INR and ' + (data.pct90) + ' INR'],
-                                ['100', 'More than ' + (data.pct90) + ' INR']
+                                ['Group 4', 'Less than ' + (data.pct40) + ' INR'],
+                                ['Group 5', 'Between ' + (data.pct40) + ' INR and ' + (data.pct50) + ' INR'],
+                                ['Group 6', 'Between ' + (data.pct50) + ' INR and ' + (data.pct60) + ' INR'],
+                                ['Group 7', 'Between ' + (data.pct60) + ' INR and ' + (data.pct70) + ' INR'],
+                                ['Group 8', 'Between ' + (data.pct70) + ' INR and ' + (data.pct80) + ' INR'],
+                                ['Group 9', 'Between ' + (data.pct80) + ' INR and ' + (data.pct90) + ' INR'],
+                                ['Group 10', 'More than ' + (data.pct90) + ' INR']
                             ]
                             else if (data.decile_number === 6) return [
-                                ['50', 'Less than ' + (data.pct50) + ' INR'],
-                                ['60', 'Between ' + (data.pct50) + ' INR and ' + (data.pct60) + ' INR'],
-                                ['70', 'Between ' + (data.pct60) + ' INR and ' + (data.pct70) + ' INR'],
-                                ['80', 'Between ' + (data.pct70) + ' INR and ' + (data.pct80) + ' INR'],
-                                ['90', 'Between ' + (data.pct80) + ' INR and ' + (data.pct90) + ' INR'],
-                                ['100', 'More than ' + (data.pct90) + ' INR']
+                                ['Group 5', 'Less than ' + (data.pct50) + ' INR'],
+                                ['Group 6', 'Between ' + (data.pct50) + ' INR and ' + (data.pct60) + ' INR'],
+                                ['Group 7', 'Between ' + (data.pct60) + ' INR and ' + (data.pct70) + ' INR'],
+                                ['Group 8', 'Between ' + (data.pct70) + ' INR and ' + (data.pct80) + ' INR'],
+                                ['Group 9', 'Between ' + (data.pct80) + ' INR and ' + (data.pct90) + ' INR'],
+                                ['Group 10', 'More than ' + (data.pct90) + ' INR']
                             ]
                             else if (data.decile_number === 5) return [
-                                ['60', 'Less than ' + (data.pct60) + ' INR'],
-                                ['70', 'Between ' + (data.pct60) + ' INR and ' + (data.pct70) + ' INR'],
-                                ['80', 'Between ' + (data.pct70) + ' INR and ' + (data.pct80) + ' INR'],
-                                ['90', 'Between ' + (data.pct80) + ' INR and ' + (data.pct90) + ' INR'],
-                                ['100', 'More than ' + (data.pct90) + ' INR']
+                                ['Group 6', 'Less than ' + (data.pct60) + ' INR'],
+                                ['Group 7', 'Between ' + (data.pct60) + ' INR and ' + (data.pct70) + ' INR'],
+                                ['Group 8', 'Between ' + (data.pct70) + ' INR and ' + (data.pct80) + ' INR'],
+                                ['Group 9', 'Between ' + (data.pct80) + ' INR and ' + (data.pct90) + ' INR'],
+                                ['Group 10', 'More than ' + (data.pct90) + ' INR']
                             ]
                             else if (data.decile_number === 4) return [
-                                ['70', 'Less than ' + (data.pct70) + ' INR'],
-                                ['80', 'Between ' + (data.pct70) + ' INR and ' + (data.pct80) + ' INR'],
-                                ['90', 'Between ' + (data.pct80) + ' INR and ' + (data.pct90) + ' INR'],
-                                ['100', 'More than ' + (data.pct90) + ' INR']
+                                ['Group 7', 'Less than ' + (data.pct70) + ' INR'],
+                                ['Group 8', 'Between ' + (data.pct70) + ' INR and ' + (data.pct80) + ' INR'],
+                                ['Group 9', 'Between ' + (data.pct80) + ' INR and ' + (data.pct90) + ' INR'],
+                                ['Group 10', 'More than ' + (data.pct90) + ' INR']
                             ]
                             else if (data.decile_number === 3) return [
-                                ['80', 'Less than ' + (data.pct80) + ' INR'],
-                                ['90', 'Between ' + (data.pct80) + ' INR and ' + (data.pct90) + ' INR'],
-                                ['100', 'More than ' + (data.pct90) + ' INR']
+                                ['Group 8', 'Less than ' + (data.pct80) + ' INR'],
+                                ['Group 9', 'Between ' + (data.pct80) + ' INR and ' + (data.pct90) + ' INR'],
+                                ['Group 10', 'More than ' + (data.pct90) + ' INR']
                             ]
                         },
                         shuffleChoices: false,
@@ -1140,6 +1135,8 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
     //////////////////////////////////////
     stager.extendStep('Part3_T_Income_Corr_Control', {
         name: "Part 3: Your opinion",
+        frame: 'Income_correction.htm',
+        donebutton: false,
         cb: function() {
             W.cssRule('table.choicetable td { text-align: center !important; ' +
             'font-weight: normal; padding-left: 10px; }');
@@ -1150,17 +1147,17 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             options: {
                 simplify: true,
                 mainText: '<span style=\'font-size:18px;font-weight:normal;\'>Assume the entire ' +
-                          'population living in <b>your district</b> is divided into 10 income groups, '+
-                          'each with the same number of households. The figure below illustrates ' +
-                          'the 10 groups, ordered from left to right from the poorest 10% '+
-                          'to the richest 10%.' +
+                'population living in <b>your district</b> is divided into 10 income groups, '+
+                'each with the same number of households. The figure below illustrates ' +
+                'the 10 groups, ordered from left to right from the poorest 10% '+
+                'to the richest 10%.' +
                 '</span><br><br><img src="https://i.ibb.co/sbMXxDd/District-groups.png" alt="Indian-groups" border="0" width="800px"></a><br><br>',
                 forms: [
                     {
-                        id: 'P3_q1_2',
+                        id: 'P3_q1_1',
                         orientation: 'H',
                         mainText: '<span style="font-weight: normal;color:gray;">Q2</span> Think of YOUR household. ' +
-                                  'In your opinion, which income group is YOUR household part of?',
+                        'In your opinion, which income group is YOUR household part of?',
                         choices: [
                             ['Group 1', '<span style=\'font-size:14px;font-weight:normal;\'>Group 1</span>'],
                             ['Group 2', '<span style=\'font-size:14px;font-weight:normal;\'>Group 2</span>'],
@@ -1172,12 +1169,36 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                             ['Group 8', '<span style=\'font-size:14px;font-weight:normal;\'>Group 8</span>'],
                             ['Group 9', '<span style=\'font-size:14px;font-weight:normal;\'>Group 9</span>'],
                             ['Group 10', '<span style=\'font-size:14px;font-weight:normal;\'>Group 10</span>'],
-                            ],
+                        ],
                         shuffleChoices: false,
-                        requiredChoice: true
+                        requiredChoice: true,
+                        onclick: function() {
+                            node.game.doneButton.enable();
+                        },
+
                     }
                 ]
             }
+        },
+        done: function(value) {
+            node.get('incomeDecile', function(data) {
+
+                var income = data.income;
+                var decile_number = data.decile_number;
+
+                var guess;
+                guess = value.P3_q1_2;
+
+                if (guess === income && decile_number === 10) {
+                    W.show('test1', 'flex');
+                    node.game.doneButton.enable();
+
+                }
+                else {
+                    W.show('test2', 'flex');
+                    node.game.doneButton.enable();
+                }
+            });
         }
     });
 
