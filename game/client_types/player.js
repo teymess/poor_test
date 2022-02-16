@@ -1133,7 +1133,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
     ////////////////////////////////////////////////////
     // TREATMENT: Control Corrected Income
     //////////////////////////////////////
-    stager.extendStep('Part3_T_Income_Corr_Control', {
+    stager.extendStep('Part3_T_Income_Corr_Control1', {
         name: "Part 3: Your opinion",
         frame: 'Income_correction.htm',
         donebutton: false,
@@ -1180,23 +1180,37 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                 ]
             }
         },
-        done: function(value) {
+    });
+
+    stager.extendStep('Part3_T_Income_Corr_Control2', {
+        name: "Part 3: Your opinion",
+        frame: 'Income_correction.htm',
+        donebutton: false,
+        cb: function(value) {
+            W.cssRule('table.choicetable td { text-align: center !important; ' +
+            'font-weight: normal; padding-left: 10px; }');
+
             node.get('incomeDecile', function(data) {
                 console.log(data);
 
                 var income = data.income;
-                var decile_number = data.decile_number;
+                var decile_number = data.decileNum;
 
                 var guess;
                 guess = value.P3_q1_2;
 
                 if (guess === income && decile_number === 10) {
-                    W.show('test1', 'flex');
+
+                    W.show('data', 'flex');
+                    W.gid('img').src = 'Leaflet_images/' + income + '.png';
+                    W.gid('text').src = 'Yay, this is not bad!'
                     node.game.doneButton.enable();
 
                 }
                 else {
-                    W.show('test2', 'flex');
+                    W.show('data', 'flex');
+                    W.gid('img').src = 'Leaflet_images/' + income + '.png';
+                    W.gid('text').src = 'Nay, this very bad!'
                     node.game.doneButton.enable();
                 }
             });

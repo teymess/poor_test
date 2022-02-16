@@ -139,7 +139,9 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             let district = memory.district_player.get(msg.from);
             console.log(district);
             district = district.forms.district.value;
-            //return setup.pollutionDb.district.get(district);
+            let decile_number = setup.pollutionDb.district.get(decile_number);
+
+            return { decileNum: decile_number, income: income };
         });
     });
 

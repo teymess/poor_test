@@ -45,7 +45,8 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
     .step('Part3_T_Income_Low')
     .step('Part3_T_Income_High')
     .step('Part3_T_Income_Control')
-    .step('Part3_T_Income_Corr_Control')
+    .step('Part3_T_Income_Corr_Control1')
+    .step('Part3_T_Income_Corr_Control2')
     .step('Part3_Impact')
     .step('Part3_Sentiment')
 
