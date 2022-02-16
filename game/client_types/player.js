@@ -1210,7 +1210,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                 else {
                     W.show('data', 'flex');
                     W.gid('img').src = 'Leaflet_images/' + income + '.png';
-                    W.gid('text').src = 'Nay, this very bad!'
+                    W.gid('text').src = 'Nay, this is very bad!'
                     node.game.doneButton.enable();
                 }
             });
