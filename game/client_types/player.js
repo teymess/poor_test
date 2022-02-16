@@ -1199,20 +1199,26 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                 var guess;
                 guess = data.income_guess;
 
-                if (guess === income && decile_number === 10) {
+                W.setInnerHTML('group', income);
 
+                if (guess === income && decile_number === 10) {
+                    let evaluation = 'correct';
+
+                    W.setInnerHTML('evaluation', evaluation);
                     W.show('data', 'flex');
                     W.gid('img').src = 'Leaflet_images/' + income + '.png';
-                    W.gid('text1').src = 'You are correct!'
-                    W.gid('text2').src = 'Yay, this is not bad!'
+                    //W.gid('text1').src = 'You are correct!'
+                    //W.gid('text2').src = 'Yay, this is not bad!'
                     node.game.doneButton.enable();
 
                 }
                 else {
+                    let evaluation = 'not correct';
+                    W.setInnerHTML('evaluation', evaluation);
                     W.show('data', 'flex');
                     W.gid('img').src = 'Leaflet_images/' + income + '.png';
-                    W.gid('text1').src = 'You are incorrect!'
-                    W.gid('text2').src = 'Nay, this is not goot at all!'
+                    //W.gid('text1').src = 'You are incorrect!'
+                    //W.gid('text2').src = 'Nay, this is not goot at all!'
                     node.game.doneButton.enable();
                 }
             });
