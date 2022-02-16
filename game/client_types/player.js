@@ -1186,7 +1186,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
         name: "Part 3: Your opinion",
         frame: 'Income_correction.htm',
         donebutton: false,
-        cb: function(value) {
+        cb: function() {
             W.cssRule('table.choicetable td { text-align: center !important; ' +
             'font-weight: normal; padding-left: 10px; }');
 
@@ -1197,20 +1197,22 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                 var decile_number = data.decileNum;
 
                 var guess;
-                guess = value.P3_q1_2;
+                guess = data.income_guess;
 
                 if (guess === income && decile_number === 10) {
 
                     W.show('data', 'flex');
                     W.gid('img').src = 'Leaflet_images/' + income + '.png';
-                    W.gid('text').src = 'Yay, this is not bad!'
+                    W.gid('text1').src = 'You are correct!'
+                    W.gid('text2').src = 'Yay, this is not bad!'
                     node.game.doneButton.enable();
 
                 }
                 else {
                     W.show('data', 'flex');
                     W.gid('img').src = 'Leaflet_images/' + income + '.png';
-                    W.gid('text').src = 'Nay, this is very bad!'
+                    W.gid('text1').src = 'You are incorrect!'
+                    W.gid('text2').src = 'Nay, this is not goot at all!'
                     node.game.doneButton.enable();
                 }
             });

@@ -47,6 +47,10 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             if (item.stepId === 'Part_1_q4') return item.player;
         });
 
+        memory.index('income_guess', item => {
+            if (item.stepId === 'Part3_T_Income_Corr_Control1') return item.player;
+        });
+
         node.on.data('done', function(msg) {
 
             let id = msg.from;
@@ -133,15 +137,19 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
         node.on('get.incomeDecile', function(msg) {
             let income = memory.income_decile.get(msg.from);
             console.log(income);
-            income = income.forms.income.value;
-
+            income = income.income.value;
 
             let district = memory.district_player.get(msg.from);
             console.log(district);
             district = district.forms.district.value;
-            let decile_number = setup.pollutionDb.district.get(decile_number);
+            var decile_number;
+            decile_number = setup.pollutionDb.district.get(decile_number);
 
-            return { decileNum: decile_number, income: income };
+            let income_guess = memory.income_guess.get(msg.from);
+            console.log(income_guess);
+            income_guess = income_guess.P3_q1_1.value;
+
+            return { decileNum: decile_number, income: income, income_guess: income_guess };
         });
     });
 
