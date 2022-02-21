@@ -929,10 +929,10 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             choices: [
                 ['Yes', 'Yes, I have devoted full attention to the questions so ' +
                     'far and I think you should use my responses for ' +
-                    'your study'],
+                    'your study.'],
                 ['No', 'No, I have not devoted full attention to the questions ' +
                     'so far and I think you should not use my ' +
-                    'responses for your study']
+                    'responses for your study.']
             ],
             orientation: 'V',
             requiredChoice: true,
@@ -1606,7 +1606,8 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                     {
                         id: 'Part3_q5',
                         orientation: 'H',
-                        mainText: '<span style="font-weight: normal;color:gray;">Q7</span> All things considered, ' + 'how satisfied are you with your life as a whole these ' + 'days? <br>' +
+                        mainText: '<span style="font-weight: normal;color:gray;">Q7</span> All things considered, ' +
+                        'how satisfied are you with your life as a whole these ' + 'days? <br>' +
                         '<span style="font-weight: normal; font-size: 16px;"> Using a scale on which "1" means you are <em>"completely dissatisfied"</em> and "10" means you are <em>"completely satisfied"</em> where would you put your ' +
                         'satisfaction with your life as a whole?</span>',
                         left: 'Completely dissatisfied',
