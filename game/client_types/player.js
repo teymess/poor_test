@@ -174,7 +174,6 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                         onchange: function() {
                             node.game.doneButton.enable();
                         }
-
                     },
                     {
                         id: 'q3_3',
