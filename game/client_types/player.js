@@ -1854,7 +1854,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             id: 'Part3_q',
             options: {
                 simplify: true,
-                mainText: 'For each pair of statementments below, tell us how much you agree with one <em>or</em> the other statement, using a 7-point scale.<br>'+
+                mainText: 'For each pair of statements below, tell us how much you agree with one <em>or</em> the other statement, using a 7-point scale.<br>'+
                 '<span style="font-weight: normal; font-size: 15px;"> - <strong>"1"</strong> means you completely agree with the sentence on the left;<br>' +
                 '- <strong>"7"</strong> means you fully agree with the sentence on the right;<br>' +
                 '- If your opinion is somewhere in between, choose a number in between to reflect that.</span>',
@@ -1928,7 +1928,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                 mainText: 'Thank you for participating. ' +
                 '<br><br>' +
                 "If you want to get in touch with us for questions or suggestions, " +
-                "please write us an email at <em><span style='color:#bf2b42'>pob.heidelberg@gmail.com</span></em>." +
+                "please write us an email at <em><span style='color:#bf2b42'>academic.research.India@gmail.com</span></em>." +
                 '<br><br>' +
                 'We are very interested in ' +
                 'hearing your <strong>feedback</strong> about the ' +
