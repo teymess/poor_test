@@ -929,10 +929,10 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             choices: [
                 ['Yes', 'Yes, I have devoted full attention to the questions so ' +
                     'far and I think you should use my responses for ' +
-                    'your study'],
+                    'your study.'],
                 ['No', 'No, I have not devoted full attention to the questions ' +
                     'so far and I think you should not use my ' +
-                    'responses for your study']
+                    'responses for your study.']
             ],
             orientation: 'V',
             requiredChoice: true,
@@ -1606,7 +1606,8 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                     {
                         id: 'Part3_q5',
                         orientation: 'H',
-                        mainText: '<span style="font-weight: normal;color:gray;">Q7</span> All things considered, ' + 'how satisfied are you with your life as a whole these ' + 'days? <br>' +
+                        mainText: '<span style="font-weight: normal;color:gray;">Q7</span> All things considered, ' +
+                        'how satisfied are you with your life as a whole these ' + 'days? <br>' +
                         '<span style="font-weight: normal; font-size: 16px;"> Using a scale on which "1" means you are <em>"completely dissatisfied"</em> and "10" means you are <em>"completely satisfied"</em> where would you put your ' +
                         'satisfaction with your life as a whole?</span>',
                         left: 'Completely dissatisfied',
@@ -1968,7 +1969,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             id: 'Part3_q',
             options: {
                 simplify: true,
-                mainText: 'For each pair of statementments below, tell us how much you agree with one <em>or</em> the other statement, using a 7-point scale.<br>'+
+                mainText: 'For each pair of statements below, tell us how much you agree with one <em>or</em> the other statement, using a 7-point scale.<br>'+
                 '<span style="font-weight: normal; font-size: 15px;"> - <strong>"1"</strong> means you completely agree with the sentence on the left;<br>' +
                 '- <strong>"7"</strong> means you fully agree with the sentence on the right;<br>' +
                 '- If your opinion is somewhere in between, choose a number in between to reflect that.</span>',
@@ -2042,7 +2043,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                 mainText: 'Thank you for participating. ' +
                 '<br><br>' +
                 "If you want to get in touch with us for questions or suggestions, " +
-                "please write us an email at <em><span style='color:#bf2b42'>pob.heidelberg@gmail.com</span></em>." +
+                "please write us an email at <em><span style='color:#bf2b42'>academic.research.India@gmail.com</span></em>." +
                 '<br><br>' +
                 'We are very interested in ' +
                 'hearing your <strong>feedback</strong> about the ' +
