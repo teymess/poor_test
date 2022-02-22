@@ -2062,7 +2062,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
     // DISCLAIMER
     /////////////////////////////////////////////////////////////////////////////
     // Instructions Part II
-    stager.extendStep('Instructions_Part_2', {
+    stager.extendStep('Disclaimer', {
         name: 'Disclaimer',
         frame: 'leaflet_protection.htm'
     });

@@ -62,7 +62,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
 
     stager
     .stage('feedback')
-
+    .stage('Disclaimer')
     .stage('end')
 
     .gameover();
