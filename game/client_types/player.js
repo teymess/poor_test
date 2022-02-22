@@ -1658,11 +1658,11 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                             ],
                             [
                                 'Lung Care Foundation',
-                                '<div class="aligned"><img src="https://lcf.org.in/wp-content/uploads/logo-lcf1.png" width="100px"><span>The <b>Lung Care Foundation</b> supports - among other things - the "Doctors for clean air" intiative that is active in more than 20 states of India and aims to raise awareness for the air pollution crisis. For information, see https://lcf.org.in/.</span></div>'
+                                '<div class="aligned"><img src="https://lcf.org.in/wp-content/uploads/logo-lcf1.png" width="100px"><span>The <b>Lung Care Foundation</b> supports - among other things - the "Doctors for clean air" initiative that is active in more than 20 states of India and aims to raise awareness for the air pollution crisis. For information, see https://lcf.org.in/.</span></div>'
                             ],
                             [
                                 'WWF India',
-                                '<div class="aligned"><img src="https://s3.amazonaws.com/wwfinternational/landing/img/logo.png" width="100px"><span><b> WWF India</b> is an environmental organisation that aims to stop the degredation of the natural environment by, among other things, promoting the reduction of pollution and wasteful consumption. For more information, see https://www.wwfindia.org/.</span></div>',
+                                '<div class="aligned"><img src="https://s3.amazonaws.com/wwfinternational/landing/img/logo.png" width="100px"><span><b> WWF India</b> is an environmental organisation that aims to stop the degradation of the natural environment by, among other things, promoting the reduction of pollution and wasteful consumption. For more information, see https://www.wwfindia.org/.</span></div>',
                             ],
                             [
                                 'none',
@@ -1696,7 +1696,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                         requiredChoice: true,
                         displayNoChange: false,
                         mainText: '<span style="font-weight: normal;color:gray;">Q3</span> How much of the bonus reward of $1.50 do you want to contribute?',
-                        hint: '<b>Please move the slider to your preferred contribution amount.</b> <br> <span style="font-size:12px;"> Your contribution will be given to the intiative of your choice by the researchers at Heidelberg University. The rest will go to you.',
+                        hint: '<b>Please move the slider to your preferred contribution amount.</b> <br> <span style="font-size:12px;"> Your contribution will be given to the initiative of your choice by the researchers at Heidelberg University. The rest will go to you.',
                         texts: {
                             currentValue: function(widget, value) {
                                 let contribution = [
