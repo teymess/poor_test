@@ -1786,7 +1786,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             forms.info_cc.show();
             forms.CC1.reset(); // removes highlight.
             forms.CC1.show();
-            forms.CC2.show();
+            //forms.CC2.show();
 
             if ('undefined' === typeof node.game.confirm) {
                 node.game.confirm = true;
