@@ -2074,7 +2074,8 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
         widget: {
             name: 'EndScreen',
             options: {
-                feedback: false
+                feedback: false,
+                showEmailForm: false
             }
         },
         init: function() {
