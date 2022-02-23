@@ -1729,20 +1729,6 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                         mainText: '' ,
                     },
                     {
-                        id: 'CC2',
-                        name: 'CustomInput',
-                        mainText: 'You have the option' +
-                        ' to have your name appear on the University\'s website among the list of contributors.<br>',
-                        hint: '<div style="margin-left: 0">If you wish to have your name displayed, please enter your name below,' +
-                        ' or leave blank to contribute anonymously.' +
-                        ' After the study concludes, all contribution receipts will be' +
-                        " available on our research group's webpage at Heidelberg University" +
-                        ' <a target="_blank" href="https://www.uni-heidelberg.de/fakultaeten/wiso/awi/professuren/umwelt/breathing.html">(link to webpage)</a>.<br>',
-                        width: '95%',
-                        requiredChoice: false,
-                        hidden: true
-                    },
-                    {
                         id: 'CC1',
                         orientation: 'H',
                         mainText: 'Please confirm your contribution.<br>',
