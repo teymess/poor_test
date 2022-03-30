@@ -1171,6 +1171,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
 
                 if (guessGroup === incomeGroup) {
                     evaluation = 'correct';
+                    W.setInnerHTML('guess', guess);
                     W.setInnerHTML('evaluation', evaluation);
                     W.setInnerHTML('group', income);
                     W.gid('img').src = 'Leaflet_images/' + income + '.png';
