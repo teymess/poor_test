@@ -266,41 +266,6 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                                 ['Group 9', 'Between ' + (data.pct80) + ' INR and ' + (data.pct90) + ' INR'],
                                 ['Group 10', 'More than ' + (data.pct90) + ' INR']
                             ]
-                            else if (data.decile_number === 7) return [
-                                ['Group 4', 'Less than ' + (data.pct40) + ' INR'],
-                                ['Group 5', 'Between ' + (data.pct40) + ' INR and ' + (data.pct50) + ' INR'],
-                                ['Group 6', 'Between ' + (data.pct50) + ' INR and ' + (data.pct60) + ' INR'],
-                                ['Group 7', 'Between ' + (data.pct60) + ' INR and ' + (data.pct70) + ' INR'],
-                                ['Group 8', 'Between ' + (data.pct70) + ' INR and ' + (data.pct80) + ' INR'],
-                                ['Group 9', 'Between ' + (data.pct80) + ' INR and ' + (data.pct90) + ' INR'],
-                                ['Group 10', 'More than ' + (data.pct90) + ' INR']
-                            ]
-                            else if (data.decile_number === 6) return [
-                                ['Group 5', 'Less than ' + (data.pct50) + ' INR'],
-                                ['Group 6', 'Between ' + (data.pct50) + ' INR and ' + (data.pct60) + ' INR'],
-                                ['Group 7', 'Between ' + (data.pct60) + ' INR and ' + (data.pct70) + ' INR'],
-                                ['Group 8', 'Between ' + (data.pct70) + ' INR and ' + (data.pct80) + ' INR'],
-                                ['Group 9', 'Between ' + (data.pct80) + ' INR and ' + (data.pct90) + ' INR'],
-                                ['Group 10', 'More than ' + (data.pct90) + ' INR']
-                            ]
-                            else if (data.decile_number === 5) return [
-                                ['Group 6', 'Less than ' + (data.pct60) + ' INR'],
-                                ['Group 7', 'Between ' + (data.pct60) + ' INR and ' + (data.pct70) + ' INR'],
-                                ['Group 8', 'Between ' + (data.pct70) + ' INR and ' + (data.pct80) + ' INR'],
-                                ['Group 9', 'Between ' + (data.pct80) + ' INR and ' + (data.pct90) + ' INR'],
-                                ['Group 10', 'More than ' + (data.pct90) + ' INR']
-                            ]
-                            else if (data.decile_number === 4) return [
-                                ['Group 7', 'Less than ' + (data.pct70) + ' INR'],
-                                ['Group 8', 'Between ' + (data.pct70) + ' INR and ' + (data.pct80) + ' INR'],
-                                ['Group 9', 'Between ' + (data.pct80) + ' INR and ' + (data.pct90) + ' INR'],
-                                ['Group 10', 'More than ' + (data.pct90) + ' INR']
-                            ]
-                            else if (data.decile_number === 3) return [
-                                ['Group 8', 'Less than ' + (data.pct80) + ' INR'],
-                                ['Group 9', 'Between ' + (data.pct80) + ' INR and ' + (data.pct90) + ' INR'],
-                                ['Group 10', 'More than ' + (data.pct90) + ' INR']
-                            ]
                         },
                         shuffleChoices: false,
                         requiredChoice: true,
