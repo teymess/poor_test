@@ -1162,7 +1162,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                 var guessG = parseInt(guessGroup, 10);
                 console.log(guessG);
 
-                var decile_number = data.decileNum;
+                var decile_number = data.row.decile_number;
                 console.log(decile_number);
 
                 W.show('data', 'flex');
@@ -1179,6 +1179,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                 else {
                     if (decile_number === 10) {
                         evaluation = 'incorrect';
+                        W.setInnerHTML('guess', guess);
                         W.setInnerHTML('evaluation', evaluation);
                         W.setInnerHTML('group', income);
                         W.gid('img').src = 'Leaflet_images/' + income + '.png';
@@ -1186,12 +1187,14 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                     else if (decile_number === 9) {
                         if (guessG !== incomeG && guessG < 3 && incomeG < 3) {
                             evaluation = 'correct';
+                            W.setInnerHTML('guess', guess);
                             W.setInnerHTML('evaluation', evaluation);
                             W.setInnerHTML('group', guess);
                             W.gid('img').src = 'Leaflet_images/' + guess + '.png';
                         }
                         else {
                             evaluation = 'incorrect';
+                            W.setInnerHTML('guess', guess);
                             W.setInnerHTML('evaluation', evaluation);
                             W.setInnerHTML('group', income);
                             W.gid('img').src = 'Leaflet_images/' + income + '.png';
@@ -1200,12 +1203,14 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                     else if (decile_number === 8) {
                         if (guessG !== incomeG && guessG < 4 && incomeG < 4) {
                             evaluation = 'correct';
+                            W.setInnerHTML('guess', guess);
                             W.setInnerHTML('evaluation', evaluation);
                             W.setInnerHTML('group', guess);
                             W.gid('img').src = 'Leaflet_images/' + guess + '.png';
                         }
                         else {
                             evaluation = 'incorrect';
+                            W.setInnerHTML('guess', guess);
                             W.setInnerHTML('evaluation', evaluation);
                             W.setInnerHTML('group', income);
                             W.gid('img').src = 'Leaflet_images/' + income + '.png';
