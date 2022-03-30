@@ -1251,12 +1251,8 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
 
                 // console.log(data);
                 W.setInnerHTML('state', data.state);
-                W.setInnerHTML('district', data.district);
-                W.setInnerHTML('districtQ', data.district);
-                W.setInnerHTML('districtAgain', data.district);
-                W.setInnerHTML('districtAgainAgain', data.district);
-                W.setInnerHTML('district4', data.district);
-                W.setInnerHTML('district5', data.district);
+                W.setInnerHTML('state2', data.state);
+                W.setInnerHTML('state3', data.state);
                 W.setInnerHTML('pm25', data.pm25.toFixed(2));
                 W.setInnerHTML('higher', (data.pm25 / 5).toFixed(0));
                 W.setInnerHTML('years', lifeLost);
