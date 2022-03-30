@@ -37,7 +37,7 @@ module.exports = {
      *
      * Default: the name of the game, as found in the package.json file.
      */
-    // name: 'Gridlock',
+    // name: 'Gridlock2',
 
     /**
      * ## alias (string|array) Optional
@@ -89,7 +89,7 @@ module.exports = {
      *
      * Default: name-of-the-channel/admin
      */
-    // adminServer: 'Gridlock/admin',
+    // adminServer: 'Gridlock2/admin',
 
     /**
      * ## getFromAdmins (boolean) Optional
