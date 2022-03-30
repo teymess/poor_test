@@ -125,11 +125,6 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             // Actual district.
             console.log(district);
             district = district.forms.district.value;
-            // END FOR EXPERIMENT.
-
-            // FOR QUICK TESTING.
-            // let district = 'Nicobar Islands'
-            // END FOR QUICK TESTING.
 
             return setup.pollutionDb.district.get(district);
         });
