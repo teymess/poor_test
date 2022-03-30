@@ -792,11 +792,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                 state_fig = state_fig.replace(/&/g, 'and');
                 state_fig = state_fig.replace(/-/g, '_');
 
-                var district_fig = data.district.replace(/ /g, '_');
-                district_fig = district_fig.replace(/&/g, 'and');
-                district_fig = district_fig.replace(/-/g, '_');
-
-                var image = 'district_maps/' + state_fig + '_' + district_fig + '.png';
+                var image = 'district_maps/' + state_fig + '.png';
 
                 W.gid('img').src = image;
 
