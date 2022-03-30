@@ -923,17 +923,17 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             options: {
                 simplify: true,
                 mainText: '<span style=\'font-size:18px;font-weight:normal;\'>Assume the entire ' +
-                          'population living in <b>your district</b> is divided into 10 income groups, '+
+                          'population living in <b>your state</b> is divided into 10 income groups, '+
                           'each with the same number of households. The figure below illustrates ' +
                           'the 10 groups, ordered from left to right from the poorest 10% '+
                           'to the richest 10%.' +
-                '</span><br><br><img src="https://i.ibb.co/sbMXxDd/District-groups.png" alt="Indian-groups" border="0" width="800px"></a><br><br>',
+                '</span><br><br><img src="https://i.ibb.co/stw49nM/deciles-clean.png" alt="Indian-groups" border="0" width="800px"></a><br><br>',
                 forms: [
                     {
                         id: 'P3_q1_1',
                         orientation: 'H',
                         mainText: '<span style="font-weight: normal;color:gray;">Q1</span> Think of a household living ' +
-                                  'in the same district as you and earning a total annual income of 40,000 INR.<br><br>'+
+                                  'in the same state as you and earning a total annual income of 40,000 INR.<br><br>'+
                                   'In your opinion, which income group is this household part of?',
                         choices: [
                             ['Group 1', '<span style=\'font-size:14px;font-weight:normal;\'>Group 1</span>'],
@@ -991,17 +991,17 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             options: {
                 simplify: true,
                 mainText: '<span style=\'font-size:18px;font-weight:normal;\'>Assume the entire ' +
-                          'population living in <b>your district</b> is divided into 10 income groups, '+
+                          'population living in <b>your state</b> is divided into 10 income groups, '+
                           'each with the same number of households. The figure below illustrates ' +
                           'the 10 groups, ordered from left to right from the poorest 10% '+
                           'to the richest 10%.' +
-                '</span><br><br><img src="https://i.ibb.co/sbMXxDd/District-groups.png" alt="Indian-groups" border="0" width="800px"></a><br><br>',
+                '</span><br><br><img src="https://i.ibb.co/stw49nM/deciles-clean.png" alt="Indian-groups" border="0" width="800px"></a><br><br>',
                 forms: [
                     {
                         id: 'P3_q1_1',
                         orientation: 'H',
                         mainText: '<span style="font-weight: normal;color:gray;">Q1</span> Think of a household living ' +
-                                  'in the same district as you and earning a total annual income of 1,00,00,000 INR.<br><br>'+
+                                  'in the same state as you and earning a total annual income of 1,00,00,000 INR.<br><br>'+
                                   'In your opinion, which income group is this household part of?',
                         choices: [
                             ['Group 1', '<span style=\'font-size:14px;font-weight:normal;\'>Group 1</span>'],
@@ -1058,11 +1058,11 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             options: {
                 simplify: true,
                 mainText: '<span style=\'font-size:18px;font-weight:normal;\'>Assume the entire ' +
-                          'population living in <b>your district</b> is divided into 10 income groups, '+
+                          'population living in <b>your state</b> is divided into 10 income groups, '+
                           'each with the same number of households. The figure below illustrates ' +
                           'the 10 groups, ordered from left to right from the poorest 10% '+
                           'to the richest 10%.' +
-                '</span><br><br><img src="https://i.ibb.co/sbMXxDd/District-groups.png" alt="Indian-groups" border="0" width="800px"></a><br><br>',
+                '</span><br><br><img src="https://i.ibb.co/stw49nM/deciles-clean.png" alt="Indian-groups" border="0" width="800px"></a><br><br>',
                 forms: [
                     {
                         id: 'P3_q1_2',
@@ -1106,11 +1106,11 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             options: {
                 simplify: true,
                 mainText: '<span style=\'font-size:18px;font-weight:normal;\'>Assume the entire ' +
-                'population living in <b>your district</b> is divided into 10 income groups, '+
+                'population living in <b>your state</b> is divided into 10 income groups, '+
                 'each with the same number of households. The figure below illustrates ' +
                 'the 10 groups, ordered from left to right from the poorest 10% '+
                 'to the richest 10%.' +
-                '</span><br><br><img src="https://i.ibb.co/sbMXxDd/District-groups.png" alt="Indian-groups" border="0" width="800px"></a><br><br>',
+                '</span><br><br><img src="https://i.ibb.co/stw49nM/deciles-clean.png" alt="Indian-groups" border="0" width="800px"></a><br><br>',
                 forms: [
                     {
                         id: 'P3_q1_1',
