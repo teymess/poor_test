@@ -68,7 +68,7 @@ module.exports = {
      */
     playerServer: {
 
-        endpoint: 'Gridlock',
+        endpoint: 'Gridlock2',
 
         // Anti-spoofing, extra check to see if msg.from matches socket.id
         // on SocketIo socket connections. Spoofed messages are logged
