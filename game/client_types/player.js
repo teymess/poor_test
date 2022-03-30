@@ -802,9 +802,8 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
 
                 console.log(data);
                 W.setInnerHTML('state', data.state);
-                W.setInnerHTML('district', data.district);
-                W.setInnerHTML('districtAgain', data.district);
-                W.setInnerHTML('districtAgainAgain', data.district);
+                W.setInnerHTML('state2', data.district);
+                W.setInnerHTML('state3', data.district);
                 W.setInnerHTML('pm25', data.pm25.toFixed(2));
                 W.setInnerHTML('higher', (data.pm25 / 5).toFixed(0));
                 W.setInnerHTML('years', data.life_lost.toFixed(1));
@@ -831,7 +830,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                         {
                             id: 'p5_q2',
                             orientation: 'H',
-                            mainText: '<span style="font-weight: normal;color:gray;">Q9</span> On average, how many years of life does a person living in your district lose because of air pollution?<br>',
+                            mainText: '<span style="font-weight: normal;color:gray;">Q9</span> On average, how many years of life does a person living in your state lose because of air pollution?<br>',
                             choices: [
                                 (data.life_lost * 0.5).toFixed(1) + ' years',
                                 (data.life_lost * 0.8).toFixed(1) + ' years',
