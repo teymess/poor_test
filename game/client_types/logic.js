@@ -144,6 +144,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             district = district.forms.district.value;
             var decile_number;
             decile_number = setup.pollutionDb.district.get(decile_number);
+            console.log(decile_number);
 
             let income_guess = memory.income_guess.get(msg.from);
             console.log(income_guess);

@@ -1152,18 +1152,6 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             node.get('incomeDecile', function(data) {
                 console.log(data);
 
-                // var state_fig = data.state.replace(/ /g, '_');
-                // state_fig = state_fig.replace(/&/g, 'and');
-                // state_fig = state_fig.replace(/-/g, '_');
-                //
-                // var district_fig = data.district.replace(/ /g, '_');
-                // district_fig = district_fig.replace(/&/g, 'and');
-                // district_fig = district_fig.replace(/-/g, '_');
-                //
-                // var image = 'district_maps/' + state_fig + '_' + district_fig + '.png';
-
-
-
                 var income = data.income;
                 var incomeGroup = income.substr("Group ".length);
                 var incomeG = parseInt(incomeGroup, 10);
@@ -1210,76 +1198,6 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                     }
                     else if (decile_number === 8) {
                         if (guessG !== incomeG && guessG < 4 && incomeG < 4) {
-                            evaluation = 'correct';
-                            W.setInnerHTML('evaluation', evaluation);
-                            W.setInnerHTML('group', guess);
-                            W.gid('img').src = 'Leaflet_images/' + guess + '.png';
-                        }
-                        else {
-                            evaluation = 'incorrect';
-                            W.setInnerHTML('evaluation', evaluation);
-                            W.setInnerHTML('group', income);
-                            W.gid('img').src = 'Leaflet_images/' + income + '.png';
-                        }
-                    }
-                    else if (decile_number === 7) {
-                        if (guessG !== incomeG && guessG < 5 && incomeG < 5) {
-                            evaluation = 'correct';
-                            W.setInnerHTML('evaluation', evaluation);
-                            W.setInnerHTML('group', guess);
-                            W.gid('img').src = 'Leaflet_images/' + guess + '.png';
-                        }
-                        else {
-                            evaluation = 'incorrect';
-                            W.setInnerHTML('evaluation', evaluation);
-                            W.setInnerHTML('group', income);
-                            W.gid('img').src = 'Leaflet_images/' + income + '.png';
-                        }
-                    }
-                    else if (decile_number === 6) {
-                        if (guessG !== incomeG && guessG < 6 && incomeG < 6) {
-                            evaluation = 'correct';
-                            W.setInnerHTML('evaluation', evaluation);
-                            W.setInnerHTML('group', guess);
-                            W.gid('img').src = 'Leaflet_images/' + guess + '.png';
-                        }
-                        else {
-                            evaluation = 'incorrect';
-                            W.setInnerHTML('evaluation', evaluation);
-                            W.setInnerHTML('group', income);
-                            W.gid('img').src = 'Leaflet_images/' + income + '.png';
-                        }
-                    }
-                    else if (decile_number === 5) {
-                        if (guessG !== incomeG && guessG < 7 && incomeG < 7) {
-                            evaluation = 'correct';
-                            W.setInnerHTML('evaluation', evaluation);
-                            W.setInnerHTML('group', guess);
-                            W.gid('img').src = 'Leaflet_images/' + guess + '.png';
-                        }
-                        else {
-                            evaluation = 'incorrect';
-                            W.setInnerHTML('evaluation', evaluation);
-                            W.setInnerHTML('group', income);
-                            W.gid('img').src = 'Leaflet_images/' + income + '.png';
-                        }
-                    }
-                    else if (decile_number === 4) {
-                        if (guessG !== incomeG && guessG < 8 && incomeG < 8) {
-                            evaluation = 'correct';
-                            W.setInnerHTML('evaluation', evaluation);
-                            W.setInnerHTML('group', guess);
-                            W.gid('img').src = 'Leaflet_images/' + guess + '.png';
-                        }
-                        else {
-                            evaluation = 'incorrect';
-                            W.setInnerHTML('evaluation', evaluation);
-                            W.setInnerHTML('group', income);
-                            W.gid('img').src = 'Leaflet_images/' + income + '.png';
-                        }
-                    }
-                    else if (decile_number === 3) {
-                        if (guessG !== incomeG && guessG < 9 && incomeG < 9) {
                             evaluation = 'correct';
                             W.setInnerHTML('evaluation', evaluation);
                             W.setInnerHTML('group', guess);
