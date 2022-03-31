@@ -47,8 +47,16 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             if (item.stepId === 'Part_1_q4') return item.player;
         });
 
+        memory.index('district_LYL', item => {
+            if (item.stepId === 'Part2_Pollution_in_your_district') return item.player;
+        });
+
         memory.index('income_guess', item => {
             if (item.stepId === 'Part3_T_Income_Corr_Control1') return item.player;
+        });
+
+        memory.index('own_LYL_guess', item => {
+            if (item.stepId === 'Part3_Impact') return item.player;
         });
 
         node.on.data('done', function(msg) {
@@ -147,6 +155,30 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                 row: setup.pollutionDb.district.get(district),
                 income: income,
                 income_guess: income_guess
+            }
+        });
+
+        node.on('get.contributionReminder', function(msg) {
+            var districtLYL = memory.district_LYL.get(msg.from);
+            console.log(districtLYL);
+            districtLYL = districtLYL.p5_q2.value;
+
+            var ownLYL = memory.own_LYL_guess.get(msg.from);
+            console.log(ownLYL);
+            var ownLYLCategory = ownLYL.forms.T_impact_more_or_less_you.value;
+            ownLYL = ownLYL.forms.T_impact_you.value;
+
+            if (ownLYLCategory === 'same') {
+                return {
+                    district: districtLYL,
+                    own: districtLYL
+                }
+            }
+            else {
+                return {
+                    district: districtLYL,
+                    own: ownLYL
+                }
             }
         });
     });

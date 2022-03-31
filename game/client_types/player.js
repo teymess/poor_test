@@ -1201,7 +1201,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
 
                 if (guessGroup === incomeGroup) {
                     evaluation = 'correct';
-                    W.setInnerHTML('guess', guess);
+                    W.setInnerHTML('guess', guessGroup);
                     W.setInnerHTML('evaluation', evaluation);
                     W.setInnerHTML('group', income);
                     W.gid('img').src = 'Leaflet_images/' + income + '.png';
@@ -1209,7 +1209,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                 else {
                     if (decile_number === 10) {
                         evaluation = 'incorrect';
-                        W.setInnerHTML('guess', guess);
+                        W.setInnerHTML('guess', guessGroup);
                         W.setInnerHTML('evaluation', evaluation);
                         W.setInnerHTML('group', income);
                         W.gid('img').src = 'Leaflet_images/' + income + '.png';
@@ -1217,14 +1217,14 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                     else if (decile_number === 9) {
                         if (guessG !== incomeG && guessG < 3 && incomeG < 3) {
                             evaluation = 'correct';
-                            W.setInnerHTML('guess', guess);
+                            W.setInnerHTML('guess', guessGroup);
                             W.setInnerHTML('evaluation', evaluation);
                             W.setInnerHTML('group', guess);
                             W.gid('img').src = 'Leaflet_images/' + guess + '.png';
                         }
                         else {
                             evaluation = 'incorrect';
-                            W.setInnerHTML('guess', guess);
+                            W.setInnerHTML('guess', guessGroup);
                             W.setInnerHTML('evaluation', evaluation);
                             W.setInnerHTML('group', income);
                             W.gid('img').src = 'Leaflet_images/' + income + '.png';
@@ -1233,14 +1233,14 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                     else if (decile_number === 8) {
                         if (guessG !== incomeG && guessG < 4 && incomeG < 4) {
                             evaluation = 'correct';
-                            W.setInnerHTML('guess', guess);
+                            W.setInnerHTML('guess', guessGroup);
                             W.setInnerHTML('evaluation', evaluation);
                             W.setInnerHTML('group', guess);
                             W.gid('img').src = 'Leaflet_images/' + guess + '.png';
                         }
                         else {
                             evaluation = 'incorrect';
-                            W.setInnerHTML('guess', guess);
+                            W.setInnerHTML('guess', guessGroup);
                             W.setInnerHTML('evaluation', evaluation);
                             W.setInnerHTML('group', income);
                             W.gid('img').src = 'Leaflet_images/' + income + '.png';
@@ -1546,6 +1546,17 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
     stager.extendStep('Part3_Time_to_act!', {
         name: "Part 3: Your opinion",
         frame: 'Donation_card2.htm',
+        cb: function() {
+            node.get('contributionReminder', function(data) {
+
+                console.log(data.district);
+                console.log(data.own);
+
+                W.setInnerHTML('districtLYL', data.district);
+                W.setInnerHTML('ownLYL', data.own);
+
+            });
+        },    
         widget: {
             name: 'ChoiceManager',
             id: 'D_f',
@@ -1556,7 +1567,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                     {
                         id: 'D_f_c1',
                         orientation: 'V',
-                        mainText: '<span style="font-weight: normal;color:gray;">Q2</span> Which NGO do you want to support in the fight against air pollution?',
+                        mainText: '<span style="font-weight: normal;color:gray;">Q2</span> Which non-governmental initiative do you want to support in the fight against air pollution?',
                         choices: [
                             [
                                 'Chintan',
@@ -1576,7 +1587,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                             ],
                             [
                                 'none',
-                                '<div class="aligned"><img src="x.png" width="100px"><span> <strong>None of the above</strong>. </span></div>',
+                                '<div class="aligned"><img src="x.png" width="100px"><span>I <strong>don\'t want</strong> to support the fight against air pollution.</span></div>',
                             ]
                         ],
                         requiredChoice: true,
@@ -1606,7 +1617,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                         requiredChoice: true,
                         displayNoChange: false,
                         mainText: '<span style="font-weight: normal;color:gray;">Q3</span> How much of the bonus reward of $1.50 do you want to contribute?',
-                        hint: '<b>Please move the slider to your preferred contribution amount.</b> <br> <span style="font-size:12px;"> Your contribution will be transferred to the NGO of your choice. The rest will go to you.',
+                        hint: '<b>Please move the slider to your preferred contribution amount.</b> <br> <span style="font-size:12px;"> Your contribution will be given to the initiative of your choice by the researchers at Heidelberg University. The rest will go to you.',
                         texts: {
                             currentValue: function(widget, value) {
                                 let contribution = [
@@ -1659,6 +1670,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                 ]
             }
         },
+
         done: function(values) {
             var org, amount, forms;
             // Note. Simplify: true.
@@ -1702,7 +1714,6 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                 node.game.confirm = true;
                 return false;
             }
-
         }
     });
 
