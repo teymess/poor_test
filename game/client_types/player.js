@@ -113,14 +113,14 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                         mainText: '<span style="font-weight: normal;color:gray;">Q1</span> How old are you?',
                         width: '95%',
                         type: 'int',
-                        min: 0,
+                        min: 18,
                         max: 100,
                         requiredChoice: true,
                     },
                     {
                         id: 'q2_2',
                         mainText: '<span style="font-weight: normal;color:gray;">Q2</span> What is your gender?',
-                        choices: ['Male', 'Female', 'Other'],
+                        choices: ['Male', 'Female', 'Other','Prefer not to say'],
                         requiredChoice: true
                     }
                 ]
@@ -144,7 +144,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                     {
                         name: 'Dropdown',
                         id: 'state',
-                        mainText: '<span style="font-weight: normal;color:gray;">Q3</span> Select the state in which you currently live.',
+                        mainText: '<span style="font-weight: normal;color:gray;">Q3</span> Select the state in which you currently live. <span style="font-weight: normal;">*</span>',
                         choices: setup.states,
                         tag: 'select', // 'datalist'
                         placeholder: '--',
@@ -164,7 +164,8 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                     {
                         name: 'Dropdown',
                         id: 'district',
-                        mainText: '<span style="font-weight: normal;color:gray;">Q4</span> Select the district in which you currently live.',
+                        mainText: '<span style="font-weight: normal;color:gray;">Q4</span> Select the district in which you currently live. <span style="font-weight: normal;">*</span>' +
+                        '<br><span style="font-weight: normal;">In case you cannot find your district in the list, please choose the nearest one.</span>',
                         tag: 'select', // 'datalist'
                         // Will be auto-filled later.
                         choices: [ '--' ],
@@ -206,22 +207,22 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                 simplify: true,
                 forms: [
                     {
+                        id: 'q4_2',
+                        orientation: 'H',
+                        mainText: '<span style="font-weight: normal;color:gray;">Q6</span> What is the highest educational level that you have completed?',
+                        choices: ['No formal education','Primary school','Secondary school','Vocational training','Bachelor degree','Masters degree or higher'],
+                        shuffleChoices: false,
+                        requiredChoice: true
+                    },
+                    {
                         name: 'CustomInput',
                         id: 'q4_1',
-                        mainText: '<span style="font-weight: normal;color:gray;">Q6</span> How many people live in your household?<br>',
-                        hint: '(Think about everyone that lives at least eight months per year in your house. Answer should include yourself in the count.)',
+                        mainText: '<span style="font-weight: normal;color:gray;">Q7</span> How many people live in your household?<br>',
+                        hint: '(Think about everyone that lives at least eight months per year in your house. Answer should include yourself.)',
                         width: '95%',
                         type: 'int',
                         requiredChoice: true,
                         min: 1
-                    },
-                    {
-                        id: 'q4_2',
-                        orientation: 'H',
-                        mainText: '<span style="font-weight: normal;color:gray;">Q7</span> What is the highest educational level that you have completed?',
-                        choices: ['No formal education','Primary school','Secondary school','Vocational training','Bachelor degree','Masters degree or higher'],
-                        shuffleChoices: false,
-                        requiredChoice: true
                     },
                     {
                         id: 'income',
@@ -263,6 +264,41 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                                 ['Group 6', 'Between ' + (data.pct50) + ' INR and ' + (data.pct60) + ' INR'],
                                 ['Group 7', 'Between ' + (data.pct60) + ' INR and ' + (data.pct70) + ' INR'],
                                 ['Group 8', 'Between ' + (data.pct70) + ' INR and ' + (data.pct80) + ' INR'],
+                                ['Group 9', 'Between ' + (data.pct80) + ' INR and ' + (data.pct90) + ' INR'],
+                                ['Group 10', 'More than ' + (data.pct90) + ' INR']
+                            ]
+                            else if (data.decile_number === 7) return [
+                                ['Group 4', 'Less than ' + (data.pct40) + ' INR'],
+                                ['Group 5', 'Between ' + (data.pct40) + ' INR and ' + (data.pct50) + ' INR'],
+                                ['Group 6', 'Between ' + (data.pct50) + ' INR and ' + (data.pct60) + ' INR'],
+                                ['Group 7', 'Between ' + (data.pct60) + ' INR and ' + (data.pct70) + ' INR'],
+                                ['Group 8', 'Between ' + (data.pct70) + ' INR and ' + (data.pct80) + ' INR'],
+                                ['Group 9', 'Between ' + (data.pct80) + ' INR and ' + (data.pct90) + ' INR'],
+                                ['Group 10', 'More than ' + (data.pct90) + ' INR']
+                            ]
+                            else if (data.decile_number === 6) return [
+                                ['Group 5', 'Less than ' + (data.pct50) + ' INR'],
+                                ['Group 6', 'Between ' + (data.pct50) + ' INR and ' + (data.pct60) + ' INR'],
+                                ['Group 7', 'Between ' + (data.pct60) + ' INR and ' + (data.pct70) + ' INR'],
+                                ['Group 8', 'Between ' + (data.pct70) + ' INR and ' + (data.pct80) + ' INR'],
+                                ['Group 9', 'Between ' + (data.pct80) + ' INR and ' + (data.pct90) + ' INR'],
+                                ['Group 10', 'More than ' + (data.pct90) + ' INR']
+                            ]
+                            else if (data.decile_number === 5) return [
+                                ['Group 6', 'Less than ' + (data.pct60) + ' INR'],
+                                ['Group 7', 'Between ' + (data.pct60) + ' INR and ' + (data.pct70) + ' INR'],
+                                ['Group 8', 'Between ' + (data.pct70) + ' INR and ' + (data.pct80) + ' INR'],
+                                ['Group 9', 'Between ' + (data.pct80) + ' INR and ' + (data.pct90) + ' INR'],
+                                ['Group 10', 'More than ' + (data.pct90) + ' INR']
+                            ]
+                            else if (data.decile_number === 4) return [
+                                ['Group 7', 'Less than ' + (data.pct70) + ' INR'],
+                                ['Group 8', 'Between ' + (data.pct70) + ' INR and ' + (data.pct80) + ' INR'],
+                                ['Group 9', 'Between ' + (data.pct80) + ' INR and ' + (data.pct90) + ' INR'],
+                                ['Group 10', 'More than ' + (data.pct90) + ' INR']
+                            ]
+                            else if (data.decile_number === 3) return [
+                                ['Group 8', 'Less than ' + (data.pct80) + ' INR'],
                                 ['Group 9', 'Between ' + (data.pct80) + ' INR and ' + (data.pct90) + ' INR'],
                                 ['Group 10', 'More than ' + (data.pct90) + ' INR']
                             ]
@@ -656,7 +692,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             id: 'P1_q',
             options: {
                 simplify: true,
-                mainText: 'Based on the information provided in the box above, find the correct answer to the questions below.<br>' +
+                mainText: 'Based on the box above, find the correct answer to the questions below.<br>' +
                 '<span style="color:gray;font-size:14px;">(All your answers need to be correct in order to be able to proceed to the next page.) </span>',
                 forms: [
                     {
@@ -672,8 +708,8 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                         id: 'P1_q2',
                         orientation: 'V',
                         mainText: '<span style="font-weight: normal;color:gray;">Q2</span> Which of the following statements is correct?',
-                        choices: ['In India, only industries cause air pollution.',
-                        'In India, air pollution is generated by many sources and everyone is responsible to different degrees for the air pollution problem.'],
+                        choices: ['Only industries cause air pollution.',
+                        'Air pollution is generated by many sources and everyone is responsible to different degrees for the air pollution problem.'],
                         correctChoice: 1,
                     }
                 ]
@@ -692,8 +728,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             id: 'P2_q',
             options: {
                 simplify: true,
-                mainText: 'Based on the information provided in the box above, find the correct answer to the questions below.<br>' +
-                '<span style="color:gray;font-size:14px;">(All your answers need to be correct in order to be able to proceed to the next page.) </span>',
+                mainText: 'Based on the box above, find the correct answer to the questions below.<br>',
                 forms: [
                     {
                         id: 'P2_q1',
@@ -726,9 +761,8 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             id: 'P3_q',
             options: {
                 simplify: true,
-                mainText: 'Based on the information provided in the box above, find the correct answer to the questions below.<br>' +
-                '<span style="color:gray;font-size:14px;">(All your answers need to be correct in order to be able to proceed to the next page.) </span>',
-                forms: [
+                mainText: 'Based on the box above, find the correct answer to the question below.',
+                 forms: [
                     {
                         id: 'P3_q1',
                         orientation: 'H',
@@ -757,8 +791,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             id: 'P4_q',
             options: {
                 simplify: true,
-                mainText: 'Based on the information provided in the box above, find the correct answer to the questions below.<br>' +
-                '<span style="color:gray;font-size:14px;">(All your answers need to be correct in order to be able to proceed to the next page.) </span>',
+                mainText: 'Based on the box above, find the correct answer to the questions below.',
                 forms: [
                     {
                         id: 'P4_q1',
@@ -812,26 +845,25 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                 node.game.controlQuestions = node.widgets.append('ChoiceManager', "ComprehquestionsL5", {
                     id: 'p5_q',
                     // ref: 'controlQuestions',
-                    mainText: 'Based on the information provided in the box above, find the correct answer to the questions below.<br>' +
-                    '<span style="color:gray;font-size:14px;">(All your answers need to be correct in order to be able to proceed to the next page.) </span>',
+                    mainText: '',
                     simplify: true,
                     forms: [
-                        {
-                            id: 'p5_q1',
-                            orientation: 'H',
-                            mainText: '<span style="font-weight: normal;color:gray;">Q8</span> What is the WHO recommendation for the annual average PM 2.5 concentrations?<br>',
-                            choices: [
-                                ['0', "0 &mu;g/m<sup>3</sup>"],
-                                ['5', "5 &mu;g/m<sup>3</sup>"],
-                                ['15', "15 &mu;g/m<sup>3</sup>"],
-                                ['30', "30 &mu;g/m<sup>3</sup>"],
-                            ],
-                            correctChoice: 1,
-                        },
+                        // {
+                        //     id: 'p5_q1',
+                        //     orientation: 'H',
+                        //     mainText: '<span style="font-weight: normal;color:gray;">Q8</span> What is the WHO recommendation for the annual average PM 2.5 concentrations?<br>',
+                        //     choices: [
+                        //         ['0', "0 &mu;g/m<sup>3</sup>"],
+                        //         ['5', "5 &mu;g/m<sup>3</sup>"],
+                        //         ['15', "15 &mu;g/m<sup>3</sup>"],
+                        //         ['30', "30 &mu;g/m<sup>3</sup>"],
+                        //     ],
+                        //     correctChoice: 1,
+                        // },
                         {
                             id: 'p5_q2',
                             orientation: 'H',
-                            mainText: '<span style="font-weight: normal;color:gray;">Q9</span> On average, how many years of life does a person living in your district lose because of air pollution?<br>',
+                            mainText: '<span style="font-weight: normal;color:gray;">Q8</span> On average, how many years of life does a person living in your district lose because of air pollution?<br>',
                             choices: [
                                 (data.life_lost * 0.5).toFixed(1) + ' years',
                                 (data.life_lost * 0.8).toFixed(1) + ' years',
@@ -1521,13 +1553,13 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                 node.widgets.last.addForm({
                     id: 'T_confident',
                     orientation: 'H',
-                    mainText: '<span style="font-weight: normal;color:gray;">Q5</span> How confident are you about your answer above?</span>',
+                    mainText: '<span style="font-weight: normal;color:gray;">Q5</span> How confident are you about your answer above?</span> <span style="font-weight: normal;">*</span>',
                     hint: false,
                     choices: [
                       ['1', 'Not confident at all'],
-                      ['2', 'Slightly confident'],
-                      ['3', 'Somewhat confident'],
-                      ['4', 'Fairly confident'],
+                      ['2', 'Not very confident'],
+                      ['3', 'Neutral'],
+                      ['4', 'Quite confident'],
                       ['5', 'Completely confident']
                     ],
                     shuffleChoices: false
@@ -1611,7 +1643,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                     {
                         id: 'D_f_c1',
                         orientation: 'V',
-                        mainText: '<span style="font-weight: normal;color:gray;">Q2</span> Which non-governmental initiative do you want to support in the fight against air pollution?',
+                        mainText: '<span style="font-weight: normal;color:gray;">Q2</span> Which NGO do you want to support in the fight against air pollution?',
                         choices: [
                             [
                                 'Chintan',
@@ -1631,7 +1663,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                             ],
                             [
                                 'none',
-                                '<div class="aligned"><img src="x.png" width="100px"><span>I <strong>don\'t want</strong> to support the fight against air pollution.</span></div>',
+                                '<div class="aligned"><img src="x.png" width="100px"><span> <strong>None of the above</strong>. </span></div>',
                             ]
                         ],
                         requiredChoice: true,
@@ -1661,7 +1693,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                         requiredChoice: true,
                         displayNoChange: false,
                         mainText: '<span style="font-weight: normal;color:gray;">Q3</span> How much of the bonus reward of $1.50 do you want to contribute?',
-                        hint: '<b>Please move the slider to your preferred contribution amount.</b> <br> <span style="font-size:12px;"> Your contribution will be given to the initiative of your choice by the researchers at Heidelberg University. The rest will go to you.',
+                        hint: '<b>Please move the slider to your preferred contribution amount.</b> <br> <span style="font-size:12px;"> Your contribution will be transferred to the NGO of your choice. The rest will go to you.',
                         texts: {
                             currentValue: function(widget, value) {
                                 let contribution = [
@@ -1769,7 +1801,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             name: 'ChoiceManager',
             options: {
                 id: 'stated_preferences',
-                mainText: '<b>Policies to reduce air pollution</b>',
+                mainText: '<b>Think of the following policies to reduce air pollution</b>.',
                 simplify: true,
                 forms: [
                     {
@@ -1948,37 +1980,37 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
     });
 
 
-    // Age and caste
-    stager.extendStep('Part3_About_yourself', {
-        name: "Part 3: Your opinion",
-        widget: {
-            name: 'ChoiceManager',
-            id: 'Part3_qtest',
-            options: {
-                simplify: true,
-                mainText: '',
-                forms: [
-                    {
-                        name: 'CustomInput',
-                        id: 'Part3_q6',
-                        mainText: '<span style="font-weight: normal;color:gray;">Q9</span> How old are you?',
-                        width: '95%',
-                        type: 'int',
-                        min: 0,
-                        max: 100,
-                        requiredChoice: true,
-                    },
-                    {
-                        id: 'Part3_q7',
-                        orientation: 'V',
-                        mainText: '<span style="font-weight: normal;color:gray;">Q10</span> What caste do you belong to?',
-                        choices: [ 'Upper caste', 'Lower caste (Scheduled caste / Scheduled tribe)', 'No caste / other'],
-                        requiredChoice: true
-                    }
-                ]
-            }
-        }
-    });
+    // // Age and caste
+    // stager.extendStep('Part3_About_yourself', {
+    //     name: "Part 3: Your opinion",
+    //     widget: {
+    //         name: 'ChoiceManager',
+    //         id: 'Part3_qtest',
+    //         options: {
+    //             simplify: true,
+    //             mainText: '',
+    //             forms: [
+    //                 {
+    //                     name: 'CustomInput',
+    //                     id: 'Part3_q6',
+    //                     mainText: '<span style="font-weight: normal;color:gray;">Q9</span> How old are you?',
+    //                     width: '95%',
+    //                     type: 'int',
+    //                     min: 18,
+    //                     max: 100,
+    //                     requiredChoice: true,
+    //                 },
+    //                 {
+    //                     id: 'Part3_q7',
+    //                     orientation: 'V',
+    //                     mainText: '<span style="font-weight: normal;color:gray;">Q10</span> What caste do you belong to?',
+    //                     choices: [ 'Upper caste', 'Lower caste (Scheduled caste / Scheduled tribe)', 'No caste / other'],
+    //                     requiredChoice: true
+    //                 }
+    //             ]
+    //         }
+    //     }
+    // });
 
 
     ////////////////////////////////////////////////////////////////////////////
@@ -1989,7 +2021,8 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             options: {
                 title: false,
                 panel: false,
-                minChars: 50,
+                minChars: 20,
+                requiredChoice: true,
                 showSubmit: false,
                 mainText: 'Thank you for participating. ' +
                 '<br><br>' +
@@ -2003,7 +2036,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                 '<li>Did you find any question unclear or ' +
                 'uncomfortable?</li>' +
                 '<li>Did you experience any technical difficulty?</li>' +
-                '<li>Was the map of your district loading correctly?</li>' +
+                '<li>Did the map of your state loaded correctly?</li>' +
                 '<li>How can we improve the study?</li></ol>'
             }
         }
