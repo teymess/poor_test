@@ -825,19 +825,14 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                 state_fig = state_fig.replace(/&/g, 'and');
                 state_fig = state_fig.replace(/-/g, '_');
 
-                var district_fig = data.district.replace(/ /g, '_');
-                district_fig = district_fig.replace(/&/g, 'and');
-                district_fig = district_fig.replace(/-/g, '_');
-
-                var image = 'district_maps/' + state_fig + '_' + district_fig + '.png';
+                var image = 'district_maps/' + state_fig + '.png';
 
                 W.gid('img').src = image;
 
                 console.log(data);
                 W.setInnerHTML('state', data.state);
-                W.setInnerHTML('district', data.district);
-                W.setInnerHTML('districtAgain', data.district);
-                W.setInnerHTML('districtAgainAgain', data.district);
+                W.setInnerHTML('state2', data.state);
+                W.setInnerHTML('state3', data.state);
                 W.setInnerHTML('pm25', data.pm25.toFixed(2));
                 W.setInnerHTML('higher', (data.pm25 / 5).toFixed(0));
                 W.setInnerHTML('years', data.life_lost.toFixed(1));
@@ -863,7 +858,11 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                         {
                             id: 'p5_q2',
                             orientation: 'H',
+<<<<<<< HEAD
                             mainText: '<span style="font-weight: normal;color:gray;">Q8</span> On average, how many years of life does a person living in your district lose because of air pollution?<br>',
+=======
+                            mainText: '<span style="font-weight: normal;color:gray;">Q9</span> On average, how many years of life does a person living in your state lose because of air pollution?<br>',
+>>>>>>> 50981ecf9f40673d95538653b1fe15559418ae8f
                             choices: [
                                 (data.life_lost * 0.5).toFixed(1) + ' years',
                                 (data.life_lost * 0.8).toFixed(1) + ' years',
@@ -960,17 +959,17 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             options: {
                 simplify: true,
                 mainText: '<span style=\'font-size:18px;font-weight:normal;\'>Assume the entire ' +
-                          'population living in <b>your district</b> is divided into 10 income groups, '+
+                          'population living in <b>your state</b> is divided into 10 income groups, '+
                           'each with the same number of households. The figure below illustrates ' +
                           'the 10 groups, ordered from left to right from the poorest 10% '+
                           'to the richest 10%.' +
-                '</span><br><br><img src="https://i.ibb.co/sbMXxDd/District-groups.png" alt="Indian-groups" border="0" width="800px"></a><br><br>',
+                '</span><br><br><img src="https://i.ibb.co/stw49nM/deciles-clean.png" alt="Indian-groups" border="0" width="800px"></a><br><br>',
                 forms: [
                     {
                         id: 'P3_q1_1',
                         orientation: 'H',
                         mainText: '<span style="font-weight: normal;color:gray;">Q1</span> Think of a household living ' +
-                                  'in the same district as you and earning a total annual income of 40,000 INR.<br><br>'+
+                                  'in the same state as you and earning a total annual income of 40,000 INR.<br><br>'+
                                   'In your opinion, which income group is this household part of?',
                         choices: [
                             ['Group 1', '<span style=\'font-size:14px;font-weight:normal;\'>Group 1</span>'],
@@ -1028,17 +1027,17 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             options: {
                 simplify: true,
                 mainText: '<span style=\'font-size:18px;font-weight:normal;\'>Assume the entire ' +
-                          'population living in <b>your district</b> is divided into 10 income groups, '+
+                          'population living in <b>your state</b> is divided into 10 income groups, '+
                           'each with the same number of households. The figure below illustrates ' +
                           'the 10 groups, ordered from left to right from the poorest 10% '+
                           'to the richest 10%.' +
-                '</span><br><br><img src="https://i.ibb.co/sbMXxDd/District-groups.png" alt="Indian-groups" border="0" width="800px"></a><br><br>',
+                '</span><br><br><img src="https://i.ibb.co/stw49nM/deciles-clean.png" alt="Indian-groups" border="0" width="800px"></a><br><br>',
                 forms: [
                     {
                         id: 'P3_q1_1',
                         orientation: 'H',
                         mainText: '<span style="font-weight: normal;color:gray;">Q1</span> Think of a household living ' +
-                                  'in the same district as you and earning a total annual income of 1,00,00,000 INR.<br><br>'+
+                                  'in the same state as you and earning a total annual income of 1,00,00,000 INR.<br><br>'+
                                   'In your opinion, which income group is this household part of?',
                         choices: [
                             ['Group 1', '<span style=\'font-size:14px;font-weight:normal;\'>Group 1</span>'],
@@ -1095,11 +1094,11 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             options: {
                 simplify: true,
                 mainText: '<span style=\'font-size:18px;font-weight:normal;\'>Assume the entire ' +
-                          'population living in <b>your district</b> is divided into 10 income groups, '+
+                          'population living in <b>your state</b> is divided into 10 income groups, '+
                           'each with the same number of households. The figure below illustrates ' +
                           'the 10 groups, ordered from left to right from the poorest 10% '+
                           'to the richest 10%.' +
-                '</span><br><br><img src="https://i.ibb.co/sbMXxDd/District-groups.png" alt="Indian-groups" border="0" width="800px"></a><br><br>',
+                '</span><br><br><img src="https://i.ibb.co/stw49nM/deciles-clean.png" alt="Indian-groups" border="0" width="800px"></a><br><br>',
                 forms: [
                     {
                         id: 'P3_q1_2',
@@ -1143,11 +1142,11 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             options: {
                 simplify: true,
                 mainText: '<span style=\'font-size:18px;font-weight:normal;\'>Assume the entire ' +
-                'population living in <b>your district</b> is divided into 10 income groups, '+
+                'population living in <b>your state</b> is divided into 10 income groups, '+
                 'each with the same number of households. The figure below illustrates ' +
                 'the 10 groups, ordered from left to right from the poorest 10% '+
                 'to the richest 10%.' +
-                '</span><br><br><img src="https://i.ibb.co/sbMXxDd/District-groups.png" alt="Indian-groups" border="0" width="800px"></a><br><br>',
+                '</span><br><br><img src="https://i.ibb.co/stw49nM/deciles-clean.png" alt="Indian-groups" border="0" width="800px"></a><br><br>',
                 forms: [
                     {
                         id: 'P3_q1_1',
@@ -1189,18 +1188,6 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             node.get('incomeDecile', function(data) {
                 console.log(data);
 
-                // var state_fig = data.state.replace(/ /g, '_');
-                // state_fig = state_fig.replace(/&/g, 'and');
-                // state_fig = state_fig.replace(/-/g, '_');
-                //
-                // var district_fig = data.district.replace(/ /g, '_');
-                // district_fig = district_fig.replace(/&/g, 'and');
-                // district_fig = district_fig.replace(/-/g, '_');
-                //
-                // var image = 'district_maps/' + state_fig + '_' + district_fig + '.png';
-
-
-
                 var income = data.income;
                 var incomeGroup = income.substr("Group ".length);
                 var incomeG = parseInt(incomeGroup, 10);
@@ -1211,7 +1198,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                 var guessG = parseInt(guessGroup, 10);
                 console.log(guessG);
 
-                var decile_number = data.decileNum;
+                var decile_number = data.row.decile_number;
                 console.log(decile_number);
 
                 W.show('data', 'flex');
@@ -1220,6 +1207,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
 
                 if (guessGroup === incomeGroup) {
                     evaluation = 'correct';
+                    W.setInnerHTML('guess', guess);
                     W.setInnerHTML('evaluation', evaluation);
                     W.setInnerHTML('group', income);
                     W.gid('img').src = 'Leaflet_images/' + income + '.png';
@@ -1227,6 +1215,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                 else {
                     if (decile_number === 10) {
                         evaluation = 'incorrect';
+                        W.setInnerHTML('guess', guess);
                         W.setInnerHTML('evaluation', evaluation);
                         W.setInnerHTML('group', income);
                         W.gid('img').src = 'Leaflet_images/' + income + '.png';
@@ -1234,12 +1223,14 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                     else if (decile_number === 9) {
                         if (guessG !== incomeG && guessG < 3 && incomeG < 3) {
                             evaluation = 'correct';
+                            W.setInnerHTML('guess', guess);
                             W.setInnerHTML('evaluation', evaluation);
                             W.setInnerHTML('group', guess);
                             W.gid('img').src = 'Leaflet_images/' + guess + '.png';
                         }
                         else {
                             evaluation = 'incorrect';
+                            W.setInnerHTML('guess', guess);
                             W.setInnerHTML('evaluation', evaluation);
                             W.setInnerHTML('group', income);
                             W.gid('img').src = 'Leaflet_images/' + income + '.png';
@@ -1248,82 +1239,14 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                     else if (decile_number === 8) {
                         if (guessG !== incomeG && guessG < 4 && incomeG < 4) {
                             evaluation = 'correct';
+                            W.setInnerHTML('guess', guess);
                             W.setInnerHTML('evaluation', evaluation);
                             W.setInnerHTML('group', guess);
                             W.gid('img').src = 'Leaflet_images/' + guess + '.png';
                         }
                         else {
                             evaluation = 'incorrect';
-                            W.setInnerHTML('evaluation', evaluation);
-                            W.setInnerHTML('group', income);
-                            W.gid('img').src = 'Leaflet_images/' + income + '.png';
-                        }
-                    }
-                    else if (decile_number === 7) {
-                        if (guessG !== incomeG && guessG < 5 && incomeG < 5) {
-                            evaluation = 'correct';
-                            W.setInnerHTML('evaluation', evaluation);
-                            W.setInnerHTML('group', guess);
-                            W.gid('img').src = 'Leaflet_images/' + guess + '.png';
-                        }
-                        else {
-                            evaluation = 'incorrect';
-                            W.setInnerHTML('evaluation', evaluation);
-                            W.setInnerHTML('group', income);
-                            W.gid('img').src = 'Leaflet_images/' + income + '.png';
-                        }
-                    }
-                    else if (decile_number === 6) {
-                        if (guessG !== incomeG && guessG < 6 && incomeG < 6) {
-                            evaluation = 'correct';
-                            W.setInnerHTML('evaluation', evaluation);
-                            W.setInnerHTML('group', guess);
-                            W.gid('img').src = 'Leaflet_images/' + guess + '.png';
-                        }
-                        else {
-                            evaluation = 'incorrect';
-                            W.setInnerHTML('evaluation', evaluation);
-                            W.setInnerHTML('group', income);
-                            W.gid('img').src = 'Leaflet_images/' + income + '.png';
-                        }
-                    }
-                    else if (decile_number === 5) {
-                        if (guessG !== incomeG && guessG < 7 && incomeG < 7) {
-                            evaluation = 'correct';
-                            W.setInnerHTML('evaluation', evaluation);
-                            W.setInnerHTML('group', guess);
-                            W.gid('img').src = 'Leaflet_images/' + guess + '.png';
-                        }
-                        else {
-                            evaluation = 'incorrect';
-                            W.setInnerHTML('evaluation', evaluation);
-                            W.setInnerHTML('group', income);
-                            W.gid('img').src = 'Leaflet_images/' + income + '.png';
-                        }
-                    }
-                    else if (decile_number === 4) {
-                        if (guessG !== incomeG && guessG < 8 && incomeG < 8) {
-                            evaluation = 'correct';
-                            W.setInnerHTML('evaluation', evaluation);
-                            W.setInnerHTML('group', guess);
-                            W.gid('img').src = 'Leaflet_images/' + guess + '.png';
-                        }
-                        else {
-                            evaluation = 'incorrect';
-                            W.setInnerHTML('evaluation', evaluation);
-                            W.setInnerHTML('group', income);
-                            W.gid('img').src = 'Leaflet_images/' + income + '.png';
-                        }
-                    }
-                    else if (decile_number === 3) {
-                        if (guessG !== incomeG && guessG < 9 && incomeG < 9) {
-                            evaluation = 'correct';
-                            W.setInnerHTML('evaluation', evaluation);
-                            W.setInnerHTML('group', guess);
-                            W.gid('img').src = 'Leaflet_images/' + guess + '.png';
-                        }
-                        else {
-                            evaluation = 'incorrect';
+                            W.setInnerHTML('guess', guess);
                             W.setInnerHTML('evaluation', evaluation);
                             W.setInnerHTML('group', income);
                             W.gid('img').src = 'Leaflet_images/' + income + '.png';
@@ -1364,12 +1287,8 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
 
                 // console.log(data);
                 W.setInnerHTML('state', data.state);
-                W.setInnerHTML('district', data.district);
-                W.setInnerHTML('districtQ', data.district);
-                W.setInnerHTML('districtAgain', data.district);
-                W.setInnerHTML('districtAgainAgain', data.district);
-                W.setInnerHTML('district4', data.district);
-                W.setInnerHTML('district5', data.district);
+                W.setInnerHTML('state2', data.state);
+                W.setInnerHTML('state3', data.state);
                 W.setInnerHTML('pm25', data.pm25.toFixed(2));
                 W.setInnerHTML('higher', (data.pm25 / 5).toFixed(0));
                 W.setInnerHTML('years', lifeLost);
