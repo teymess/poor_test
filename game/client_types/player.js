@@ -907,9 +907,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             id: 'commitment',
             title: false,
             panel: false,
-            mainText: '<p>Before proceeding to the next set of questions,' +
-                ' we want to ask for your feedback about the responses ' +
-                'you provided so far.</p><p>It is vital to our study that' +
+            mainText: '<p>It is vital to our study that' +
                 ' we only include responses from people who devoted ' +
                 'their <strong>full attention</strong> to this study. ' +
                 '<em>This will not ' +
@@ -986,7 +984,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                         id: 'P3_q1_2',
                         orientation: 'H',
                         mainText: '<span style="font-weight: normal;color:gray;">Q2</span> Think of YOUR household now. ' +
-                                  'In your opinion, which income group is YOUR household part of?',
+                                  'In your opinion, which income group is your household part of?',
                         choices: [
                             ['Group 1', '<span style=\'font-size:14px;font-weight:normal;\'>Group 1</span>'],
                             ['Group 2', '<span style=\'font-size:14px;font-weight:normal;\'>Group 2</span>'],
@@ -1054,7 +1052,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                         id: 'P3_q1_2',
                         orientation: 'H',
                         mainText: '<span style="font-weight: normal;color:gray;">Q2</span> Think of YOUR household now. ' +
-                                  'In your opinion, which income group is YOUR household part of?',
+                                  'In your opinion, which income group is your household part of?',
                         choices: [
                             ['Group 1', '<span style=\'font-size:14px;font-weight:normal;\'>Group 1</span>'],
                             ['Group 2', '<span style=\'font-size:14px;font-weight:normal;\'>Group 2</span>'],
@@ -1100,7 +1098,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                         id: 'P3_q1_2',
                         orientation: 'H',
                         mainText: '<span style="font-weight: normal;color:gray;">Q2</span> Think of YOUR household. ' +
-                                  'In your opinion, which income group is YOUR household part of?',
+                                  'In your opinion, which income group is your household part of?',
                         choices: [
                             ['Group 1', '<span style=\'font-size:14px;font-weight:normal;\'>Group 1</span>'],
                             ['Group 2', '<span style=\'font-size:14px;font-weight:normal;\'>Group 2</span>'],
@@ -1148,7 +1146,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                         id: 'P3_q1_1',
                         orientation: 'H',
                         mainText: '<span style="font-weight: normal;color:gray;">Q2</span> Think of YOUR household. ' +
-                        'In your opinion, which income group is YOUR household part of?',
+                        'In your opinion, which income group is your household part of?',
                         choices: [
                             ['Group 1', '<span style=\'font-size:14px;font-weight:normal;\'>Group 1</span>'],
                             ['Group 2', '<span style=\'font-size:14px;font-weight:normal;\'>Group 2</span>'],
@@ -1893,39 +1891,6 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             }
         }
     });
-
-
-    // // Age and caste
-    // stager.extendStep('Part3_About_yourself', {
-    //     name: "Part 3: Your opinion",
-    //     widget: {
-    //         name: 'ChoiceManager',
-    //         id: 'Part3_qtest',
-    //         options: {
-    //             simplify: true,
-    //             mainText: '',
-    //             forms: [
-    //                 {
-    //                     name: 'CustomInput',
-    //                     id: 'Part3_q6',
-    //                     mainText: '<span style="font-weight: normal;color:gray;">Q9</span> How old are you?',
-    //                     width: '95%',
-    //                     type: 'int',
-    //                     min: 18,
-    //                     max: 100,
-    //                     requiredChoice: true,
-    //                 },
-    //                 {
-    //                     id: 'Part3_q7',
-    //                     orientation: 'V',
-    //                     mainText: '<span style="font-weight: normal;color:gray;">Q10</span> What caste do you belong to?',
-    //                     choices: [ 'Upper caste', 'Lower caste (Scheduled caste / Scheduled tribe)', 'No caste / other'],
-    //                     requiredChoice: true
-    //                 }
-    //             ]
-    //         }
-    //     }
-    // });
 
 
     ////////////////////////////////////////////////////////////////////////////
