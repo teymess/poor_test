@@ -858,11 +858,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                         {
                             id: 'p5_q2',
                             orientation: 'H',
-<<<<<<< HEAD
-                            mainText: '<span style="font-weight: normal;color:gray;">Q8</span> On average, how many years of life does a person living in your district lose because of air pollution?<br>',
-=======
                             mainText: '<span style="font-weight: normal;color:gray;">Q9</span> On average, how many years of life does a person living in your state lose because of air pollution?<br>',
->>>>>>> 50981ecf9f40673d95538653b1fe15559418ae8f
                             choices: [
                                 (data.life_lost * 0.5).toFixed(1) + ' years',
                                 (data.life_lost * 0.8).toFixed(1) + ' years',
