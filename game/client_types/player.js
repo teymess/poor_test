@@ -1721,7 +1721,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                         name: 'ChoiceTableGroup',
                         id: 'stated_support',
                         mainText: '<span style="font-weight: normal;color:gray;">Q4</span> <span style=\'font-size:18px;font-weight:normal;\'>How willing are you' +
-                        ' to support the implementation of the following policies in <b>your district</b></span>?',
+                        ' to support the implementation of the following policies in <b>your state</b></span>?',
                         choices: [
                             'Strongly oppose', 'Somewhat oppose', 'Undecided',
                             'Somewhat support', 'Strongly support'
@@ -1882,8 +1882,8 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                         id: 'Part3_q5',
                         orientation: 'H',
                         mainText: '<span style="font-weight: normal;color:gray;">Q11</span>',
-                        left: '<span style="font-size: smaller">"All people should put the same effort into reducing air pollution in their district."</span>',
-                        right: '<span style="font-size: smaller">"People that are more wealthy should contribute more to reducing air pollution in their district."</span>',
+                        left: '<span style="font-size: smaller">"All people should put the same effort into reducing air pollution in their state."</span>',
+                        right: '<span style="font-size: smaller">"People that are more wealthy should contribute more to reducing air pollution in their state."</span>',
                         choices: [ '1', '2', '3', '4', '5', '6', '7'],
                         requiredChoice: true
                     }
