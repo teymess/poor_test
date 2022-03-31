@@ -1721,7 +1721,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                         name: 'ChoiceTableGroup',
                         id: 'stated_support',
                         mainText: '<span style="font-weight: normal;color:gray;">Q4</span> <span style=\'font-size:18px;font-weight:normal;\'>How willing are you' +
-                        ' to support the implementation of the following policies in <b>your district</b></span>?',
+                        ' to support the implementation of the following policies in <b>your state</b></span>?',
                         choices: [
                             'Strongly oppose', 'Somewhat oppose', 'Undecided',
                             'Somewhat support', 'Strongly support'
