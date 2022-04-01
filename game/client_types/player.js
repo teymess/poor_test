@@ -1788,6 +1788,12 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                         // header: ['Incomes should'],
                         choices: [ '1', '2', '3', '4', '5', '6', '7'],
                         requiredChoice: true,
+                        onclick: function(value, removed) {
+                            var w, forms;
+                            forms = node.widgets.lastAppended.formsById
+                            w = forms.Part3_q2;
+                            w.show();
+                        }
                     },
                     {
                         id: 'Part3_q2',
@@ -1796,7 +1802,14 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                         left: '<span style="font-size: smaller">"Government should take more responsibility to ensure that everyone is provided for."</span>',
                         right: '<span style="font-size: smaller">"People should take more responsibility to provide for themselves."</span>',
                         choices: [ '1', '2', '3', '4', '5', '6', '7'],
-                        requiredChoice: true
+                        requiredChoice: true,
+                        hidden: true,
+                        onclick: function(value, removed) {
+                            var w, forms, len;
+                            forms = node.widgets.lastAppended.formsById
+                            w = forms.Part3_q3;
+                            w.show();
+                        }
                     },
                     {
                         id: 'Part3_q3',
@@ -1807,7 +1820,8 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                         'bring success — it’s more a matter ' +
                         'of luck and connections."</span>',
                         choices: [ '1', '2', '3', '4', '5', '6', '7'],
-                        requiredChoice: true
+                        requiredChoice: true,
+                        hidden: true,
                     }
                 ]
             }
@@ -1835,6 +1849,12 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                         right: '<span style="font-size: smaller">"How much one is impacted by air pollution should depend mostly on how much effort she or he puts into reducing the impacts for themselves."</span>',
                         choices: [ '1', '2', '3', '4', '5', '6', '7'],
                         requiredChoice: true,
+                        onclick: function(value, removed) {
+                            var w, forms, len;
+                            forms = node.widgets.lastAppended.formsById
+                            w = forms.Part3_q5;
+                            w.show();
+                        }
                     },
                     {
                         id: 'Part3_q5',
@@ -1843,7 +1863,8 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                         left: '<span style="font-size: smaller">"All people should put the same effort into reducing air pollution in their state."</span>',
                         right: '<span style="font-size: smaller">"People that are more wealthy should contribute more to reducing air pollution in their state."</span>',
                         choices: [ '1', '2', '3', '4', '5', '6', '7'],
-                        requiredChoice: true
+                        requiredChoice: true,
+                        hidden: true,
                     }
                 ]
             }
