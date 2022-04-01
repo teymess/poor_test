@@ -6,33 +6,46 @@
 
 <body>
   <div id="container">
-    <br>
-    <img src="Leaflet_images/pollution_state.png" width="835px" />
-    <br>
+      <table id="dataTable">
+    <tr>
+      <td colspan="2"><img id="L5" src="#" width="100%"/></td>
+    </tr>
+    <tr>
+  <td style="text-align:center; vertical-align: middle" width="50%">
     <div id="data" style="display: none; display: flex">
-        <div id="map">
-          <br><br/>
-            <img id="img" src="#" width="435px" />
-        </div>
-        <div id="text">
-          <br/><br/><br/><br/><br/><br/>
-          <b>Air pollution in <span id="state">-</span> is about <span id="higher">-</span> times higher
-                  than the WHO recommended level.</b>
+        <div id="map" style="height: 400px; align-content: center; margin: 0 auto; line-height: 400px">
+    <img id="img" src="#" style="max-height: 400px; max-width:100%" />
+          </div>
+  </td>
+  <td style="text-align:center" width="50%">
+    <div id="text">
+        <!-- <img id="banner" src="#" width="400px" /> -->
+        <!-- <b>How do PM2.5 concentrations in <span id="districtAgainAgain">-</span> compare to the WHO recommended levels?</b> -->
+        <b>Air pollution in <span id="state">-</span> is about <span id="higher">-</span> times higher
+        than the WHO recommended level.</b>
+        <!-- <p style="font-size:18px;line-height:160%;margin-bottom:0.25cm;">
+          &nbsp;&nbsp; - WHO recommendation = <strong>5 &mu;/m<sup>3</sup></strong>
           <br/>
+          &nbsp;&nbsp; - <span id="district">-</span> average = <strong><span id="pm25">-</span> &mu;/m<sup>3</sup></strong>
+        </p> -->
     </div>
-  </div>
-  <br/>
-  <div id="LYL info">
-    <br/><br/>
-    <p style="font-size:18px;line-height:140%;margin-bottom:0.15cm;">
-        <img src="Leaflet_images/banner_health_implic.png" width="835px" />
-    </p>
-    <p style="border: 2px solid #f5b7b1;padding:4px;line-height:160%;">
-        <img src="Leaflet_images/exclamation-mark.png" width="25px" /> <strong>People
-        living in <span id="state2">-</span> lose on average <span style='color:#ff0000'><span id="years">-</span>
-            years of their life</span> because of air pollution.</strong>
-    </p>
-  </div>
+  </td>
+      </tr>
+      <tr>
+        <td colspan="2"><img src="Leaflet_images/banner_health_implic.png" width="100%" /></td>
+      </tr>
+          <tr>
+            <td colspan="2"><div id="LYL info">
+              <p style="font-size:18px;line-height:140%;margin-bottom:0.15cm;">
+              </p>
+              <p style="border: 2px solid #f5b7b1;padding:4px;line-height:140%;">
+                  <img src="Leaflet_images/exclamation-mark.png" width="25px" /> <strong>People
+                  living in <span id="state2">-</span> lose on average <span style='color:#ff0000'><span id="years">-</span>
+                      years of their life</span> because of air pollution.</strong>
+              </p>
+            </div></td>
+          </tr>
+            </table>
   <div id="Sources">
         <p style="color:gray;font-size:14px;margin-bottom:0.2cm;">
             Sources: Hammer et al. (2020) <a style="font-size:14px;line-height:100%;" href="https://sites.wustl.edu/acag/datasets/surface-pm2-5/#V4.GL.03" target="_blank">https://sites.wustl.edu/acag/datasets/surface-pm2-5/#V4.GL.03</a>;
