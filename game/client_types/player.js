@@ -1899,10 +1899,16 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
     /////////////////////////////////////////////////////////////////////////////
     // DISCLAIMER
     /////////////////////////////////////////////////////////////////////////////
-    // Instructions Part II
+    // Disclaimer protection measures
     stager.extendStep('Disclaimer', {
         name: 'Disclaimer',
         frame: 'leaflet_protection.htm'
+    });
+
+    // Disclaimer Income
+    stager.extendStep('Disclaimer', {
+        name: 'Disclaimer',
+        frame: 'Income_correction_disclaimer.htm'
     });
 
     //////////////////////////////////////////////////////////////////////////////
