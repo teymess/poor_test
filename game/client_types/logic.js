@@ -166,7 +166,13 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             var ownLYL = memory.own_LYL_guess.get(msg.from);
             console.log(ownLYL);
             var ownLYLCategory = ownLYL.forms.T_impact_more_or_less_you.value;
-            ownLYL = ownLYL.forms.T_impact_you.value;
+            var ownLYL = ownLYL.forms.T_impact_you.value;
+            var ownLYL_less = Math.max(0, (ownLYL*districtLYL/100));
+            var ownLYL_less_2d = ownLYL_less.toFixed(2);
+            var ownLYL_more = Math.max(0, (districtLYL + ownLYL*districtLYL/100));
+            var ownLYL_more_2d = ownLYL_more.toFixed(2);
+            // console.log(ownLYL_less);
+            // console.log(ownLYL_more_2d);
 
             if (ownLYLCategory === 'same') {
                 return {
@@ -175,11 +181,19 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                 }
             }
             else {
+              if (ownLYLCategory === 'less') {
                 return {
                     district: districtLYL,
-                    own: ownLYL
+                    own: ownLYL_less_2d
                 }
+              }
+              else {
+                return {
+                    district: districtLYL,
+                    own: ownLYL_more_2d
+              }
             }
+          }
         });
     });
 

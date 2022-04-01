@@ -1409,8 +1409,6 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
 
             // DISPLAY 6 -- How confident?
             q4 = w.formsById.T_confident;
-            // v = q2.getValues({ markAttempt: false }).value;
-            // q2.disable();
             if (!q4) {
                 node.widgets.last.addForm({
                     id: 'T_confident',
