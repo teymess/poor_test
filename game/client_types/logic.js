@@ -211,20 +211,18 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                     own: districtLYL
                 }
             }
-            else if {
-              if (ownLYLCategory === 'less') {
+            else if (ownLYLCategory === 'less') {
                 return {
                     district: districtLYL,
                     own: ownLYL_less_2d
                 }
               }
-              else {
+            else {
                 return {
                     district: districtLYL,
                     own: ownLYL_more_2d
               }
             }
-          }
         });
     });
 

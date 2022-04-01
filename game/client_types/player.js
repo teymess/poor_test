@@ -1775,16 +1775,18 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             id: 'Part3_q',
             options: {
                 simplify: true,
-                mainText: 'For each pair of statementments below, tell us how much you agree with one <em>or</em> the other statement, using a 7-point scale.<br>' +
-                '<span style="font-weight: normal; font-size: 15px;"> -  <strong>"1"</strong> means you fully agree with the statement on the left;<br>' +
-                '- <strong>"7"</strong> means you agree completely with the statement on the right;<br>' +
+                mainText: 'For each pair of statements below, tell us how much you agree with one <em>or</em> the other statement, using a 7-point scale.<br>' +
+                '<span style="font-weight: normal; font-size: 15px;"> -  <strong>"1"</strong> means you fully agree with the statement on the left (Statement A);<br>' +
+                '- <strong>"7"</strong> means you agree completely with the statement on the right (Statement B);<br>' +
                 '- If your opinion is somewhere in between, choose a number in between to reflect that.</span>',
                 forms: [
                     {
                         id: 'Part3_q1',
-                        mainText: '<span style="font-weight: normal;color:gray;">Q6</span> ',
-                        left: '<span style="font-size: smaller">"Incomes should be made more equal."</span>',
-                        right: '<span style="font-size: smaller">"There should be greater incentives for individual effort."</span>',
+                        mainText: '<span style="font-weight: normal;color:gray;">Q6</span> Do you agree more with Statement A or with Statement B?<br><br>' +
+                        '<span style="font-weight: normal;font-size:18px"><b>Statement A:</b> "Incomes should be made more equal."<br>' +
+                        '<b>Statement B:</b> "There should be greater incentives for individual effort."</span>',
+                        left: 'Statement A',
+                        right: 'Statement B',
                         // header: ['Incomes should'],
                         choices: [ '1', '2', '3', '4', '5', '6', '7'],
                         requiredChoice: true,
@@ -1798,9 +1800,11 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                     {
                         id: 'Part3_q2',
                         orientation: 'H',
-                        mainText: '<span style="font-weight: normal;color:gray;">Q7</span>  ',
-                        left: '<span style="font-size: smaller">"Government should take more responsibility to ensure that everyone is provided for."</span>',
-                        right: '<span style="font-size: smaller">"People should take more responsibility to provide for themselves."</span>',
+                        mainText: '<span style="font-weight: normal;color:gray;">Q7</span> Do you agree more with Statement A or with Statement B?<br><br>' +
+                        '<span style="font-weight: normal;font-size:18px"><b>Statement A:</b> "Government should take more responsibility to ensure that everyone is provided for."<br>' +
+                        '<b>Statement B:</b> "People should take more responsibility to provide for themselves."</span>',
+                        left: 'Statement A',
+                        right: 'Statement B',
                         choices: [ '1', '2', '3', '4', '5', '6', '7'],
                         requiredChoice: true,
                         hidden: true,
@@ -1814,11 +1818,11 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                     {
                         id: 'Part3_q3',
                         orientation: 'H',
-                        mainText: '<span style="font-weight: normal;color:gray;">Q8</span> ',
-                        left: '<span style="font-size: smaller">"In the long run, hard work usually brings a better life."</span>',
-                        right: '<span style="font-size: smaller">"Hard work doesn’t generally ' +
-                        'bring success — it’s more a matter ' +
-                        'of luck and connections."</span>',
+                        mainText: '<span style="font-weight: normal;color:gray;">Q8</span> Do you agree more with Statement A or with Statement B?<br><br>' +
+                        '<span style="font-weight: normal;font-size:18px"><b>Statement A:</b> "In the long run, hard work usually brings a better life."<br>' +
+                        '<b>Statement B</b>: "Hard work doesn’t generally bring success — it’s more a matter of luck and connections."</span>',
+                        left: 'Statement A',
+                        right: 'Statement B',
                         choices: [ '1', '2', '3', '4', '5', '6', '7'],
                         requiredChoice: true,
                         hidden: true,
@@ -1838,15 +1842,17 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             options: {
                 simplify: true,
                 mainText: 'For each pair of statements below, tell us how much you agree with one <em>or</em> the other statement, using a 7-point scale.<br>'+
-                '<span style="font-weight: normal; font-size: 15px;"> - <strong>"1"</strong> means you completely agree with the sentence on the left;<br>' +
-                '- <strong>"7"</strong> means you fully agree with the sentence on the right;<br>' +
+                '<span style="font-weight: normal; font-size: 15px;"> - <strong>"1"</strong> means you completely agree with the sentence on the left (Statement A);<br>' +
+                '- <strong>"7"</strong> means you fully agree with the sentence on the right (Statement B);<br>' +
                 '- If your opinion is somewhere in between, choose a number in between to reflect that.</span>',
                 forms: [
                     {
                         id: 'Part3_q4',
-                        mainText: '<span style="font-weight: normal;color:gray;">Q10</span>',
-                        left: '<span style="font-size: smaller">"Everyone should have equal access to protection measures against air pollution."</span>',
-                        right: '<span style="font-size: smaller">"How much one is impacted by air pollution should depend mostly on how much effort she or he puts into reducing the impacts for themselves."</span>',
+                        mainText: '<span style="font-weight: normal;color:gray;">Q10</span> Do you agree more with Statement A or with Statement B?<br><br>' +
+                        '<span style="font-weight: normal;font-size:18px"><b>Statement A:</b> "Everyone should have equal access to protection measures against air pollution."<br>' +
+                        '<b>Statement B</b>: "How much one is impacted by air pollution should depend mostly on how much effort she or he puts into reducing the impacts for themselves."</span>',
+                        left: 'Statement A',
+                        right: 'Statement B',
                         choices: [ '1', '2', '3', '4', '5', '6', '7'],
                         requiredChoice: true,
                         onclick: function(value, removed) {
@@ -1859,9 +1865,11 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                     {
                         id: 'Part3_q5',
                         orientation: 'H',
-                        mainText: '<span style="font-weight: normal;color:gray;">Q11</span>',
-                        left: '<span style="font-size: smaller">"All people should put the same effort into reducing air pollution in their state."</span>',
-                        right: '<span style="font-size: smaller">"People that are more wealthy should contribute more to reducing air pollution in their state."</span>',
+                        mainText: '<span style="font-weight: normal;color:gray;">Q11</span> Do you agree more with Statement A or with Statement B?<br><br>' +
+                        '<span style="font-weight: normal;font-size:18px"><b>Statement A:</b> "All people should put the same effort into reducing air pollution in their state."<br>' +
+                        '<b>Statement B</b>: "People that are more wealthy should contribute more to reducing air pollution in their state."</span>',
+                        left: 'Statement A',
+                        right: 'Statement B',
                         choices: [ '1', '2', '3', '4', '5', '6', '7'],
                         requiredChoice: true,
                         hidden: true,

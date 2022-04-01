@@ -18,6 +18,8 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
 
     stager
     .stage('Welcome')
+    .step('Part3_Redistribution')
+    .step('Part3_EnvJustice')
 
     stager
     .stage('Part_1_Survey')
