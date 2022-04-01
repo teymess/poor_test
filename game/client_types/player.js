@@ -1050,16 +1050,16 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                                   'in the same state as you and earning a total annual income of 1,00,00,000 INR.<br><br>'+
                                   'In your opinion, which income group is this household part of?',
                         choices: [
-                            ['1', '<span style=\'font-size:14px;font-weight:normal;\'>Group 1</span>'],
-                            ['2', '<span style=\'font-size:14px;font-weight:normal;\'>Group 2</span>'],
-                            ['3', '<span style=\'font-size:14px;font-weight:normal;\'>Group 3</span>'],
-                            ['4', '<span style=\'font-size:14px;font-weight:normal;\'>Group 4</span>'],
-                            ['5', '<span style=\'font-size:14px;font-weight:normal;\'>Group 5</span>'],
-                            ['6', '<span style=\'font-size:14px;font-weight:normal;\'>Group 6</span>'],
-                            ['7', '<span style=\'font-size:14px;font-weight:normal;\'>Group 7</span>'],
-                            ['8', '<span style=\'font-size:14px;font-weight:normal;\'>Group 8</span>'],
-                            ['9', '<span style=\'font-size:14px;font-weight:normal;\'>Group 9</span>'],
-                            ['10', '<span style=\'font-size:14px;font-weight:normal;\'>Group 10</span>'],
+                          ['Group 1', '<span style=\'font-size:14px;font-weight:normal;\'>Group 1</span>'],
+                          ['Group 2', '<span style=\'font-size:14px;font-weight:normal;\'>Group 2</span>'],
+                          ['Group 3', '<span style=\'font-size:14px;font-weight:normal;\'>Group 3</span>'],
+                          ['Group 4', '<span style=\'font-size:14px;font-weight:normal;\'>Group 4</span>'],
+                          ['Group 5', '<span style=\'font-size:14px;font-weight:normal;\'>Group 5</span>'],
+                          ['Group 6', '<span style=\'font-size:14px;font-weight:normal;\'>Group 6</span>'],
+                          ['Group 7', '<span style=\'font-size:14px;font-weight:normal;\'>Group 7</span>'],
+                          ['Group 8', '<span style=\'font-size:14px;font-weight:normal;\'>Group 8</span>'],
+                          ['Group 9', '<span style=\'font-size:14px;font-weight:normal;\'>Group 9</span>'],
+                          ['Group 10', '<span style=\'font-size:14px;font-weight:normal;\'>Group 10</span>'],
                             ],
                         shuffleChoices: false,
                         requiredChoice: true,
@@ -1078,16 +1078,16 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                         mainText: '<span style="font-weight: normal;color:gray;">Q2b</span> Think of <span style="color:red;">YOUR</span> household now. ' +
                                   'In your opinion, which income group is your household part of?',
                         choices: [
-                            ['1', '<span style=\'font-size:14px;font-weight:normal;\'>Group 1</span>'],
-                            ['2', '<span style=\'font-size:14px;font-weight:normal;\'>Group 2</span>'],
-                            ['3', '<span style=\'font-size:14px;font-weight:normal;\'>Group 3</span>'],
-                            ['4', '<span style=\'font-size:14px;font-weight:normal;\'>Group 4</span>'],
-                            ['5', '<span style=\'font-size:14px;font-weight:normal;\'>Group 5</span>'],
-                            ['6', '<span style=\'font-size:14px;font-weight:normal;\'>Group 6</span>'],
-                            ['7', '<span style=\'font-size:14px;font-weight:normal;\'>Group 7</span>'],
-                            ['8', '<span style=\'font-size:14px;font-weight:normal;\'>Group 8</span>'],
-                            ['9', '<span style=\'font-size:14px;font-weight:normal;\'>Group 9</span>'],
-                            ['10', '<span style=\'font-size:14px;font-weight:normal;\'>Group 10</span>'],
+                          ['Group 1', '<span style=\'font-size:14px;font-weight:normal;\'>Group 1</span>'],
+                          ['Group 2', '<span style=\'font-size:14px;font-weight:normal;\'>Group 2</span>'],
+                          ['Group 3', '<span style=\'font-size:14px;font-weight:normal;\'>Group 3</span>'],
+                          ['Group 4', '<span style=\'font-size:14px;font-weight:normal;\'>Group 4</span>'],
+                          ['Group 5', '<span style=\'font-size:14px;font-weight:normal;\'>Group 5</span>'],
+                          ['Group 6', '<span style=\'font-size:14px;font-weight:normal;\'>Group 6</span>'],
+                          ['Group 7', '<span style=\'font-size:14px;font-weight:normal;\'>Group 7</span>'],
+                          ['Group 8', '<span style=\'font-size:14px;font-weight:normal;\'>Group 8</span>'],
+                          ['Group 9', '<span style=\'font-size:14px;font-weight:normal;\'>Group 9</span>'],
+                          ['Group 10', '<span style=\'font-size:14px;font-weight:normal;\'>Group 10</span>'],
                             ],
                         shuffleChoices: false,
                         requiredChoice: true,
@@ -1125,16 +1125,16 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                         mainText: '<span style="font-weight: normal;color:gray;">Q2</span> Think of <span style="color:red;">YOUR</span> household. ' +
                                   'In your opinion, which income group is your household part of?',
                         choices: [
-                            ['1', '<span style=\'font-size:14px;font-weight:normal;\'>Group 1</span>'],
-                            ['2', '<span style=\'font-size:14px;font-weight:normal;\'>Group 2</span>'],
-                            ['3', '<span style=\'font-size:14px;font-weight:normal;\'>Group 3</span>'],
-                            ['4', '<span style=\'font-size:14px;font-weight:normal;\'>Group 4</span>'],
-                            ['5', '<span style=\'font-size:14px;font-weight:normal;\'>Group 5</span>'],
-                            ['6', '<span style=\'font-size:14px;font-weight:normal;\'>Group 6</span>'],
-                            ['7', '<span style=\'font-size:14px;font-weight:normal;\'>Group 7</span>'],
-                            ['8', '<span style=\'font-size:14px;font-weight:normal;\'>Group 8</span>'],
-                            ['9', '<span style=\'font-size:14px;font-weight:normal;\'>Group 9</span>'],
-                            ['10', '<span style=\'font-size:14px;font-weight:normal;\'>Group 10</span>'],
+                          ['Group 1', '<span style=\'font-size:14px;font-weight:normal;\'>Group 1</span>'],
+                          ['Group 2', '<span style=\'font-size:14px;font-weight:normal;\'>Group 2</span>'],
+                          ['Group 3', '<span style=\'font-size:14px;font-weight:normal;\'>Group 3</span>'],
+                          ['Group 4', '<span style=\'font-size:14px;font-weight:normal;\'>Group 4</span>'],
+                          ['Group 5', '<span style=\'font-size:14px;font-weight:normal;\'>Group 5</span>'],
+                          ['Group 6', '<span style=\'font-size:14px;font-weight:normal;\'>Group 6</span>'],
+                          ['Group 7', '<span style=\'font-size:14px;font-weight:normal;\'>Group 7</span>'],
+                          ['Group 8', '<span style=\'font-size:14px;font-weight:normal;\'>Group 8</span>'],
+                          ['Group 9', '<span style=\'font-size:14px;font-weight:normal;\'>Group 9</span>'],
+                          ['Group 10', '<span style=\'font-size:14px;font-weight:normal;\'>Group 10</span>'],
                             ],
                         shuffleChoices: false,
                         requiredChoice: true
@@ -1173,16 +1173,16 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                         mainText: '<span style="font-weight: normal;color:gray;">Q2</span> Think of <span style="color:red;">YOUR</span> household. ' +
                         'In your opinion, which income group is your household part of?',
                         choices: [
-                          ['1', '<span style=\'font-size:14px;font-weight:normal;\'>Group 1</span>'],
-                          ['2', '<span style=\'font-size:14px;font-weight:normal;\'>Group 2</span>'],
-                          ['3', '<span style=\'font-size:14px;font-weight:normal;\'>Group 3</span>'],
-                          ['4', '<span style=\'font-size:14px;font-weight:normal;\'>Group 4</span>'],
-                          ['5', '<span style=\'font-size:14px;font-weight:normal;\'>Group 5</span>'],
-                          ['6', '<span style=\'font-size:14px;font-weight:normal;\'>Group 6</span>'],
-                          ['7', '<span style=\'font-size:14px;font-weight:normal;\'>Group 7</span>'],
-                          ['8', '<span style=\'font-size:14px;font-weight:normal;\'>Group 8</span>'],
-                          ['9', '<span style=\'font-size:14px;font-weight:normal;\'>Group 9</span>'],
-                          ['10', '<span style=\'font-size:14px;font-weight:normal;\'>Group 10</span>'],
+                          ['Group 1', '<span style=\'font-size:14px;font-weight:normal;\'>Group 1</span>'],
+                          ['Group 2', '<span style=\'font-size:14px;font-weight:normal;\'>Group 2</span>'],
+                          ['Group 3', '<span style=\'font-size:14px;font-weight:normal;\'>Group 3</span>'],
+                          ['Group 4', '<span style=\'font-size:14px;font-weight:normal;\'>Group 4</span>'],
+                          ['Group 5', '<span style=\'font-size:14px;font-weight:normal;\'>Group 5</span>'],
+                          ['Group 6', '<span style=\'font-size:14px;font-weight:normal;\'>Group 6</span>'],
+                          ['Group 7', '<span style=\'font-size:14px;font-weight:normal;\'>Group 7</span>'],
+                          ['Group 8', '<span style=\'font-size:14px;font-weight:normal;\'>Group 8</span>'],
+                          ['Group 9', '<span style=\'font-size:14px;font-weight:normal;\'>Group 9</span>'],
+                          ['Group 10', '<span style=\'font-size:14px;font-weight:normal;\'>Group 10</span>'],
                         ],
                         shuffleChoices: false,
                         requiredChoice: true,
@@ -1927,10 +1927,88 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
     });
 
     // Disclaimer Income
-    stager.extendStep('Disclaimer', {
-        name: 'Disclaimer',
-        frame: 'Income_correction_disclaimer.htm'
-    });
+        stager.extendStep('Disclaimer', {
+            name: "Disclaimer",
+            frame: 'Income_correction_disclaimer.htm',
+            donebutton: false,
+            cb: function() {
+                W.cssRule('table.choicetable td { text-align: center !important; ' +
+                'font-weight: normal; padding-left: 10px; }');
+
+                node.get('incomeDecile', function(data) {
+                    console.log(data);
+
+                    var income = data.income;
+                    var incomeGroup = income.substr("Group ".length);
+                    var incomeG = parseInt(incomeGroup, 10);
+                    console.log(incomeG);
+
+                    var guess = data.income_guess;
+                    var guessGroup = guess.substr("Group ".length);
+                    var guessG = parseInt(guessGroup, 10);
+                    console.log(guessG);
+
+                    var decile_number = data.row.decile_number;
+                    console.log(decile_number);
+
+                    W.show('data', 'flex');
+
+                    var evaluation;
+
+                    if (guessGroup === incomeGroup) {
+                        evaluation = 'correct';
+                        W.setInnerHTML('guess', guessGroup);
+                        W.setInnerHTML('evaluation', evaluation);
+                        W.setInnerHTML('group', income);
+                        W.gid('img').src = 'Leaflet_images/' + income + '.png';
+                        W.gid('is_correct').src = 'correct.png';
+                    }
+                    else {
+                        W.gid('is_correct').src = 'incorrect.png';
+                        if (decile_number === 10) {
+                            evaluation = 'incorrect';
+                            W.setInnerHTML('guess', guessGroup);
+                            W.setInnerHTML('evaluation', evaluation);
+                            W.setInnerHTML('group', income);
+                            W.gid('img').src = 'Leaflet_images/' + income + '.png';
+                        }
+                        else if (decile_number === 9) {
+                            if (guessG !== incomeG && guessG < 3 && incomeG < 3) {
+                                evaluation = 'correct';
+                                W.setInnerHTML('guess', guessGroup);
+                                W.setInnerHTML('evaluation', evaluation);
+                                W.setInnerHTML('group', guess);
+                                W.gid('img').src = 'Leaflet_images/' + guess + '.png';
+                            }
+                            else {
+                                evaluation = 'incorrect';
+                                W.setInnerHTML('guess', guessGroup);
+                                W.setInnerHTML('evaluation', evaluation);
+                                W.setInnerHTML('group', income);
+                                W.gid('img').src = 'Leaflet_images/' + income + '.png';
+                            }
+                        }
+                        else if (decile_number === 8) {
+                            if (guessG !== incomeG && guessG < 4 && incomeG < 4) {
+                                evaluation = 'correct';
+                                W.setInnerHTML('guess', guessGroup);
+                                W.setInnerHTML('evaluation', evaluation);
+                                W.setInnerHTML('group', guess);
+                                W.gid('img').src = 'Leaflet_images/' + guess + '.png';
+                            }
+                            else {
+                                evaluation = 'incorrect';
+                                W.setInnerHTML('guess', guessGroup);
+                                W.setInnerHTML('evaluation', evaluation);
+                                W.setInnerHTML('group', income);
+                                W.gid('img').src = 'Leaflet_images/' + income + '.png';
+                            }
+                        }
+                    }
+                    node.game.doneButton.enable();
+                });
+            }
+        });
 
     //////////////////////////////////////////////////////////////////////////////
     // END OF SURVEY
