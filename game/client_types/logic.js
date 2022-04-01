@@ -174,23 +174,23 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             console.log(ownLYL);
             console.log(typeof ownLYL)
 
-            var ownLYLCategory = ownLYL.forms.T_impact_more_or_less_you.value;
-            console.log("LYL cat");
-            console.log(ownLYLCategory);
-            console.log(typeof ownLYLCategory)
-
             ownLYL = ownLYL.forms.T_impact_you.value;
             console.log("LYL2");
             console.log(ownLYL);
             console.log(typeof ownLYL)
 
+            var ownLYLCategory = ownLYL.forms.T_impact_more_or_less_you.value;
+            console.log("LYL cat");
+            console.log(ownLYLCategory);
+            console.log(typeof ownLYLCategory)
+
             // ownLYL = 10;
-            ownLYL_less = ownLYL*districtLYL/100;
+            var ownLYL_less = ownLYL*districtLYL/100;
             console.log("ownLYL_less");
             console.log(ownLYL_less);
             console.log(typeof ownLYL_less)
 
-            ownLYL_less_2d = ownLYL_less.toFixed(1);
+            var ownLYL_less_2d = ownLYL_less.toFixed(1);
             console.log("ownLYL_less_2d");
             console.log(ownLYL_less_2d);
             console.log(typeof ownLYL_less_2d)
@@ -208,10 +208,10 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             if (ownLYLCategory === 'same') {
                 return {
                     district: districtLYL,
-                    own: districtLYL_2d
+                    own: districtLYL
                 }
             }
-            else {
+            else if {
               if (ownLYLCategory === 'less') {
                 return {
                     district: districtLYL,
