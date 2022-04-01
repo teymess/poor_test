@@ -1205,8 +1205,10 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                     W.setInnerHTML('evaluation', evaluation);
                     W.setInnerHTML('group', income);
                     W.gid('img').src = 'Leaflet_images/' + income + '.png';
+                    W.gid('is_correct').src = 'correct.png';
                 }
                 else {
+                    W.gid('is_correct').src = 'incorrect.png';
                     if (decile_number === 10) {
                         evaluation = 'incorrect';
                         W.setInnerHTML('guess', guessGroup);
@@ -1556,7 +1558,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                 W.setInnerHTML('ownLYL', data.own);
 
             });
-        },    
+        },
         widget: {
             name: 'ChoiceManager',
             id: 'D_f',
