@@ -1927,7 +1927,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
     });
 
     // Disclaimer Income
-        stager.extendStep('Disclaimer', {
+        stager.extendStep('Disclaimer_income', {
             name: "Disclaimer",
             frame: 'Income_correction_disclaimer.htm',
             donebutton: false,
