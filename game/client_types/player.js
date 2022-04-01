@@ -1336,7 +1336,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             text = function(widget, value) {
                 var y = (value / 100) * lifeLost;
                 if (v !== 'less') y += lifeLost;
-                y = y.toFixed(2);
+                y = y.toFixed(1);
                 // Remove unused trailing zeros.
                 if (y.charAt(y.length-1 === '0')) y.substr(0, y.length - 2);
                 if (y.charAt(y.length-1 === '0')) y.substr(0, y.length - 3);
