@@ -1328,8 +1328,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                 // Remove unused trailing zeros.
                 if (y.charAt(y.length-1 === '0')) y.substr(0, y.length - 2);
                 if (y.charAt(y.length-1 === '0')) y.substr(0, y.length - 3);
-                y += ' <span style="font-size: x-large !important">year' +
-                     (y === '1' ? '' : 's') + ' of life lost because of air pollution.</span>';
+                y += ' <span style="font-size: x-large !important">years of life lost because of air pollution.</span>';
                 return y;
             };
 
