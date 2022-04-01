@@ -1375,7 +1375,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
 
                 if (v === 'less') {
                     left = Math.max(0, (lifeLost - 2*lifeLost));
-                    if (left !== 0) left = left.toFixed(2);
+                    if (left !== 0) left = left.toFixed(1);
                     right = avg + ' ' + lifeLost;
                     initialValue = 100;
                 }

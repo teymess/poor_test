@@ -160,24 +160,55 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
 
         node.on('get.contributionReminder', function(msg) {
             var districtLYL = memory.district_LYL.get(msg.from);
+            console.log("District LYL1");
             console.log(districtLYL);
+            console.log(typeof districtLYL);
+
             districtLYL = districtLYL.p5_q2.value;
+            console.log("District LYL2");
+            console.log(districtLYL);
+            console.log(typeof districtLYL);
 
             var ownLYL = memory.own_LYL_guess.get(msg.from);
+            console.log("LYL1");
             console.log(ownLYL);
+            console.log(typeof ownLYL)
+
             var ownLYLCategory = ownLYL.forms.T_impact_more_or_less_you.value;
-            var ownLYL = ownLYL.forms.T_impact_you.value;
-            var ownLYL_less = Math.max(0, (ownLYL*districtLYL/100));
-            var ownLYL_less_2d = ownLYL_less.toFixed(2);
-            var ownLYL_more = Math.max(0, (districtLYL + ownLYL*districtLYL/100));
-            var ownLYL_more_2d = ownLYL_more.toFixed(2);
-            // console.log(ownLYL_less);
-            // console.log(ownLYL_more_2d);
+            console.log("LYL cat");
+            console.log(ownLYLCategory);
+            console.log(typeof ownLYLCategory)
+
+            ownLYL = ownLYL.forms.T_impact_you.value;
+            console.log("LYL2");
+            console.log(ownLYL);
+            console.log(typeof ownLYL)
+
+            // ownLYL = 10;
+            ownLYL_less = ownLYL*districtLYL/100;
+            console.log("ownLYL_less");
+            console.log(ownLYL_less);
+            console.log(typeof ownLYL_less)
+
+            ownLYL_less_2d = ownLYL_less.toFixed(1);
+            console.log("ownLYL_less_2d");
+            console.log(ownLYL_less_2d);
+            console.log(typeof ownLYL_less_2d)
+
+            var ownLYL_more = districtLYL + ownLYL*districtLYL/100;
+            console.log("ownLYL_more");
+            console.log(ownLYL_more);
+            console.log(typeof ownLYL_more);
+
+            var ownLYL_more_2d = ownLYL_more.toFixed(1);
+            console.log("ownLYL_more_2d");
+            console.log(ownLYL_more_2d);
+            console.log(typeof ownLYL_more_2d);
 
             if (ownLYLCategory === 'same') {
                 return {
                     district: districtLYL,
-                    own: districtLYL
+                    own: districtLYL_2d
                 }
             }
             else {
