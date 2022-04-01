@@ -169,6 +169,10 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             console.log(districtLYL);
             console.log(typeof districtLYL);
 
+
+            var districtValue = districtLYL.slice(0,-" years".length);
+            var districtValueIso = parseInt(districtValue, 10);
+
             var ownLYL = memory.own_LYL_guess.get(msg.from);
             console.log("LYL1");
             console.log(ownLYL);
@@ -185,7 +189,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             console.log(typeof ownLYLCategory)
 
             // ownLYL = 10;
-            var ownLYL_less = ownLYL*districtLYL/100;
+            var ownLYL_less = ownLYL*districtValueIso/100;
             console.log("ownLYL_less");
             console.log(ownLYL_less);
             console.log(typeof ownLYL_less)
@@ -195,7 +199,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             console.log(ownLYL_less_2d);
             console.log(typeof ownLYL_less_2d)
 
-            var ownLYL_more = districtLYL + ownLYL*districtLYL/100;
+            var ownLYL_more = districtLYL + ownLYL*districtValueIso/100;
             console.log("ownLYL_more");
             console.log(ownLYL_more);
             console.log(typeof ownLYL_more);
@@ -211,20 +215,20 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                     own: districtLYL
                 }
             }
-            else if {
-              if (ownLYLCategory === 'less') {
+
+            else if (ownLYLCategory === 'less') {
                 return {
                     district: districtLYL,
                     own: ownLYL_less_2d
                 }
-              }
-              else {
+            }
+
+            else {
                 return {
                     district: districtLYL,
                     own: ownLYL_more_2d
-              }
+                }
             }
-          }
         });
     });
 
