@@ -733,7 +733,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                     {
                         id: 'P2_q1',
                         orientation: 'H',
-                        mainText: '<span style="font-weight: normal;color:gray;">Q3</span> How many deaths are caused yearly by air pollution in India?',
+                        mainText: '<span style="font-weight: normal;color:gray;">Q3</span> How many deaths are caused each year by air pollution in India?',
                         choices: ["Less than 1 million", "About 1.67 million", "More than 3 million"],
                         correctChoice: 1,
                     },
@@ -858,7 +858,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                         {
                             id: 'p5_q2',
                             orientation: 'H',
-                            mainText: '<span style="font-weight: normal;color:gray;">Q9</span> On average, how many years of life does a person living in your state lose because of air pollution?<br>',
+                            mainText: '<span style="font-weight: normal;color:gray;">Q9</span> On average, how many years of life does a person living in ' +data.state+ ' lose because of air pollution?<br>',
                             choices: [
                                 (data.life_lost * 0.5).toFixed(1) + ' years',
                                 (data.life_lost * 0.8).toFixed(1) + ' years',
@@ -909,13 +909,11 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             panel: false,
             mainText: '<p>It is vital to our study that' +
                 ' we only include responses from people who devoted ' +
-                'their <strong>full attention</strong> to this study. ' +
-                '<em>This will not ' +
-                'affect in any way the payment you will receive for ' +
-                'taking this survey.</em></p><p>In your honest opinion, ' +
-                'should we use your responses, or should we discard your ' +
+                'their <strong>full attention</strong> to this study.<br><br></p>' +
+                '<p><b>In your honest opinion, ' +
+                'should we use your responses or should we discard your ' +
                 'responses since you did not devote your full attention ' +
-                'to the questions so far?</p><br/>',
+                'to the questions so far?</b></p>',
             choices: [
                 ['Yes', 'Yes, I have devoted full attention to the questions so ' +
                     'far and I think you should use my responses for ' +
@@ -927,7 +925,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             orientation: 'V',
             requiredChoice: true,
             shuffleChoices: true,
-            hint: 'Please answer'
+            hint: 'This will not affect in any way the payment you will receive for taking this survey.'
         },
         done: function(values) {
             // Simplify.
@@ -978,12 +976,20 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                             ['Group 10', '<span style=\'font-size:14px;font-weight:normal;\'>Group 10</span>'],
                             ],
                         shuffleChoices: false,
-                        requiredChoice: true
+                        requiredChoice: true,
+                        onclick: function(value, removed) {
+                            var w, forms, len;
+                            forms = node.widgets.lastAppended.formsById
+                            // len = forms.P3_q1_1.choices.length - 1;
+                            w = forms.P3_q1_2;
+                            w.show();
+                            // w.hide();
+                        }
                     },
                     {
                         id: 'P3_q1_2',
                         orientation: 'H',
-                        mainText: '<span style="font-weight: normal;color:gray;">Q2</span> Think of YOUR household now. ' +
+                        mainText: '<span style="font-weight: normal;color:gray;">Q2</span> Think of <span style="color:red;">YOUR</span> household now. ' +
                                   'In your opinion, which income group is your household part of?',
                         choices: [
                             ['Group 1', '<span style=\'font-size:14px;font-weight:normal;\'>Group 1</span>'],
@@ -998,7 +1004,8 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                             ['Group 10', '<span style=\'font-size:14px;font-weight:normal;\'>Group 10</span>'],
                             ],
                         shuffleChoices: false,
-                        requiredChoice: true
+                        requiredChoice: true,
+                        hidden: true
                     }
                 ]
             }
@@ -1046,12 +1053,20 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                             ['Group 10', '<span style=\'font-size:14px;font-weight:normal;\'>Group 10</span>'],
                             ],
                         shuffleChoices: false,
-                        requiredChoice: true
+                        requiredChoice: true,
+                        onclick: function(value, removed) {
+                            var w, forms, len;
+                            forms = node.widgets.lastAppended.formsById
+                            // len = forms.P3_q1_1.choices.length - 1;
+                            w = forms.P3_q1_2;
+                            w.show();
+                            // w.hide();
+                        }
                     },
                     {
                         id: 'P3_q1_2',
                         orientation: 'H',
-                        mainText: '<span style="font-weight: normal;color:gray;">Q2</span> Think of YOUR household now. ' +
+                        mainText: '<span style="font-weight: normal;color:gray;">Q2</span> Think of <span style="color:red;">YOUR</span> household now. ' +
                                   'In your opinion, which income group is your household part of?',
                         choices: [
                             ['Group 1', '<span style=\'font-size:14px;font-weight:normal;\'>Group 1</span>'],
@@ -1066,7 +1081,8 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                             ['Group 10', '<span style=\'font-size:14px;font-weight:normal;\'>Group 10</span>'],
                             ],
                         shuffleChoices: false,
-                        requiredChoice: true
+                        requiredChoice: true,
+                        hidden: true
                     }
                 ]
             }
@@ -1097,7 +1113,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                     {
                         id: 'P3_q1_2',
                         orientation: 'H',
-                        mainText: '<span style="font-weight: normal;color:gray;">Q2</span> Think of YOUR household. ' +
+                        mainText: '<span style="font-weight: normal;color:gray;">Q2</span> Think of <span style="color:red;">YOUR</span> household. ' +
                                   'In your opinion, which income group is your household part of?',
                         choices: [
                             ['Group 1', '<span style=\'font-size:14px;font-weight:normal;\'>Group 1</span>'],
@@ -1145,7 +1161,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                     {
                         id: 'P3_q1_1',
                         orientation: 'H',
-                        mainText: '<span style="font-weight: normal;color:gray;">Q2</span> Think of YOUR household. ' +
+                        mainText: '<span style="font-weight: normal;color:gray;">Q2</span> Think of <span style="color:red;">YOUR</span> household. ' +
                         'In your opinion, which income group is your household part of?',
                         choices: [
                             ['Group 1', '<span style=\'font-size:14px;font-weight:normal;\'>Group 1</span>'],
@@ -1164,13 +1180,13 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                         onclick: function() {
                             node.game.doneButton.enable();
                         },
-
                     }
                 ]
             }
         },
     });
 
+//////////////////////////////////////////////////////////////////
     stager.extendStep('Part3_T_Income_Corr_Control2', {
         name: "Part 3: Your opinion",
         frame: 'Income_correction.htm',
@@ -1278,8 +1294,10 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             node.get('districtData', function(data) {
 
                 var lifeLost = data.life_lost;
+                var state = data.state;
                 lifeLost = Number(lifeLost.toFixed(1));
                 node.game.lifeLost = lifeLost;
+                node.game.state = state;
 
                 // console.log(data);
                 W.setInnerHTML('state', data.state);
@@ -1296,36 +1314,16 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                   [ 'more', 'More than ' + lifeLost  + ' years' ]
               ];
 
-
-            // node.game.Q_impact = node.widgets.append('ChoiceManager', "T_impact", {
-            //         id: 'T_impact_q',
-            //         // ref: 'controlQuestions',
-            //         simplify: true,
-            //         panel: false,
-            //         forms: [
-            //             {
-            //                 id: 'T_impact_more_or_less',
-            //                 orientation: 'H',
-            //                 mainText: '<span style="font-weight: normal;color:gray;">Q1</span> ' +
-            //                           'Think about a household living in ' + data.district +
-            //                           ' with a total annual income of ' + node.game.settings.money + '. <br><br>' +
-            //                           'Is this household losing more or less years of life than the average?',
-            //                 choices: choicesMoreOrLess,
-            //                 requiredChoice: true,
-            //                 hidden: true
-            //             },
-            //         ]
-            //     });
-
                 W.show('data', 'flex');
                 node.game.doneButton.enable();
             });
         },
         done: function() {
             var q2, q3, q4, v, intro, left, right, text, initialValue;
-            var lifeLost, avg, avg2, w;
+            var state, lifeLost, avg, avg2, w;
 
             lifeLost = node.game.lifeLost;
+            state = node.game.state;
 
 
             // DISPLAY 1.
@@ -1334,16 +1332,6 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                 intro.style.display = '';
                 return false;
             }
-
-            // // DISPLAY 2.
-            // q0 = w.formsById.T_impact_more_or_less;
-            // if (q0.isHidden()) {
-            //     q0.reset(); // removes error.
-            //     q0.show();
-            //     return false;
-            // }
-
-            // Define the slider update function.
 
             text = function(widget, value) {
                 var y = (value / 100) * lifeLost;
@@ -1361,47 +1349,6 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             avg = '<span style="font-size: small; font-style: italic">(average)</span>';
             avg2 = '<span style="font-size: small; font-style: italic">(2x average)</span>';
 
-            // // DISPLAY 3.
-            // q1 = w.formsById.T_impact_family;
-            // v = q0.getValues({ markAttempt: false }).value;
-            // q0.disable();
-            // if (v !== 'same' && !q1) {
-            //
-            //     if (v === 'less') {
-            //         left = Math.max(0, (lifeLost - 2*lifeLost));
-            //         if (left !== 0) left = left.toFixed(2);
-            //         right = avg + ' ' + lifeLost;
-            //         initialValue = 100;
-            //     }
-            //     else {
-            //         left = lifeLost + ' ' + avg;
-            //         right = avg2 + ' ' + 2*lifeLost;
-            //         initialValue = 0;
-            //     }
-            //
-            //     node.widgets.last.addForm({
-            //         id: 'T_impact_family',
-            //         mainText: 'Please specify how many years of life you think they are losing.' +
-            //         ' <span style="font-size: small; font-weight: normal">(Movement required.)</span><br><br>',
-            //         hint: false,
-            //         name: 'Slider',
-            //         requiredChoice: true,
-            //         // initialValue: Math.round((lifeLost / upperLimit) * 100),
-            //         initialValue: initialValue,
-            //         min: 0,
-            //         max: 100,
-            //         left: left,
-            //         right: right,
-            //         displayNoChange: false,
-            //         type: 'flat',
-            //         panel: false,
-            //         texts: { currentValue: text }
-            //     });
-            //     return false;
-            //
-            // }
-
-
             w = node.widgets.last;
 
             // DISPLAY 4.
@@ -1412,7 +1359,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                     id: 'T_impact_more_or_less_you',
                     orientation: 'H',
                     mainText: '<span style="font-weight: normal;color:gray;">Q3</span> Think about <span style="color:#ff0000">YOURSELF</span> now.<br><br>' +
-                              'Are you losing more or less years of life than the average?',
+                              'Are you losing more or less years of life than the average person in ' + state + '?',
                     choices: node.game.choicesMoreOrLess,
                     requiredChoice: true
                 });
@@ -1468,7 +1415,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                 node.widgets.last.addForm({
                     id: 'T_confident',
                     orientation: 'H',
-                    mainText: '<span style="font-weight: normal;color:gray;">Q5</span> How confident are you about your answer above?</span> <span style="font-weight: normal;">*</span>',
+                    mainText: '<span style="font-weight: normal;color:gray;">Q5</span> How confident are you about your answer?</span> <span style="font-weight: normal;">*</span>',
                     hint: false,
                     choices: [
                       ['1', 'Not confident at all'],
