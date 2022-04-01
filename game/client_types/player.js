@@ -635,7 +635,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                         name: 'ChoiceTable',
                         id: 'q8_1',
                         orientation: 'H',
-                        mainText: '<span style="font-weight: normal;color:gray;">Q21</span> How often do you do physical exercise?<br>',
+                        mainText: '<span style="font-weight: normal;color:gray;">Q20</span> How often do you do physical exercise?<br>',
                         hint:'(Think of when you play sports, go jogging, go to the gym, practice yoga/pilates at home etc.)',
                         choices: [ 'Never','Very rarely','Once a month','Every week','Several times per week'],
                         shuffleChoices: false,
@@ -645,7 +645,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                         name: 'ChoiceTable',
                         id: 'q8_2',
                         orientation: 'H',
-                        mainText: '<span style="font-weight: normal;color:gray;">Q22</span> Do you smoke tobacco (cigarettes, hookah, bidi, etc.)?',
+                        mainText: '<span style="font-weight: normal;color:gray;">Q21</span> Do you smoke tobacco (cigarettes, hookah, bidi, etc.)?',
                         choices: [ 'Yes','No'],
                         shuffleChoices: false,
                         requiredChoice: true
@@ -654,7 +654,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                         name: 'ChoiceTable',
                         id: 'q8_3',
                         orientation: 'V',
-                        mainText: '<span style="font-weight: normal;color:gray;">Q23</span> In the past 5 years, did YOU have any of the following health conditions?<br>',
+                        mainText: '<span style="font-weight: normal;color:gray;">Q22</span> In the past 5 years, did YOU have any of the following health conditions?<br>',
                         hint: '(Select <strong><em>all</strong></em> that apply.)',
                         choices: ["Allergies",'High blood pressure','Heart disease','Lung disease','Diabetes','None','Prefer not to say'],
                         shuffleChoices: false,
@@ -843,22 +843,10 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                     mainText: '',
                     simplify: true,
                     forms: [
-                        // {
-                        //     id: 'p5_q1',
-                        //     orientation: 'H',
-                        //     mainText: '<span style="font-weight: normal;color:gray;">Q8</span> What is the WHO recommendation for the annual average PM 2.5 concentrations?<br>',
-                        //     choices: [
-                        //         ['0', "0 &mu;g/m<sup>3</sup>"],
-                        //         ['5', "5 &mu;g/m<sup>3</sup>"],
-                        //         ['15', "15 &mu;g/m<sup>3</sup>"],
-                        //         ['30', "30 &mu;g/m<sup>3</sup>"],
-                        //     ],
-                        //     correctChoice: 1,
-                        // },
                         {
                             id: 'p5_q2',
                             orientation: 'H',
-                            mainText: '<span style="font-weight: normal;color:gray;">Q9</span> On average, how many years of life does a person living in ' +data.state+ ' lose because of air pollution?<br>',
+                            mainText: '<span style="font-weight: normal;color:gray;">Q8</span> On average, how many years of life does a person living in ' +data.state+ ' lose because of air pollution?<br>',
                             choices: [
                                 (data.life_lost * 0.5).toFixed(1) + ' years',
                                 (data.life_lost * 0.8).toFixed(1) + ' years',
@@ -910,7 +898,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             mainText: '<p>It is vital to our study that' +
                 ' we only include responses from people who devoted ' +
                 'their <strong>full attention</strong> to this study.<br><br></p>' +
-                '<p><b>In your honest opinion, ' +
+                '<p><b><span style="font-weight: normal;color:gray;">Q1</span> In your honest opinion, ' +
                 'should we use your responses or should we discard your ' +
                 'responses since you did not devote your full attention ' +
                 'to the questions so far?</b></p>',
@@ -960,7 +948,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                     {
                         id: 'P3_q1_1',
                         orientation: 'H',
-                        mainText: '<span style="font-weight: normal;color:gray;">Q1</span> Think of a household living ' +
+                        mainText: '<span style="font-weight: normal;color:gray;">Q2</span> Think of a household living ' +
                                   'in the same state as you and earning a total annual income of 40,000 INR.<br><br>'+
                                   'In your opinion, which income group is this household part of?',
                         choices: [
@@ -989,7 +977,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                     {
                         id: 'P3_q1_2',
                         orientation: 'H',
-                        mainText: '<span style="font-weight: normal;color:gray;">Q2</span> Think of <span style="color:red;">YOUR</span> household now. ' +
+                        mainText: '<span style="font-weight: normal;color:gray;">Q2b</span> Think of <span style="color:red;">YOUR</span> household now. ' +
                                   'In your opinion, which income group is your household part of?',
                         choices: [
                             ['Group 1', '<span style=\'font-size:14px;font-weight:normal;\'>Group 1</span>'],
@@ -1037,7 +1025,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                     {
                         id: 'P3_q1_1',
                         orientation: 'H',
-                        mainText: '<span style="font-weight: normal;color:gray;">Q1</span> Think of a household living ' +
+                        mainText: '<span style="font-weight: normal;color:gray;">Q2</span> Think of a household living ' +
                                   'in the same state as you and earning a total annual income of 1,00,00,000 INR.<br><br>'+
                                   'In your opinion, which income group is this household part of?',
                         choices: [
@@ -1066,7 +1054,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                     {
                         id: 'P3_q1_2',
                         orientation: 'H',
-                        mainText: '<span style="font-weight: normal;color:gray;">Q2</span> Think of <span style="color:red;">YOUR</span> household now. ' +
+                        mainText: '<span style="font-weight: normal;color:gray;">Q2b</span> Think of <span style="color:red;">YOUR</span> household now. ' +
                                   'In your opinion, which income group is your household part of?',
                         choices: [
                             ['Group 1', '<span style=\'font-size:14px;font-weight:normal;\'>Group 1</span>'],
@@ -1447,7 +1435,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                     {
                         id: 'Part3_q3',
                         orientation: 'H',
-                        mainText: '<span style="font-weight: normal;color:gray;">Q5</span> How happy are you in general?',
+                        mainText: '<span style="font-weight: normal;color:gray;">Q6</span> How happy are you in general?',
                         choices: ['Very happy','Rather happy','Neutral','Not very happy','Not at all happy'],
                         shuffleChoices: false,
                         requiredChoice: true
@@ -1455,7 +1443,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                     {
                         id: 'Part3_q4',
                         orientation: 'H',
-                        mainText: '<span style="font-weight: normal;color:gray;">Q6</span> How healthy do you feel these days?',
+                        mainText: '<span style="font-weight: normal;color:gray;">Q7</span> How healthy do you feel these days?',
                         choices: ['Very healthy','Healthy','Neutral','A bit unhealthy','Very unhealthy'],
                         shuffleChoices: false,
                         requiredChoice: true
@@ -1463,7 +1451,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                     {
                         id: 'Part3_q5',
                         orientation: 'H',
-                        mainText: '<span style="font-weight: normal;color:gray;">Q7</span> All things considered, ' +
+                        mainText: '<span style="font-weight: normal;color:gray;">Q8</span> All things considered, ' +
                         'how satisfied are you with your life as a whole these ' + 'days? <br>' +
                         '<span style="font-weight: normal; font-size: 16px;"> Using a scale on which "1" means you are <em>"completely dissatisfied"</em> and "10" means you are <em>"completely satisfied"</em> where would you put your ' +
                         'satisfaction with your life as a whole?</span>',
@@ -1514,7 +1502,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                     {
                         id: 'D_f_c1',
                         orientation: 'V',
-                        mainText: '<span style="font-weight: normal;color:gray;">Q2</span> Which non-governmental initiative do you want to support in the fight against air pollution?',
+                        mainText: '<span style="font-weight: normal;color:gray;">Q9</span> Which non-governmental initiative do you want to support in the fight against air pollution?',
                         choices: [
                             [
                                 'Chintan',
@@ -1563,7 +1551,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                         initialValue: 0,
                         requiredChoice: true,
                         displayNoChange: false,
-                        mainText: '<span style="font-weight: normal;color:gray;">Q3</span> How much of the bonus reward of $1.50 do you want to contribute?',
+                        mainText: '<span style="font-weight: normal;color:gray;">Q10</span> How much of the bonus reward of $1.50 do you want to contribute?',
                         hint: '<b>Please move the slider to your preferred contribution amount.</b> <br> <span style="font-size:12px;"> Your contribution will be given to the initiative of your choice by the researchers at Heidelberg University. The rest will go to you.',
                         texts: {
                             currentValue: function(widget, value) {
@@ -1678,7 +1666,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                     {
                         name: 'ChoiceTableGroup',
                         id: 'stated_support',
-                        mainText: '<span style="font-weight: normal;color:gray;">Q4</span> <span style=\'font-size:18px;font-weight:normal;\'>How willing are you' +
+                        mainText: '<span style="font-weight: normal;color:gray;">Q11</span> <span style=\'font-size:18px;font-weight:normal;\'>How willing are you' +
                         ' to support the implementation of the following policies in <b>your state</b></span>?',
                         choices: [
                             'Strongly oppose', 'Somewhat oppose', 'Undecided',
@@ -1727,7 +1715,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                     {
                         name: 'ChoiceTableGroup',
                         id: 'stated_defense',
-                        mainText: '<span style="font-weight: normal;color:gray;">Q5</span> <span style=\'font-size:18px;font-weight:normal;\'>How likely are you to adopt or continue using the following <b>defensive strategies</b> against air pollution?</span>',
+                        mainText: '<span style="font-weight: normal;color:gray;">Q12</span> <span style=\'font-size:18px;font-weight:normal;\'>How likely are you to adopt or continue using the following <b>defensive strategies</b> against air pollution?</span>',
                         choices: [
                             'Not likely at all', 'Rather unlikely', 'Undecided',
                             'Rather likely', 'Very likely'
@@ -1782,7 +1770,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                 forms: [
                     {
                         id: 'Part3_q1',
-                        mainText: '<span style="font-weight: normal;color:gray;">Q6</span> Do you agree more with Statement A or with Statement B?<br><br>' +
+                        mainText: '<span style="font-weight: normal;color:gray;">Q13</span> Do you agree more with Statement A or with Statement B?<br><br>' +
                         '<span style="font-weight: normal;font-size:18px"><b>Statement A:</b> "Incomes should be made more equal."<br>' +
                         '<b>Statement B:</b> "There should be greater incentives for individual effort."</span>',
                         left: 'Statement A',
@@ -1800,7 +1788,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                     {
                         id: 'Part3_q2',
                         orientation: 'H',
-                        mainText: '<span style="font-weight: normal;color:gray;">Q7</span> Do you agree more with Statement A or with Statement B?<br><br>' +
+                        mainText: '<span style="font-weight: normal;color:gray;">Q14</span> Do you agree more with Statement A or with Statement B?<br><br>' +
                         '<span style="font-weight: normal;font-size:18px"><b>Statement A:</b> "Government should take more responsibility to ensure that everyone is provided for."<br>' +
                         '<b>Statement B:</b> "People should take more responsibility to provide for themselves."</span>',
                         left: 'Statement A',
@@ -1818,7 +1806,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                     {
                         id: 'Part3_q3',
                         orientation: 'H',
-                        mainText: '<span style="font-weight: normal;color:gray;">Q8</span> Do you agree more with Statement A or with Statement B?<br><br>' +
+                        mainText: '<span style="font-weight: normal;color:gray;">Q15</span> Do you agree more with Statement A or with Statement B?<br><br>' +
                         '<span style="font-weight: normal;font-size:18px"><b>Statement A:</b> "In the long run, hard work usually brings a better life."<br>' +
                         '<b>Statement B</b>: "Hard work doesn’t generally bring success — it’s more a matter of luck and connections."</span>',
                         left: 'Statement A',
@@ -1848,7 +1836,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                 forms: [
                     {
                         id: 'Part3_q4',
-                        mainText: '<span style="font-weight: normal;color:gray;">Q10</span> Do you agree more with Statement A or with Statement B?<br><br>' +
+                        mainText: '<span style="font-weight: normal;color:gray;">Q16</span> Do you agree more with Statement A or with Statement B?<br><br>' +
                         '<span style="font-weight: normal;font-size:18px"><b>Statement A:</b> "Everyone should have equal access to protection measures against air pollution."<br>' +
                         '<b>Statement B</b>: "How much one is impacted by air pollution should depend mostly on how much effort she or he puts into reducing the impacts for themselves."</span>',
                         left: 'Statement A',
@@ -1865,7 +1853,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                     {
                         id: 'Part3_q5',
                         orientation: 'H',
-                        mainText: '<span style="font-weight: normal;color:gray;">Q11</span> Do you agree more with Statement A or with Statement B?<br><br>' +
+                        mainText: '<span style="font-weight: normal;color:gray;">Q17</span> Do you agree more with Statement A or with Statement B?<br><br>' +
                         '<span style="font-weight: normal;font-size:18px"><b>Statement A:</b> "All people should put the same effort into reducing air pollution in their state."<br>' +
                         '<b>Statement B</b>: "People that are more wealthy should contribute more to reducing air pollution in their state."</span>',
                         left: 'Statement A',
