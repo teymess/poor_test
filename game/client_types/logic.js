@@ -171,6 +171,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
 
             var districtValue = districtLYL.slice(0,-" years".length);
             var districtValueIso = parseInt(districtValue, 10);
+            console.log("DV is " + districtValueIso);
 
             var ownLYL = memory.own_LYL_guess.get(msg.from);
             console.log("LYL1");
@@ -199,7 +200,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             console.log(ownLYL_less_2d);
             console.log(typeof ownLYL_less_2d)
 
-            var ownLYL_more = districtLYL + ownLYL*districtValueIso/100;
+            var ownLYL_more = districtValueIso + (ownLYL*districtValueIso/100);
             console.log("ownLYL_more");
             console.log(ownLYL_more);
             console.log(typeof ownLYL_more);
