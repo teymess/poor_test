@@ -169,7 +169,6 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             console.log(districtLYL);
             console.log(typeof districtLYL);
 
-
             var districtValue = districtLYL.slice(0,-" years".length);
             var districtValueIso = parseInt(districtValue, 10);
 
@@ -183,7 +182,8 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             console.log(ownLYL);
             console.log(typeof ownLYL)
 
-            var ownLYLCategory = ownLYL.forms.T_impact_more_or_less_you.value;
+            var ownLYLCategory = memory.own_LYL_guess.get(msg.from);
+            ownLYLCategory = ownLYLCategory.forms.T_impact_more_or_less_you.value;
             console.log("LYL cat");
             console.log(ownLYLCategory);
             console.log(typeof ownLYLCategory)
