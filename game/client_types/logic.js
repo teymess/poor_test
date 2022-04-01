@@ -170,7 +170,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             console.log(typeof districtLYL);
 
             var districtValue = districtLYL.slice(0,-" years".length);
-            var districtValueIso = parseInt(districtValue, 10).toFixed(1);
+            var districtValueIso = parseFloat(districtValue, 10);
             console.log("DV is " + districtValueIso);
 
             var ownLYL = memory.own_LYL_guess.get(msg.from);
