@@ -955,7 +955,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                             var w, forms, len;
                             forms = node.widgets.lastAppended.formsById
                             // len = forms.P3_q1_1.choices.length - 1;
-                            w = forms.P3_q1_2;
+                            w = forms.perceived_income_own;
                             w.show();
                             // w.hide();
                         }
@@ -1032,7 +1032,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                             var w, forms, len;
                             forms = node.widgets.lastAppended.formsById
                             // len = forms.P3_q1_1.choices.length - 1;
-                            w = forms.P3_q1_2;
+                            w = forms.perceived_income_own;
                             w.show();
                             // w.hide();
                         }
@@ -1325,11 +1325,11 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             w = node.widgets.last;
 
             // DISPLAY 4.
-            q2 = w.formsById.T_impact_more_or_less_you;
+            q2 = w.formsById.LYL_more_less;
             if (!q2) {
                 // if (q1) q1.disable();
                 node.widgets.last.addForm({
-                    id: 'T_impact_more_or_less_you',
+                    id: 'LYL_more_less',
                     orientation: 'H',
                     mainText: '<span style="font-weight: normal;color:gray;">Q3</span> Think about <span style="color:#ff0000">YOURSELF</span> now.<br><br>' +
                               'Are you losing more or less years of life than the average person in ' + state + '?',

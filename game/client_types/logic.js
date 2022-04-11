@@ -224,7 +224,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             console.log("DV is " + districtValueIso);
 
             var ownLYLCategory = memory.own_LYL_guess.get(msg.from);
-            ownLYLCategory = ownLYLCategory.forms.T_impact_more_or_less_you.value;
+            ownLYLCategory = ownLYLCategory.forms.LYL_more_less.value;
             console.log("LYL cat");
             console.log(ownLYLCategory);
             console.log(typeof ownLYLCategory)
