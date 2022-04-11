@@ -109,7 +109,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                 forms: [
                     {
                         name: 'CustomInput',
-                        id: 'q2_1',
+                        id: 'q2_age',
                         mainText: '<span style="font-weight: normal;color:gray;">Q1</span> How old are you?',
                         width: '95%',
                         type: 'int',
@@ -118,7 +118,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                         requiredChoice: true,
                     },
                     {
-                        id: 'q2_2',
+                        id: 'q2_gender',
                         mainText: '<span style="font-weight: normal;color:gray;">Q2</span> What is your gender?',
                         choices: ['Male', 'Female', 'Other','Prefer not to say'],
                         requiredChoice: true
@@ -1896,7 +1896,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             options: {
                 title: false,
                 panel: false,
-                minChars: 20,
+                minChars: 2,
                 requiredChoice: true,
                 showSubmit: false,
                 mainText: 'Thank you for participating. ' +
@@ -1927,7 +1927,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
     });
 
     // Disclaimer Income
-        stager.extendStep('Disclaimer_income', {
+        stager.extendStep('Disclaimer_income_high', {
             name: "Disclaimer",
             frame: 'Income_correction_disclaimer.htm',
             donebutton: false,
@@ -1935,7 +1935,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                 W.cssRule('table.choicetable td { text-align: center !important; ' +
                 'font-weight: normal; padding-left: 10px; }');
 
-                node.get('incomeDecile', function(data) {
+                node.get('incomeDecileHigh', function(data) {
                     console.log(data);
 
                     var income = data.income;
@@ -2009,6 +2009,91 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                 });
             }
         });
+
+
+        // Disclaimer Income
+            stager.extendStep('Disclaimer_income_low', {
+                name: "Disclaimer",
+                frame: 'Income_correction_disclaimer.htm',
+                donebutton: false,
+                cb: function() {
+                    W.cssRule('table.choicetable td { text-align: center !important; ' +
+                    'font-weight: normal; padding-left: 10px; }');
+
+                    node.get('incomeDecileLow', function(data) {
+                        console.log(data);
+
+                        var income = data.income;
+                        var incomeGroup = income.substr("Group ".length);
+                        var incomeG = parseInt(incomeGroup, 10);
+                        console.log(incomeG);
+
+                        var guess = data.income_guess;
+                        var guessGroup = guess.substr("Group ".length);
+                        var guessG = parseInt(guessGroup, 10);
+                        console.log(guessG);
+
+                        var decile_number = data.row.decile_number;
+                        console.log(decile_number);
+
+                        W.show('data', 'flex');
+
+                        var evaluation;
+
+                        if (guessGroup === incomeGroup) {
+                            evaluation = 'correct';
+                            W.setInnerHTML('guess', guessGroup);
+                            W.setInnerHTML('evaluation', evaluation);
+                            W.setInnerHTML('group', income);
+                            W.gid('img').src = 'Leaflet_images/' + income + '.png';
+                            W.gid('is_correct').src = 'correct.png';
+                        }
+                        else {
+                            W.gid('is_correct').src = 'incorrect.png';
+                            if (decile_number === 10) {
+                                evaluation = 'incorrect';
+                                W.setInnerHTML('guess', guessGroup);
+                                W.setInnerHTML('evaluation', evaluation);
+                                W.setInnerHTML('group', income);
+                                W.gid('img').src = 'Leaflet_images/' + income + '.png';
+                            }
+                            else if (decile_number === 9) {
+                                if (guessG !== incomeG && guessG < 3 && incomeG < 3) {
+                                    evaluation = 'correct';
+                                    W.setInnerHTML('guess', guessGroup);
+                                    W.setInnerHTML('evaluation', evaluation);
+                                    W.setInnerHTML('group', guess);
+                                    W.gid('img').src = 'Leaflet_images/' + guess + '.png';
+                                }
+                                else {
+                                    evaluation = 'incorrect';
+                                    W.setInnerHTML('guess', guessGroup);
+                                    W.setInnerHTML('evaluation', evaluation);
+                                    W.setInnerHTML('group', income);
+                                    W.gid('img').src = 'Leaflet_images/' + income + '.png';
+                                }
+                            }
+                            else if (decile_number === 8) {
+                                if (guessG !== incomeG && guessG < 4 && incomeG < 4) {
+                                    evaluation = 'correct';
+                                    W.setInnerHTML('guess', guessGroup);
+                                    W.setInnerHTML('evaluation', evaluation);
+                                    W.setInnerHTML('group', guess);
+                                    W.gid('img').src = 'Leaflet_images/' + guess + '.png';
+                                }
+                                else {
+                                    evaluation = 'incorrect';
+                                    W.setInnerHTML('guess', guessGroup);
+                                    W.setInnerHTML('evaluation', evaluation);
+                                    W.setInnerHTML('group', income);
+                                    W.gid('img').src = 'Leaflet_images/' + income + '.png';
+                                }
+                            }
+                        }
+                        node.game.doneButton.enable();
+                    });
+                }
+            });
 
     //////////////////////////////////////////////////////////////////////////////
     // END OF SURVEY

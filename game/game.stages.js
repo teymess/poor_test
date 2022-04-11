@@ -62,7 +62,8 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
     stager
     .stage('feedback')
     .stage('Disclaimer')
-    .stage('Disclaimer_income')
+    .stage('Disclaimer_income_high')
+    .stage('Disclaimer_income_low')
     .stage('end')
 
     .gameover();
@@ -71,40 +72,48 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             stager.skip('Part3_Treatment', [
                 'Part3_T_Income_Low',
                 'Part3_T_Income_High',
-                'Part3_Income_Control',
+                'Part3_T_Income_Control',
                 'Part3_T_Income_Corr_Control1',
-                'Part3_T_Income_Corr_Control2',
+                'Part3_T_Income_Corr_Control2'
             ])
+            stager.skip('Disclaimer_income_high')
+            stager.skip('Disclaimer_income_low')
         }
         else if (treatmentName === 'control') {
             stager.skip('Part3_Treatment', [
                 'Part3_T_Income_Low',
                 'Part3_T_Income_High',
                 'Part3_T_Income_Corr_Control1',
-                'Part3_T_Income_Corr_Control2',
+                'Part3_T_Income_Corr_Control2'
             ])
+            stager.skip('Disclaimer_income_high')
+            stager.skip('Disclaimer_income_low')
         }
         else if (treatmentName === 'income_correction') {
             stager.skip('Part3_Treatment', [
                 'Part3_T_Income_Low',
                 'Part3_T_Income_High',
-                'Part3_Income_Control',
+                'Part3_T_Income_Control'
             ])
+            stager.skip('Disclaimer_income_high')
+            stager.skip('Disclaimer_income_low')
         }
         else if (treatmentName === 'poor_anchor') {
             stager.skip('Part3_Treatment', [
                 'Part3_T_Income_High',
-                'Part3_Income_Control',
+                'Part3_T_Income_Control',
                 'Part3_T_Income_Corr_Control1',
-                'Part3_T_Income_Corr_Control2',
+                'Part3_T_Income_Corr_Control2'
             ])
+            stager.skip('Disclaimer_income_high')
         }
         else if (treatmentName === 'rich_anchor') {
             stager.skip('Part3_Treatment', [
                 'Part3_T_Income_Low',
-                'Part3_Income_Control',
+                'Part3_T_Income_Control',
                 'Part3_T_Income_Corr_Control1',
-                'Part3_T_Income_Corr_Control2',
+                'Part3_T_Income_Corr_Control2'
             ])
+            stager.skip('Disclaimer_income_low')
         }
 };

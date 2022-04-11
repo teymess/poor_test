@@ -55,6 +55,14 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             if (item.stepId === 'Part3_T_Income_Corr_Control1') return item.player;
         });
 
+        memory.index('income_guess_high', item => {
+            if (item.stepId === 'Part3_T_Income_High') return item.player;
+        });
+
+        memory.index('income_guess_low', item => {
+            if (item.stepId === 'Part3_T_Income_Low') return item.player;
+        });
+
         memory.index('own_LYL_guess', item => {
             if (item.stepId === 'Part3_Impact') return item.player;
         });
@@ -150,6 +158,48 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             let income_guess = memory.income_guess.get(msg.from);
             console.log(income_guess);
             income_guess = income_guess.P3_q1_1.value;
+
+            return {
+                row: setup.pollutionDb.district.get(district),
+                income: income,
+                income_guess: income_guess
+            }
+        });
+
+        node.on('get.incomeDecileHigh', function(msg) {
+            let income = memory.income_decile.get(msg.from);
+            console.log(income);
+            income = income.income.value;
+
+            let district = memory.district_player.get(msg.from);
+            console.log(district);
+            district = district.forms.district.value;
+
+
+            let income_guess = memory.income_guess_high.get(msg.from);
+            console.log(income_guess);
+            income_guess = income_guess.P3_q1_2.value;
+
+            return {
+                row: setup.pollutionDb.district.get(district),
+                income: income,
+                income_guess: income_guess
+            }
+        });
+
+        node.on('get.incomeDecileLow', function(msg) {
+            let income = memory.income_decile.get(msg.from);
+            console.log(income);
+            income = income.income.value;
+
+            let district = memory.district_player.get(msg.from);
+            console.log(district);
+            district = district.forms.district.value;
+
+
+            let income_guess = memory.income_guess_low.get(msg.from);
+            console.log(income_guess);
+            income_guess = income_guess.P3_q1_2.value;
 
             return {
                 row: setup.pollutionDb.district.get(district),
