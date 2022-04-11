@@ -1418,7 +1418,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                 mainText: '',
                 forms: [
                     {
-                        id: 'Part3_q3',
+                        id: 'general_happy',
                         orientation: 'H',
                         mainText: '<span style="font-weight: normal;color:gray;">Q6</span> How happy are you in general?',
                         choices: ['Very happy','Rather happy','Neutral','Not very happy','Not at all happy'],
@@ -1426,7 +1426,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                         requiredChoice: true
                     },
                     {
-                        id: 'Part3_q4',
+                        id: 'general_healthy',
                         orientation: 'H',
                         mainText: '<span style="font-weight: normal;color:gray;">Q7</span> How healthy do you feel these days?',
                         choices: ['Very healthy','Healthy','Neutral','A bit unhealthy','Very unhealthy'],
@@ -1434,7 +1434,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                         requiredChoice: true
                     },
                     {
-                        id: 'Part3_q5',
+                        id: 'general_satisfied',
                         orientation: 'H',
                         mainText: '<span style="font-weight: normal;color:gray;">Q8</span> All things considered, ' +
                         'how satisfied are you with your life as a whole these ' + 'days? <br>' +
@@ -1485,7 +1485,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                 mainText: "",
                 forms: [
                     {
-                        id: 'D_f_c1',
+                        id: 'donation_target',
                         orientation: 'V',
                         mainText: '<span style="font-weight: normal;color:gray;">Q9</span> Which non-governmental initiative do you want to support in the fight against air pollution?',
                         choices: [
@@ -1514,8 +1514,8 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                         onclick: function(value, removed) {
                             var e1, forms, len;
                             forms = node.widgets.lastAppended.formsById
-                            len = forms.D_f_c1.choices.length - 1;
-                            e1 = forms.D_f_c2;
+                            len = forms.donation_target.choices.length - 1;
+                            e1 = forms.donation_amount;
                             if (this.isChoiceCurrent(len)) {
                                 e1.setValues(0);
                                 e1.hide();
@@ -1526,7 +1526,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                         }
                     },
                     {
-                        id: 'D_f_c2',
+                        id: 'donation_amount',
                         name: 'Slider',
                         type: 'flat',
                         hidden: true,
@@ -1570,7 +1570,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                         mainText: '' ,
                     },
                     {
-                        id: 'CC1',
+                        id: 'confirmation',
                         orientation: 'H',
                         mainText: 'Please confirm your contribution.<br>',
                         hint:  '<div style="margin-left: 0">By clicking the "Yes, I confirm my contribution of<span id="amount4"></span>to the <span id="org2" style="display: contents"></span>." button below, you' +
@@ -1594,7 +1594,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
         done: function(values) {
             var org, amount, forms;
             // Note. Simplify: true.
-            org = values.D_f_c1.value;
+            org = values.donation_target.value;
 
             // Nothing to do.
             if (org === 'none') return;
@@ -1602,9 +1602,9 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             forms = node.widgets.lastAppended.formsById;
 
             // Note. Simplify: true.
-            amount = values.D_f_c2.value
+            amount = values.donation_amount.value
             if (amount === 0) {
-                forms.D_f_c2.highlight();
+                forms.donation_amount.highlight();
                 return false;
             }
 
@@ -1621,13 +1621,13 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
 
             // Hide other page details.
             W.hide('info_top');
-            forms.D_f_c1.hide();
-            forms.D_f_c2.hide();
+            forms.donation_target.hide();
+            forms.donation_amount.hide();
 
             // Show official consent form.
             forms.info_cc.show();
-            forms.CC1.reset(); // removes highlight.
-            forms.CC1.show();
+            forms.confirmation.reset(); // removes highlight.
+            forms.confirmation.show();
             //forms.CC2.show();
 
             if ('undefined' === typeof node.game.confirm) {
@@ -1754,7 +1754,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                 '- If your opinion is somewhere in between, choose a number in between to reflect that.</span>',
                 forms: [
                     {
-                        id: 'Part3_q1',
+                        id: 'redis_income',
                         mainText: '<span style="font-weight: normal;color:gray;">Q13</span> Do you agree more with Statement A or with Statement B?<br><br>' +
                         '<span style="font-weight: normal;font-size:18px"><b>Statement A:</b> "Incomes should be made more equal."<br>' +
                         '<b>Statement B:</b> "There should be greater incentives for individual effort."</span>',
@@ -1766,12 +1766,12 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                         onclick: function(value, removed) {
                             var w, forms;
                             forms = node.widgets.lastAppended.formsById
-                            w = forms.Part3_q2;
+                            w = forms.redis_responsibility;
                             w.show();
                         }
                     },
                     {
-                        id: 'Part3_q2',
+                        id: 'redis_responsibility',
                         orientation: 'H',
                         mainText: '<span style="font-weight: normal;color:gray;">Q14</span> Do you agree more with Statement A or with Statement B?<br><br>' +
                         '<span style="font-weight: normal;font-size:18px"><b>Statement A:</b> "Government should take more responsibility to ensure that everyone is provided for."<br>' +
@@ -1784,12 +1784,12 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                         onclick: function(value, removed) {
                             var w, forms, len;
                             forms = node.widgets.lastAppended.formsById
-                            w = forms.Part3_q3;
+                            w = forms.redis_work;
                             w.show();
                         }
                     },
                     {
-                        id: 'Part3_q3',
+                        id: 'redis_work',
                         orientation: 'H',
                         mainText: '<span style="font-weight: normal;color:gray;">Q15</span> Do you agree more with Statement A or with Statement B?<br><br>' +
                         '<span style="font-weight: normal;font-size:18px"><b>Statement A:</b> "In the long run, hard work usually brings a better life."<br>' +
@@ -1820,7 +1820,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                 '- If your opinion is somewhere in between, choose a number in between to reflect that.</span>',
                 forms: [
                     {
-                        id: 'Part3_q4',
+                        id: 'env_justice_protection',
                         mainText: '<span style="font-weight: normal;color:gray;">Q16</span> Do you agree more with Statement A or with Statement B?<br><br>' +
                         '<span style="font-weight: normal;font-size:18px"><b>Statement A:</b> "Everyone should have equal access to protection measures against air pollution."<br>' +
                         '<b>Statement B</b>: "How much one is impacted by air pollution should depend mostly on how much effort she or he puts into reducing the impacts for themselves."</span>',
@@ -1831,12 +1831,12 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                         onclick: function(value, removed) {
                             var w, forms, len;
                             forms = node.widgets.lastAppended.formsById
-                            w = forms.Part3_q5;
+                            w = forms.env_justice_wealth;
                             w.show();
                         }
                     },
                     {
-                        id: 'Part3_q5',
+                        id: 'env_justice_wealth',
                         orientation: 'H',
                         mainText: '<span style="font-weight: normal;color:gray;">Q17</span> Do you agree more with Statement A or with Statement B?<br><br>' +
                         '<span style="font-weight: normal;font-size:18px"><b>Statement A:</b> "All people should put the same effort into reducing air pollution in their state."<br>' +
