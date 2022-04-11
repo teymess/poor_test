@@ -84,8 +84,8 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
 
             if (step === 'Part3_Time_to_act!') {
                 console.log(msg.data);
-                let bonus = 1.5*(msg.data.D_f_c2.value / 100);
-                if (msg.data.CC1.value==='confirm') {
+                let bonus = 1.5*(msg.data.donation_amount.value / 100);
+                if (msg.data.confirmation.value==='confirm') {
                     gameRoom.updateWin(id, (1.5 - bonus));
                 }
                 else {
@@ -157,7 +157,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
 
             let income_guess = memory.income_guess.get(msg.from);
             console.log(income_guess);
-            income_guess = income_guess.P3_q1_1.value;
+            income_guess = income_guess.perceived_income_own.value;
 
             return {
                 row: setup.pollutionDb.district.get(district),
@@ -178,7 +178,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
 
             let income_guess = memory.income_guess_high.get(msg.from);
             console.log(income_guess);
-            income_guess = income_guess.P3_q1_2.value;
+            income_guess = income_guess.perceived_income_own.value;
 
             return {
                 row: setup.pollutionDb.district.get(district),
@@ -199,7 +199,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
 
             let income_guess = memory.income_guess_low.get(msg.from);
             console.log(income_guess);
-            income_guess = income_guess.P3_q1_2.value;
+            income_guess = income_guess.perceived_income_own.value;
 
             return {
                 row: setup.pollutionDb.district.get(district),
@@ -214,7 +214,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             console.log(districtLYL);
             console.log(typeof districtLYL);
 
-            districtLYL = districtLYL.p5_q2.value;
+            districtLYL = districtLYL.comprehension_leaflet5.value;
             console.log("District LYL2");
             console.log(districtLYL);
             console.log(typeof districtLYL);
@@ -242,7 +242,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             }
 
             else if (ownLYLCategory === 'less') {
-                ownLYL = ownLYL.forms.T_impact_you.value;
+                ownLYL = ownLYL.forms.LYL_own.value;
                 console.log("LYL2");
                 console.log(ownLYL);
                 console.log(typeof ownLYL);
