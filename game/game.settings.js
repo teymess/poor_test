@@ -80,16 +80,27 @@ module.exports = {
     // If the `treatments` object is missing a treatment named _standard_
     // will be created automatically, and will contain all variables.
 
-    // treatments: {
-    //
-    //     standard: {
-    //         description: "Longer time"
-    //     },
-    //
-    //     pressure: {
-    //         description: "Short times to take decisions",
-    //         guess: 5000
-    //     }
-    //
-    // }
+    treatments: {
+
+        pure_control: {
+            description: "Pure control without perceived income question"
+        },
+
+        control: {
+            description: "No perceived income manipulation",
+        },
+
+        income_correction: {
+            description: "Correct income perception",
+        },
+
+        poor_anchor: {
+            description: "Provide anchor to poor household",
+        },
+
+        rich_anchor: {
+            description: "Provide anchor to rich household",
+        }
+
+    }
 };

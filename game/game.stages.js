@@ -67,5 +67,44 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
 
     .gameover();
 
-
+    if (treatmentName === 'pure_control') {
+            stager.skip('Part3_Treatment', [
+                'Part3_T_Income_Low',
+                'Part3_T_Income_High',
+                'Part3_Income_Control',
+                'Part3_T_Income_Corr_Control1',
+                'Part3_T_Income_Corr_Control2',
+            ])
+        }
+        else if (treatmentName === 'control') {
+            stager.skip('Part3_Treatment', [
+                'Part3_T_Income_Low',
+                'Part3_T_Income_High',
+                'Part3_T_Income_Corr_Control1',
+                'Part3_T_Income_Corr_Control2',
+            ])
+        }
+        else if (treatmentName === 'income_correction') {
+            stager.skip('Part3_Treatment', [
+                'Part3_T_Income_Low',
+                'Part3_T_Income_High',
+                'Part3_Income_Control',
+            ])
+        }
+        else if (treatmentName === 'poor_anchor') {
+            stager.skip('Part3_Treatment', [
+                'Part3_T_Income_High',
+                'Part3_Income_Control',
+                'Part3_T_Income_Corr_Control1',
+                'Part3_T_Income_Corr_Control2',
+            ])
+        }
+        else if (treatmentName === 'rich_anchor') {
+            stager.skip('Part3_Treatment', [
+                'Part3_T_Income_Low',
+                'Part3_Income_Control',
+                'Part3_T_Income_Corr_Control1',
+                'Part3_T_Income_Corr_Control2',
+            ])
+        }
 };
