@@ -1852,6 +1852,44 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
         }
     });
 
+    stager.extendStep('Part3_Altruism', {
+        name: "Part 1: Survey",
+        cb: function() {
+            W.cssRule('table.choicetable td { text-align: center !important; ' +
+            'font-weight: normal; padding-left: 10px; }');
+        },
+        // Make a widget step.
+        widget: {
+            name: 'ChoiceManager',
+            id: 'q2',
+            options: {
+                simplify: true,
+                mainText: '',
+                forms: [
+                    {
+                        name: 'CustomInput',
+                        id: 'donate_charity',
+                        mainText: '<span style="font-weight: normal;color:gray;">Q18</span> Assume you won 1 lakh Indian rupees (1,00,000 INR) in a lottery. Considering your current situation, how much would you donate to charity?',
+                        width: '95%',
+                        type: 'int',
+                        min: 0,
+                        max: 100000,
+                        requiredChoice: true,
+                    },
+                    {
+                        id: 'general_altruism',
+                        orientation: 'H',
+                        mainText: '<span style="font-weight: normal;color:gray;">Q19</span> How do you assess your willingness to share with others without expecting anything in return when it comes to charity?',
+                        left: 'Completely unwilling to share',
+                        right: 'Very willing to share',
+                        choices: [ '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
+                        requiredChoice: true,
+                    }
+                ]
+            }
+        }
+    });
+
 
     ////////////////////////////////////////////////////////////////////////////
     // FEEDBACK
