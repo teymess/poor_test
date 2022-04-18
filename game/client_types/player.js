@@ -1852,8 +1852,41 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
         }
     });
 
+    stager.extendStep('Part3_Inequality', {
+        name: "Part 3: Your opinion",
+        cb: function() {
+            W.cssRule('table.choicetable td { text-align: center !important; ' +
+            'font-weight: normal; padding-left: 10px; }');
+        },
+        // Make a widget step.
+        widget: {
+            name: 'ChoiceManager',
+            id: 'q2',
+            options: {
+                simplify: true,
+                mainText: '',
+                forms: [
+                    {
+                        id: 'inequality_gap',
+                        orientation: 'H',
+                        mainText: '<span style="font-weight: normal;color:gray;">Q18</span> Do you agree or disagree that:<br><br> <u>"The gap between the rich and the poor in India is too large"?</u>',
+                        choices: ['Strongly agree', 'Agreee', 'Neutral', 'Disgree', 'Strongly disagree'],
+                        requiredChoice: true,
+                    },
+                    {
+                        id: 'inequality_government',
+                        orientation: 'H',
+                        mainText: '<span style="font-weight: normal;color:gray;">Q19</span> To what extent do you agree or disagree that:<br><br> <u>"It is the responsibility of the government to reduce the gap between the rich and the poor"?</u>',
+                        choices: ['Strongly agree', 'Agreee', 'Neutral', 'Disgree', 'Strongly disagree'],
+                        requiredChoice: true,
+                    }
+                ]
+            }
+        }
+    });
+
     stager.extendStep('Part3_Altruism', {
-        name: "Part 1: Survey",
+        name: "Part 3: Your opinion",
         cb: function() {
             W.cssRule('table.choicetable td { text-align: center !important; ' +
             'font-weight: normal; padding-left: 10px; }');
@@ -1869,7 +1902,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                     {
                         name: 'CustomInput',
                         id: 'donate_charity',
-                        mainText: '<span style="font-weight: normal;color:gray;">Q18</span> Assume you won 1 lakh Indian rupees (1,00,000 INR) in a lottery. Considering your current situation, how much would you donate to charity?',
+                        mainText: '<span style="font-weight: normal;color:gray;">Q20</span> Assume you won 1 lakh Indian rupees (1,00,000 INR) in a lottery. Considering your current situation, how much would you donate to charity?',
                         width: '95%',
                         type: 'int',
                         min: 0,
@@ -1879,7 +1912,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                     {
                         id: 'general_altruism',
                         orientation: 'H',
-                        mainText: '<span style="font-weight: normal;color:gray;">Q19</span> How do you assess your willingness to share with others without expecting anything in return when it comes to charity?',
+                        mainText: '<span style="font-weight: normal;color:gray;">Q21</span> How do you assess your willingness to share with others without expecting anything in return when it comes to charity?',
                         left: 'Completely unwilling to share',
                         right: 'Very willing to share',
                         choices: [ '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],

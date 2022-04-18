@@ -57,7 +57,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
     .step('Part3_Protection_measures')
     .step('Part3_Redistribution')
     .step('Part3_EnvJustice')
-    //.step('Part3_Inequality')
+    .step('Part3_Inequality')
     .step('Part3_Altruism')
 
 
