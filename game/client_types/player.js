@@ -140,6 +140,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
         widget: {
             name: 'ChoiceManager',
             options: {
+                simplify: true,
                 forms: [
                     {
                         name: 'Dropdown',

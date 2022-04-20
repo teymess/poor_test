@@ -140,7 +140,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             let district = memory.district_player.get(msg.from);
             // Actual district.
             console.log(district);
-            district = district.forms.district.value;
+            district = district.district.value;
 
             return setup.pollutionDb.district.get(district);
         });
@@ -152,7 +152,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
 
             let district = memory.district_player.get(msg.from);
             console.log(district);
-            district = district.forms.district.value;
+            district = district.district.value;
 
 
             let income_guess = memory.income_guess.get(msg.from);
@@ -173,7 +173,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
 
             let district = memory.district_player.get(msg.from);
             console.log(district);
-            district = district.forms.district.value;
+            district = district.district.value;
 
 
             let income_guess = memory.income_guess_high.get(msg.from);
@@ -194,7 +194,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
 
             let district = memory.district_player.get(msg.from);
             console.log(district);
-            district = district.forms.district.value;
+            district = district.district.value;
 
 
             let income_guess = memory.income_guess_low.get(msg.from);
