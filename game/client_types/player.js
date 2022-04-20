@@ -1395,7 +1395,8 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                       ['4', 'Quite confident'],
                       ['5', 'Completely confident']
                     ],
-                    shuffleChoices: false
+                    shuffleChoices: false,
+                    requiredChoice: true
                 });
 
                 return false;
@@ -1735,6 +1736,52 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
         }
     });
 
+    ///////////////////////////////////////////////////////////////////////////////
+    /// FINAL QUESTIONS
+    stager.extendStep('Part3_EnvJustice', {
+        name: "Part 3: Your opinion",
+        widget: {
+            name: 'ChoiceManager',
+            id: 'Part3_q',
+            options: {
+                simplify: true,
+                mainText: 'For each pair of statements below, tell us how much you agree with one <em>or</em> the other statement, using a 7-point scale.<br>'+
+                '<span style="font-weight: normal; font-size: 15px;"> - <strong>"1"</strong> means you completely agree with the sentence on the left (Statement A);<br>' +
+                '- <strong>"7"</strong> means you fully agree with the sentence on the right (Statement B);<br>' +
+                '- If your opinion is somewhere in between, choose a number in between to reflect that.</span>',
+                forms: [
+                    {
+                        id: 'env_justice_protection',
+                        mainText: '<span style="font-weight: normal;color:gray;">Q13</span> Do you agree more with Statement A or with Statement B?<br><br>' +
+                        '<span style="font-weight: normal;font-size:18px"><b>Statement A:</b> "Everyone should have equal access to protection measures against air pollution."<br>' +
+                        '<b>Statement B</b>: "How much one is impacted by air pollution should depend mostly on how much effort she or he puts into reducing the impacts for themselves."</span>',
+                        left: 'Statement A',
+                        right: 'Statement B',
+                        choices: [ '1', '2', '3', '4', '5', '6', '7'],
+                        requiredChoice: true,
+                        onclick: function(value, removed) {
+                            var w, forms, len;
+                            forms = node.widgets.lastAppended.formsById
+                            w = forms.env_justice_wealth;
+                            w.show();
+                        }
+                    },
+                    {
+                        id: 'env_justice_wealth',
+                        orientation: 'H',
+                        mainText: '<span style="font-weight: normal;color:gray;">Q14</span> Do you agree more with Statement A or with Statement B?<br><br>' +
+                        '<span style="font-weight: normal;font-size:18px"><b>Statement A:</b> "All people should put the same effort into reducing air pollution in their state."<br>' +
+                        '<b>Statement B</b>: "People that are more wealthy should contribute more to reducing air pollution in their state."</span>',
+                        left: 'Statement A',
+                        right: 'Statement B',
+                        choices: [ '1', '2', '3', '4', '5', '6', '7'],
+                        requiredChoice: true,
+                        hidden: true,
+                    }
+                ]
+            }
+        }
+    });
 
     ///////////////////////////////////////////////////////////////////////////////
     /// FINAL QUESTIONS
@@ -1755,7 +1802,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                 forms: [
                     {
                         id: 'redis_income',
-                        mainText: '<span style="font-weight: normal;color:gray;">Q13</span> Do you agree more with Statement A or with Statement B?<br><br>' +
+                        mainText: '<span style="font-weight: normal;color:gray;">Q15</span> Do you agree more with Statement A or with Statement B?<br><br>' +
                         '<span style="font-weight: normal;font-size:18px"><b>Statement A:</b> "Incomes should be made more equal."<br>' +
                         '<b>Statement B:</b> "There should be greater incentives for individual effort."</span>',
                         left: 'Statement A',
@@ -1773,7 +1820,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                     {
                         id: 'redis_responsibility',
                         orientation: 'H',
-                        mainText: '<span style="font-weight: normal;color:gray;">Q14</span> Do you agree more with Statement A or with Statement B?<br><br>' +
+                        mainText: '<span style="font-weight: normal;color:gray;">Q16</span> Do you agree more with Statement A or with Statement B?<br><br>' +
                         '<span style="font-weight: normal;font-size:18px"><b>Statement A:</b> "Government should take more responsibility to ensure that everyone is provided for."<br>' +
                         '<b>Statement B:</b> "People should take more responsibility to provide for themselves."</span>',
                         left: 'Statement A',
@@ -1791,7 +1838,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                     {
                         id: 'redis_work',
                         orientation: 'H',
-                        mainText: '<span style="font-weight: normal;color:gray;">Q15</span> Do you agree more with Statement A or with Statement B?<br><br>' +
+                        mainText: '<span style="font-weight: normal;color:gray;">Q17</span> Do you agree more with Statement A or with Statement B?<br><br>' +
                         '<span style="font-weight: normal;font-size:18px"><b>Statement A:</b> "In the long run, hard work usually brings a better life."<br>' +
                         '<b>Statement B</b>: "Hard work doesn’t generally bring success — it’s more a matter of luck and connections."</span>',
                         left: 'Statement A',
@@ -1805,53 +1852,8 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
         }
     });
 
-    ///////////////////////////////////////////////////////////////////////////////
-    /// FINAL QUESTIONS
-    stager.extendStep('Part3_EnvJustice', {
-        name: "Part 3: Your opinion",
-        widget: {
-            name: 'ChoiceManager',
-            id: 'Part3_q',
-            options: {
-                simplify: true,
-                mainText: 'For each pair of statements below, tell us how much you agree with one <em>or</em> the other statement, using a 7-point scale.<br>'+
-                '<span style="font-weight: normal; font-size: 15px;"> - <strong>"1"</strong> means you completely agree with the sentence on the left (Statement A);<br>' +
-                '- <strong>"7"</strong> means you fully agree with the sentence on the right (Statement B);<br>' +
-                '- If your opinion is somewhere in between, choose a number in between to reflect that.</span>',
-                forms: [
-                    {
-                        id: 'env_justice_protection',
-                        mainText: '<span style="font-weight: normal;color:gray;">Q16</span> Do you agree more with Statement A or with Statement B?<br><br>' +
-                        '<span style="font-weight: normal;font-size:18px"><b>Statement A:</b> "Everyone should have equal access to protection measures against air pollution."<br>' +
-                        '<b>Statement B</b>: "How much one is impacted by air pollution should depend mostly on how much effort she or he puts into reducing the impacts for themselves."</span>',
-                        left: 'Statement A',
-                        right: 'Statement B',
-                        choices: [ '1', '2', '3', '4', '5', '6', '7'],
-                        requiredChoice: true,
-                        onclick: function(value, removed) {
-                            var w, forms, len;
-                            forms = node.widgets.lastAppended.formsById
-                            w = forms.env_justice_wealth;
-                            w.show();
-                        }
-                    },
-                    {
-                        id: 'env_justice_wealth',
-                        orientation: 'H',
-                        mainText: '<span style="font-weight: normal;color:gray;">Q17</span> Do you agree more with Statement A or with Statement B?<br><br>' +
-                        '<span style="font-weight: normal;font-size:18px"><b>Statement A:</b> "All people should put the same effort into reducing air pollution in their state."<br>' +
-                        '<b>Statement B</b>: "People that are more wealthy should contribute more to reducing air pollution in their state."</span>',
-                        left: 'Statement A',
-                        right: 'Statement B',
-                        choices: [ '1', '2', '3', '4', '5', '6', '7'],
-                        requiredChoice: true,
-                        hidden: true,
-                    }
-                ]
-            }
-        }
-    });
 
+////////////////////////////////////////////////////////////////////////////////
     stager.extendStep('Part3_Inequality', {
         name: "Part 3: Your opinion",
         cb: function() {
@@ -1885,6 +1887,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
         }
     });
 
+////////////////////////////////////////////////////////////////////////////////
     stager.extendStep('Part3_Altruism', {
         name: "Part 3: Your opinion",
         cb: function() {
@@ -1922,6 +1925,8 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             }
         }
     });
+
+
 
 
     ////////////////////////////////////////////////////////////////////////////

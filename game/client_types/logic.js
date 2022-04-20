@@ -55,14 +55,6 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             if (item.stepId === 'Part3_T_Income_Corr_Control1') return item.player;
         });
 
-        memory.index('income_guess_high', item => {
-            if (item.stepId === 'Part3_T_Income_High') return item.player;
-        });
-
-        memory.index('income_guess_low', item => {
-            if (item.stepId === 'Part3_T_Income_Low') return item.player;
-        });
-
         memory.index('own_LYL_guess', item => {
             if (item.stepId === 'Part3_Impact') return item.player;
         });
@@ -84,8 +76,8 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
 
             if (step === 'Part3_Time_to_act!') {
                 console.log(msg.data);
-                let bonus = 1.5*(msg.data.donation_amount.value / 100);
-                if (msg.data.confirmation.value==='confirm') {
+                let bonus = 1.5*(msg.data.D_f_c2.value / 100);
+                if (msg.data.CC1.value==='confirm') {
                     gameRoom.updateWin(id, (1.5 - bonus));
                 }
                 else {
@@ -157,49 +149,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
 
             let income_guess = memory.income_guess.get(msg.from);
             console.log(income_guess);
-            income_guess = income_guess.perceived_income_own.value;
-
-            return {
-                row: setup.pollutionDb.district.get(district),
-                income: income,
-                income_guess: income_guess
-            }
-        });
-
-        node.on('get.incomeDecileHigh', function(msg) {
-            let income = memory.income_decile.get(msg.from);
-            console.log(income);
-            income = income.income.value;
-
-            let district = memory.district_player.get(msg.from);
-            console.log(district);
-            district = district.forms.district.value;
-
-
-            let income_guess = memory.income_guess_high.get(msg.from);
-            console.log(income_guess);
-            income_guess = income_guess.perceived_income_own.value;
-
-            return {
-                row: setup.pollutionDb.district.get(district),
-                income: income,
-                income_guess: income_guess
-            }
-        });
-
-        node.on('get.incomeDecileLow', function(msg) {
-            let income = memory.income_decile.get(msg.from);
-            console.log(income);
-            income = income.income.value;
-
-            let district = memory.district_player.get(msg.from);
-            console.log(district);
-            district = district.forms.district.value;
-
-
-            let income_guess = memory.income_guess_low.get(msg.from);
-            console.log(income_guess);
-            income_guess = income_guess.perceived_income_own.value;
+            income_guess = income_guess.P3_q1_1.value;
 
             return {
                 row: setup.pollutionDb.district.get(district),
@@ -214,7 +164,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             console.log(districtLYL);
             console.log(typeof districtLYL);
 
-            districtLYL = districtLYL.comprehension_leaflet5.value;
+            districtLYL = districtLYL.p5_q2.value;
             console.log("District LYL2");
             console.log(districtLYL);
             console.log(typeof districtLYL);
@@ -223,16 +173,42 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             var districtValueIso = parseFloat(districtValue, 10);
             console.log("DV is " + districtValueIso);
 
+            var ownLYL = memory.own_LYL_guess.get(msg.from);
+            console.log("LYL1");
+            console.log(ownLYL);
+            console.log(typeof ownLYL)
+
+            ownLYL = ownLYL.forms.T_impact_you.value;
+            console.log("LYL2");
+            console.log(ownLYL);
+            console.log(typeof ownLYL)
+
             var ownLYLCategory = memory.own_LYL_guess.get(msg.from);
-            ownLYLCategory = ownLYLCategory.forms.LYL_more_less.value;
+            ownLYLCategory = ownLYLCategory.forms.T_impact_more_or_less_you.value;
             console.log("LYL cat");
             console.log(ownLYLCategory);
             console.log(typeof ownLYLCategory)
 
-            var ownLYL = memory.own_LYL_guess.get(msg.from);
-            console.log("LYL1");
-            console.log(ownLYL);
-            console.log(typeof ownLYL);
+            // ownLYL = 10;
+            var ownLYL_less = ownLYL*districtValueIso/100;
+            console.log("ownLYL_less");
+            console.log(ownLYL_less);
+            console.log(typeof ownLYL_less)
+
+            var ownLYL_less_2d = ownLYL_less.toFixed(1);
+            console.log("ownLYL_less_2d");
+            console.log(ownLYL_less_2d);
+            console.log(typeof ownLYL_less_2d)
+
+            var ownLYL_more = districtValueIso + (ownLYL*districtValueIso/100);
+            console.log("ownLYL_more");
+            console.log(ownLYL_more);
+            console.log(typeof ownLYL_more);
+
+            var ownLYL_more_2d = ownLYL_more.toFixed(1);
+            console.log("ownLYL_more_2d");
+            console.log(ownLYL_more_2d);
+            console.log(typeof ownLYL_more_2d);
 
             if (ownLYLCategory === 'same') {
                 return {
@@ -242,22 +218,6 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             }
 
             else if (ownLYLCategory === 'less') {
-                ownLYL = ownLYL.forms.LYL_own.value;
-                console.log("LYL2");
-                console.log(ownLYL);
-                console.log(typeof ownLYL);
-
-                // ownLYL = 10;
-                var ownLYL_less = ownLYL*districtValueIso/100;
-                console.log("ownLYL_less");
-                console.log(ownLYL_less);
-                console.log(typeof ownLYL_less);
-
-                var ownLYL_less_2d = ownLYL_less.toFixed(1);
-                console.log("ownLYL_less_2d");
-                console.log(ownLYL_less_2d);
-                console.log(typeof ownLYL_less_2d);
-
                 return {
                     district: districtLYL,
                     own: ownLYL_less_2d
@@ -265,16 +225,6 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             }
 
             else {
-                var ownLYL_more = districtValueIso + (ownLYL*districtValueIso/100);
-                console.log("ownLYL_more");
-                console.log(ownLYL_more);
-                console.log(typeof ownLYL_more);
-
-                var ownLYL_more_2d = ownLYL_more.toFixed(1);
-                console.log("ownLYL_more_2d");
-                console.log(ownLYL_more_2d);
-                console.log(typeof ownLYL_more_2d);
-
                 return {
                     district: districtLYL,
                     own: ownLYL_more_2d
