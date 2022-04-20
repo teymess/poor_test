@@ -1254,6 +1254,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
         widget: {
             name: 'ChoiceManager',
             panel: false,
+            simplify: true,
             forms: [
                 // Just to create the choice manager
                 // without an empty forms array.

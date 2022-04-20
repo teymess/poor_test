@@ -224,7 +224,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             console.log("DV is " + districtValueIso);
 
             var ownLYLCategory = memory.own_LYL_guess.get(msg.from);
-            ownLYLCategory = ownLYLCategory.forms.LYL_more_less.value;
+            ownLYLCategory = ownLYLCategory.LYL_more_less.value;
             console.log("LYL cat");
             console.log(ownLYLCategory);
             console.log(typeof ownLYLCategory)
@@ -242,7 +242,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             }
 
             else if (ownLYLCategory === 'less') {
-                ownLYL = ownLYL.forms.LYL_own.value;
+                ownLYL = ownLYL.LYL_own.value;
                 console.log("LYL2");
                 console.log(ownLYL);
                 console.log(typeof ownLYL);
@@ -265,6 +265,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             }
 
             else {
+                ownLYL = ownLYL.LYL_own.value;
                 var ownLYL_more = districtValueIso + (ownLYL*districtValueIso/100);
                 console.log("ownLYL_more");
                 console.log(ownLYL_more);
