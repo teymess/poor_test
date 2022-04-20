@@ -1509,7 +1509,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                             ],
                             [
                                 'none',
-                                '<div class="aligned"><img src="x.png" width="100px"><span>I <strong>don\'t want</strong> to support the fight against air pollution.</span></div>',
+                                '<div class="aligned"><img src="x.png" width="100px"><span>None.</span></div>',
                             ]
                         ],
                         requiredChoice: true,
