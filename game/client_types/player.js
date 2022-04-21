@@ -1920,10 +1920,10 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                         texts: {
                             currentValue: function(widget, value) {
                                 if (value === 100) {
-                                    return '<span style=\'color:green;font-size:20px;\'>You would donate: <b>1,00,000 INR</b> to a good cause.</span>';
+                                    return '<span style=\'font-size:20px;\'>You would donate: <b>1,00,000 INR</b> to a good cause.</span>';
                                 }
                                 else {
-                                return '<span style=\'color:green;font-size:20px;\'>You would donate: <b>' + value + ',000 INR</b> to a good cause.</span>';
+                                return '<span style=\'font-size:20px;\'>You would donate: <b>' + value + ',000 INR</b> to a good cause.</span>';
                             }
                             }
                         }
