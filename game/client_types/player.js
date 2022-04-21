@@ -1815,7 +1815,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                         onclick: function(value, removed) {
                             var w, forms;
                             forms = node.widgets.lastAppended.formsById
-                            w = forms.redis_responsibility;
+                            w = forms.redis_work;
                             w.show();
                         }
                     },
