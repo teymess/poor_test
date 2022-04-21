@@ -1931,9 +1931,9 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                     {
                         id: 'general_altruism',
                         orientation: 'H',
-                        mainText: '<span style="font-weight: normal;color:gray;">Q20</span> When it comes to a good cause, how do you assess your willingness to share with others without expecting anything in return?',
-                        left: 'Completely unwilling to share',
-                        right: 'Very willing to share',
+                        mainText: '<span style="font-weight: normal;color:gray;">Q20</span> How do you assess your willingness to do good for others without expecting anything in return?',
+                        left: 'Completely unwilling',
+                        right: 'Very willing',
                         choices: [ '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
                         requiredChoice: true,
                     }
