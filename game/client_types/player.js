@@ -1915,7 +1915,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                         initialValue: 0,
                         requiredChoice: true,
                         displayNoChange: false,
-                        mainText: '<span style="font-weight: normal;color:gray;">Q19</span> Assume you won 1 lakh Indian rupees (1,00,000 INR) in a lottery. Considering your current situation, how much would you donate to charity?',
+                        mainText: '<span style="font-weight: normal;color:gray;">Q19</span> Assume you won 1 lakh Indian rupees (1,00,000 INR) in a lottery. Considering your current situation, how much would you donate to a good cause?',
                         //hint: '<b>Please move the slider to your preferred contribution amount.</b> <br> <span style="font-size:12px;"> Your contribution will be given to the initiative of your choice by the researchers at Heidelberg University. The rest will go to you.',
                         texts: {
                             currentValue: function(widget, value) {
@@ -1931,7 +1931,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                     {
                         id: 'general_altruism',
                         orientation: 'H',
-                        mainText: '<span style="font-weight: normal;color:gray;">Q20</span> How do you assess your willingness to share with others without expecting anything in return when it comes to charity?',
+                        mainText: '<span style="font-weight: normal;color:gray;">Q20</span> How do you assess your willingness to share with others without expecting anything in return when it comes to a good cause?',
                         left: 'Completely unwilling to share',
                         right: 'Very willing to share',
                         choices: [ '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
