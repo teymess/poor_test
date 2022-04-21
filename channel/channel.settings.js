@@ -28,7 +28,7 @@ module.exports = {
      *
      * Default: TRUE
      */
-    enabled: true,
+    enabled: false,
 
     /**
      * ## name (string) Optional

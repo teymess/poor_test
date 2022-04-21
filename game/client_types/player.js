@@ -1905,14 +1905,28 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                 mainText: '',
                 forms: [
                     {
-                        name: 'CustomInput',
                         id: 'donate_charity',
-                        mainText: '<span style="font-weight: normal;color:gray;">Q19</span> Assume you won 1 lakh Indian rupees (1,00,000 INR) in a lottery. Considering your current situation, how much would you donate to charity?',
-                        width: '95%',
-                        type: 'int',
+                        name: 'Slider',
+                        type: 'flat',
+                        hidden: false,
                         min: 0,
-                        max: 100000,
+                        max: 100,
+                        panel: false,
+                        initialValue: 0,
                         requiredChoice: true,
+                        displayNoChange: false,
+                        mainText: '<span style="font-weight: normal;color:gray;">Q19</span> Assume you won 1 lakh Indian rupees (1,00,000 INR) in a lottery. Considering your current situation, how much would you donate to charity?',
+                        //hint: '<b>Please move the slider to your preferred contribution amount.</b> <br> <span style="font-size:12px;"> Your contribution will be given to the initiative of your choice by the researchers at Heidelberg University. The rest will go to you.',
+                        texts: {
+                            currentValue: function(widget, value) {
+                                if (value === 100) {
+                                    return '<span style=\'color:green;font-size:20px;\'>You would donate: <b>1,00,000 INR</b> to a good cause.</span>';
+                                }
+                                else {
+                                return '<span style=\'color:green;font-size:20px;\'>You would donate: <b>' + value + ',000 INR</b> to a good cause.</span>';
+                            }
+                            }
+                        }
                     },
                     {
                         id: 'general_altruism',
