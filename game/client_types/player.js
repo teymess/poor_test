@@ -1819,28 +1819,28 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                             w.show();
                         }
                     },
-                    {
-                        id: 'redis_responsibility',
-                        orientation: 'H',
-                        mainText: '<span style="font-weight: normal;color:gray;">Q16</span> Do you agree more with Statement A or with Statement B?<br><br>' +
-                        '<span style="font-weight: normal;font-size:18px"><b>Statement A:</b> "Government should take more responsibility to ensure that everyone is provided for."<br>' +
-                        '<b>Statement B:</b> "People should take more responsibility to provide for themselves."</span>',
-                        left: 'Statement A',
-                        right: 'Statement B',
-                        choices: [ '1', '2', '3', '4', '5', '6', '7'],
-                        requiredChoice: true,
-                        hidden: true,
-                        onclick: function(value, removed) {
-                            var w, forms, len;
-                            forms = node.widgets.lastAppended.formsById
-                            w = forms.redis_work;
-                            w.show();
-                        }
-                    },
+                    // {
+                    //     id: 'redis_responsibility',
+                    //     orientation: 'H',
+                    //     mainText: '<span style="font-weight: normal;color:gray;">Q16</span> Do you agree more with Statement A or with Statement B?<br><br>' +
+                    //     '<span style="font-weight: normal;font-size:18px"><b>Statement A:</b> "Government should take more responsibility to ensure that everyone is provided for."<br>' +
+                    //     '<b>Statement B:</b> "People should take more responsibility to provide for themselves."</span>',
+                    //     left: 'Statement A',
+                    //     right: 'Statement B',
+                    //     choices: [ '1', '2', '3', '4', '5', '6', '7'],
+                    //     requiredChoice: true,
+                    //     hidden: true,
+                    //     onclick: function(value, removed) {
+                    //         var w, forms, len;
+                    //         forms = node.widgets.lastAppended.formsById
+                    //         w = forms.redis_work;
+                    //         w.show();
+                    //     }
+                    // },
                     {
                         id: 'redis_work',
                         orientation: 'H',
-                        mainText: '<span style="font-weight: normal;color:gray;">Q17</span> Do you agree more with Statement A or with Statement B?<br><br>' +
+                        mainText: '<span style="font-weight: normal;color:gray;">Q16</span> Do you agree more with Statement A or with Statement B?<br><br>' +
                         '<span style="font-weight: normal;font-size:18px"><b>Statement A:</b> "In the long run, hard work usually brings a better life."<br>' +
                         '<b>Statement B</b>: "Hard work doesn’t generally bring success — it’s more a matter of luck and connections."</span>',
                         left: 'Statement A',
@@ -1873,14 +1873,14 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                     {
                         id: 'inequality_gap',
                         orientation: 'H',
-                        mainText: '<span style="font-weight: normal;color:gray;">Q18</span> Do you agree or disagree that:<br><br> <u>"The gap between the rich and the poor in India is too large"?</u>',
+                        mainText: '<span style="font-weight: normal;color:gray;">Q17</span> Do you agree or disagree that:<br><br> <u>"The gap between the rich and the poor in India is too large"?</u>',
                         choices: ['Strongly agree', 'Agreee', 'Neutral', 'Disgree', 'Strongly disagree'],
                         requiredChoice: true,
                     },
                     {
                         id: 'inequality_government',
                         orientation: 'H',
-                        mainText: '<span style="font-weight: normal;color:gray;">Q19</span> To what extent do you agree or disagree that:<br><br> <u>"It is the responsibility of the government to reduce the gap between the rich and the poor"?</u>',
+                        mainText: '<span style="font-weight: normal;color:gray;">Q18</span> To what extent do you agree or disagree that:<br><br> <u>"It is the responsibility of the government to reduce the gap between the rich and the poor"?</u>',
                         choices: ['Strongly agree', 'Agreee', 'Neutral', 'Disgree', 'Strongly disagree'],
                         requiredChoice: true,
                     }
@@ -1907,7 +1907,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                     {
                         name: 'CustomInput',
                         id: 'donate_charity',
-                        mainText: '<span style="font-weight: normal;color:gray;">Q20</span> Assume you won 1 lakh Indian rupees (1,00,000 INR) in a lottery. Considering your current situation, how much would you donate to charity?',
+                        mainText: '<span style="font-weight: normal;color:gray;">Q19</span> Assume you won 1 lakh Indian rupees (1,00,000 INR) in a lottery. Considering your current situation, how much would you donate to charity?',
                         width: '95%',
                         type: 'int',
                         min: 0,
@@ -1917,7 +1917,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                     {
                         id: 'general_altruism',
                         orientation: 'H',
-                        mainText: '<span style="font-weight: normal;color:gray;">Q21</span> How do you assess your willingness to share with others without expecting anything in return when it comes to charity?',
+                        mainText: '<span style="font-weight: normal;color:gray;">Q20</span> How do you assess your willingness to share with others without expecting anything in return when it comes to charity?',
                         left: 'Completely unwilling to share',
                         right: 'Very willing to share',
                         choices: [ '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
