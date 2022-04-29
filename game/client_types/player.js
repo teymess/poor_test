@@ -936,7 +936,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                         id: 'perceived_income_anchor_low',
                         orientation: 'H',
                         mainText: '<span style="font-weight: normal;color:gray;">Q2</span> Think of a household living ' +
-                                  'in the same state as you and earning a total annual income of 40,000 INR.<br><br>'+
+                                  'in the same state as you and earning a total annual income of 15,000 INR.<br><br>'+
                                   'In your opinion, which income group is this household part of?',
                         choices: [
                             ['Group 1', '<span style=\'font-size:14px;font-weight:normal;\'>Group 1</span>'],
