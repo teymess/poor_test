@@ -1263,7 +1263,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                     {
                         id: 'perceived_income_own_posterior',
                         orientation: 'H',
-                        mainText: '<span style="font-weight: normal;color:gray;">Q2</span> After seeing the information from the Indian Ministry of Statistics and Programme Implementation: ' +
+                        mainText: '<span style="font-weight: normal;color:gray;">Q2b</span> After seeing the information from the Indian Ministry of Statistics and Programme Implementation: ' +
                         'In your opinion, which income group is your household part of?',
                         choices: [
                           ['Group 1', '<span style=\'font-size:14px;font-weight:normal;\'>Group 1</span>'],
