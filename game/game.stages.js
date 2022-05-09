@@ -47,6 +47,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
     .step('Part3_T_Income_Control')
     .step('Part3_T_Income_Corr_Control1')
     .step('Part3_T_Income_Corr_Control2')
+    .step('Part3_T_Income_Corr_Control3')
     .step('Part3_Impact')
     .step('Part3_Sentiment')
 
@@ -76,7 +77,8 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                 'Part3_T_Income_High',
                 'Part3_T_Income_Control',
                 'Part3_T_Income_Corr_Control1',
-                'Part3_T_Income_Corr_Control2'
+                'Part3_T_Income_Corr_Control2',
+                'Part3_T_Income_Corr_Control3'
             ])
             stager.skip('Disclaimer_income_high')
             stager.skip('Disclaimer_income_low')
@@ -86,7 +88,8 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                 'Part3_T_Income_Low',
                 'Part3_T_Income_High',
                 'Part3_T_Income_Corr_Control1',
-                'Part3_T_Income_Corr_Control2'
+                'Part3_T_Income_Corr_Control2',
+                'Part3_T_Income_Corr_Control3'
             ])
             stager.skip('Disclaimer_income_high')
             stager.skip('Disclaimer_income_low')
@@ -105,7 +108,8 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                 'Part3_T_Income_High',
                 'Part3_T_Income_Control',
                 'Part3_T_Income_Corr_Control1',
-                'Part3_T_Income_Corr_Control2'
+                'Part3_T_Income_Corr_Control2',
+                'Part3_T_Income_Corr_Control3'
             ])
             stager.skip('Disclaimer_income_high')
         }
@@ -114,7 +118,8 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                 'Part3_T_Income_Low',
                 'Part3_T_Income_Control',
                 'Part3_T_Income_Corr_Control1',
-                'Part3_T_Income_Corr_Control2'
+                'Part3_T_Income_Corr_Control2',
+                'Part3_T_Income_Corr_Control3'
             ])
             stager.skip('Disclaimer_income_low')
         }

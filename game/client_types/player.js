@@ -203,7 +203,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
 
             node.get('districtData', function(data) {
 
-        node.game.IncomeQuestions = node.widgets.append('ChoiceManager', "incomePage", {
+            node.game.IncomeQuestions = node.widgets.append('ChoiceManager', "incomePage", {
                 id: 'q4',
                 className: 'centered',
                 // ref: 'controlQuestions',
@@ -1196,10 +1196,10 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                     W.setInnerHTML('evaluation', evaluation);
                     W.setInnerHTML('group', income);
                     W.gid('img').src = 'Leaflet_images/' + income + '.png';
-                    W.gid('is_correct').src = 'correct.png';
+                    //W.gid('is_correct').src = 'correct.png';
                 }
                 else {
-                    W.gid('is_correct').src = 'incorrect.png';
+                    //W.gid('is_correct').src = 'incorrect.png';
                     if (decile_number === 10) {
                         evaluation = 'incorrect';
                         W.setInnerHTML('guess', guessGroup);
@@ -1243,6 +1243,49 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                 node.game.doneButton.enable();
             });
         }
+    });
+
+    stager.extendStep('Part3_T_Income_Corr_Control3', {
+        name: "Part 3: Your opinion",
+        //frame: 'Income_correction.htm',
+        donebutton: false,
+        cb: function() {
+            W.cssRule('table.choicetable td { text-align: center !important; ' +
+            'font-weight: normal; padding-left: 10px; }');
+        },
+        widget: {
+            name: 'ChoiceManager',
+            id: 'PI_correction_posterior',
+            options: {
+                simplify: true,
+                mainText: '<img src="https://i.ibb.co/stw49nM/deciles-clean.png" alt="Indian-groups" border="0" width="800px"></a><br><br>',
+                forms: [
+                    {
+                        id: 'perceived_income_own_posterior',
+                        orientation: 'H',
+                        mainText: '<span style="font-weight: normal;color:gray;">Q2</span> After seeing the information from the Indian Ministry of Statistics and Programme Implementation: ' +
+                        'In your opinion, which income group is your household part of?',
+                        choices: [
+                          ['Group 1', '<span style=\'font-size:14px;font-weight:normal;\'>Group 1</span>'],
+                          ['Group 2', '<span style=\'font-size:14px;font-weight:normal;\'>Group 2</span>'],
+                          ['Group 3', '<span style=\'font-size:14px;font-weight:normal;\'>Group 3</span>'],
+                          ['Group 4', '<span style=\'font-size:14px;font-weight:normal;\'>Group 4</span>'],
+                          ['Group 5', '<span style=\'font-size:14px;font-weight:normal;\'>Group 5</span>'],
+                          ['Group 6', '<span style=\'font-size:14px;font-weight:normal;\'>Group 6</span>'],
+                          ['Group 7', '<span style=\'font-size:14px;font-weight:normal;\'>Group 7</span>'],
+                          ['Group 8', '<span style=\'font-size:14px;font-weight:normal;\'>Group 8</span>'],
+                          ['Group 9', '<span style=\'font-size:14px;font-weight:normal;\'>Group 9</span>'],
+                          ['Group 10', '<span style=\'font-size:14px;font-weight:normal;\'>Group 10</span>'],
+                        ],
+                        shuffleChoices: false,
+                        requiredChoice: true,
+                        onclick: function() {
+                            node.game.doneButton.enable();
+                        },
+                    }
+                ]
+            }
+        },
     });
 
     ////////////////////////////////////////////////////////////////////////////
