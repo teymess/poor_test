@@ -1947,11 +1947,26 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                 simplify: true,
                 mainText: '',
                 forms: [
+                  {
+                      id: 'general_altruism',
+                      orientation: 'H',
+                      mainText: '<span style="font-weight: normal;color:gray;">Q20</span> How do you assess your willingness to do good for others without expecting anything in return?',
+                      left: 'Completely unwilling',
+                      right: 'Very willing',
+                      choices: [ '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
+                      requiredChoice: true,
+                      onclick: function(value, removed) {
+                          var w, forms;
+                          forms = node.widgets.lastAppended.formsById
+                          w = forms.donate_charity;
+                          w.show();
+                      }
+                  },
                     {
                         id: 'donate_charity',
                         name: 'Slider',
                         type: 'flat',
-                        hidden: false,
+                        hidden: true,
                         min: 0,
                         max: 100,
                         panel: false,
@@ -1969,17 +1984,8 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                                 return '<span style=\'font-size:20px;\'>You would donate: <b>' + value + ',000 INR</b> to a good cause.</span>';
                             }
                             }
-                        }
+                        },
                     },
-                    {
-                        id: 'general_altruism',
-                        orientation: 'H',
-                        mainText: '<span style="font-weight: normal;color:gray;">Q20</span> How do you assess your willingness to do good for others without expecting anything in return?',
-                        left: 'Completely unwilling',
-                        right: 'Very willing',
-                        choices: [ '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
-                        requiredChoice: true,
-                    }
                 ]
             }
         }
