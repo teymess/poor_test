@@ -1787,7 +1787,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
         name: "Part 3: Your opinion",
         widget: {
             name: 'ChoiceManager',
-            id: 'Part3_q',
+            id: 'env_just',
             options: {
                 simplify: true,
                 mainText: 'For each pair of statements below, tell us how much you agree with one <em>or</em> the other statement, using a 7-point scale.<br>'+
@@ -1837,7 +1837,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
         },
         widget: {
             name: 'ChoiceManager',
-            id: 'Part3_q',
+            id: 'redis',
             options: {
                 simplify: true,
                 mainText: 'For each pair of statements below, tell us how much you agree with one <em>or</em> the other statement, using a 7-point scale.<br>' +
@@ -1908,7 +1908,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
         // Make a widget step.
         widget: {
             name: 'ChoiceManager',
-            id: 'q2',
+            id: 'inequality',
             options: {
                 simplify: true,
                 mainText: '',
@@ -1942,7 +1942,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
         // Make a widget step.
         widget: {
             name: 'ChoiceManager',
-            id: 'q2',
+            id: 'altruism',
             options: {
                 simplify: true,
                 mainText: '',
@@ -1950,7 +1950,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                   {
                       id: 'general_altruism',
                       orientation: 'H',
-                      mainText: '<span style="font-weight: normal;color:gray;">Q20</span> How do you assess your willingness to do good for others without expecting anything in return?',
+                      mainText: '<span style="font-weight: normal;color:gray;">Q19</span> How do you assess your willingness to do good for others without expecting anything in return?',
                       left: 'Completely unwilling',
                       right: 'Very willing',
                       choices: [ '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
@@ -1973,7 +1973,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                         initialValue: 0,
                         requiredChoice: true,
                         displayNoChange: false,
-                        mainText: '<span style="font-weight: normal;color:gray;">Q19</span> Assume you won 1 lakh Indian rupees (1,00,000 INR) in a lottery. Considering your current situation, how much would you donate to a good cause?',
+                        mainText: '<span style="font-weight: normal;color:gray;">Q20</span> Assume you won 1 lakh Indian rupees (1,00,000 INR) in a lottery. Considering your current situation, how much would you donate to a good cause?',
                         //hint: '<b>Please move the slider to your preferred contribution amount.</b> <br> <span style="font-size:12px;"> Your contribution will be given to the initiative of your choice by the researchers at Heidelberg University. The rest will go to you.',
                         texts: {
                             currentValue: function(widget, value) {
@@ -1990,6 +1990,47 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             }
         }
     });
+
+
+    //////////////////////////////////////////////////////////////////////////7
+    // POLITICAL orientation
+    stager.extendStep('Part3_Politics', {
+        name: "Part 3: Your opinion",
+        cb: function() {
+            W.cssRule('table.choicetable td { text-align: center !important; ' +
+            'font-weight: normal; padding-left: 10px; }');
+        },
+        // Make a widget step.
+        widget: {
+            name: 'ChoiceManager',
+            id: 'politics',
+            options: {
+                simplify: true,
+                mainText: '',
+                forms: [
+                    {
+                        id: 'political_orientation',
+                        orientation: 'H',
+                        mainText: '<span style="font-weight: normal;color:gray;">Q21</span>  If an election was held today, which political party would you vote for?</u>',
+                        choices: ['Bharatiya Janata Party (BJP)',
+                                  'Indian National Congress (INC)',
+                                  'All India Trinamool Congress (AITC)',
+                                  'Communist Party of India (Marxist) (CPI(M))',
+                                  'Nationalist Congress Party (NCP)',
+                                  'Bahujan Samaj Party (BSP)',
+                                  'Communist Party of India (CPI)',
+                                  "National People's Party (NPP)",
+                                  'Other',
+                                  'I would not vote',
+                                  'Prefer not to say'
+                                ],
+                        requiredChoice: true,
+                    },
+                ]
+            }
+        }
+    });
+
 
 
 
