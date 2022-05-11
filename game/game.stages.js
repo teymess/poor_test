@@ -60,6 +60,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
     .step('Part3_Redistribution')
     .step('Part3_Inequality')
     .step('Part3_Altruism')
+    .step('Part3_Politics')
 
 
     stager
