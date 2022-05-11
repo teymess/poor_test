@@ -2010,7 +2010,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                 forms: [
                     {
                         id: 'political_orientation',
-                        orientation: 'H',
+                        orientation: 'V',
                         mainText: '<span style="font-weight: normal;color:gray;">Q21</span>  If an election was held today, which political party would you vote for?</u>',
                         choices: ['Bharatiya Janata Party (BJP)',
                                   'Indian National Congress (INC)',
