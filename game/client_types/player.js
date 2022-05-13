@@ -2043,7 +2043,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             options: {
                 title: false,
                 panel: false,
-                minChars: 2,
+                minChars: 5,
                 requiredChoice: true,
                 showSubmit: false,
                 mainText: 'Thank you for participating. ' +
