@@ -247,7 +247,7 @@ module.exports = {
      *
      * Default: undefined
      */
-     roomCounter: 100,
+     //roomCounter: 100,
 
     /**
      * ### roomCounterPadChars (0 <= number <= 12) Optional
