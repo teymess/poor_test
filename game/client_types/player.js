@@ -2010,7 +2010,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                 forms: [
                     {
                         id: 'political_orientation',
-                        orientation: 'V',
+                        orientation: 'H',
                         mainText: '<span style="font-weight: normal;color:gray;">Q21</span>  If an election was held today, which political party would you vote for?</u>',
                         choices: ['Bharatiya Janata Party (BJP)',
                                   'Indian National Congress (INC)',
@@ -2025,6 +2025,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                                   'Prefer not to say'
                                 ],
                         requiredChoice: true,
+                        choicesSetSize: 2
                     },
                     {
                       id: 'low_hh_belief',
