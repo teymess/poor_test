@@ -783,14 +783,14 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                     {
                         id: 'comprehension_leaflet4_1',
                         orientation: 'H',
-                        mainText: '<span style="font-weight: normal;color:gray;">Q6</span> How many years of life do we lose on average by being exposed for a long time to air pollution that is 10 &mu;/m<sup>3</sup> higher than the WHO recommended level?<br>',
+                        mainText: '<span style="font-weight: normal;color:gray;">Q6</span> How many years of life do we lose on average by being exposed for a long time to air pollution that is 10 &mu;g/m<sup>3</sup> higher than the WHO recommended level?<br>',
                         choices: ["0 years", "0.25 years", "0.5 years", "1 year", "2 years"],
                         correctChoice: 3,
                     },
                     {
                         id: 'comprehension_leaflet4_2',
                         orientation: 'H',
-                        mainText: '<span style="font-weight: normal;color:gray;">Q7</span> How many years of life do we lose on average by being exposed for a long time to air pollution that is 30 &mu;/m<sup>3</sup> higher than the WHO recommended level?<br>',
+                        mainText: '<span style="font-weight: normal;color:gray;">Q7</span> How many years of life do we lose on average by being exposed for a long time to air pollution that is 30 &mu;g/m<sup>3</sup> higher than the WHO recommended level?<br>',
                         choices: ["0 years", "1 year", "2 years", "3 years", "5 years"],
                         correctChoice: 3,
                     }
@@ -2031,11 +2031,34 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                       mainText: '<span style="font-weight: normal;color:gray;">Q22</span> Think of a typical Indian household that has an income of 15,000 INR per year. What statement applies best to the household?',
                       choices: ['The household has enough and can additionally save some money.',
                                 'The household can just get by with their income.',
-                                'The household needs to spend some of their savings.',
-                                'The household needs to spend their savings and additionally borrow some money.'
+                                'The household needs to spend some of their savings as the yearly income is not enough.',
+                                'The household needs to spend their savings and additionally borrow some money.',
+                                'Other'
                               ],
-                      requiredChoice: true
-                    }
+                      requiredChoice: true,
+                      onclick: function(value, removed) {
+                          var w1, forms, len;
+                          forms = node.widgets.lastAppended.formsById
+                          len = forms.low_hh_belief.choices.length - 1;
+                          w1 = forms.low_hh_belief_other;
+                          if (this.isChoiceCurrent(len)) {
+                              w1.show();
+                          }
+                          else {
+                              w1.hide();
+                          }
+                          W.adjustFrameHeight();
+                      }
+                  },
+                  {
+                      name: 'CustomInput',
+                      id: 'low_hh_belief_other',
+                      orientation: 'V',
+                      mainText: '<span style="font-weight: normal;color:gray;">Q23</span> Please specify:',
+                      width: '95%',
+                      hidden: true,
+                      requiredChoice: true,
+                  }
                 ]
             }
         }
@@ -2048,29 +2071,48 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
     ////////////////////////////////////////////////////////////////////////////
     // FEEDBACK
     stager.extendStep('feedback', {
-        widget: {
-            name: 'Feedback',
-            options: {
-                title: false,
-                panel: false,
-                minChars: 5,
-                requiredChoice: true,
-                showSubmit: false,
-                mainText: 'Thank you for participating. ' +
-                '<br><br>' +
-                "If you want to get in touch with us for questions or suggestions, " +
-                "please write us an email at <em><span style='color:#bf2b42'>academic.research.India@gmail.com</span></em>." +
-                '<br><br>' +
-                'We are very interested in ' +
-                'hearing your <strong>feedback</strong> about the ' +
-                'following points:<br/><br/><em><ol>' +
-                '<li>Did you find any question unclear or ' +
-                'uncomfortable?</li>' +
-                '<li>Did you experience any technical difficulty?</li>' +
-                '<li>Are there other policies against air pollution that we did not ask about?</li>' +
-                '<li>What did you think about when deciding to contribute or not to an NGO?</li></ol>'
+      widget: {
+          name: 'ChoiceManager',
+          id: 'feedback',
+          options: {
+              simplify: true,
+              mainText: '',
+              forms: [
+                  {
+                    name: 'Feedback',
+                    id: 'feedback1',
+                    minChars: 5,
+                    requiredChoice: true,
+                    showSubmit: false,
+                    mainText: 'Thank you for participating. ' +
+                        '<br><br>' +
+                        "If you want to get in touch with us for questions or suggestions, " +
+                        "please write us an email at <em><span style='color:#bf2b42'>academic.research.India@gmail.com</span></em>." +
+                        '<br><br>' +
+                        'We are very interested in ' +
+                        'hearing your <strong>feedback</strong> about the ' +
+                        'following points:<br/><br/><em><ol>' +
+                        '<li>Did you find any question unclear or ' +
+                        'uncomfortable?</li>' +
+                        '<li>Did you experience any technical difficulty?</li></ol>',
+                  },
+                  {
+                    name: 'Feedback',
+                    id: 'feedback2',
+                    mainText: '<ol start="3"><li>Are there other policies to reduce the impact of air pollution that you would think are more appropriate?</li></ol>',
+                    requiredChoice: true,
+                    showSubmit: false
+                  },
+                  {
+                    name: 'Feedback',
+                    id: 'feedback3',
+                    mainText: '<ol start="4"><li>What did you think about when deciding to contribute or not to an NGO?</li></ol>',
+                    requiredChoice: true,
+                    showSubmit: false
+                  }
+                ]
+              }
             }
-        }
     });
 
     /////////////////////////////////////////////////////////////////////////////
