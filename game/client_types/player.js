@@ -2026,6 +2026,16 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                                 ],
                         requiredChoice: true,
                     },
+                    {
+                      id: 'low_hh_belief',
+                      mainText: '<span style="font-weight: normal;color:gray;">Q22</span> Think of a typical Indian household that has an income of 15,000 INR per year. What statement applies best to the household?',
+                      choices: ['The household has enough and can additionally save some money.',
+                                'The household can just get by with their income.',
+                                'The household needs to spend some of their savings.',
+                                'The household needs to spend their savings and additionally borrow some money.'
+                              ],
+                      requiredChoice: true
+                    }
                 ]
             }
         }
@@ -2054,12 +2064,11 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                 'We are very interested in ' +
                 'hearing your <strong>feedback</strong> about the ' +
                 'following points:<br/><br/><em><ol>' +
-                '<li>Was the survey too long or too short?</li>' +
                 '<li>Did you find any question unclear or ' +
                 'uncomfortable?</li>' +
                 '<li>Did you experience any technical difficulty?</li>' +
-                '<li>Did the map of your state loaded correctly?</li>' +
-                '<li>How can we improve the study?</li></ol>'
+                '<li>Are there other policies against air pollution that we did not ask about?</li>' +
+                '<li>What did you think about when deciding to contribute or not to an NGO?</li></ol>'
             }
         }
     });
