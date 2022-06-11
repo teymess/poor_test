@@ -2026,40 +2026,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                                 ],
                         requiredChoice: true,
                         choicesSetSize: 2
-                    },
-                    {
-                      id: 'low_hh_belief',
-                      mainText: '<span style="font-weight: normal;color:gray;">Q22</span> Think of a typical Indian household that has an income of 15,000 INR per year. What statement applies best to the household?',
-                      choices: ['The household has enough and can additionally save some money.',
-                                'The household can just get by with their income.',
-                                'The household needs to spend some of their savings as the yearly income is not enough.',
-                                'The household needs to spend their savings and additionally borrow some money.',
-                                'Other'
-                              ],
-                      requiredChoice: true,
-                      onclick: function(value, removed) {
-                          var w1, forms, len;
-                          forms = node.widgets.lastAppended.formsById
-                          len = forms.low_hh_belief.choices.length - 1;
-                          w1 = forms.low_hh_belief_other;
-                          if (this.isChoiceCurrent(len)) {
-                              w1.show();
-                          }
-                          else {
-                              w1.hide();
-                          }
-                          W.adjustFrameHeight();
-                      }
-                  },
-                  {
-                      name: 'CustomInput',
-                      id: 'low_hh_belief_other',
-                      orientation: 'V',
-                      mainText: '<span style="font-weight: normal;color:gray;">Q23</span> Please specify:',
-                      width: '95%',
-                      hidden: true,
-                      requiredChoice: true,
-                  }
+                    }
                 ]
             }
         }
