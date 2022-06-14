@@ -37,9 +37,9 @@ module.exports = {
 
     // # Game specific properties
 
-    BASE_PAY: 1,
+    BASE_PAY: 0.2,
 
-    BONUS_PAY: 1.5,
+    BONUS_PAY: 0,
 
     // Exchange rate coins to dollars.
     EXCHANGE_RATE: 1,
@@ -81,25 +81,11 @@ module.exports = {
     // will be created automatically, and will contain all variables.
 
     treatments: {
-
-        pure_control: {
-            description: "Pure control without perceived income question"
-        },
-
         control: {
             description: "No perceived income manipulation",
         },
-
-        income_correction: {
-            description: "Correct income perception",
-        },
-
-        poor_anchor: {
+        low_anchor: {
             description: "Provide anchor to poor household",
-        },
-
-        rich_anchor: {
-            description: "Provide anchor to rich household",
         }
 
     }
