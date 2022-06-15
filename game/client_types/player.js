@@ -312,9 +312,14 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                         id: 'perceived_income_anchor_low',
                         orientation: 'H',
                         mainText: '<span style="font-weight: normal;color:gray;">Q2</span> Think of a household living ' +
-                                  'in the same state as you that went into debt last year and borrowed a total of 30,000 INR. ' +
-                                  'This household therefore has a <u>negative income</u> of 30,000 INR.<br><br>'+
+                                  'in the same state as you where the <u>monthly value of expenditures and consumption</u> for each person ' +
+                                  'is <u>500 INR</u>.<br>'+
+                                  '<span style="font-weight: normal;"> This includes:<br> '+
+                                  '- all income from all jobs <br>' +
+                                  '- the value of all products that are produced and then consumed by oneself<br>' +
+                                  '- the value of all products that are received as transfers or presents from friends or relatives.</span><br><br>' +
                                   'In your opinion, which income group is this household part of?',
+                        hint: '<br>Remember, there are the same number of households in each of the ten groups!',
                         choices: [
                             ['Group 1', '<span style=\'font-size:14px;font-weight:normal;\'>Group 1</span>'],
                             ['Group 2', '<span style=\'font-size:14px;font-weight:normal;\'>Group 2</span>'],
@@ -343,6 +348,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                         orientation: 'H',
                         mainText: '<span style="font-weight: normal;color:gray;">Q2b</span> Think of <span style="color:red;">YOUR</span> household now. ' +
                                   'In your opinion, which income group is your household part of?',
+                        hint: 'Remember, there are the same number of households in each of the ten groups!',
                         choices: [
                             ['Group 1', '<span style=\'font-size:14px;font-weight:normal;\'>Group 1</span>'],
                             ['Group 2', '<span style=\'font-size:14px;font-weight:normal;\'>Group 2</span>'],
@@ -395,6 +401,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                         orientation: 'H',
                         mainText: '<span style="font-weight: normal;color:gray;">Q2</span> Think of <span style="color:red;">YOUR</span> household. ' +
                                   'In your opinion, which income group is your household part of?',
+                        hint: 'Remember, there are the same number of households in each of the ten groups!',
                         choices: [
                           ['Group 1', '<span style=\'font-size:14px;font-weight:normal;\'>Group 1</span>'],
                           ['Group 2', '<span style=\'font-size:14px;font-weight:normal;\'>Group 2</span>'],
@@ -432,21 +439,45 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                 simplify: true,
                 forms: [
                     {
-                        id: 'income_group9',
+                        id: 'income_group10',
                         orientation: 'H',
                         mainText: '<span style="font-weight: normal;color:gray;">Q8</span> In your opinion, ' +
-                        'what is the yearly income of a household that belongs to income group 9?',
+                        'what is the yearly income of a household that belongs to income Group 10?',
                         choices: function() {
                           return [
                                 ['Group 7', 'Less than ' + (data.pct70) + ' INR'],
                                 ['Group 8', 'Between ' + (data.pct70) + ' INR and ' + (data.pct80) + ' INR'],
                                 ['Group 9', 'Between ' + (data.pct80) + ' INR and ' + (data.pct90) + ' INR'],
-                                ['Group 10', 'More than ' + (data.pct90) + ' INR']
+                                ['Group 10', 'Between ' + (data.pct90) + ' INR and ' + (data.pct92) + ' INR'],
+                                ['Group 11', 'Between ' + (data.pct92) + ' INR and ' + (data.pct94) + ' INR'],
+                                ['Group 12', 'More than ' + (data.pct94) + ' INR']
                             ]
                         },
                         shuffleChoices: false,
                         requiredChoice: true,
                         choicesSetSize: 2
+                    },
+                    {
+                      id: 'consumption_group1',
+                      orientation: 'H',
+                      mainText: '<span style="font-weight: normal;color:gray;">Q8</span> In your opinion, ' +
+                      'what is the <u>monthly value of expenditures and consumption</u> of one person that lives in a household that belongs to <u>Group 1</u>?<br>' +
+                      '<span style="font-weight: normal;"> This includes:<br> '+
+                      '- all income from all jobs <br>' +
+                      '- the value of all products that are produced and then consumed by oneself<br>' +
+                      '- the value of all products that are received as transfers or presents from friends or relatives.</span>',
+                      choices: function() {
+                        return [
+                              ['1', 'Less than 200 INR'],
+                              ['2', 'Between 200 INR and 400 INR'],
+                              ['3', 'Between 400 INR and 600 INR'],
+                              ['4', 'Between 600 INR and 800 INR'],
+                              ['5', 'Between 800 INR and 1,000 INR'],
+                              ['6', 'More than 1,000 INR']
+                          ]
+                      },
+                      shuffleChoices: false,
+                      requiredChoice: true,
                     }
                 ]
             });
