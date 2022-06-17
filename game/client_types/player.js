@@ -312,10 +312,10 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                         id: 'perceived_income_anchor_low',
                         orientation: 'H',
                         mainText: '<span style="font-weight: normal;color:gray;">Q2</span> Think of a household living ' +
-                                  'in the same state as you where the <u>monthly value of expenditures and consumption</u> for each person ' +
-                                  'is <u>500 INR</u>.<br>'+
+                                  'in your state. The <u>monthly value of consumption</u> (food, clothing, medicine) for each person ' +
+                                  'in this households is <u>500 INR</u>.<br>'+
                                   '<span style="font-weight: normal;"> This includes:<br> '+
-                                  '- all income from all jobs <br>' +
+                                  '- the value of all products bought with cash<br>' +
                                   '- the value of all products that are produced and then consumed by oneself<br>' +
                                   '- the value of all products that are received as transfers or presents from friends or relatives.</span><br><br>' +
                                   'In your opinion, which income group is this household part of?',
@@ -442,7 +442,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                         id: 'income_group10',
                         orientation: 'H',
                         mainText: '<span style="font-weight: normal;color:gray;">Q8</span> In your opinion, ' +
-                        'what is the yearly income of a household that belongs to income Group 10?',
+                        'what is the minimum annual income that a household needs to be in income Group 10?',
                         choices: function() {
                           return [
                                 ['Group 7', 'Less than ' + (data.pct70) + ' INR'],
@@ -461,9 +461,9 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                       id: 'consumption_group1',
                       orientation: 'H',
                       mainText: '<span style="font-weight: normal;color:gray;">Q8</span> In your opinion, ' +
-                      'what is the <u>monthly value of expenditures and consumption</u> of one person that lives in a household that belongs to <u>Group 1</u>?<br>' +
+                      'what is the <u>monthly value of consumption</u> (food, clothing, medicine) of one person that lives in a household that belongs to <u>Group 1</u>?<br>' +
                       '<span style="font-weight: normal;"> This includes:<br> '+
-                      '- all income from all jobs <br>' +
+                      '- the value of all products bought with cash<br>' +
                       '- the value of all products that are produced and then consumed by oneself<br>' +
                       '- the value of all products that are received as transfers or presents from friends or relatives.</span>',
                       choices: function() {
