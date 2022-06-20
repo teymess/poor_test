@@ -428,27 +428,20 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
     //         }
     //     }
     // });
-
     stager.extendStep('feedback', {
-      widget: {
-          name: 'ChoiceManager',
-          id: 'feedback',
-          options: {
-              simplify: true,
-              mainText: '',
-              forms: [
-                  {
-                    name: 'feedback',
-                    id: 'group1feedback',
-                    mainText: '<ol start="4"><li>Please describe the characteristics of a household in your state that belongs to Group 1.</li></ol>',
-                    requiredChoice: true,
-                    showSubmit: false,
+            widget: {
+                name: 'Feedback',
+                options: {
+                    title: false,
+                    panel: false,
                     minChars: 5,
-                  }
-                ]
-              }
+                    showSubmit: false,
+                    requiredChoice: true,
+                    mainText: '<ol start="4"><li>Please describe the characteristics of a household in your state that belongs to Group 1.</li></ol>',
+                }
             }
-    });
+        });
+
 
     //////////////////////////////////////////////////////////////////////////////
     // END OF SURVEY
