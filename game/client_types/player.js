@@ -317,7 +317,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                         mainText: '<span style="font-weight: normal;color:gray;">Q2</span> Think of an urban household ' +
                                   'in ' + data.state + ' that: <br>' +
                                   '<span style="font-weight: normal;"><ul><li> lives in an illegal slum</li>' +
-                                  '<li>with overcrowded rooms</li>' +
+                                  '<li>has overcrowded rooms</li>' +
                                   '<li>does not have its own toilet</li>' +
                                   '<li>has no connection to the water supply</li></ul></span><br>' +
                                   'In your opinion, which income group is this household part of?',
@@ -437,7 +437,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                     minChars: 5,
                     showSubmit: false,
                     requiredChoice: true,
-                    mainText: '<b>Please describe the characteristics of a household in your state that belongs to Group 1.</b>',
+                    mainText: '<b>Please describe the characteristics of a household in your state that belongs to Group 1 (the 10% with the lowest income).</b>',
                 }
             }
         });
