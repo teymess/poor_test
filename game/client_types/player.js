@@ -319,7 +319,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                                   '<span style="font-weight: normal;"><ul><li> lives in an illegal slum</li>' +
                                   '<li>with overcrowded rooms</li>' +
                                   '<li>does not have its own toilet</li>' +
-                                  '<li>and has no connection to the water supply</li></ul></span><br>' +
+                                  '<li>has no connection to the water supply</li></ul></span><br>' +
                                   'In your opinion, which income group is this household part of?',
                         hint: '<br>Remember, there are the same number of households in each of the 10 groups!',
                         choices: [
@@ -437,7 +437,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                     minChars: 5,
                     showSubmit: false,
                     requiredChoice: true,
-                    mainText: '<ol start="4"><li>Please describe the characteristics of a household in your state that belongs to Group 1.</li></ol>',
+                    mainText: '<b>Please describe the characteristics of a household in your state that belongs to Group 1.</b>',
                 }
             }
         });
