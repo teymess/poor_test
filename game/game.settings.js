@@ -81,9 +81,9 @@ module.exports = {
     // will be created automatically, and will contain all variables.
 
     treatments: {
-        control: {
-            description: "No perceived income manipulation",
-        },
+        // control: {
+        //     description: "No perceived income manipulation",
+        // },
         low_anchor: {
             description: "Provide anchor to poor household",
         }

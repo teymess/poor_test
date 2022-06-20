@@ -29,22 +29,22 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
 
     .stage('Part3_Treatment')
     .step('Part3_T_Income_Low')
-    .step('Part3_T_Income_Control')
-    .step('Extra_Question')
+    //.step('Part3_T_Income_Control')
+    .stage('feedback')
 
     .stage('end')
 
     .gameover();
 
-    if (treatmentName === 'control') {
-            stager.skip('Part3_Treatment', [
-                'Part3_T_Income_Low',
-            ])
-        }
-        else if (treatmentName === 'low_anchor') {
-            stager.skip('Part3_Treatment', [
-                'Part3_T_Income_Control',
-            ])
-        }
+    // if (treatmentName === 'control') {
+    //         stager.skip('Part3_Treatment', [
+    //             'Part3_T_Income_Low',
+    //         ])
+    //     }
+    //     else if (treatmentName === 'low_anchor') {
+    //         stager.skip('Part3_Treatment', [
+    //             'Part3_T_Income_Control',
+    //         ])
+    //     }
 
 };
