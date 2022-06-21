@@ -314,7 +314,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                     {
                       name: 'CustomInput',
                       id: 'group1_description',
-                      mainText: '<span style="font-weight: normal;color:gray;">Q9</span> Please describe the characteristics of a household in your state that belongs to <u>Group 1</u> (the 10% with the lowest income).',
+                      mainText: '<span style="font-weight: normal;color:gray;">Q9</span> Please describe the characteristics of a household in your state that belongs to <u>Group 1</u> (the bottom 10% households with the lowest income in your state).',
                       width: '95%',
                       min: 5,
                       requiredChoice: true,
@@ -386,7 +386,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                     {
                       name: 'CustomInput',
                       id: 'group10_description',
-                      mainText: '<span style="font-weight: normal;color:gray;">Q9</span> Please describe the characteristics of a household in your state that belongs to <u>Group 10</u> (the 10% with the highest income).',
+                      mainText: '<span style="font-weight: normal;color:gray;">Q9</span> Please describe the characteristics of a household in your state that belongs to <u>Group 10</u> (the top 10% households with the highest income in your state).',
                       width: '95%',
                       min: 5,
                       requiredChoice: true,
