@@ -85,7 +85,10 @@ module.exports = {
         //     description: "No perceived income manipulation",
         // },
         low_anchor: {
-            description: "Provide anchor to poor household",
+            description: "Provide anchor to group 1",
+        },
+        high_anchor: {
+            description: "Provide anchor to group 10",
         }
 
     }

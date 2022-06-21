@@ -29,8 +29,8 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
 
     .stage('Part3_Treatment')
     .step('Part3_T_Income_Low')
-    //.step('Part3_T_Income_Control')
-    .stage('feedback')
+    .step('Part3_T_Income_High')
+    //.stage('feedback')
 
     .stage('end')
 
@@ -41,10 +41,15 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
     //             'Part3_T_Income_Low',
     //         ])
     //     }
-    //     else if (treatmentName === 'low_anchor') {
-    //         stager.skip('Part3_Treatment', [
-    //             'Part3_T_Income_Control',
-    //         ])
-    //     }
+      if (treatmentName === 'low_anchor') {
+            stager.skip('Part3_Treatment', [
+                'Part3_T_Income_High',
+            ])
+        }
+      else if (treatmentName === 'high_anchor') {
+              stager.skip('Part3_Treatment', [
+                  'Part3_T_Income_Low',
+              ])
+          }
 
 };
