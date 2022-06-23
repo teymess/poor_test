@@ -316,11 +316,11 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                       orientation: 'H',
                       mainText: '<span style="font-weight: normal;color:gray;">Q2</span> Think of an <span style="color:red;">extremely poor</span> urban household ' +
                                 'in ' + data.state + ' where people: <br>' +
-                                '<span style="font-weight: normal;"><ul><li> live in an <b>illegal slum</b> with overcrowded rooms</li>' +
-                                '<li>have <b>no toilet</b> and no access to fresh water</li>' +
-                                '<li>have <b>no education</b></li>' +
-                                '<li><b>cannot afford food and clothing</b></li>' +
-                                '<li>have no job and <b>need to beg for money</b></ul></span><br>' +
+                                '<span style="font-weight: normal;"><ul><li>have <b>no education</b></li>' +
+                                '<li><b>cannot afford enough food and clothing</b></li>' +
+                                '<li>are <b>unemployed</b></li>' +
+                                '<li>live in a <b>non-recognized slum</b> with overcrowded rooms</li>' +
+                                '<li>have <b>no toilet</b> and <b>no access to fresh water</b></li></ul></span><br>' +
                                 'In your opinion, which income group is this household part of?',
                       hint: '<br>Remember, there are the same number of households in each of the 10 groups!',
                       choices: [
