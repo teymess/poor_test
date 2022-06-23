@@ -317,8 +317,8 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                       mainText: '<span style="font-weight: normal;color:gray;">Q2</span> Think of an <span style="color:red;">extremely poor</span> urban household ' +
                                 'in ' + data.state + ' where people: <br>' +
                                 '<span style="font-weight: normal;"><ul><li>have <b>no education</b></li>' +
-                                '<li><b>cannot afford enough food and clothing</b></li>' +
                                 '<li>are <b>unemployed</b></li>' +
+                                '<li><b>cannot afford enough food and clothing</b></li>' +
                                 '<li>live in a <b>non-recognized slum</b> with overcrowded rooms</li>' +
                                 '<li>have <b>no toilet</b> and <b>no access to fresh water</b></li></ul></span><br>' +
                                 'In your opinion, which income group is this household part of?',
