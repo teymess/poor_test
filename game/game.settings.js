@@ -87,9 +87,9 @@ module.exports = {
         low_anchor: {
             description: "Provide anchor to group 1",
         },
-        high_anchor: {
-            description: "Provide anchor to group 10",
-        }
+        // high_anchor: {
+        //     description: "Provide anchor to group 10",
+        // }
 
     }
 };

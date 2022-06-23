@@ -41,15 +41,15 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
     //             'Part3_T_Income_Low',
     //         ])
     //     }
-      if (treatmentName === 'low_anchor') {
-            stager.skip('Part3_Treatment', [
-                'Part3_T_Income_High',
-            ])
-        }
-      else if (treatmentName === 'high_anchor') {
-              stager.skip('Part3_Treatment', [
-                  'Part3_T_Income_Low',
-              ])
-          }
+      // if (treatmentName === 'low_anchor') {
+      //       stager.skip('Part3_Treatment', [
+      //           'Part3_T_Income_High',
+      //       ])
+      //   }
+      // else if (treatmentName === 'high_anchor') {
+      //         stager.skip('Part3_Treatment', [
+      //             'Part3_T_Income_Low',
+      //         ])
+      //     }
 
 };
