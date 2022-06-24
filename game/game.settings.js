@@ -37,7 +37,7 @@ module.exports = {
 
     // # Game specific properties
 
-    BASE_PAY: 0.2,
+    BASE_PAY: 0.3,
 
     BONUS_PAY: 0,
 
