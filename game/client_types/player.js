@@ -374,7 +374,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
           });
       },
       done: function() {
-          return node.game.IncomeQuestions.getValues();
+          return node.game.poorDescription.getValues();
       }
     });
 
