@@ -207,9 +207,10 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                       orientation: 'H',
                       mainText: '<span style="font-weight: normal;color:gray;">Q2</span> Think of a household ' +
                                 'in your state where people:<br>' +
-                                '<span style="font-weight: normal;"><ul><li>have a <b>low education</b> level</li>' +
-                                '<li>are <b>unemployed</b></li>' +
-                                '<li>live under <b>poor housing conditions</b></li></ul></span><br>' +
+                                '<span style="font-weight: normal;"><ul><li>have <b>minimum education</b></li>' +
+                                '<li>are long-term <b>unemployed</b></li>' +
+                                '<li>live in a <b>small apartment</b> with <b>poor facilities</b></li>' +
+                                '<li>live in a <b>bad neighbourhood</b></li></ul></span><br>' +
                                 'In your opinion, which income group is this household part of?',
                       hint: '<br>Remember, there are the same number of households in each of the 10 groups!',
                       choices: [
