@@ -128,182 +128,73 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
         }
     });
 
-    //////////////////////////////////////////////////////////////////////////
-    // Page 3. LOCATION
     stager.extendStep('Part_1_q3', {
         name: "Brief Survey",
         cb: function() {
             W.cssRule('table.choicetable td { text-align: center !important; ' +
             'font-weight: normal; padding-left: 10px; }');
         },
-        donebutton: false,
+        // Make a widget step.
         widget: {
             name: 'ChoiceManager',
+            id: 'q3',
             options: {
                 simplify: true,
+                mainText: '',
                 forms: [
-                    {
-                        name: 'Dropdown',
-                        id: 'state',
-                        mainText: '<span style="font-weight: normal;color:gray;">Q3</span> Select the state in which you currently live. <span style="font-weight: normal;">*</span>',
-                        choices: setup.states,
-                        tag: 'select', // 'datalist'
-                        placeholder: '--',
-                        onchange: function(choice, select, widget) {
-                            var w = node.widgets.lastAppended;
-                            w = w.formsById.district;
-                            w.hide();
-                            node.game.doneButton.disable();
-
-                            node.get('districts', function(districts) {
-                                w.setChoices(districts, true);
-                                w.show();
-                                W.adjustFrameHeight();
-                            }, 'SERVER', { data: choice });
-                        }
-                    },
-                    {
-                        name: 'Dropdown',
-                        id: 'district',
-                        mainText: '<span style="font-weight: normal;color:gray;">Q4</span> Select the district in which you currently live. <span style="font-weight: normal;">*</span>' +
-                        '<br><span style="font-weight: normal;">In case you cannot find your district in the list, please choose the nearest one.</span>',
-                        tag: 'select', // 'datalist'
-                        // Will be auto-filled later.
-                        choices: [ '--' ],
-                        hidden: true,
-                        placeholder: '--',
-                        requiredChoice: true,
-                        onchange: function() {
-                            node.game.doneButton.enable();
-                        }
-                    },
-                    {
-                        id: 'urban',
-                        // orientation: 'V',
-                        mainText: '<span style="font-weight: normal;color:gray;">Q5</span> Do you live in a village or a town/city?',
-                        choices: [
-                          ['rural', 'Village'],
-                          ['urban', 'Town/city'],
-                        ],
-                        shuffleChoices: true,
-                        requiredChoice: true
-                    }
+                  {
+                      id: 'education',
+                      orientation: 'H',
+                      mainText: '<span style="font-weight: normal;color:gray;">Q3</span> What is the highest educational level that you have completed?',
+                      choices: ['No formal education', 'Below High School', 'High School','Bachelor degree','Masters degree or higher'],
+                      shuffleChoices: false,
+                      requiredChoice: true
+                  },
+                  {
+                      name: 'CustomInput',
+                      id: 'hhsize',
+                      mainText: '<span style="font-weight: normal;color:gray;">Q4</span> How many people live in your household?<br>',
+                      hint: '(Think about everyone that lives at least eight months per year in your house. Answer should include yourself.)',
+                      width: '95%',
+                      type: 'int',
+                      requiredChoice: true,
+                      min: 1
+                  },
+                  {
+                      id: 'income',
+                      orientation: 'H',
+                      mainText: '<span style="font-weight: normal;color:gray;">Q5</span> In 2021, what was the total annual income of your household?<br>' +
+                      '<span style="font-weight: normal;"> Please refer to the total income of ALL members living in your household in 2021, ' +
+                      'before any taxes or deductions.',
+                      choices: [
+                        ['Q1', 'Below $27,000'],
+                        ['Q2', 'Between $27,000 and $52,000'],
+                        ['Q3', 'Between $52,000 and $85,000'],
+                        ['Q4', 'Between $85,000 and $140,000'],
+                        ['Q5', 'More than $140,000']
+                      ],
+                      shuffleChoices: false,
+                      requiredChoice: true,
+                      choicesSetSize: 2
+                  }
                 ]
             }
         }
     });
 
-    //////////////////////////////////////////////////////////////////////////
-    // Page 4. Nr household members + HH INCOME
-    stager.extendStep('Part_1_q4', {
-        name: "Brief Survey",
-        frame: 'income_page.htm',
-        donebutton: false,
-        cb: function() {
-
-            node.get('districtData', function(data) {
-
-            node.game.IncomeQuestions = node.widgets.append('ChoiceManager', "incomePage", {
-                id: 'q4',
-                className: 'centered',
-                // ref: 'controlQuestions',
-                mainText: '',
-                simplify: true,
-                forms: [
-                    {
-                        id: 'education',
-                        orientation: 'H',
-                        mainText: '<span style="font-weight: normal;color:gray;">Q6</span> What is the highest educational level that you have completed?',
-                        choices: ['No formal education','Primary school','Secondary school','Vocational training','Bachelor degree','Masters degree or higher'],
-                        shuffleChoices: false,
-                        requiredChoice: true
-                    },
-                    {
-                        name: 'CustomInput',
-                        id: 'hhsize',
-                        mainText: '<span style="font-weight: normal;color:gray;">Q7</span> How many people live in your household?<br>',
-                        hint: '(Think about everyone that lives at least eight months per year in your house. Answer should include yourself.)',
-                        width: '95%',
-                        type: 'int',
-                        requiredChoice: true,
-                        min: 1
-                    },
-                    {
-                        id: 'income',
-                        orientation: 'H',
-                        mainText: '<span style="font-weight: normal;color:gray;">Q8</span> In 2021, what was the total annual income of your household?<br>' +
-                        '<span style="font-weight: normal;"> Please refer to the total income of ALL members living in your household in 2021, ' +
-                        'before any taxes or deductions. This includes:<br> '+
-                        '- wages and salaries from all jobs <br>' +
-                        '- the revenue from self-employment <br>' +
-                        '- all income from casual labour.</span>',
-                        choices: function() {
-                            if (data.decile_number === 10) return [
-                                ['Group 1', 'Less than ' + (data.pct10) + ' INR'],
-                                ['Group 2', 'Between ' + (data.pct10) + ' INR and ' + (data.pct20) + ' INR'],
-                                ['Group 3', 'Between ' + (data.pct20) + ' INR and ' + (data.pct30) + ' INR'],
-                                ['Group 4', 'Between ' + (data.pct30) + ' INR and ' + (data.pct40) + ' INR'],
-                                ['Group 5', 'Between ' + (data.pct40) + ' INR and ' + (data.pct50) + ' INR'],
-                                ['Group 6', 'Between ' + (data.pct50) + ' INR and ' + (data.pct60) + ' INR'],
-                                ['Group 7', 'Between ' + (data.pct60) + ' INR and ' + (data.pct70) + ' INR'],
-                                ['Group 8', 'Between ' + (data.pct70) + ' INR and ' + (data.pct80) + ' INR'],
-                                ['Group 9', 'Between ' + (data.pct80) + ' INR and ' + (data.pct90) + ' INR'],
-                                ['Group 10', 'More than ' + (data.pct90) + ' INR']
-                            ]
-                            else if  (data.decile_number === 9) return [
-                                ['Group 2', 'Less than ' + (data.pct20) + ' INR'],
-                                ['Group 3', 'Between ' + (data.pct20) + ' INR and ' + (data.pct30) + ' INR'],
-                                ['Group 4', 'Between ' + (data.pct30) + ' INR and ' + (data.pct40) + ' INR'],
-                                ['Group 5', 'Between ' + (data.pct40) + ' INR and ' + (data.pct50) + ' INR'],
-                                ['Group 6', 'Between ' + (data.pct50) + ' INR and ' + (data.pct60) + ' INR'],
-                                ['Group 7', 'Between ' + (data.pct60) + ' INR and ' + (data.pct70) + ' INR'],
-                                ['Group 8', 'Between ' + (data.pct70) + ' INR and ' + (data.pct80) + ' INR'],
-                                ['Group 9', 'Between ' + (data.pct80) + ' INR and ' + (data.pct90) + ' INR'],
-                                ['Group 10', 'More than ' + (data.pct90) + ' INR']
-                            ]
-                            else if (data.decile_number === 8) return [
-                                ['Group 3', 'Less than ' + (data.pct30) + ' INR'],
-                                ['Group 4', 'Between ' + (data.pct30) + ' INR and ' + (data.pct40) + ' INR'],
-                                ['Group 5', 'Between ' + (data.pct40) + ' INR and ' + (data.pct50) + ' INR'],
-                                ['Group 6', 'Between ' + (data.pct50) + ' INR and ' + (data.pct60) + ' INR'],
-                                ['Group 7', 'Between ' + (data.pct60) + ' INR and ' + (data.pct70) + ' INR'],
-                                ['Group 8', 'Between ' + (data.pct70) + ' INR and ' + (data.pct80) + ' INR'],
-                                ['Group 9', 'Between ' + (data.pct80) + ' INR and ' + (data.pct90) + ' INR'],
-                                ['Group 10', 'More than ' + (data.pct90) + ' INR']
-                            ]
-                        },
-                        shuffleChoices: false,
-                        requiredChoice: true,
-                        choicesSetSize: 2
-                    }
-                ]
-            });
-            node.game.doneButton.enable();
-        });
-    },
-    done: function() {
-        return node.game.IncomeQuestions.getValues();
-    }
-});
-
-
     ////////////////////////////////////////////////////
     // TREATMENT: Income low
     //////////////////////////////////////
-    stager.extendStep('Part3_T_Income_Low', {
+    stager.extendStep('Comparison_low', {
         name: "Brief Survey",
         frame: 'income_page.htm',
-        donebutton: false,
         cb: function() {
-
-            node.get('districtData', function(data) {
-
-            node.game.poorDescription = node.widgets.append('ChoiceManager', "incomePage", {
+            node.game.lowComparison = node.widgets.append('ChoiceManager', "incomePage", {
                 id: 'PI_low',
                 className: 'centered',
                 // ref: 'controlQuestions',
                 mainText: '<span style=\'font-size:18px;font-weight:normal;\'>Assume the entire ' +
-                          'population living in <b>'+ data.state + '</b> is equally divided into 10 income groups, ' +
+                          'population living in <b>your state</b> is equally divided into 10 income groups, ' +
                           'each with the same number of households.<br>' +
                           'The figure below illustrates the 10 groups, ordered from left to right from the 10% with the lowest income '+
                           'to the 10% with the highest income.' +
@@ -312,15 +203,13 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                 simplify: true,
                 forms: [
                     {
-                      id: 'perceived_income_anchor_low',
+                      id: 'perceived_income_comparison_low',
                       orientation: 'H',
-                      mainText: '<span style="font-weight: normal;color:gray;">Q2</span> Think of an <span style="color:red;">extremely poor</span> urban household ' +
-                                'in ' + data.state + ' where people: <br>' +
-                                '<span style="font-weight: normal;"><ul><li>have <b>no education</b></li>' +
+                      mainText: '<span style="font-weight: normal;color:gray;">Q2</span> Think of a household ' +
+                                'in your state where people:<br>' +
+                                '<span style="font-weight: normal;"><ul><li>have a <b>low education</b> level</li>' +
                                 '<li>are <b>unemployed</b></li>' +
-                                '<li><b>cannot afford enough food and clothing</b></li>' +
-                                '<li>live in a <b>non-recognized slum</b> with overcrowded rooms</li>' +
-                                '<li>have <b>no toilet</b> and <b>no access to fresh water</b></li></ul></span><br>' +
+                                '<li>live under <b>poor housing conditions</b></li></ul></span><br>' +
                                 'In your opinion, which income group is this household part of?',
                       hint: '<br>Remember, there are the same number of households in each of the 10 groups!',
                       choices: [
@@ -370,145 +259,219 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                     }
                 ]
               });
-              node.game.doneButton.enable();
-          });
       },
       done: function() {
-          return node.game.poorDescription.getValues();
+          return node.game.lowComparison.getValues();
       }
     });
 
 
-    // ////////////////////////////////////////////////////
-    // // TREATMENT: Income HIGH
-    // //////////////////////////////////////
-    // stager.extendStep('Part3_T_Income_High', {
-    //     name: "Brief Survey",
-    //     frame: 'income_page.htm',
-    //     donebutton: false,
-    //     cb: function() {
-    //
-    //         node.get('districtData', function(data) {
-    //
-    //         node.game.poorDescription = node.widgets.append('ChoiceManager', "incomePage", {
-    //             id: 'PI_high',
-    //             className: 'centered',
-    //             // ref: 'controlQuestions',
-    //             mainText: '<span style=\'font-size:18px;font-weight:normal;\'>Assume the entire ' +
-    //                       'population living in <b>'+ data.state + '</b> is equally divided into 10 income groups, ' +
-    //                       'each with the same number of households.<br>' +
-    //                       'The figure below illustrates the 10 groups, ordered from left to right from the 10% with the lowest income '+
-    //                       'to the 10% with the highest income.' +
-    //             '</span><br><br><img src="https://i.ibb.co/CBgw21N/deciles-clean-alt.png" alt="Indian-groups" border="0" width="800px"></a><br>' +
-    //             '<span style=\'font-size:14px;\'><i><u>Remember, there are the same number of households in each of the 10 groups!</i></span>',
-    //             simplify: true,
-    //             forms: [
-    //                 {
-    //                   name: 'CustomInput',
-    //                   id: 'group10_description',
-    //                   mainText: '<span style="font-weight: normal;color:gray;">Q9</span> Please describe the characteristics of a household in your state that belongs to <u>Group 10</u> (the top 10% households with the highest income in your state).',
-    //                   width: '95%',
-    //                   min: 5,
-    //                   requiredChoice: true,
-    //                 },
-    //             ]
-    //           });
-    //           node.game.doneButton.enable();
-    //       });
-    //   },
-    //   done: function() {
-    //     var w, q2;
-    //     w = node.widgets.last;
-    //
-    //         // DISPLAY 4.
-    //         q2 = w.formsById.perceived_income_own;
-    //         if (!q2) {
-    //           node.widgets.last.addForm({
-    //             id: 'perceived_income_own',
-    //             orientation: 'H',
-    //             mainText: '<span style="font-weight: normal;color:gray;">Q10</span> Think of <span style="color:red;">YOUR</span> household. ' +
-    //                       'In your opinion, which income group is your household part of?',
-    //                       hint: '<br>Remember, there are the same number of households in each of the 10 groups!',
-    //             choices: [
-    //                 ['Group 1', '<span style=\'font-size:14px;font-weight:normal;\'>Group 1</span>'],
-    //                 ['Group 2', '<span style=\'font-size:14px;font-weight:normal;\'>Group 2</span>'],
-    //                 ['Group 3', '<span style=\'font-size:14px;font-weight:normal;\'>Group 3</span>'],
-    //                 ['Group 4', '<span style=\'font-size:14px;font-weight:normal;\'>Group 4</span>'],
-    //                 ['Group 5', '<span style=\'font-size:14px;font-weight:normal;\'>Group 5</span>'],
-    //                 ['Group 6', '<span style=\'font-size:14px;font-weight:normal;\'>Group 6</span>'],
-    //                 ['Group 7', '<span style=\'font-size:14px;font-weight:normal;\'>Group 7</span>'],
-    //                 ['Group 8', '<span style=\'font-size:14px;font-weight:normal;\'>Group 8</span>'],
-    //                 ['Group 9', '<span style=\'font-size:14px;font-weight:normal;\'>Group 9</span>'],
-    //                 ['Group 10', '<span style=\'font-size:14px;font-weight:normal;\'>Group 10</span>'],
-    //                 ],
-    //             shuffleChoices: false,
-    //             requiredChoice: true,
-    //                   });
-    //           return false;
-    //         }
-    //         return w.getValues();
-    //       }
-    // });
-
     ////////////////////////////////////////////////////
-    // TREATMENT: Control Income
+    // TREATMENT: Income HIGH
     //////////////////////////////////////
-    // stager.extendStep('Part3_T_Income_Control', {
-    //     name: "Brief Survey",
-    //     cb: function() {
-    //         W.cssRule('table.choicetable td { text-align: center !important; ' +
-    //         'font-weight: normal; padding-left: 10px; }');
-    //     },
-    //     widget: {
-    //         name: 'ChoiceManager',
-    //         id: 'PI_control',
-    //         options: {
-    //             simplify: true,
-    //             mainText: '<span style=\'font-size:18px;font-weight:normal;\'>Assume the entire ' +
-    //                       'population living in <b>your state</b> is divided into 10 income groups, '+
-    //                       'each with the same number of households. The figure below illustrates ' +
-    //                       'the 10 groups, ordered from left to right from the 10% with the lowest income '+
-    //                       'to the 10% with the highest income.' +
-    //             '</span><br><br><img src="https://i.ibb.co/CBgw21N/deciles-clean-alt.png" alt="Indian-groups" border="0" width="800px"></a><br><br>',
-    //             forms: [
-    //                 {
-    //                     id: 'perceived_income_own',
-    //                     orientation: 'H',
-    //                     mainText: '<span style="font-weight: normal;color:gray;">Q2</span> Think of <span style="color:red;">YOUR</span> household. ' +
-    //                               'In your opinion, which income group is your household part of?',
-    //                     hint: 'Remember, there are the same number of households in each of the ten groups!',
-    //                     choices: [
-    //                       ['Group 1', '<span style=\'font-size:14px;font-weight:normal;\'>Group 1</span>'],
-    //                       ['Group 2', '<span style=\'font-size:14px;font-weight:normal;\'>Group 2</span>'],
-    //                       ['Group 3', '<span style=\'font-size:14px;font-weight:normal;\'>Group 3</span>'],
-    //                       ['Group 4', '<span style=\'font-size:14px;font-weight:normal;\'>Group 4</span>'],
-    //                       ['Group 5', '<span style=\'font-size:14px;font-weight:normal;\'>Group 5</span>'],
-    //                       ['Group 6', '<span style=\'font-size:14px;font-weight:normal;\'>Group 6</span>'],
-    //                       ['Group 7', '<span style=\'font-size:14px;font-weight:normal;\'>Group 7</span>'],
-    //                       ['Group 8', '<span style=\'font-size:14px;font-weight:normal;\'>Group 8</span>'],
-    //                       ['Group 9', '<span style=\'font-size:14px;font-weight:normal;\'>Group 9</span>'],
-    //                       ['Group 10', '<span style=\'font-size:14px;font-weight:normal;\'>Group 10</span>'],
-    //                         ],
-    //                     shuffleChoices: false,
-    //                     requiredChoice: true
-    //                 }
-    //             ]
-    //         }
-    //     }
-    // });
-    stager.extendStep('feedback', {
-            widget: {
-                name: 'Feedback',
-                options: {
-                    title: false,
-                    panel: false,
-                    minChars: 5,
-                    showSubmit: false,
-                    requiredChoice: true,
-                    mainText: '<b>Please describe the characteristics of a household in your state that belongs to Group 1 (the 10% with the lowest income).</b>',
-                }
+    stager.extendStep('Description_high', {
+        name: "Brief Survey",
+        frame: 'income_page.htm',
+        cb: function() {
+              node.game.highDescription = node.widgets.append('ChoiceManager', "incomePage", {
+                id: 'D_high',
+                className: 'centered',
+                // ref: 'controlQuestions',
+                mainText: '<span style=\'font-size:18px;font-weight:normal;\'>Assume the entire ' +
+                          'population living in <b>your state</b> is equally divided into 10 income groups, ' +
+                          'each with the same number of households.<br>' +
+                          'The figure below illustrates the 10 groups, ordered from left to right from the 10% with the lowest income '+
+                          'to the 10% with the highest income.' +
+                '</span><br><br><img src="https://i.ibb.co/CBgw21N/deciles-clean-alt.png" alt="Indian-groups" border="0" width="800px"></a><br>' +
+                '<span style=\'font-size:14px;\'><i><u>Remember, there are the same number of households in each of the 10 groups!</i></span>',
+                simplify: true,
+                forms: [
+                    {
+                      name: 'CustomInput',
+                      id: 'group10_description',
+                      mainText: '<span style="font-weight: normal;color:gray;">Q9</span> Please describe the characteristics of a household in your state that belongs to <u>Group 10</u> (the top 10% households with the highest income in your state).',
+                      hint: '<br>For example, you can describe the household in terms of education, employment, and housing conditions.',
+                      width: '95%',
+                      min: 5,
+                      requiredChoice: true,
+                    },
+                ]
+              });
+      },
+      done: function() {
+        var w, q2;
+        w = node.widgets.last;
+
+            // DISPLAY 4.
+            q2 = w.formsById.perceived_income_own;
+            if (!q2) {
+              node.widgets.last.addForm({
+                id: 'perceived_income_own',
+                orientation: 'H',
+                mainText: '<span style="font-weight: normal;color:gray;">Q10</span> Think of <span style="color:red;">YOUR</span> household. ' +
+                          'In your opinion, which income group is your household part of?',
+                          hint: '<br>Remember, there are the same number of households in each of the 10 groups!',
+                choices: [
+                    ['Group 1', '<span style=\'font-size:14px;font-weight:normal;\'>Group 1</span>'],
+                    ['Group 2', '<span style=\'font-size:14px;font-weight:normal;\'>Group 2</span>'],
+                    ['Group 3', '<span style=\'font-size:14px;font-weight:normal;\'>Group 3</span>'],
+                    ['Group 4', '<span style=\'font-size:14px;font-weight:normal;\'>Group 4</span>'],
+                    ['Group 5', '<span style=\'font-size:14px;font-weight:normal;\'>Group 5</span>'],
+                    ['Group 6', '<span style=\'font-size:14px;font-weight:normal;\'>Group 6</span>'],
+                    ['Group 7', '<span style=\'font-size:14px;font-weight:normal;\'>Group 7</span>'],
+                    ['Group 8', '<span style=\'font-size:14px;font-weight:normal;\'>Group 8</span>'],
+                    ['Group 9', '<span style=\'font-size:14px;font-weight:normal;\'>Group 9</span>'],
+                    ['Group 10', '<span style=\'font-size:14px;font-weight:normal;\'>Group 10</span>'],
+                    ],
+                shuffleChoices: false,
+                requiredChoice: true,
+                      });
+              return false;
             }
-        });
+            return w.getValues();
+          }
+    });
+
+
+    stager.extendStep('Description_low', {
+        name: "Brief Survey",
+        frame: 'income_page.htm',
+        cb: function() {
+              node.game.highDescription = node.widgets.append('ChoiceManager', "incomePage", {
+                id: 'D_low',
+                className: 'centered',
+                // ref: 'controlQuestions',
+                mainText: '<span style=\'font-size:18px;font-weight:normal;\'>Assume the entire ' +
+                          'population living in <b>your state</b> is equally divided into 10 income groups, ' +
+                          'each with the same number of households.<br>' +
+                          'The figure below illustrates the 10 groups, ordered from left to right from the 10% with the lowest income '+
+                          'to the 10% with the highest income.' +
+                '</span><br><br><img src="https://i.ibb.co/CBgw21N/deciles-clean-alt.png" alt="Indian-groups" border="0" width="800px"></a><br>' +
+                '<span style=\'font-size:14px;\'><i><u>Remember, there are the same number of households in each of the 10 groups!</i></span>',
+                simplify: true,
+                forms: [
+                    {
+                      name: 'CustomInput',
+                      id: 'group1_description',
+                      mainText: '<span style="font-weight: normal;color:gray;">Q9</span> Please describe the characteristics of a household in your state that belongs to <u>Group 1</u> (the bottom 10% households with the lowest income in your state).',
+                      hint: '<br>For example, you can describe the household in terms of education, employment, and housing conditions.',
+                      width: '95%',
+                      min: 5,
+                      requiredChoice: true,
+                    },
+                ]
+              });
+      },
+      done: function() {
+        var w, q2;
+        w = node.widgets.last;
+
+            // DISPLAY 4.
+            q2 = w.formsById.perceived_income_own;
+            if (!q2) {
+              node.widgets.last.addForm({
+                id: 'perceived_income_own',
+                orientation: 'H',
+                mainText: '<span style="font-weight: normal;color:gray;">Q10</span> Think of <span style="color:red;">YOUR</span> household. ' +
+                          'In your opinion, which income group is your household part of?',
+                          hint: '<br>Remember, there are the same number of households in each of the 10 groups!',
+                choices: [
+                    ['Group 1', '<span style=\'font-size:14px;font-weight:normal;\'>Group 1</span>'],
+                    ['Group 2', '<span style=\'font-size:14px;font-weight:normal;\'>Group 2</span>'],
+                    ['Group 3', '<span style=\'font-size:14px;font-weight:normal;\'>Group 3</span>'],
+                    ['Group 4', '<span style=\'font-size:14px;font-weight:normal;\'>Group 4</span>'],
+                    ['Group 5', '<span style=\'font-size:14px;font-weight:normal;\'>Group 5</span>'],
+                    ['Group 6', '<span style=\'font-size:14px;font-weight:normal;\'>Group 6</span>'],
+                    ['Group 7', '<span style=\'font-size:14px;font-weight:normal;\'>Group 7</span>'],
+                    ['Group 8', '<span style=\'font-size:14px;font-weight:normal;\'>Group 8</span>'],
+                    ['Group 9', '<span style=\'font-size:14px;font-weight:normal;\'>Group 9</span>'],
+                    ['Group 10', '<span style=\'font-size:14px;font-weight:normal;\'>Group 10</span>'],
+                    ],
+                shuffleChoices: false,
+                requiredChoice: true,
+                      });
+              return false;
+            }
+            return w.getValues();
+          }
+    });
+
+    //////////////////////////////////////////////////
+    //TREATMENT: Control Income
+    ////////////////////////////////////
+    stager.extendStep('Control', {
+        name: "Brief Survey",
+        cb: function() {
+            W.cssRule('table.choicetable td { text-align: center !important; ' +
+            'font-weight: normal; padding-left: 10px; }');
+        },
+        widget: {
+            name: 'ChoiceManager',
+            id: 'PI_control',
+            options: {
+                simplify: true,
+                mainText: '<span style=\'font-size:18px;font-weight:normal;\'>Assume the entire ' +
+                          'population living in <b>your state</b> is divided into 10 income groups, '+
+                          'each with the same number of households. The figure below illustrates ' +
+                          'the 10 groups, ordered from left to right from the 10% with the lowest income '+
+                          'to the 10% with the highest income.' +
+                '</span><br><br><img src="https://i.ibb.co/CBgw21N/deciles-clean-alt.png" alt="Indian-groups" border="0" width="800px"></a><br><br>',
+                forms: [
+                    {
+                        id: 'perceived_income_own',
+                        orientation: 'H',
+                        mainText: '<span style="font-weight: normal;color:gray;">Q2</span> Think of <span style="color:red;">YOUR</span> household. ' +
+                                  'In your opinion, which income group is your household part of?',
+                        hint: 'Remember, there are the same number of households in each of the ten groups!',
+                        choices: [
+                          ['Group 1', '<span style=\'font-size:14px;font-weight:normal;\'>Group 1</span>'],
+                          ['Group 2', '<span style=\'font-size:14px;font-weight:normal;\'>Group 2</span>'],
+                          ['Group 3', '<span style=\'font-size:14px;font-weight:normal;\'>Group 3</span>'],
+                          ['Group 4', '<span style=\'font-size:14px;font-weight:normal;\'>Group 4</span>'],
+                          ['Group 5', '<span style=\'font-size:14px;font-weight:normal;\'>Group 5</span>'],
+                          ['Group 6', '<span style=\'font-size:14px;font-weight:normal;\'>Group 6</span>'],
+                          ['Group 7', '<span style=\'font-size:14px;font-weight:normal;\'>Group 7</span>'],
+                          ['Group 8', '<span style=\'font-size:14px;font-weight:normal;\'>Group 8</span>'],
+                          ['Group 9', '<span style=\'font-size:14px;font-weight:normal;\'>Group 9</span>'],
+                          ['Group 10', '<span style=\'font-size:14px;font-weight:normal;\'>Group 10</span>'],
+                            ],
+                        shuffleChoices: false,
+                        requiredChoice: true
+                    }
+                ]
+            }
+        }
+    });
+
+
+
+
+    stager.extendStep('feedback', {
+      widget: {
+          name: 'ChoiceManager',
+          id: 'feedback',
+          options: {
+              simplify: true,
+              mainText: '',
+              forms: [
+                  {
+                    name: 'Feedback',
+                    id: 'feedback1',
+                    minChars: 5,
+                    requiredChoice: true,
+                    showSubmit: false,
+                    mainText: 'Thank you for participating. ' +
+                        '<br><br>' +
+                        'We are very interested in ' +
+                        'hearing your <strong>feedback</strong>.' +
+                        '<ol><li>Did you find any question unclear or ' +
+                        'uncomfortable?</li>' +
+                        '<li>Did you experience any technical difficulty?</li></ol>',
+                  }
+                ]
+              }
+            }
+    });
 
 
     //////////////////////////////////////////////////////////////////////////////

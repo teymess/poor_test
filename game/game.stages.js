@@ -21,35 +21,49 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
 
     stager
     .stage('Part_1_Survey')
-    // .step('Part_1_q1')
     .step('Part_1_q2')
     .step('Part_1_q3')
-    .step('Part_1_q4')
 
 
     .stage('Part3_Treatment')
-    .step('Part3_T_Income_Low')
-    //.step('Part3_T_Income_High')
+    .step('Comparison_low')
+    .step('Description_low')
+    .step('Description_high')
+    .step('Control')
+
     .stage('feedback')
 
     .stage('end')
 
     .gameover();
 
-    // if (treatmentName === 'control') {
-    //         stager.skip('Part3_Treatment', [
-    //             'Part3_T_Income_Low',
-    //         ])
-    //     }
-      // if (treatmentName === 'low_anchor') {
-      //       stager.skip('Part3_Treatment', [
-      //           'Part3_T_Income_High',
-      //       ])
-      //   }
-      // else if (treatmentName === 'high_anchor') {
-      //         stager.skip('Part3_Treatment', [
-      //             'Part3_T_Income_Low',
-      //         ])
-      //     }
+    if (treatmentName === 'control') {
+            stager.skip('Part3_Treatment', [
+                'Comparison_low',
+                'Description_low',
+                'Description_high'
+            ])
+        }
+    else if (treatmentName === 'low_comparison') {
+            stager.skip('Part3_Treatment', [
+              'Control',
+              'Description_low',
+              'Description_high'
+            ])
+        }
+    else if (treatmentName === 'high_description') {
+              stager.skip('Part3_Treatment', [
+                'Comparison_low',
+                'Control',
+                'Description_low'
+              ])
+          }
+    else if (treatmentName === 'low_description') {
+                    stager.skip('Part3_Treatment', [
+                      'Comparison_low',
+                      'Control',
+                      'Description_high'
+                    ])
+                }
 
 };
